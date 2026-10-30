@@ -1,32 +1,58 @@
 <div class="report-cover" align="center">
 
-<img src="assets/report-cover.svg" alt="AI-ToDu · Ingeniería de una operación trazable" width="100%">
+# UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
 
-**Universidad Peruana de Ciencias Aplicadas · Ingeniería de Software**<br>
-Desarrollo de Aplicaciones Open Source · **1ASI0729 · NRC 7750**<br>
-Docente: **Efraín Ricardo Bautista Ubillús**<br>
-Startup **IA-INNOVATION** · Período **2026-2**
+### Facultad de Ingeniería
+### Carrera de Ingeniería de Software
 
-# Informe de ingeniería · AI-ToDu
+<br>
 
-**TB1 — Corrección y preparación de AV2**<br>
-Revisión técnica: **30 de octubre de 2026 · v0.2.0**
+### **7750**
+### **Desarrollo de Aplicaciones Open Source · 1ASI0729**
+
+<br>
+
+# **Informe del Trabajo Final**
+
+Docente
+### **Bautista Ubillús, Efraín Ricardo**
+
+<br>
+
+Startup
+### **IA-INNOVATION**
+
+Producto
+### **AI-ToDu**
+
+<br>
+
+## **INTEGRANTES**
 
 <div class="cover-team">
 
-| Integrante | Código |
-| --- | --- |
-| Carlos Alberto Bernal Torres | U202420071 |
-| Luis Carlos Chui Kcomt | U20241i327 |
-| Fernando André Condezo Pacheco | U202411324 |
-| Kevin Junior Salazar Marquina | U202417747 |
-| Darikson Bill Salazar Quiche | U202422620 |
+| Código | Apellidos y Nombres |
+| :---: | :--- |
+| U202420071 | Bernal Torres, Carlos Alberto |
+| U20241i327 | Chui Kcomt, Luis Carlos |
+| U202411324 | Condezo Pacheco, Fernando André |
+| U202417747 | Salazar Marquina, Kevin Junior |
+| U202422620 | Salazar Quiche, Darikson Bill |
 
 </div>
+
+<br>
+
+### **Período 2026-2**
+### **Octubre 2026**
+
+**TB1 — Corrección y preparación de AV2 · v0.2.0**
 
 [Producto](#capítulo-i-introducción) · [Investigación](#capítulo-ii-requirements-elicitation--analysis) · [Requisitos](#capítulo-iii-requirements-specification) · [Diseño](#capítulo-iv-product-design) · [Implementación](#capítulo-v-product-implementation-validation--deployment) · [Pendientes](#pendientes-de-evidencia-y-próxima-entrega)
 
 </div>
+
+---
 
 > **Alcance de esta revisión.** TB1 integra el frontend con una Fake REST API persistente. El servidor Java/Spring Boot, la persistencia PostgreSQL y la autenticación de producción corresponden a AV2. La revisión técnica no sustituye entrevistas, sustentaciones ni registros históricos del equipo.
 
