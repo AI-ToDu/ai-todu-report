@@ -1,0 +1,64 @@
+erDiagram
+    drivers {
+        text id PK
+        text tenant_id FK
+        text name
+        text license
+    }
+    vehicles {
+        text id PK
+        text tenant_id FK
+        text name
+        text plate
+        text capacity_kg
+    }
+    dispatches {
+        text id PK
+        text tenant_id FK
+        text driver_id FK
+        text vehicle_id FK
+        text number
+        text destination
+        text status
+        text created_at
+    }
+    dispatch_lines {
+        text id PK
+        text tenant_id FK
+        text dispatch_id FK
+        text sale_id FK
+        text sale_line_id FK
+        text product_id FK
+        integer quantity
+    }
+    dispatch_stops {
+        text id PK
+        text tenant_id FK
+        text dispatch_id FK
+        integer sequence
+        text address
+    }
+    delivery_attempts {
+        text id PK
+        text tenant_id FK
+        text dispatch_id FK
+        text stop_id FK
+        text recipient
+        text status
+        text created_at
+    }
+    dispatch_incidents {
+        text id PK
+        text tenant_id FK
+        text dispatch_id FK
+        text description
+        text created_at
+        text resolved_at
+    }
+    drivers ||--o{ dispatches : driver_id
+    vehicles ||--o{ dispatches : vehicle_id
+    dispatches ||--o{ dispatch_lines : dispatch_id
+    dispatches ||--o{ dispatch_stops : dispatch_id
+    dispatches ||--o{ delivery_attempts : dispatch_id
+    dispatch_stops ||--o{ delivery_attempts : stop_id
+    dispatches ||--o{ dispatch_incidents : dispatch_id

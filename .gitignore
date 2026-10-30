@@ -1,6 +1,7 @@
-#Dependencies
 node_modules/
 dist/
 .idea/
 .Ds_Store
 Thumbs.db
+.puppeteer-local.json
+output/

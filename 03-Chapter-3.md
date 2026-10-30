@@ -1,155 +1,211 @@
 # Capítulo III: Requirements Specification
 
-Esta sección consolida la especificación de los requisitos de software que darán vida a AI-ToDu. Para garantizar un desarrollo ágil y centrado en el valor, todo el equipo ha colaborado en la redacción de Epics e Historias de Usuario aplicando estrictamente el acrónimo **INVEST**. Los criterios de aceptación han sido redactados en formato Gherkin (Given-When-Then).
-
 ## 3.1. User Stories
 
-En esta sección se especifican los requisitos del sistema AI-ToDu mediante un conjunto de Epics, User Stories y Technical Stories derivadas del proceso de *needfinding*, el análisis competitivo y los segmentos objetivo identificados. Las User Stories representan funcionalidades de valor para los usuarios finales de la plataforma web y del *landing page*, mientras que las Technical Stories describen los requisitos funcionales del RESTful API que soporta el sistema.
+Los identificadores históricos se conservan. La presentación sigue **core → soporte → genéricos → canal público**. El orden de lectura del dominio no implica poder ejecutar una operación protegida sin autenticación. Las estimaciones son una base de planificación, no horas reales ni velocidad medida.
 
-### EPICS
+### Épicas
 
-| Epic ID | Título | Descripción | Criterios de Aceptación | Relacionado con |
-| :--- | :--- | :--- | :--- | :--- |
-| **EPIC-01** | Autenticación y cuenta | **Como** usuario de AI-ToDu,<br>**deseo** gestionar el registro, inicio, cierre y recuperación de mi cuenta,<br>**para** acceder de forma segura a la plataforma según mi plan. | **Escenario: Validación del alcance de autenticación y cuenta**<br>**Given** que las historias US01, US02, US03 y US04 pertenecen a este epic,<br>**When** el equipo evalúa el cumplimiento de EPIC-01,<br>**Then** el epic se considera aceptado únicamente cuando las historias incluidas cumplen sus criterios de aceptación; el epic por sí solo no acredita implementación. | — |
-| **EPIC-02** | Gestión de Inventario | **Como** operario de almacén,<br>**deseo** gestionar las existencias, artículos y mermas,<br>**para** mantener el stock actualizado y evitar descuadres físicos y lógicos. | **Escenario: Validación del alcance de gestión de inventario**<br>**Given** que las historias US09, US10, US11, US12, US13 y US14 pertenecen a este epic,<br>**When** el equipo evalúa el cumplimiento de EPIC-02,<br>**Then** el epic se considera aceptado únicamente cuando dichas historias cumplen sus criterios y respetan las reglas lógicas del stock. | — |
-| **EPIC-03** | Transacciones Comerciales | **Como** dueño de negocio,<br>**deseo** gestionar el ciclo de vida de las ventas y transacciones diarias,<br>**para** registrar los ingresos y descontar productos del almacén. | **Escenario: Validación del ciclo de vida de una transacción**<br>**Given** que las historias US15, US16, US17 y US18 pertenecen a este epic,<br>**When** el equipo valida EPIC-03,<br>**Then** las operaciones respetan el flujo de ventas, impactan directamente en el inventario disponible y liberan o retornan stock si la venta es anulada. | — |
-| **EPIC-04** | Logística y Despacho | **Como** jefe de logística,<br>**deseo** gestionar guías, manifiestos de despacho e incidencias,<br>**para** organizar la salida de mercadería y mantener la trazabilidad. | **Escenario: Validación de la gestión de despachos e incidencias**<br>**Given** que las historias US19, US20, US21 y US22 pertenecen a este epic,<br>**When** se registra un manifiesto o una incidencia en ruta,<br>**Then** la información queda asociada a una venta verificada, es trazable y actualiza el estado logístico correctamente. | — |
-| **EPIC-05** | Dashboard y Rentabilidad | **Como** dueño de negocio,<br>**deseo** visualizar métricas clave y reportes en tiempo real,<br>**para** localizar información financiera relevante y tomar decisiones. | **Escenario: Validación de reportes y dashboard**<br>**Given** que las historias US23, US24 y US25 pertenecen a este epic,<br>**When** el usuario consulta sus KPIs o exporta datos,<br>**Then** el sistema devuelve únicamente información consolidada y autorizada que refleja el cruce exacto entre ventas e inventario. | — |
-| **EPIC-06** | Notificaciones y Alertas | **Como** participante autorizado,<br>**deseo** recibir notificaciones sobre stock mínimo y vencimientos,<br>**para** reabastecer a tiempo sin monitorear manualmente cada producto. | **Escenario: Validación de notificaciones y alertas preventivas**<br>**Given** que las historias US26 y US27 pertenecen a este epic,<br>**When** ocurre un evento notificable como un quiebre de stock,<br>**Then** el sistema genera avisos solo para los destinatarios autorizados y evita alertas duplicadas para el mismo evento. | — |
-| **EPIC-07** | Roles y Permisos | **Como** administrador de la cuenta,<br>**deseo** gestionar los accesos y crear usuarios empleados,<br>**para** proteger la confidencialidad financiera de la empresa. | **Escenario: Validación de seguridad de roles**<br>**Given** que las historias US28 y US29 pertenecen a este epic,<br>**When** un usuario intenta acceder a un recurso,<br>**Then** el epic exige que el sistema verifique el rol del usuario y deniegue o autorice el acceso a módulos específicos (ej. reportes). | — |
-| **EPIC-08** | Perfil y preferencias | **Como** usuario registrado,<br>**deseo** administrar mis datos de empresa, contraseña e idioma,<br>**para** mantener mi cuenta actualizada y adaptar la interfaz. | **Escenario: Validación de perfil y preferencias**<br>**Given** que las historias US30, US31 y US33 pertenecen a este epic,<br>**When** el usuario modifica información permitida de su cuenta,<br>**Then** el sistema valida los cambios, conserva las restricciones de seguridad y persiste las preferencias admitidas como el idioma. | — |
-| **EPIC-09** | Landing page | **Como** visitante de AI-ToDu,<br>**deseo** conocer la propuesta, funcionalidades, testimonios y planes,<br>**para** evaluar la solución antes de continuar a la plataforma. | **Escenario: Validación del contenido y navegación del landing page**<br>**Given** que las historias US05, US06, US07, US08, US32 y US34 pertenecen a este epic,<br>**When** el visitante navega por el landing page,<br>**Then** el contenido es accesible, no presenta funciones proyectadas como implementadas y permite continuar el recorrido de registro. | — |
+| ID | Categoría | Contexto / capacidad |
+| --- | --- | --- |
+| EPIC-02 | Core | Inventario |
+| EPIC-04 | Core | Logística |
+| EPIC-10 | Soporte | Abastecimiento |
+| EPIC-03 | Soporte | Comercial y devoluciones |
+| EPIC-05 | Soporte | Reporting |
+| EPIC-06 | Soporte | Notificaciones |
+| EPIC-01 | Genérico | Identidad |
+| EPIC-07 | Genérico | Acceso y roles |
+| EPIC-08 | Genérico | Preferencias |
+| EPIC-09 | Canal público | Landing page |
 
-### USER STORIES and TECHNICAL STORIES
+### EPIC-02 · Inventario
 
-| Story ID | Título | Descripción | Criterios de Aceptación | Epic ID |
-| :--- | :--- | :--- | :--- | :--- |
-| **US01** | Registro de cuenta | **Como** visitante,<br>**deseo** registrar los datos de mi empresa,<br>**para** crear una cuenta administradora en AI-ToDu. | **Escenario 1: Flujo esperado**<br>**Given** datos válidos y un RUC no registrado,<br>**When** solicita registro,<br>**Then** se crea la cuenta administradora y se informa el siguiente paso.<br><br>**Escenario 2: Validación**<br>**Given** un correo o RUC ya existente,<br>**When** solicita registro,<br>**Then** no se crea otra cuenta y se informa el error. | **EPIC-01** |
-| **US02** | Inicio de sesión | **Como** usuario registrado,<br>**deseo** autenticarme,<br>**para** acceder al espacio de trabajo de mi empresa. | **Escenario 1: Flujo esperado**<br>**Given** credenciales válidas,<br>**When** solicita acceso,<br>**Then** obtiene una sesión con su rol.<br><br>**Escenario 2: Validación**<br>**Given** credenciales incorrectas,<br>**When** solicita acceso,<br>**Then** recibe un error genérico sin revelar la existencia de la cuenta. | **EPIC-01** |
-| **US03** | Cierre de sesión | **Como** usuario autenticado,<br>**deseo** terminar mi sesión,<br>**para** proteger mi cuenta y la información del negocio. | **Escenario 1: Flujo esperado**<br>**Given** una sesión vigente,<br>**When** solicita cerrarla,<br>**Then** la sesión queda invalidada y es redirigido.<br><br>**Escenario 2: Validación**<br>**Given** una sesión ya cerrada,<br>**When** solicita un recurso protegido,<br>**Then** se rechaza el acceso. | **EPIC-01** |
-| **US04** | Recuperación de contraseña | **Como** usuario registrado,<br>**deseo** restablecer mi contraseña,<br>**para** recuperar acceso si la he olvidado. | **Escenario 1: Flujo esperado**<br>**Given** una solicitud con correo válido,<br>**When** la procesa el sistema,<br>**Then** devuelve confirmación genérica y envía enlace seguro.<br><br>**Escenario 2: Validación**<br>**Given** un enlace vencido o utilizado,<br>**When** intenta restablecer la contraseña,<br>**Then** se rechaza el cambio. | **EPIC-01** |
-| **US05** | Propuesta de valor en landing | **Como** visitante,<br>**deseo** conocer la propuesta de valor de AI-ToDu,<br>**para** evaluar si soluciona mis problemas operativos. | **Escenario 1: Flujo esperado**<br>**Given** acceso a la landing,<br>**When** consulta la propuesta,<br>**Then** identifica el problema logístico y la solución centralizada.<br><br>**Escenario 2: Validación**<br>**Given** acceso desde móvil,<br>**When** consulta la propuesta,<br>**Then** el contenido conserva legibilidad y diseño responsivo. | **EPIC-09** |
-| **US06** | Funcionalidades de landing | **Como** visitante,<br>**deseo** conocer las capacidades del producto,<br>**para** comprobar si cubre mis necesidades de negocio. | **Escenario 1: Flujo esperado**<br>**Given** consulta de capacidades,<br>**When** revisa su alcance,<br>**Then** encuentra módulos de inventario, ventas y reportes descritos.<br><br>**Escenario 2: Validación**<br>**Given** un usuario navegando,<br>**When** hace clic en funcionalidad en construcción,<br>**Then** el sistema informa que estará disponible próximamente. | **EPIC-09** |
-| **US07** | Modelo comercial y planes | **Como** visitante,<br>**deseo** consultar modalidades y planes de suscripción,<br>**para** evaluar una posible contratación para mi MYPE. | **Escenario 1: Flujo esperado**<br>**Given** modalidades publicadas,<br>**When** las consulta,<br>**Then** distingue límites de usuarios y costos.<br><br>**Escenario 2: Validación**<br>**Given** selección de un plan,<br>**When** continúa el flujo,<br>**Then** es dirigido al registro con plan preseleccionado sin ejecutar cobros inmediatos. | **EPIC-09** |
-| **US08** | Contacto B2B | **Como** visitante corporativo,<br>**deseo** enviar un mensaje a ventas,<br>**para** solicitar una demostración personalizada. | **Escenario 1: Flujo esperado**<br>**Given** datos de contacto válidos,<br>**When** envía el formulario,<br>**Then** confirma el envío y notifica al equipo.<br><br>**Escenario 2: Validación**<br>**Given** un correo con formato inválido,<br>**When** intenta enviar,<br>**Then** resalta el error y bloquea el envío. | **EPIC-09** |
-| **US09** | Registro de Artículo (SKU) | **Como** operario,<br>**deseo** dar de alta un nuevo producto,<br>**para** que esté disponible para futuras transacciones. | **Escenario 1: Flujo esperado**<br>**Given** datos válidos,<br>**When** guarda el registro,<br>**Then** el artículo se crea con stock inicial 0.<br><br>**Escenario 2: Validación**<br>**Given** un SKU ya existente,<br>**When** intenta registrarlo,<br>**Then** se rechaza la duplicación en la empresa. | **EPIC-02** |
-| **US10** | Ingreso de Mercadería | **Como** operario,<br>**deseo** sumar unidades físicas a un SKU existente,<br>**para** reflejar el abastecimiento del almacén. | **Escenario 1: Flujo esperado**<br>**Given** cantidad positiva,<br>**When** registra la entrada,<br>**Then** el stock total del SKU se incrementa atómicamente.<br><br>**Escenario 2: Validación**<br>**Given** cantidad negativa o nula,<br>**When** intenta registrar,<br>**Then** se impide la transacción. | **EPIC-02** |
-| **US11** | Salida Manual de Mercadería | **Como** operario,<br>**deseo** registrar el retiro manual de productos,<br>**para** reflejar consumos internos o ajustes. | **Escenario 1: Flujo esperado**<br>**Given** stock suficiente y motivo válido,<br>**When** registra la salida,<br>**Then** el inventario disminuye.<br><br>**Escenario 2: Validación**<br>**Given** retiro mayor al stock,<br>**When** solicita la acción,<br>**Then** emite alerta de insuficiencia. | **EPIC-02** |
-| **US12** | Registro de Mermas | **Como** operario,<br>**deseo** apartar productos dañados o caducados,<br>**para** evitar que sean vendidos por error. | **Escenario 1: Flujo esperado**<br>**Given** producto en mal estado,<br>**When** lo marca como merma,<br>**Then** se descuenta del stock y se registra como pérdida.<br><br>**Escenario 2: Validación**<br>**Given** producto marcado como merma,<br>**When** consulta Dashboard,<br>**Then** el costo impacta negativamente la rentabilidad. | **EPIC-02** |
-| **US13** | Buscador de Inventario | **Como** operario,<br>**deseo** buscar productos por nombre o SKU,<br>**para** localizarlos rápidamente sin listas largas. | **Escenario 1: Flujo esperado**<br>**Given** término coincidente,<br>**When** ingresa al menos 3 caracteres,<br>**Then** filtra la tabla en tiempo real.<br><br>**Escenario 2: Validación**<br>**Given** término sin coincidencias,<br>**When** busca,<br>**Then** obtiene resultado vacío sin errores. | **EPIC-02** |
-| **US14** | Historial de Movimientos | **Como** participante autorizado,<br>**deseo** ver el Kardex de un producto,<br>**para** auditar discrepancias o mermas. | **Escenario 1: Flujo esperado**<br>**Given** SKU con movimientos,<br>**When** consulta historial,<br>**Then** obtiene lista cronológica.<br><br>**Escenario 2: Validación**<br>**Given** producto recién creado,<br>**When** consulta historial,<br>**Then** tabla vacía sin error. | **EPIC-02** |
-| **US15** | Creación de Venta | **Como** dueño o vendedor,<br>**deseo** registrar una transacción comercial,<br>**para** formalizar ingresos y descontar stock. | **Escenario 1: Flujo esperado**<br>**Given** productos con stock,<br>**When** procesa venta,<br>**Then** genera registro y descuenta productos simultáneamente.<br><br>**Escenario 2: Validación**<br>**Given** problemas de conexión,<br>**When** transacción falla,<br>**Then** aplica rollback y no descuenta inventario. | **EPIC-03** |
-| **US16** | Validación Automática de Stock | **Como** vendedor,<br>**deseo** bloqueo de productos agotados en caja,<br>**para** no prometer mercadería inexistente. | **Escenario 1: Flujo esperado**<br>**Given** producto con stock cero,<br>**When** intenta añadirlo,<br>**Then** botón se deshabilita preventivamente.<br><br>**Escenario 2: Validación**<br>**Given** 5 unidades y venta de 6,<br>**When** ingresa cantidad,<br>**Then** alerta exceso y ajusta al máximo. | **EPIC-03** |
-| **US17** | Historial de Ventas | **Como** participante autorizado,<br>**deseo** consultar transacciones pasadas,<br>**para** llevar el control de ingresos diarios. | **Escenario 1: Flujo esperado**<br>**Given** ventas registradas,<br>**When** consulta módulo,<br>**Then** las obtiene ordenadas por fecha.<br><br>**Escenario 2: Validación**<br>**Given** filtro de fechas invertido,<br>**When** intenta aplicar,<br>**Then** solicita corregir el rango. | **EPIC-03** |
-| **US18** | Anulación de Venta | **Como** dueño,<br>**deseo** revertir una venta equivocada,<br>**para** corregir métricas y devolver stock. | **Escenario 1: Flujo esperado**<br>**Given** venta completada,<br>**When** solicita anulación,<br>**Then** estado pasa a "Anulada" y stock se reintegra atómicamente.<br><br>**Escenario 2: Validación**<br>**Given** venta ya anulada,<br>**When** intenta anularla,<br>**Then** bloquea acción para evitar duplicidad. | **EPIC-03** |
-| **US19** | Manifiesto de Despacho | **Como** logístico,<br>**deseo** agrupar ventas en un manifiesto,<br>**para** ordenar la ruta de entrega. | **Escenario 1: Flujo esperado**<br>**Given** ventas pendientes,<br>**When** selecciona y crea manifiesto,<br>**Then** se genera documento consolidado.<br><br>**Escenario 2: Validación**<br>**Given** ventas ya despachadas,<br>**When** intenta agruparlas,<br>**Then** el sistema las oculta o bloquea. | **EPIC-04** |
-| **US20** | Asignación de Conductor | **Como** logístico,<br>**deseo** vincular recursos al manifiesto,<br>**para** establecer responsables de entrega. | **Escenario 1: Flujo esperado**<br>**Given** manifiesto y recursos disponibles,<br>**When** asigna chofer y placa,<br>**Then** datos quedan vinculados al despacho.<br><br>**Escenario 2: Validación**<br>**Given** chofer ocupado,<br>**When** intenta asignarlo,<br>**Then** advierte sobre superposición. | **EPIC-04** |
-| **US21** | Actualización de Estado | **Como** logístico,<br>**deseo** cambiar el estado del envío,<br>**para** notificar su entrega efectiva. | **Escenario 1: Flujo esperado**<br>**Given** despacho "En Ruta",<br>**When** lo marca "Entregado",<br>**Then** ventas asociadas finalizan su ciclo.<br><br>**Escenario 2: Validación**<br>**Given** estado ilógico,<br>**When** intenta retroceder,<br>**Then** impide la transición. | **EPIC-04** |
-| **US22** | Incidencia en Ruta | **Como** logístico,<br>**deseo** anotar contratiempos logísticos,<br>**para** auditar retrasos en entregas. | **Escenario 1: Flujo esperado**<br>**Given** despacho activo,<br>**When** reporta incidente,<br>**Then** nota queda vinculada a la ruta.<br><br>**Escenario 2: Validación**<br>**Given** ruta sin eventos,<br>**When** consulta incidencias,<br>**Then** vista limpia sin errores. | **EPIC-04** |
-| **US23** | Dashboard General | **Como** dueño,<br>**deseo** ver gráficos consolidados,<br>**para** entender la salud financiera en tiempo real. | **Escenario 1: Flujo esperado**<br>**Given** datos financieros activos,<br>**When** carga dashboard,<br>**Then** visualiza KPIs de ingresos y valorización.<br><br>**Escenario 2: Validación**<br>**Given** negocio sin datos,<br>**When** carga panel,<br>**Then** gráficos vacíos con invitaciones. | **EPIC-05** |
-| **US24** | Reporte de Top Productos | **Como** dueño,<br>**deseo** identificar los artículos más vendidos,<br>**para** priorizar abastecimiento. | **Escenario 1: Flujo esperado**<br>**Given** ventas en el mes,<br>**When** consulta ranking,<br>**Then** obtiene lista descendente precisa.<br><br>**Escenario 2: Validación**<br>**Given** empate en ventas,<br>**When** genera reporte,<br>**Then** comparten posición alfabéticamente. | **EPIC-05** |
-| **US25** | Exportación de Datos | **Como** participante autorizado,<br>**deseo** descargar mis tablas a CSV,<br>**para** enviarlas a contabilidad. | **Escenario 1: Flujo esperado**<br>**Given** tabla filtrada en pantalla,<br>**When** hace clic en exportar,<br>**Then** descarga CSV respetando filtro activo.<br><br>**Escenario 2: Validación**<br>**Given** tabla vacía,<br>**When** intenta exportar,<br>**Then** archivo contiene solo cabeceras. | **EPIC-05** |
-| **US26** | Alerta de Stock Mínimo | **Como** participante autorizado,<br>**deseo** recibir avisos al acercarme a cero,<br>**para** reponer mercadería a tiempo. | **Escenario 1: Flujo esperado**<br>**Given** SKU con límite configurado,<br>**When** stock perfora límite,<br>**Then** dispara alerta visual.<br><br>**Escenario 2: Validación**<br>**Given** alerta ya enviada,<br>**When** stock baja más,<br>**Then** no duplica notificación. | **EPIC-06** |
-| **US27** | Alerta de Producto Vencido | **Como** almacenero,<br>**deseo** avisos preventivos de caducidad,<br>**para** ofertar artículos perecibles. | **Escenario 1: Flujo esperado**<br>**Given** lotes con caducidad,<br>**When** alcanza umbral de 7 días,<br>**Then** artículos se resaltan en rojo.<br><br>**Escenario 2: Validación**<br>**Given** producto ya vencido,<br>**When** intenta vender,<br>**Then** emite doble alerta de confirmación. | **EPIC-06** |
-| **US28** | Creación de Usuarios | **Como** administrador,<br>**deseo** crear cuentas para mis trabajadores,<br>**para** delegar accesos seguros. | **Escenario 1: Flujo esperado**<br>**Given** correo nuevo y rol elegido,<br>**When** envía invitación,<br>**Then** empleado recibe acceso.<br><br>**Escenario 2: Validación**<br>**Given** correo que ya pertenece a la empresa,<br>**When** intenta agregarlo,<br>**Then** indica que el usuario ya existe. | **EPIC-07** |
-| **US29** | Restricción por Roles | **Como** administrador,<br>**deseo** definir niveles de acceso operacionales,<br>**para** bloquear módulos confidenciales. | **Escenario 1: Flujo esperado**<br>**Given** usuario con rol almacenero,<br>**When** navega por menú,<br>**Then** no visualiza enlace a reportes.<br><br>**Escenario 2: Validación**<br>**Given** intento de acceso directo por URL a recurso prohibido,<br>**When** ejecuta petición,<br>**Then** API devuelve 403 Forbidden. | **EPIC-07** |
-| **US30** | Edición de Perfil Empresa | **Como** administrador,<br>**deseo** actualizar mis datos comerciales,<br>**para** mantener facturas e interfaz personalizadas. | **Escenario 1: Flujo esperado**<br>**Given** datos válidos,<br>**When** guarda actualización,<br>**Then** header refleja cambios.<br><br>**Escenario 2: Validación**<br>**Given** intento de modificar RUC base,<br>**When** guarda,<br>**Then** bloquea acción por seguridad fiscal. | **EPIC-08** |
-| **US31** | Cambio de Contraseña | **Como** usuario registrado,<br>**deseo** actualizar mi clave,<br>**para** asegurar mi cuenta. | **Escenario 1: Flujo esperado**<br>**Given** clave actual correcta y nueva válida,<br>**When** confirma cambio,<br>**Then** actualiza y cierra otras sesiones activas.<br><br>**Escenario 2: Validación**<br>**Given** contraseña actual incorrecta,<br>**When** intenta cambiarla,<br>**Then** rechaza la acción. | **EPIC-08** |
-| **US32** | Testimonios (Landing) | **Como** visitante,<br>**deseo** consultar experiencias de otras MYPES,<br>**para** ganar confianza. | **Escenario 1: Flujo esperado**<br>**Given** testimonios aprobados,<br>**When** hace scroll,<br>**Then** visualiza tarjetas.<br><br>**Escenario 2: Validación**<br>**Given** fallo de conexión,<br>**When** carga testimonios,<br>**Then** se oculta elegantemente. | **EPIC-09** |
-| **US33** | Idioma de la aplicación | **Como** usuario,<br>**deseo** elegir inglés o español,<br>**para** comprender la interfaz a mi gusto. | **Escenario 1: Flujo esperado**<br>**Given** selector de idioma,<br>**When** elige "English",<br>**Then** textos estáticos se traducen al instante.<br><br>**Escenario 2: Validación**<br>**Given** contenido ingresado por usuario,<br>**When** cambia idioma,<br>**Then** dicho texto no se altera. | **EPIC-08** |
-| **US34** | Términos del Servicio | **Como** visitante,<br>**deseo** leer las condiciones legales,<br>**para** conocer el uso de mi data. | **Escenario 1: Flujo esperado**<br>**Given** enlace en el footer,<br>**When** hace clic,<br>**Then** despliega políticas.<br><br>**Escenario 2: Validación**<br>**Given** lectura en móvil,<br>**When** abre términos,<br>**Then** texto es totalmente responsivo y legible. | **EPIC-09** |
-| **TS01** | POST /api/v1/auth/register | **Como** Developer, **deseo** disponer de este contrato **para** soportar US01. | **Escenario 1: Flujo esperado**<br>**Given** solicitud válida,<br>**When** servidor procesa,<br>**Then** responde 201 Created con ID del tenant.<br><br>**Escenario 2: Validación**<br>**Given** condición inválida,<br>**When** procesa,<br>**Then** responde 409 si correo duplicado o 400 faltan datos. | **EPIC-01** |
-| **TS02** | POST /api/v1/auth/login | **Como** Developer, **deseo** disponer de este contrato **para** soportar US02. | **Escenario 1: Flujo esperado**<br>**Given** solicitud con credenciales válidas,<br>**When** servidor procesa,<br>**Then** responde 200 OK con accessToken.<br><br>**Escenario 2: Validación**<br>**Given** credenciales erróneas,<br>**When** procesa,<br>**Then** responde 401 genérico. | **EPIC-01** |
-| **TS03** | POST /api/v1/auth/logout | **Como** Developer, **deseo** disponer de este contrato **para** soportar US03. | **Escenario 1: Flujo esperado**<br>**Given** solicitud con token vigente,<br>**When** servidor procesa,<br>**Then** responde 204 No Content e invalida sesión.<br><br>**Escenario 2: Validación**<br>**Given** intento posterior con misma sesión,<br>**When** procesa,<br>**Then** responde 401 Unauthorized. | **EPIC-01** |
-| **TS04** | POST /api/v1/auth/password-reset | **Como** Developer, **deseo** disponer de este contrato **para** soportar US04. | **Escenario 1: Flujo esperado**<br>**Given** solicitud válida,<br>**When** servidor procesa,<br>**Then** responde 202 Accepted genérico.<br><br>**Escenario 2: Validación**<br>**Given** solicitudes masivas,<br>**When** procesa,<br>**Then** limita reintentos por rate limiting. | **EPIC-01** |
-| **TS05** | GET /api/v1/inventory | **Como** Developer, **deseo** disponer de este contrato **para** soportar vistas generales. | **Escenario 1: Flujo esperado**<br>**Given** solicitud válida y autorizada,<br>**When** servidor procesa,<br>**Then** responde 200 OK con data paginada.<br><br>**Escenario 2: Validación**<br>**Given** falta de token,<br>**When** procesa,<br>**Then** responde 401 Unauthorized. | **EPIC-02** |
-| **TS06** | POST /api/v1/inventory | **Como** Developer, **deseo** disponer de este contrato **para** soportar US09. | **Escenario 1: Flujo esperado**<br>**Given** payload válido,<br>**When** servidor procesa,<br>**Then** responde 201 Created validando esquemas.<br><br>**Escenario 2: Validación**<br>**Given** SKU duplicado,<br>**When** procesa,<br>**Then** responde 409 Conflict. | **EPIC-02** |
-| **TS07** | POST /api/v1/inventory/{sku}/entries | **Como** Developer, **deseo** disponer de este contrato **para** soportar US10. | **Escenario 1: Flujo esperado**<br>**Given** cantidad positiva,<br>**When** servidor procesa,<br>**Then** responde 201 sumando stock atómicamente.<br><br>**Escenario 2: Validación**<br>**Given** SKU inexistente,<br>**When** procesa,<br>**Then** responde 404 Not Found. | **EPIC-02** |
-| **TS08** | POST /api/v1/inventory/{sku}/exits | **Como** Developer, **deseo** disponer de este contrato **para** soportar US11 y US12. | **Escenario 1: Flujo esperado**<br>**Given** cantidad a retirar y stock suficiente,<br>**When** servidor procesa,<br>**Then** responde 201 descontando stock.<br><br>**Escenario 2: Validación**<br>**Given** cantidad supera stock,<br>**When** procesa,<br>**Then** responde 422 Unprocessable Entity. | **EPIC-02** |
-| **TS09** | GET /api/v1/inventory/{sku}/history | **Como** Developer, **deseo** disponer de este contrato **para** soportar US14. | **Escenario 1: Flujo esperado**<br>**Given** solicitud de historial,<br>**When** servidor procesa,<br>**Then** responde 200 OK con movimientos cronológicos.<br><br>**Escenario 2: Validación**<br>**Given** condición inválida,<br>**When** procesa,<br>**Then** responde 404 si SKU no pertenece al tenant. | **EPIC-02** |
-| **TS10** | GET /api/v1/sales | **Como** Developer, **deseo** disponer de este contrato **para** soportar US17. | **Escenario 1: Flujo esperado**<br>**Given** solicitud válida con fechas,<br>**When** servidor procesa,<br>**Then** responde 200 OK con transacciones.<br><br>**Escenario 2: Validación**<br>**Given** fechas invertidas,<br>**When** procesa,<br>**Then** responde 400 Bad Request. | **EPIC-03** |
-| **TS11** | POST /api/v1/sales | **Como** Developer, **deseo** disponer de este contrato **para** soportar US15. | **Escenario 1: Flujo esperado**<br>**Given** líneas de detalle válidas,<br>**When** servidor procesa,<br>**Then** responde 201 Created con transacción atómica.<br><br>**Escenario 2: Validación**<br>**Given** quiebre de stock en un SKU,<br>**When** procesa,<br>**Then** ejecuta Rollback total y devuelve 422. | **EPIC-03** |
-| **TS12** | GET /api/v1/sales/{id} | **Como** Developer, **deseo** disponer de este contrato **para** soportar detalle de venta. | **Escenario 1: Flujo esperado**<br>**Given** solicitud de ID,<br>**When** servidor procesa,<br>**Then** responde 200 OK con ítems asociados.<br><br>**Escenario 2: Validación**<br>**Given** venta de otro tenant,<br>**When** procesa,<br>**Then** responde 403 Forbidden. | **EPIC-03** |
-| **TS13** | PATCH /api/v1/sales/{id}/cancel | **Como** Developer, **deseo** disponer de este contrato **para** soportar US18. | **Escenario 1: Flujo esperado**<br>**Given** solicitud de anulación válida,<br>**When** servidor procesa,<br>**Then** responde 200 OK reintegrando inventario.<br><br>**Escenario 2: Validación**<br>**Given** venta ya anulada,<br>**When** procesa,<br>**Then** responde 409 Conflict. | **EPIC-03** |
-| **TS14** | GET /api/v1/dispatches | **Como** Developer, **deseo** disponer de este contrato **para** soportar vistas de despacho. | **Escenario 1: Flujo esperado**<br>**Given** solicitud de listado,<br>**When** servidor procesa,<br>**Then** responde 200 OK con manifiestos paginados.<br><br>**Escenario 2: Validación**<br>**Given** ausencia de token,<br>**When** procesa,<br>**Then** responde 401 Unauthorized. | **EPIC-04** |
-| **TS15** | POST /api/v1/dispatches | **Como** Developer, **deseo** disponer de este contrato **para** soportar US19. | **Escenario 1: Flujo esperado**<br>**Given** array de IDs de ventas,<br>**When** servidor procesa,<br>**Then** responde 201 Created asociando las ventas.<br><br>**Escenario 2: Validación**<br>**Given** ventas que ya tienen despacho,<br>**When** procesa,<br>**Then** responde 400 Bad Request. | **EPIC-04** |
-| **TS16** | PATCH /api/v1/dispatches/{id}/status | **Como** Developer, **deseo** disponer de este contrato **para** soportar US21. | **Escenario 1: Flujo esperado**<br>**Given** nuevo estado válido,<br>**When** servidor procesa,<br>**Then** responde 200 OK transicionando entidades.<br><br>**Escenario 2: Validación**<br>**Given** transición ilógica,<br>**When** procesa,<br>**Then** responde 409 Conflict. | **EPIC-04** |
-| **TS17** | POST /api/v1/dispatches/{id}/incidents | **Como** Developer, **deseo** disponer de este contrato **para** soportar US22. | **Escenario 1: Flujo esperado**<br>**Given** payload de reporte en ruta,<br>**When** servidor procesa,<br>**Then** responde 201 Created vinculando la nota.<br><br>**Escenario 2: Validación**<br>**Given** payload vacío,<br>**When** procesa,<br>**Then** responde 400 Bad Request. | **EPIC-04** |
-| **TS18** | GET /api/v1/analytics/dashboard | **Como** Developer, **deseo** disponer de este contrato **para** soportar US23 y US24. | **Escenario 1: Flujo esperado**<br>**Given** rango de fechas válido,<br>**When** servidor procesa,<br>**Then** ejecuta query agregada y retorna 200 OK con KPIs.<br><br>**Escenario 2: Validación**<br>**Given** rango inválido,<br>**When** procesa,<br>**Then** responde 400 Bad Request. | **EPIC-05** |
-| **TS19** | GET /api/v1/notifications | **Como** Developer, **deseo** disponer de este contrato **para** soportar alertas de sistema. | **Escenario 1: Flujo esperado**<br>**Given** solicitud autorizada,<br>**When** servidor procesa,<br>**Then** responde 200 OK con array de alertas no leídas.<br><br>**Escenario 2: Validación**<br>**Given** sin sesión,<br>**When** procesa,<br>**Then** responde 401 Unauthorized sin cruzar datos. | **EPIC-06** |
-| **TS20** | PATCH /api/v1/notifications/{id}/read | **Como** Developer, **deseo** disponer de este contrato **para** marcar alertas leídas. | **Escenario 1: Flujo esperado**<br>**Given** ID de alerta válido,<br>**When** servidor procesa,<br>**Then** responde 200 OK actualizando isRead.<br><br>**Escenario 2: Validación**<br>**Given** alerta ajena,<br>**When** procesa,<br>**Then** responde 404 Not Found. | **EPIC-06** |
-| **TS21** | GET /api/v1/users | **Como** Developer, **deseo** disponer de este contrato **para** soportar la vista de equipo. | **Escenario 1: Flujo esperado**<br>**Given** solicitud de un Admin,<br>**When** servidor procesa,<br>**Then** responde 200 OK con lista de empleados del tenant.<br><br>**Escenario 2: Validación**<br>**Given** solicitud de Almacenero,<br>**When** procesa,<br>**Then** responde 403 Forbidden. | **EPIC-07** |
-| **TS22** | POST /api/v1/users/invite | **Como** Developer, **deseo** disponer de este contrato **para** soportar US28. | **Escenario 1: Flujo esperado**<br>**Given** payload de invitación válido,<br>**When** servidor procesa,<br>**Then** responde 201 Created disparando correo.<br><br>**Escenario 2: Validación**<br>**Given** correo existente en tenant,<br>**When** procesa,<br>**Then** responde 409 Conflict. | **EPIC-07** |
-| **TS23** | GET /api/v1/users/profile | **Como** Developer, **deseo** disponer de este contrato **para** cargar la vista de cuenta. | **Escenario 1: Flujo esperado**<br>**Given** solicitud válida,<br>**When** servidor procesa,<br>**Then** responde 200 OK con datos personales e idioma.<br><br>**Escenario 2: Validación**<br>**Given** condición inválida,<br>**When** procesa,<br>**Then** responde 401 sin sesión válida. | **EPIC-08** |
-| **TS24** | PUT /api/v1/users/profile | **Como** Developer, **deseo** disponer de este contrato **para** soportar US30. | **Escenario 1: Flujo esperado**<br>**Given** datos editables válidos,<br>**When** servidor procesa,<br>**Then** responde 200 OK persistiendo cambios.<br><br>**Escenario 2: Validación**<br>**Given** payload inyectando cambio de rol,<br>**When** procesa,<br>**Then** ignora el campo o responde 400 Bad Request. | **EPIC-08** |
-| **TS25** | PUT /api/v1/users/password | **Como** Developer, **deseo** disponer de este contrato **para** soportar US31. | **Escenario 1: Flujo esperado**<br>**Given** claves correctas,<br>**When** servidor procesa,<br>**Then** responde 204 No Content hasheando y guardando.<br><br>**Escenario 2: Validación**<br>**Given** hash actual incorrecto,<br>**When** procesa,<br>**Then** responde 400 Bad Request sin alterar credenciales. | **EPIC-08** |
-| **TS26** | POST /api/v1/contact-messages | **Como** Developer, **deseo** disponer de este contrato **para** soportar US08. | **Escenario 1: Flujo esperado**<br>**Given** formulario público válido,<br>**When** servidor procesa,<br>**Then** responde 201 Created guardando solicitud.<br><br>**Escenario 2: Validación**<br>**Given** ataques por bots,<br>**When** procesa,<br>**Then** devuelve 429 Too Many Requests. | **EPIC-09** |
-| **TS27** | GET /api/v1/landing/plans | **Como** Developer, **deseo** disponer de este contrato **para** soportar US07. | **Escenario 1: Flujo esperado**<br>**Given** petición pública a la landing,<br>**When** servidor procesa,<br>**Then** responde 200 OK renderizando planes actuales.<br><br>**Escenario 2: Validación**<br>**Given** error de conectividad interna,<br>**When** procesa,<br>**Then** responde 500 Internal Server Error seguro. | **EPIC-09** |
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US09 · Registro de artículo** | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Al guardar un SKU único normalizado, se crea con saldo cero. Un SKU duplicado, precio inválido o mínimo negativo se rechaza. | Demo implementada |
+| **US10 · Ingreso de mercadería** | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Dada cantidad entera positiva y motivo, al recibir se suma el saldo y se conserva movimiento/responsable. Cero o fracción se rechaza. | Demo implementada |
+| **US11 · Salida manual** | Como Almacenero, deseo registrar una salida para explicar el saldo. | Con stock suficiente, una salida conserva su motivo y reduce exactamente la cantidad solicitada. Sobrepasar saldo revierte la operación. | Demo implementada |
+| **US12 · Registro de mermas** | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Al registrar pérdida positiva se reduce stock y se guarda tipo LOSS. Conservación y cantidad no se confunden. | Demo implementada |
+| **US13 · Buscador de inventario** | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Dado catálogo cargado, la búsqueda filtra sin modificar datos. Sin coincidencias aparece un estado vacío. | Demo implementada |
+| **US14 · Historial de movimientos** | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Al abrir el historial aparecen producto, tipo, cantidad, motivo y fecha persistidos. Otro tenant no accede a esos registros. | Demo implementada |
+
+### EPIC-04 · Logística
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US19 · Manifiesto de despacho** | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | La venta debe estar confirmada, sin despacho previo ni devolución. Sus líneas se enlazan al manifiesto sin descontar stock nuevamente. | Demo: una venta en UI; varias mediante API |
+| **US20 · Asignación de recursos** | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Se seleccionan recursos existentes. Al iniciar ruta, un conductor o vehículo en otra ruta activa produce conflicto. | Demo implementada |
+| **US21 · Estado y confirmación de entrega** | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Solo PENDING → IN_TRANSIT → DELIVERED; entrega requiere receptor. Estado terminal y saltos se rechazan. | Demo: un destino e intento exitoso |
+| **US22 · Incidencia en ruta** | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Una descripción válida queda ligada al despacho y fecha. La vista muestra su registro persistido. | Demo implementada; resolución pendiente |
+| **US37 · Maestros de recursos logísticos** | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Conductor exige nombre/licencia y vehículo nombre/placa; referencias son del mismo tenant. | Nueva historia: demo implementada |
+
+### EPIC-10 · Abastecimiento
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US35 · Abastecimiento y recepción parcial** | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Proveedor y producto existentes; recibir 2/4 suma dos, conserva recepción y deja PARTIAL; exceso/duplicación revierte la solicitud. | Nueva historia: demo implementada |
+
+### EPIC-03 · Comercial y devoluciones
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US15 · Creación de venta** | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Con líneas válidas se guardan venta, detalles, movimiento, pago demo y comprobante histórico. Una línea inválida revierte todo. | Demo implementada |
+| **US16 · Validación de stock** | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Si falta stock o el artículo no está en buen estado, se rechaza toda la venta. Dos solicitudes concurrentes no venden las mismas unidades en el adaptador HTTP. | Demo implementada |
+| **US17 · Historial de ventas** | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | El historial muestra fecha, estado, importe y comprobante con precios/costos del momento. Recargar conserva datos en el adaptador usado. | Demo implementada |
+| **US18 · Anulación de venta** | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Una venta confirmada sin despacho/devolución repone stock una sola vez. Segundo intento o venta ya despachada se rechaza. | Demo implementada |
+| **US36 · Devolución trazable** | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | No excede lo vendido; RESTOCK reincorpora y LOSS no; se bloquea durante despacho sin finalizar. | Nueva historia: demo implementada; reembolso real pendiente |
+
+### EPIC-05 · Reporting
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US23 · Dashboard operativo** | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Después de una venta/devolución cambian ingresos, contribución y saldo. Reporting directo de otro rol devuelve 403. | Demo implementada; no utilidad neta |
+| **US24 · Reporte de productos más vendidos** | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | El ranking debe derivarse de líneas confirmadas, excluyendo anulaciones y considerando devoluciones. | Pendiente |
+| **US25 · Exportación de datos** | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | La exportación debe respetar empresa, filtros y formato; no incluir secretos ni registros ajenos. | Pendiente; imprimir comprobante no cumple esta historia |
+
+### EPIC-06 · Notificaciones
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US26 · Alerta de stock mínimo** | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Un movimiento que deja stock bajo mínimo genera notificación persistente; la bandeja permite marcarla leída. | Demo implementada; no correo/push |
+| **US27 · Alerta de vencimiento** | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Dado un lote vencido, se genera alerta y se restringe despacho según política validada. | Pendiente: lotes sin flujo operativo completo |
+
+### EPIC-01 · Identidad
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US01 · Registro de cuenta** | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Dado un correo nuevo y contraseña válida, cuando registro el espacio, entonces se crea empresa/administrador/sesión. Correo existente se rechaza. | Demo implementada |
+| **US02 · Inicio de sesión** | Como Usuario, deseo iniciar sesión para operar según mi rol. | Dadas credenciales válidas, al iniciar sesión recibo sesión y ruta autorizada. Contraseña incorrecta devuelve 401. | Demo implementada |
+| **US03 · Cierre de sesión** | Como Usuario, deseo cerrar sesión para terminar el acceso. | Dada una sesión, al salir se invalida y se eliminan credenciales locales. Un acceso posterior sin sesión devuelve 401. | Demo implementada |
+| **US04 · Recuperación de contraseña** | Como Usuario, deseo recuperar el acceso para volver a operar. | Dado un correo, la respuesta no debe revelar si existe; el enlace real debe expirar y permitir recuperación segura. | Pendiente AV2 |
+
+### EPIC-07 · Acceso y roles
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US28 · Creación de usuarios** | Como Administrador, deseo incorporar empleados para distribuir operación. | La provisión registra nombre, correo y rol sin divulgar contraseña. Activación y credencial real requieren flujo posterior. | Parcial: provisión, sin activación/invitación |
+| **US29 · Restricción por roles** | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Navegación y API aplican permisos. Acceso directo no autorizado devuelve 403; referencias ajenas no modifican datos. | Demo implementada; seguridad productiva pendiente |
+
+### EPIC-08 · Preferencias
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US30 · Edición de perfil empresa** | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Una edición validada debe persistir únicamente en el tenant autorizado. | Pendiente |
+| **US31 · Cambio de contraseña** | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Verificar credencial actual, política de hash segura en servidor e invalidación de sesiones según política. | Pendiente AV2 |
+| **US33 · Idioma de aplicación** | Como Usuario, deseo cambiar idioma para comprender la operación. | Inglés predeterminado y español latinoamericano; selector actualiza navegación, formularios, estados y errores y conserva preferencia. | Implementada: en_US / es_419 |
+
+### EPIC-09 · Landing page
+
+| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
+| --- | --- | --- | --- |
+| **US05 · Propuesta de valor** | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Dada la landing, al leer el hero comprendo inventario/venta/despacho y el carácter académico. | Implementada |
+| **US06 · Capacidades de landing** | Como Visitante, deseo conocer las capacidades para decidir si probar. | Dada la landing, al recorrer capacidades encuentro flujo, roles y acceso a la demo. La ilustración está identificada como muestra. | Implementada |
+| **US07 · Modelo comercial y planes** | Como Comprador, deseo consultar planes para evaluar la adopción. | Dado un modelo comercial validado, se describen condiciones y límites sin simular cobros o suscripciones activas. | Pendiente; sin planes comerciales activos |
+| **US08 · Contacto B2B** | Como Visitante, deseo contactar al equipo para resolver dudas. | El canal debe conducir a un destino real. Un formulario B2B requerirá persistencia, validación y seguimiento. | Parcial: enlace real al proyecto; captación B2B pendiente |
+| **US32 · Testimonios** | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Solo publicar testimonios autorizados con fuente real. Sin fuente se mantiene fuera de la landing. | Pendiente evidencia; no se publican testimonios ficticios |
+| **US34 · Términos y privacidad** | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Se informa alcance académico, persistencia local y ausencia de pagos/facturación real; diálogo accesible y cierre por teclado. | Implementada |
+
+### Technical stories y cambio de contrato
+
+Prefijo común: `/api/v1`. Esta tabla conserva la intención de los TS originales y hace visibles los cambios de contrato. Lo pendiente no se declara en OpenAPI como implementado. El [contrato ejecutable](https://github.com/AI-ToDu/ai-todu-fake-api/blob/fix/tb1-readiness/openapi.json) describe la versión de demo.
+
+| ID | Contrato o capacidad | Validación / diferencia frente a versión anterior |
+| --- | --- | --- |
+| TS05 | `GET /products` | Reemplaza GET /inventory; consulta de catálogo |
+| TS06 | `POST /products` | Reemplaza POST /inventory; SKU único |
+| TS07 | `POST /movements · type RECEIPT` | Reemplaza /inventory/{sku}/entries |
+| TS08 | `POST /movements · type ISSUE o LOSS` | Reemplaza /inventory/{sku}/exits |
+| TS09 | `GET /movements` | Reemplaza /inventory/{sku}/history; producto referenciado |
+| TS14 | `GET /dispatches` | Manifiestos con líneas/paradas/incidencias |
+| TS15 | `POST /dispatches` | Ventas y recursos del mismo tenant |
+| TS16 | `PATCH /dispatches/{id}` | Reemplaza subruta /status; transición y receptor |
+| TS17 | `POST /dispatches/{id}/incidents` | Incidencia persistida |
+| TS32 | `GET/POST /drivers · GET/POST /vehicles` | Nueva: maestros de recursos |
+| TS28 | `POST /purchases` | Nueva: orden y líneas |
+| TS29 | `POST /purchases/{id}/receipts` | Nueva: recepción parcial acotada |
+| TS30 | `GET /suppliers · POST /suppliers` | Nueva: maestro de proveedor |
+| TS10 | `GET /sales` | Historial con detalles y comprobante |
+| TS11 | `POST /sales` | Transacción completa / 201 / conflicto 409 |
+| TS12 | `Detalle incluido en GET /sales` | GET /sales/{id} no está implementado; proyección de consulta documentada |
+| TS13 | `POST /sales/{id}/cancel` | Ajusta método anterior PATCH; reintegro una sola vez |
+| TS31 | `POST /returns` | Nueva: retorno acotado y disposición |
+| TS18 | `GET /metrics` | Reemplaza /analytics/dashboard; administrador |
+| TS19 | `GET /notifications` | Bandeja de alertas persistidas |
+| TS20 | `PATCH /notifications/{id}` | Reemplaza subruta /read |
+| TS01 | `POST /auth/register` | Alta de empresa/administrador en demo |
+| TS02 | `POST /auth/login` | Credencial válida / 401 |
+| TS03 | `POST /auth/logout` | Invalida sesión / 204 |
+| TS04 | `Recuperación de contraseña` | Pendiente; no endpoint implementado |
+| TS21 | `GET /employees` | Proyección de empleados, no listado general de credenciales |
+| TS22 | `POST /employees` | Reemplaza /users/invite solo para provisión; invitación/activación pendiente |
+| TS23 | `GET /auth/me` | Perfil de sesión; sin hash ni contraseña |
+| TS24 | `Edición de perfil` | Pendiente; no endpoint operativo |
+| TS25 | `Cambio de contraseña` | Pendiente AV2 |
+| TS26 | `Captación B2B` | Pendiente; no POST /contact-messages |
+| TS27 | `Planes comerciales` | Pendiente; no GET /landing/plans |
 
 ## 3.2. Impact Mapping
 
-En esta sección se presenta el Impact Mapping del modelo de negocio AI-ToDu. Esto nos permite visualizar de manera estructurada los objetivos estratégicos del proyecto y cómo estos se relacionan con los actores involucrados y las funcionalidades que se implementarán, asegurándonos de que cada característica del producto tenga un propósito claro y medible.
+| Objetivo e impacto esperado | Actor | Cambio observable | Entregables / historias |
+| --- | --- | --- | --- |
+| Explicar el saldo y evitar sobreventa | Almacén / ventas | Recepción y venta dejan historial conciliado | US09–US18, US35. |
+| Coordinar una entrega trazable | Logística | Despacho referencia venta y finaliza con receptor | US19–US22, US37. |
+| Comprender la operación | Administrador | Distingue venta neta, costo y contribución | US23, US26, US36. |
+| Poder probar sin ambigüedad | Visitante / usuario | Accede a demo y comprende su alcance e idioma | US01–US06, US29, US33–US34. |
 
-<p align="center">
-  <img src="Images/Impact-Mapping-1.png" width="800" alt="Impact Mapping de AI-ToDu">
-  <br><em>Figura 1: Captura del Impact Mapping hecho en UXPressia</em>
-</p>
-
-El Impact Mapping elaborado para AI-ToDu ilustra de manera estratégica cómo las funcionalidades de nuestra plataforma tecnológica contribuyen a alcanzar nuestros objetivos de negocio. Para esta fase del proyecto, hemos definido un objetivo SMART (Business Goal) enfocado tanto en la adopción empresarial como en la penetración en el usuario final.
-
-**Alineación del Business Goal 1:** Alcanzar 30 negocios (MYPES) suscritos a los planes de pago de AI-ToDu en los primeros 6 meses tras el lanzamiento oficial de la plataforma. Para alcanzar esta meta, hemos identificado a tres actores clave del sector comercial que nos permitirán materializarla: los dueños/administradores de negocio, el personal logístico/almaceneros y los visitantes potenciales.
-- En el caso de los dueños/administradores de negocio (Carlos Mendoza), el impacto que necesitamos generar es que monitoreen la salud y rentabilidad de su empresa en tiempo real, dejando atrás la incertidumbre de no saber dónde está su mercadería o si están ganando dinero. Como solución digital, provocaremos este impacto construyendo un Dashboard Gerencial y Analítico (Deliverable), el cual se materializa en historias de usuario enfocadas en consolidar métricas financieras, visualizar top de ventas y gestionar los roles de acceso (US23, US24, US25, US28, US29).
-- Por el lado del personal logístico/almaceneros (Miguel Rojas), el impacto esperado es que adopten AI-ToDu como su canal centralizado para registrar ingresos y salidas, abandonando totalmente los conteos manuales y reportes en cuadernos. Para facilitar este comportamiento, implementaremos un Módulo de Inventario Inteligente (Deliverable), soportado por funcionalidades que permiten registrar entradas y mermas en segundos, buscar artículos ágilmente y generar notificaciones automáticas de stock mínimo y vencimientos (US09, US10, US11, US12, US13, US14, US26, US27).
-- En cuanto a los visitantes MYPE, el impacto deseado es la comprensión rápida de la propuesta de valor para motivarlos a suscribirse. Para ello, implementaremos un Landing Page persuasivo (Deliverable), soportado por historias para visualizar planes, testimonios y el formulario de registro (US05, US06, US07, US08, US32, US34).
+Los objetivos comerciales heredados (clientes, retención y ahorro porcentual) se tratan como hipótesis, no como resultados. La primera validación mide comprensión y ejecución; la segunda podrá contrastar tiempo frente al proceso real.
 
 ## 3.3. Product Backlog
 
-A continuación, se presenta el Product Backlog del proyecto AI-ToDu, organizado y priorizado de acuerdo con el valor que cada User Story aporta al negocio y al funcionamiento principal del producto. La priorización no representa necesariamente el orden exacto en el que se desarrollarán técnicamente las funcionalidades, sino el nivel de importancia que tienen para validar y entregar valor al usuario.
+<div class="backlog-table">
 
-<p align="center">
-  <img src="Images/Trello-Backlog-1.png" width="800" alt="Product Backlog de AI-ToDu">
-  <br><em>URL del Product Backlog (Trello): [URL_Publico_Del_Tablero_Trello]</em>
-</p>
+| Orden de revisión | Story ID | Épica | Título | Story points propuestos |
+| --- | --- | --- | --- | --- |
+| 1 | US09 | EPIC-02 | Registro de artículo | 3 |
+| 2 | US10 | EPIC-02 | Ingreso de mercadería | 5 |
+| 3 | US11 | EPIC-02 | Salida manual | 3 |
+| 4 | US12 | EPIC-02 | Registro de mermas | 2 |
+| 5 | US13 | EPIC-02 | Buscador de inventario | 3 |
+| 6 | US14 | EPIC-02 | Historial de movimientos | 3 |
+| 7 | US19 | EPIC-04 | Manifiesto de despacho | 5 |
+| 8 | US20 | EPIC-04 | Asignación de recursos | 3 |
+| 9 | US21 | EPIC-04 | Estado y confirmación de entrega | 3 |
+| 10 | US22 | EPIC-04 | Incidencia en ruta | 3 |
+| 11 | US37 | EPIC-04 | Maestros de recursos logísticos | 5 |
+| 12 | US35 | EPIC-10 | Abastecimiento y recepción parcial | 8 |
+| 13 | US15 | EPIC-03 | Creación de venta | 8 |
+| 14 | US16 | EPIC-03 | Validación de stock | 5 |
+| 15 | US17 | EPIC-03 | Historial de ventas | 3 |
+| 16 | US18 | EPIC-03 | Anulación de venta | 5 |
+| 17 | US36 | EPIC-03 | Devolución trazable | 5 |
+| 18 | US23 | EPIC-05 | Dashboard operativo | 5 |
+| 19 | US24 | EPIC-05 | Reporte de productos más vendidos | 3 |
+| 20 | US25 | EPIC-05 | Exportación de datos | 5 |
+| 21 | US26 | EPIC-06 | Alerta de stock mínimo | 5 |
+| 22 | US27 | EPIC-06 | Alerta de vencimiento | 3 |
+| 23 | US01 | EPIC-01 | Registro de cuenta | 3 |
+| 24 | US02 | EPIC-01 | Inicio de sesión | 3 |
+| 25 | US03 | EPIC-01 | Cierre de sesión | 2 |
+| 26 | US04 | EPIC-01 | Recuperación de contraseña | 5 |
+| 27 | US28 | EPIC-07 | Creación de usuarios | 5 |
+| 28 | US29 | EPIC-07 | Restricción por roles | 5 |
+| 29 | US30 | EPIC-08 | Edición de perfil empresa | 2 |
+| 30 | US31 | EPIC-08 | Cambio de contraseña | 3 |
+| 31 | US33 | EPIC-08 | Idioma de aplicación | 2 |
+| 32 | US05 | EPIC-09 | Propuesta de valor | 3 |
+| 33 | US06 | EPIC-09 | Capacidades de landing | 2 |
+| 34 | US07 | EPIC-09 | Modelo comercial y planes | 2 |
+| 35 | US08 | EPIC-09 | Contacto B2B | 3 |
+| 36 | US32 | EPIC-09 | Testimonios | 2 |
+| 37 | US34 | EPIC-09 | Términos y privacidad | 2 |
 
-| # Orden | Story ID | Título | Descripción | Story Points |
-| :---: | :---: | :--- | :--- | :---: |
-| 1 | US05 | Propuesta de valor en landing | Como visitante MYPE, deseo visualizar la propuesta de valor de AI-ToDu para comprender cómo solucionar mis problemas logísticos. | 3 |
-| 2 | US06 | Funcionalidades de landing | Como visitante, deseo conocer las capacidades del producto, para comprobar si cubre mis necesidades de negocio. | 2 |
-| 3 | US07 | Modelo comercial y planes | Como visitante, deseo consultar modalidades y planes de suscripción, para evaluar una posible contratación para mi MYPE. | 2 |
-| 4 | US34 | Términos del Servicio | Como visitante, deseo leer las condiciones legales, para conocer el uso de mi data. | 2 |
-| 5 | US09 | Registro de Artículo (SKU) | Como operario, deseo dar de alta un nuevo producto, para que esté disponible para futuras transacciones. | 3 |
-| 6 | US10 | Ingreso de Mercadería | Como operario de almacén, deseo registrar un nuevo artículo para mantener el stock actualizado sin usar papel. | 5 |
-| 7 | US13 | Buscador de Inventario | Como operario, deseo buscar productos por nombre o SKU, para localizarlos rápidamente sin listas largas. | 3 |
-| 8 | US11 | Salida Manual de Mercadería | Como operario, deseo registrar el retiro manual de productos, para reflejar consumos internos o ajustes. | 3 |
-| 9 | US15 | Creación de Venta | Como dueño o vendedor, deseo registrar una transacción comercial, para formalizar ingresos y descontar stock. | 8 |
-| 10 | US16 | Validación Automática de Stock | Como vendedor, deseo bloqueo de productos agotados en caja, para no prometer mercadería inexistente. | 5 |
-| 11 | US23 | Dashboard General | Como dueño de negocio, deseo ver un gráfico en tiempo real para tomar decisiones de compra informadas. | 5 |
-| 12 | US19 | Manifiesto de Despacho | Como logístico, deseo agrupar ventas en un manifiesto, para ordenar la ruta de entrega. | 5 |
-| 13 | US21 | Actualización de Estado | Como logístico, deseo cambiar el estado del envío, para notificar su entrega efectiva. | 3 |
-| 14 | US14 | Historial de Movimientos | Como participante autorizado, deseo ver el Kardex de un producto, para auditar discrepancias o mermas. | 3 |
-| 15 | US17 | Historial de Ventas | Como participante autorizado, deseo consultar transacciones pasadas, para llevar el control de ingresos diarios. | 3 |
-| 16 | US12 | Registro de Mermas | Como operario, deseo apartar productos dañados o caducados, para evitar que sean vendidos por error. | 2 |
-| 17 | US18 | Anulación de Venta | Como dueño, deseo revertir una venta equivocada, para corregir métricas y devolver stock. | 5 |
-| 18 | US26 | Alerta de Stock Mínimo | Como participante autorizado, deseo recibir avisos al acercarme a cero, para reponer mercadería a tiempo. | 5 |
-| 19 | US28 | Creación de Usuarios | Como administrador, deseo crear cuentas para mis trabajadores, para delegar accesos seguros. | 5 |
-| 20 | US29 | Restricción por Roles | Como administrador, deseo definir niveles de acceso operacionales, para bloquear módulos confidenciales. | 5 |
-| 21 | US01 | Registro de cuenta | Como visitante, deseo registrar los datos de mi empresa, para crear una cuenta administradora en AI-ToDu. | 3 |
-| 22 | US02 | Inicio de sesión | Como usuario registrado, deseo autenticarme, para acceder al espacio de trabajo de mi empresa. | 3 |
-| 23 | US03 | Cierre de sesión | Como usuario autenticado, deseo terminar mi sesión, para proteger mi cuenta y la información del negocio. | 2 |
-| 24 | US04 | Recuperación de contraseña | Como usuario registrado, deseo restablecer mi contraseña, para recuperar acceso si la he olvidado. | 5 |
-| 25 | US08 | Contacto B2B | Como visitante corporativo, deseo enviar un mensaje a ventas, para solicitar una demostración personalizada. | 3 |
-| 26 | US32 | Testimonios (Landing) | Como visitante, deseo consultar experiencias de otras MYPES, para ganar confianza. | 2 |
-| 27 | US20 | Asignación de Conductor | Como logístico, deseo vincular recursos al manifiesto, para establecer responsables de entrega. | 3 |
-| 28 | US22 | Incidencia en Ruta | Como logístico, deseo anotar contratiempos logísticos, para auditar retrasos en entregas. | 3 |
-| 29 | US24 | Reporte de Top Productos | Como dueño, deseo identificar los artículos más vendidos, para priorizar abastecimiento. | 3 |
-| 30 | US25 | Exportación de Datos | Como participante autorizado, deseo descargar mis tablas a CSV, para enviarlas a contabilidad. | 5 |
-| 31 | US27 | Alerta de Producto Vencido | Como almacenero, deseo avisos preventivos de caducidad, para ofertar artículos perecibles. | 3 |
-| 32 | US30 | Edición de Perfil Empresa | Como administrador, deseo actualizar mis datos comerciales, para mantener facturas e interfaz personalizadas. | 2 |
-| 33 | US31 | Cambio de Contraseña | Como usuario registrado, deseo actualizar mi clave, para asegurar mi cuenta. | 3 |
-| 34 | US33 | Idioma de la aplicación | Como usuario, deseo elegir inglés o español, para comprender la interfaz a mi gusto. | 2 |
+</div>
 
-Para la estimación del esfuerzo se utiliza la secuencia de Fibonacci (1, 2, 3, 5 y 8 Story Points), considerando factores como complejidad, esfuerzo, incertidumbre y dependencias técnicas. Las 34 User Stories representan una estimación total propuesta de 121 Story Points, la cual deberá ser revisada y acordada por el equipo durante las sesiones de refinamiento del Product Backlog.
+<div class="backlog-summary">
 
-Las Technical Stories (TS) se gestionan como trabajo técnico asociado a las User Stories correspondientes y no se suman nuevamente a los Story Points del Product Backlog, con el objetivo de evitar una doble estimación del mismo esfuerzo. Estas historias técnicas incluyen, principalmente, la implementación de endpoints, validaciones, mecanismos de autenticación, consultas y operaciones necesarias para soportar las funcionalidades definidas en las User Stories.
+**Total:** 137 story points: 119 de las 34 historias originales y 18 propuestos para US35–US37. Se corrige la suma heredada de 121; el valor original recalculado es 119. Las tres historias nuevas reflejan funcionalidad incorporada, no un incremento de velocidad histórica.
 
-Finalmente, la gestión y seguimiento del Product Backlog se realiza mediante Trello, donde las funcionalidades se organizan mediante una jerarquía de Epics, User Stories y Technical Stories, permitiendo administrar su prioridad, estimación, estado, dependencias y avance durante el desarrollo del proyecto.
+**Tablero colaborativo:** no se localizó un enlace público verificable que demuestre transiciones históricas To Do / In Process / To Review / Done. El backlog versionado sirve como fuente textual; el equipo debe adjuntar tablero, responsables reales y trazabilidad de cambios. No se utiliza una captura aislada como prueba de seguimiento continuo.
+
+</div>

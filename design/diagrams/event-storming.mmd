@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph inv["CORE · Inventario"]
+    direction LR
+    receive["Comando: registrar<br/>recepción"]:::command --> received["Hecho:<br/>StockReceived"]:::event
+    received --> balance["Lectura:<br/>saldo disponible"]:::read
+    received --> minimum["Política: evaluar<br/>stock mínimo"]:::policy
+  end
+  subgraph log["CORE · Logística"]
+    direction LR
+    prepare["Comando:<br/>preparar despacho"]:::command --> prepared["Hecho:<br/>DispatchPrepared"]:::event
+    prepared --> start["Comando:<br/>iniciar ruta"]:::command --> started["Hecho:<br/>RouteStarted"]:::event
+    started --> deliver["Comando: confirmar<br/>receptor y entrega"]:::command --> delivered["Hecho:<br/>DeliveryConfirmed"]:::event
+  end
+  subgraph sales["SOPORTE · Comercio"]
+    direction LR
+    confirm["Comando:<br/>confirmar venta"]:::command --> confirmed["Hecho:<br/>SaleConfirmed"]:::event
+    confirmed --> issue["Política: descontar<br/>stock una vez"]:::policy --> issued["Hecho:<br/>StockIssued"]:::event
+    issued --> summary["Lectura:<br/>resumen comercial"]:::read
+  end
+  inv ~~~ log
+  log ~~~ sales
+  classDef command fill:#dcecff,stroke:#3575a5,color:#17364a
+  classDef event fill:#ffe0b0,stroke:#b56b0c,color:#3d2d18
+  classDef policy fill:#eee0fa,stroke:#8757a7,color:#3c2751
+  classDef read fill:#ddf2df,stroke:#498359,color:#203f28
