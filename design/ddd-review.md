@@ -28,3 +28,7 @@ The API's primitive JSON values and the database's scalar columns are boundary r
 5. Add secure IAM and observed-user validation. Maintain explicit ownership of each context; a shared identifier contract is a Published Language, not evidence of jointly owned Shared Kernel code.
 
 The [context map and C4 views](architecture.md) show relationships. The [dictionary](database/dictionary.md) covers all 35 proposed tables. This review deliberately identifies design debt rather than presenting an SQL count or a mock's passing tests as a finished logistics system.
+
+## Event Storming y evidencia de investigación
+
+El Big Picture del capítulo II distingue comandos, hechos, políticas y modelos de lectura; no reutiliza el Context Map como si fuera el mismo artefacto. Se ordena por core y luego soporte. Es una propuesta de análisis para ratificar con el equipo, no evidencia de un taller ya realizado ni de publicación de eventos. El tablero original incluía SUNAT, correo y telemetría: esos puntos no son capacidades implementadas en TB1. Las fuentes originales y las diferencias entre fichas de entrevistas se preservan en `research/`; la revisión técnica no confirma identidades o consentimiento.

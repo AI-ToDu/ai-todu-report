@@ -1,12 +1,19 @@
 {
   "devDependencies": {
-    "@mermaid-js/mermaid-cli": "^12.0.0"
+    "@mermaid-js/mermaid-cli": "^12.0.0",
+    "markdown-it": "^15.0.3",
+    "puppeteer": "^25.16.0"
   },
   "name": "ai-todu-report",
   "private": true,
   "version": "0.2.0",
   "scripts": {
     "diagrams": "node tools/render-diagrams.mjs",
-    "check": "node tools/check-report.mjs"
+    "check": "node tools/check-report.mjs",
+    "report": "node tools/build-report.mjs",
+    "export": "npm run report && npm run check && node tools/export-report.mjs"
+  },
+  "overrides": {
+    "katex": "^0.18.2"
   }
 }
