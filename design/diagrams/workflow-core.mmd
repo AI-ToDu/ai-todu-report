@@ -1,0 +1,23 @@
+sequenceDiagram
+ actor User
+ participant UI as Angular workspace
+ participant API as Fake API application
+ participant Inv as InventoryItem
+ participant Store as File or IndexedDB adapter
+ User->>UI: Receive 2 of 4 ordered units
+ UI->>API: POST /purchases/id/receipts
+ API->>Inv: receive(Quantity(2))
+ API->>Store: Commit receipt + lines + movement + balance
+ API-->>UI: 201 / PARTIAL
+ User->>UI: Sell 2 units
+ UI->>API: POST /sales with productId and quantity
+ API->>Inv: ensureSellable / issue(Quantity(2))
+ API->>Store: Commit sale + lines + payment + demo receipt + movements
+ API-->>UI: 201 / CONFIRMED
+ User->>UI: Assign sale, driver, vehicle and destination
+ UI->>API: POST /dispatches
+ API->>Store: Commit manifest + lines + destination stop
+ User->>UI: Start route, then confirm recipient
+ UI->>API: PATCH IN_TRANSIT, then DELIVERED
+ API->>Store: Commit status + successful delivery attempt
+ API-->>UI: 200 / DELIVERED

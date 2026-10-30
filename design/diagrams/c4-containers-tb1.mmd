@@ -1,0 +1,16 @@
+flowchart TB
+ person["Business owner / operator<br/>Person · browser user"]
+ landing["Public landing<br/>Container · HTML / CSS / JavaScript<br/>Product narrative and demo entry"]
+ subgraph browser["Workspace browser runtime · TB1"]
+ spa["Logistics workspace<br/>Container · Angular 22 / Material<br/>Operations, roles and bilingual UI"]
+ worker["Fake REST worker<br/>Container · JavaScript Service Worker<br/>Shared domain engine / api/v1"]
+ idb[("IndexedDB<br/>Data store · 35 JSON collections<br/>Local to this browser and origin")]
+ end
+ pages["GitHub Pages<br/>Static hosting container<br/>HTML / CSS / JS / seed assets"]
+ person -->|"Visits · HTTPS"| landing
+ landing -->|"Opens demo / locale"| spa
+ person -->|"Uses · HTTPS"| spa
+ spa -->|"HttpClient JSON / Bearer<br/>Intercepted Fetch"| worker
+ worker -->|"One read-write transaction"| idb
+ spa -->|"Loads assets · HTTPS GET"| pages
+ landing -->|"Loads assets · HTTPS GET"| pages

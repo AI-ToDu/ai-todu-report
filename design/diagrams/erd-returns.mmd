@@ -1,0 +1,19 @@
+erDiagram
+    returns {
+        text id PK
+        text tenant_id FK
+        text sale_id FK
+        text reason
+        text created_at
+    }
+    return_lines {
+        text id PK
+        text tenant_id FK
+        text return_id FK
+        text sale_line_id FK
+        text product_id FK
+        integer quantity
+        bigint amount_cents
+        text disposition
+    }
+    returns ||--o{ return_lines : return_id

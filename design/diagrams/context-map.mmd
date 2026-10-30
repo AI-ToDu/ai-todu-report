@@ -1,0 +1,26 @@
+flowchart TB
+ subgraph core["CORE · differentiated logistics operation"]
+ inventory["Inventory<br/>Stock, conservation and movements"]
+ logistics["Logistics<br/>Manifests, resources, delivery and incidents"]
+ end
+ subgraph support["SUPPORT · enables the core"]
+ purchasing["Procurement<br/>Suppliers, orders and partial receiving"]
+ sales["Commercial / Returns<br/>Sale, demo receipt, cancellation and return"]
+ reporting["Reporting<br/>Read-only derived metrics"]
+ notifications["Notifications<br/>Low-stock policy and inbox"]
+ end
+ subgraph generic["GENERIC · shared identity capability"]
+ iam["Identity and access<br/>Tenant, user, role and session"]
+ end
+ purchasing -->|"Customer / Supplier · receipt increases stock"| inventory
+ sales -->|"Customer / Supplier · reserve by immediate stock issue"| inventory
+ sales -->|"Published language · sale lines / manifest reference"| logistics
+ inventory -->|"Read model input"| reporting
+ sales -->|"Read model input"| reporting
+ logistics -->|"Read model input"| reporting
+ inventory -->|"Low-stock vocabulary / synchronous policy"| notifications
+ iam -.->|"Published language · tenant and session claims"| inventory
+ iam -.-> logistics
+ iam -.-> sales
+ note["Relationship vocabulary is a design contract.<br/>TB1 executes synchronously in one mock engine;<br/>there is no broker or separately deployed context service."]
+ note -.- support

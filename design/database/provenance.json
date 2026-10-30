@@ -1,0 +1,8 @@
+{
+  "sourceRepository": "https://github.com/AI-ToDu/ai-todu-fake-api",
+  "sourceCommit": "5bb7a446d523c2fbf051231fccc352365eb021f1",
+  "files": {
+    "schema.sql": "11c1854860b1237ad65e52f04c2bcb1e5d771f5d36ba29e945f30bf761d639f5",
+    "model.json": "2147b32be2384827a1dcb99c25791f43afe45168e6334468d71b24244a98c5f2"
+  }
+}

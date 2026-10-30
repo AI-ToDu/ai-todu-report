@@ -1,0 +1,47 @@
+erDiagram
+    tenants {
+        text id PK
+        text name
+        text created_at
+    }
+    users {
+        text id PK
+        text tenant_id FK
+        text email
+        text full_name
+        text password_hash
+        text role_id FK
+        text status
+    }
+    roles {
+        text id PK
+        text name
+    }
+    permissions {
+        text id PK
+        text name
+    }
+    role_permissions {
+        text id PK
+        text role_id FK
+        text permission_id FK
+    }
+    sessions {
+        text id PK
+        text tenant_id FK
+        text user_id FK
+        text token_hash
+        text expires_at
+    }
+    employees {
+        text id PK
+        text tenant_id FK
+        text user_id FK
+        text job_title
+        text status
+    }
+    roles ||--o{ users : role_id
+    roles ||--o{ role_permissions : role_id
+    permissions ||--o{ role_permissions : permission_id
+    users ||--o{ sessions : user_id
+    users ||--o{ employees : user_id

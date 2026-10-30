@@ -1,0 +1,10 @@
+flowchart LR
+ person["Owner or operator · Person"]
+ spa["Angular SPA<br/>Container · existing TB1 interface<br/>HTTP adapter switches to server URL"]
+ api["Application API<br/>Container · Java / Spring Boot<br/>Modular monolith · contexts + application services"]
+ db[("PostgreSQL<br/>Container · relational database<br/>35-table baseline with migrations")]
+ person -->|"Uses · HTTPS"| spa
+ spa -->|"Commands and queries · JSON / HTTPS"| api
+ api -->|"Repositories · JPA / JDBC transaction"| db
+ note["AV2 design only<br/>Server, production auth, migration and deployment pending"]
+ note -.- api

@@ -1,0 +1,18 @@
+flowchart TB
+ client["Angular Api adapter<br/>External component · HttpClient"]
+ subgraph mock["Shared Fake API application · public/mock"]
+ handler["Request dispatcher / application service<br/>engine.mjs · handle / execute<br/>Authentication, role checks, tenant scope, atomic draft"]
+ inv["InventoryItem aggregate<br/>domain/inventory-item.mjs<br/>Stock conservation / issue / receive"]
+ sale["SaleSummary<br/>domain/sale-summary.mjs<br/>Exact cent totals from immutable prices and quantities"]
+ dispatch["DispatchManifest aggregate<br/>domain/dispatch-manifest.mjs<br/>Destination and legal status transition"]
+ vo["Value objects<br/>value-objects.mjs<br/>Sku / Quantity / Money / Address"]
+ end
+ store[("Adapter-owned state<br/>IndexedDB transaction OR serialized JSON file")]
+ client -->|"JSON request through selected transport"| handler
+ handler -->|"Enforces stock invariant"| inv
+ handler -->|"Calculates validated total"| sale
+ handler -->|"Transitions shipment"| dispatch
+ inv --> vo
+ sale --> vo
+ dispatch --> vo
+ handler -->|"Commits entire accepted draft"| store

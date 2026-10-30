@@ -1,0 +1,44 @@
+erDiagram
+    suppliers {
+        text id PK
+        text tenant_id FK
+        text name
+        text tax_id
+        text contact
+    }
+    purchase_orders {
+        text id PK
+        text tenant_id FK
+        text supplier_id FK
+        text number
+        text status
+        text created_at
+    }
+    purchase_order_lines {
+        text id PK
+        text tenant_id FK
+        text purchase_order_id FK
+        text product_id FK
+        integer quantity
+        integer received
+        bigint cost_cents
+    }
+    receipts {
+        text id PK
+        text tenant_id FK
+        text purchase_order_id FK
+        text user_id FK
+        text created_at
+    }
+    receipt_lines {
+        text id PK
+        text tenant_id FK
+        text receipt_id FK
+        text purchase_order_line_id FK
+        integer quantity
+    }
+    suppliers ||--o{ purchase_orders : supplier_id
+    purchase_orders ||--o{ purchase_order_lines : purchase_order_id
+    purchase_orders ||--o{ receipts : purchase_order_id
+    receipts ||--o{ receipt_lines : receipt_id
+    purchase_order_lines ||--o{ receipt_lines : purchase_order_line_id

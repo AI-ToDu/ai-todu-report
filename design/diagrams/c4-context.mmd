@@ -1,0 +1,10 @@
+flowchart LR
+ owner["Business owner / administrator<br/>[Person]<br/>Receives, sells and monitors stock"]
+ operator["Warehouse / logistics operator<br/>[Person]<br/>Records movements and deliveries"]
+ system["AI-ToDu<br/>[Software system]<br/>Traceable logistics workspace<br/>Academic TB1 prototype"]
+ owner -->|"Manages the business · browser / HTTPS"| system
+ operator -->|"Performs permitted operations · browser / HTTPS"| system
+ classDef person fill:#123b5d,color:#fff,stroke:#123b5d
+ classDef system fill:#007f78,color:#fff,stroke:#007f78
+ class owner,operator person
+ class system system

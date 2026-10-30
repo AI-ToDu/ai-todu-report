@@ -1,0 +1,41 @@
+classDiagram
+ direction LR
+ class Sku {
+  +value: normalizedString
+ }
+ class Quantity {
+  +value: nonNegativeInteger
+ }
+ class Money {
+  +cents: safeInteger
+  +currency: PEN
+ }
+ class Address {
+  +value: validatedString
+ }
+ class InventoryItem {
+  +id
+  +sku: Sku
+  +quantity: Quantity
+  +price: Money
+  +cost: Money
+  +receive(amount)
+  +issue(amount)
+  +ensureSellable(amount)
+ }
+ class SaleSummary {
+  +total: Money
+ }
+ class DispatchManifest {
+  +id
+  +destination: Address
+  +status
+  +transition(next)
+ }
+ InventoryItem *-- Sku
+ InventoryItem *-- Quantity
+ InventoryItem *-- Money
+ SaleSummary *-- Money
+ DispatchManifest *-- Address
+ note for InventoryItem "Stable identity. Stock and conservation are independent."
+ note for Money "Immutable. Primitive serialization belongs at adapter boundaries."

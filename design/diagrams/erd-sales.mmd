@@ -1,0 +1,51 @@
+erDiagram
+    customers {
+        text id PK
+        text tenant_id FK
+        text name
+        text email
+        text tax_id
+    }
+    sales {
+        text id PK
+        text tenant_id FK
+        text customer_id FK
+        text user_id FK
+        text number
+        text status
+        bigint total_cents
+        text created_at
+        text cancelled_at
+        text cancellation_reason
+    }
+    sale_lines {
+        text id PK
+        text tenant_id FK
+        text sale_id FK
+        text product_id FK
+        text product_name
+        integer quantity
+        bigint price_cents
+        bigint cost_cents
+    }
+    payments {
+        text id PK
+        text tenant_id FK
+        text sale_id FK
+        bigint amount_cents
+        text method
+        text created_at
+    }
+    sales_receipts {
+        text id PK
+        text tenant_id FK
+        text sale_id FK
+        text number
+        bigint total_cents
+        text fiscal
+        text created_at
+    }
+    customers ||--o{ sales : customer_id
+    sales ||--o{ sale_lines : sale_id
+    sales ||--o{ payments : sale_id
+    sales ||--o{ sales_receipts : sale_id

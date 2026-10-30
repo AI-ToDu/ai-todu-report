@@ -1,0 +1,75 @@
+erDiagram
+    products {
+        text id PK
+        text tenant_id FK
+        text sku
+        text name
+        integer quantity
+        bigint price_cents
+        bigint cost_cents
+        integer minimum_stock
+        text conservation
+        text category_id FK
+        text unit_id FK
+        text location_id FK
+    }
+    categories {
+        text id PK
+        text tenant_id FK
+        text name
+    }
+    units {
+        text id PK
+        text tenant_id FK
+        text code
+        text name
+    }
+    warehouses {
+        text id PK
+        text tenant_id FK
+        text name
+        text address
+    }
+    locations {
+        text id PK
+        text tenant_id FK
+        text warehouse_id FK
+        text code
+    }
+    product_variants {
+        text id PK
+        text tenant_id FK
+        text product_id FK
+        text sku
+        text attributes_json
+    }
+    stock_lots {
+        text id PK
+        text tenant_id FK
+        text product_id FK
+        text location_id FK
+        text lot_number
+        text expires_on
+        integer quantity
+    }
+    stock_movements {
+        text id PK
+        text tenant_id FK
+        text product_id FK
+        text lot_id FK
+        text user_id FK
+        integer delta
+        text movement_type
+        text reason
+        bigint unit_cost_cents
+        text created_at
+    }
+    categories ||--o{ products : category_id
+    units ||--o{ products : unit_id
+    locations ||--o{ products : location_id
+    warehouses ||--o{ locations : warehouse_id
+    products ||--o{ product_variants : product_id
+    products ||--o{ stock_lots : product_id
+    locations ||--o{ stock_lots : location_id
+    products ||--o{ stock_movements : product_id
+    stock_lots ||--o{ stock_movements : lot_id
