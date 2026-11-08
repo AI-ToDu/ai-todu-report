@@ -13,9 +13,7 @@ assert.ok(
 const files = [
   ...sources,
   "README.md",
-  "REVIEW.md",
   "design/architecture.md",
-  "design/ddd-review.md",
   "design/database/dictionary.md",
 ];
 let checked = 0;

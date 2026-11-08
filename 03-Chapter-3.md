@@ -2,148 +2,94 @@
 
 ## 3.1. User Stories
 
-Los identificadores históricos se conservan. La presentación sigue **core → soporte → genéricos → canal público**. El orden de lectura del dominio no implica poder ejecutar una operación protegida sin autenticación. Las estimaciones son una base de planificación, no horas reales ni velocidad medida.
+Un único cuadro reúne épicas, historias funcionales y técnicas, en orden core → soporte → genéricos → canal público. Conservamos identificadores y distinguimos implementación de evidencia humana. Los criterios usan Gherkin; los comportamientos pendientes no se presentan como pruebas aprobadas.
 
-### Épicas
+| Epic / Story ID | Título | Descripción | Criterios de aceptación | Relacionado con (Epic ID) | Estado |
+| --- | --- | --- | --- | --- | --- |
+| EPIC-02 | Inventario | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US09 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Given un SKU único y valores válidos, When se registra el artículo, Then se conserva normalizado con saldo cero. Escenario alternativo: Given SKU duplicado o dinero inválido, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US10 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Given un artículo y cantidad entera positiva, When se recibe mercadería, Then aumenta el saldo y registra motivo/responsable. Escenario alternativo: Given cantidad cero o fraccionaria, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US11 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | Given tres unidades disponibles, When se registra salida de dos, Then queda una unidad con movimiento. Escenario alternativo: Given salida mayor al saldo, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US12 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Given stock suficiente, When se registra una merma, Then disminuye saldo con tipo LOSS sin cambiar conservación. Escenario alternativo: Given cantidad no positiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US13 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Given un catálogo, When se busca nombre o SKU, Then obtiene coincidencias sin modificar registros. Escenario alternativo: Given búsqueda sin coincidencias devuelve resultado vacío, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | Demo implementada |
+| US14 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Given movimientos del espacio autorizado, When se consulta su historial, Then obtiene producto, tipo, cantidad, motivo, responsable y fecha. Escenario alternativo: Given identificador de empresa ajena no modifica registros, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| EPIC-04 | Logística | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US19 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | Given una venta confirmada sin despacho ni devolución, When se prepara un manifiesto, Then vincula las líneas sin descontar stock nuevamente. Escenario alternativo: Given venta ya asignada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US20 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Given recursos de la empresa, When se asigna conductor y vehículo, Then conserva referencias existentes. Escenario alternativo: Given recurso ya en tránsito al iniciar otra ruta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US21 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Given despacho PENDING, When se inicia y luego confirma con receptor, Then transita por IN_TRANSIT y finaliza DELIVERED con fecha. Escenario alternativo: Given salto de estado o falta de receptor, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US22 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Given un despacho no finalizado, When se registra una incidencia válida, Then conserva descripción y fecha. Escenario alternativo: Given incidencia posterior a entrega, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US37 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Given nombre y licencia o placa válidos, When se registra un recurso, Then pertenece a la empresa autenticada. Escenario alternativo: Given licencia o placa duplicada en esa empresa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| EPIC-10 | Abastecimiento | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US35 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Given una orden de cuatro unidades, When se recibe dos, Then aumenta el stock dos y queda PARTIAL. Escenario alternativo: Given exceso de recepción o línea duplicada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-10 | AV2 implementada; validación humana pendiente |
+| EPIC-03 | Comercial y devoluciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US15 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Given líneas válidas y stock suficiente, When se confirma la venta, Then guarda snapshots, movimientos y Outbox en una transacción. Escenario alternativo: Given línea inválida revierte toda la venta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US16 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Given una unidad y seis solicitudes concurrentes, When se confirma ventas de una unidad, Then solo una se acepta y cinco reciben conflicto. Escenario alternativo: Given artículo con conservación bloqueada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US17 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | Given ventas registradas, When se consulta el historial, Then conserva fecha, estado, líneas e importe histórico. Escenario alternativo: Given cambio posterior del catálogo no recalcula el snapshot, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US18 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Given venta sin despacho ni devolución, When se anula con motivo, Then repone stock una sola vez. Escenario alternativo: Given anulación repetida o venta despachada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US36 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | Given unidades vendidas no devueltas, When se registra RESTOCK o LOSS, Then resta venta neta y reintegra solo RESTOCK. Escenario alternativo: Given exceso o despacho sin finalizar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| EPIC-05 | Reporting | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US23 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Given operaciones aceptadas, When se consulta indicadores como administrador, Then obtiene importes y saldos derivados. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | AV2 implementada; validación humana pendiente |
+| US24 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | Given ventas registradas, When se consulta el ranking de productos, Then obtiene orden por unidades o importe indicado. Escenario alternativo: Given venta anulada no cuenta como efectiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente |
+| US25 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | Given registros autorizados, When se exporta datos, Then obtiene archivo interpretable con alcance y fecha. Escenario alternativo: Given registros ajenos no aparecen, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente; imprimir comprobante no cumple esta historia |
+| EPIC-06 | Notificaciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US26 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Given stock que cruza el mínimo, When se confirma la salida, Then persiste mensaje y notificación eventual. Escenario alternativo: Given reentrega del evento no duplica notificación, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | AV2 implementada; validación humana pendiente |
+| US27 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Given lotes con vencimiento, When se alcanza el umbral acordado, Then genera alerta vinculada al lote. Escenario alternativo: Given alerta ya procesada no se duplica sin cambio relevante, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | Pendiente: lotes sin flujo operativo completo |
+| EPIC-01 | Identidad | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Given datos válidos y correo disponible, When se registra empresa, Then crea administrador sin exponer hash. Escenario alternativo: Given correo existente o contraseña fuera de política, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US02 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | Given cuenta activa y contraseña válida, When se inicia sesión, Then recibe JWT temporal y perfil. Escenario alternativo: Given credenciales inválidas producen 401 sin token, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US03 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | Given sesión válida, When se cierra sesión, Then el token queda revocado. Escenario alternativo: Given acceso posterior con token revocado produce 401, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US04 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | Given solicitud de recuperación, When se procesa el correo, Then no revela si la cuenta existe. Escenario alternativo: Given enlace vencido o usado no permite cambiar acceso, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | Pendiente AV2 |
+| EPIC-07 | Acceso y roles | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US28 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | Given administrador y datos válidos, When se provisiona empleado con contraseña inicial, Then obtiene perfil sin hash ni contraseña. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2: contraseña inicial; invitación/recuperación pendientes |
+| US29 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Given cuenta activa, When se ejecuta una operación, Then el servidor usa su rol y empresa autenticados. Escenario alternativo: Given rol sin permiso o referencia ajena no modifica datos, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2 implementada; validación humana pendiente |
+| EPIC-08 | Preferencias | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US30 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Given administrador autenticado, When se edita el perfil de empresa, Then persiste únicamente datos de su empresa. Escenario alternativo: Given empresa ajena no se puede editar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente |
+| US31 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Given contraseña actual válida, When se cambia contraseña, Then conserva hash seguro e invalida sesiones según política. Escenario alternativo: Given contraseña actual inválida, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente AV2 |
+| US33 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | Given primera visita sin preferencia, When se inicia aplicación, Then usa en_US. Escenario alternativo: Given selección es_419 persiste al navegar y recargar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Implementada: en_US / es_419 |
+| EPIC-09 | Landing page | Capacidad canal público para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US05 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Given visitante del segmento, When se consulta la propuesta, Then identifica inventario, venta, despacho y alcance académico. Escenario alternativo: Given no se afirman resultados medidos sin evidencia, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| US06 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | Given landing disponible, When se consulta capacidades, Then conoce el flujo y accede a la aplicación. Escenario alternativo: Given ilustración sintética se identifica como muestra, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| US07 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | Given modelo comercial validado, When se consulta planes, Then conoce condiciones y límites reales. Escenario alternativo: Given sin cobros no se simula suscripción activa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente; sin planes comerciales activos |
+| US08 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | Given visitante, When se solicita contacto, Then llega a un destino real. Escenario alternativo: Given un futuro formulario requiere validación y seguimiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Parcial: enlace real al proyecto; captación B2B pendiente |
+| US32 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Given testimonio autorizado y fuente real, When se publica testimonio, Then conserva atribución y contexto. Escenario alternativo: Given sin fuente o consentimiento no se publica, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente evidencia; no se publican testimonios ficticios |
+| US34 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Given visitante, When se consulta privacidad, Then conoce persistencia y ausencia de pagos/SUNAT. Escenario alternativo: Given servidor y demo distinguen sus formas de almacenamiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| TS05 | GET /products | Como Developer, deseo consumir GET /products para integrar la capacidad. Reemplaza GET /inventory; consulta de catálogo. | Given un usuario autorizado, When ejecuta `GET /products`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS06 | POST /products | Como Developer, deseo consumir POST /products para integrar la capacidad. Reemplaza POST /inventory; SKU único. | Given un usuario autorizado, When ejecuta `POST /products`, Then cumple request/response: {sku,name,price,cost,minimum} → 201 ProductResource; duplicado → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS07 | POST /movements · type RECEIPT | Como Developer, deseo consumir POST /movements · type RECEIPT para integrar la capacidad. Reemplaza /inventory/{sku}/entries. | Given un usuario autorizado, When ejecuta `POST /movements · type RECEIPT`, Then cumple request/response: {productId,quantity,type:RECEIPT,reason} → 201; fracción → 422. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS08 | POST /movements · type ISSUE o LOSS | Como Developer, deseo consumir POST /movements · type ISSUE o LOSS para integrar la capacidad. Reemplaza /inventory/{sku}/exits. | Given un usuario autorizado, When ejecuta `POST /movements · type ISSUE o LOSS`, Then cumple request/response: {productId,quantity,type:ISSUE o LOSS,reason} → 201; saldo insuficiente → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS09 | GET /movements | Como Developer, deseo consumir GET /movements para integrar la capacidad. Reemplaza /inventory/{sku}/history; producto referenciado. | Given un usuario autorizado, When ejecuta `GET /movements`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS14 | GET /dispatches | Como Developer, deseo consumir GET /dispatches para integrar la capacidad. Manifiestos con líneas/paradas/incidencias. | Given un usuario autorizado, When ejecuta `GET /dispatches`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS15 | POST /dispatches | Como Developer, deseo consumir POST /dispatches para integrar la capacidad. Ventas y recursos del mismo tenant. | Given un usuario autorizado, When ejecuta `POST /dispatches`, Then cumple request/response: {saleIds,driverId,vehicleId,destination} → 201 DispatchResource; referencia ajena → 404. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS16 | PATCH /dispatches/{id} | Como Developer, deseo consumir PATCH /dispatches/{id} para integrar la capacidad. Reemplaza subruta /status; transición y receptor. | Given un usuario autorizado, When ejecuta `PATCH /dispatches/{id}`, Then cumple request/response: {status,recipient?} → 200 DispatchResource; salto → 422; recurso ocupado → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS17 | POST /dispatches/{id}/incidents | Como Developer, deseo consumir POST /dispatches/{id}/incidents para integrar la capacidad. Incidencia persistida. | Given un usuario autorizado, When ejecuta `POST /dispatches/{id}/incidents`, Then cumple request/response: {description} → 201 DispatchResource; despacho entregado → 422. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS32 | GET/POST /drivers · GET/POST /vehicles | Como Developer, deseo consumir GET/POST /drivers · GET/POST /vehicles para integrar la capacidad. Nueva: maestros de recursos. | Given un usuario autorizado, When ejecuta `GET/POST /drivers · GET/POST /vehicles`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS28 | POST /purchases | Como Developer, deseo consumir POST /purchases para integrar la capacidad. Nueva: orden y líneas. | Given un usuario autorizado, When ejecuta `POST /purchases`, Then cumple request/response: {supplierId,lines:[{productId,quantity}]} → 201 PurchaseResource. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS29 | POST /purchases/{id}/receipts | Como Developer, deseo consumir POST /purchases/{id}/receipts para integrar la capacidad. Nueva: recepción parcial acotada. | Given un usuario autorizado, When ejecuta `POST /purchases/{id}/receipts`, Then cumple request/response: {lines:[{lineId,quantity}]} → 201 PurchaseResource; exceso → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS30 | GET /suppliers · POST /suppliers | Como Developer, deseo consumir GET /suppliers · POST /suppliers para integrar la capacidad. Nueva: maestro de proveedor. | Given un usuario autorizado, When ejecuta `GET /suppliers · POST /suppliers`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS10 | GET /sales | Como Developer, deseo consumir GET /sales para integrar la capacidad. Historial con detalles y comprobante. | Given un usuario autorizado, When ejecuta `GET /sales`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS11 | POST /sales | Como Developer, deseo consumir POST /sales para integrar la capacidad. Transacción completa / 201 / conflicto 409. | Given un usuario autorizado, When ejecuta `POST /sales`, Then cumple request/response: {lines:[{productId,quantity}]} y Idempotency-Key opcional → 201 SaleResource; stock insuficiente o clave con otro payload → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS12 | Detalle incluido en GET /sales | Como Developer, deseo consumir Detalle incluido en GET /sales para integrar la capacidad. GET /sales/{id} no está implementado; proyección de consulta documentada. | Given un usuario autorizado, When ejecuta `Detalle incluido en GET /sales`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS13 | POST /sales/{id}/cancel | Como Developer, deseo consumir POST /sales/{id}/cancel para integrar la capacidad. Ajusta método anterior PATCH; reintegro una sola vez. | Given un usuario autorizado, When ejecuta `POST /sales/{id}/cancel`, Then cumple request/response: {reason} → 200 SaleResource; venta despachada o anulación repetida → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS31 | POST /returns | Como Developer, deseo consumir POST /returns para integrar la capacidad. Nueva: retorno acotado y disposición. | Given un usuario autorizado, When ejecuta `POST /returns`, Then cumple request/response: {saleId,saleLineId,quantity,disposition,reason} → 201 ReturnResource; exceso → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS18 | GET /metrics | Como Developer, deseo consumir GET /metrics para integrar la capacidad. Reemplaza /analytics/dashboard; administrador. | Given un usuario autorizado, When ejecuta `GET /metrics`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-05 | AV2; detalle en OpenAPI |
+| TS19 | GET /notifications | Como Developer, deseo consumir GET /notifications para integrar la capacidad. Bandeja de alertas persistidas. | Given un usuario autorizado, When ejecuta `GET /notifications`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-06 | AV2; detalle en OpenAPI |
+| TS20 | PATCH /notifications/{id} | Como Developer, deseo consumir PATCH /notifications/{id} para integrar la capacidad. Reemplaza subruta /read. | Given un usuario autorizado, When ejecuta `PATCH /notifications/{id}`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-06 | AV2; detalle en OpenAPI |
+| TS01 | POST /auth/register | Como Developer, deseo consumir POST /auth/register para integrar la capacidad. Alta de empresa/administrador en demo. | Given un usuario autorizado, When ejecuta `POST /auth/register`, Then cumple request/response: {name,company,email,password} → 201 UserResource; correo repetido → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS02 | POST /auth/login | Como Developer, deseo consumir POST /auth/login para integrar la capacidad. Credencial válida / 401. | Given un usuario autorizado, When ejecuta `POST /auth/login`, Then cumple request/response: {email,password} → 200 {token,user}; credencial inválida → 401. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS03 | POST /auth/logout | Como Developer, deseo consumir POST /auth/logout para integrar la capacidad. Invalida sesión / 204. | Given un usuario autorizado, When ejecuta `POST /auth/logout`, Then cumple request/response: Bearer válido y {} → 204; ese token usado después → 401. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS04 | Recuperación de contraseña | Como Developer, deseo consumir Recuperación de contraseña para integrar la capacidad. Pendiente; no endpoint implementado. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-01 | Pendiente |
+| TS21 | GET /employees | Como Developer, deseo consumir GET /employees para integrar la capacidad. Proyección de empleados, no listado general de credenciales. | Given un usuario autorizado, When ejecuta `GET /employees`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-07 | AV2; detalle en OpenAPI |
+| TS22 | POST /employees | Como Developer, deseo consumir POST /employees para integrar la capacidad. Reemplaza /users/invite solo para provisión; invitación/activación pendiente. | Given un usuario autorizado, When ejecuta `POST /employees`, Then cumple request/response: {name,email,role,password} → 201 EmployeeResource; otro rol → 403. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-07 | AV2; detalle en OpenAPI |
+| TS23 | GET /auth/me | Como Developer, deseo consumir GET /auth/me para integrar la capacidad. Perfil de sesión; sin hash ni contraseña. | Given un usuario autorizado, When ejecuta `GET /auth/me`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS24 | Edición de perfil | Como Developer, deseo consumir Edición de perfil para integrar la capacidad. Pendiente; no endpoint operativo. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-08 | Pendiente |
+| TS25 | Cambio de contraseña | Como Developer, deseo consumir Cambio de contraseña para integrar la capacidad. Pendiente AV2. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-08 | Pendiente |
+| TS26 | Captación B2B | Como Developer, deseo consumir Captación B2B para integrar la capacidad. Pendiente; no POST /contact-messages. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-09 | Pendiente |
+| TS27 | Planes comerciales | Como Developer, deseo consumir Planes comerciales para integrar la capacidad. Pendiente; no GET /landing/plans. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-09 | Pendiente |
+| TS33 | Clima regional | Como Developer, deseo consultar GET /logistics/weather para mostrar condiciones de Lima sin enviar destinos de clientes. | Given rol ADMIN o LOGISTICS, When solicita, Then recibe 200 {location,temperatureC,precipitationMm,windKmh,observedAt,fetchedAt,source,attributionUrl}. Given fallo del proveedor, When solicita, Then recibe 503 UPSTREAM_UNAVAILABLE y puede seguir operando despachos. | EPIC-04 | Implementada |
+| TS34 | Outbox e inbox | Como Developer, deseo mensajes públicos versionados para integrar notificaciones con reintentos. | Given un comando aceptado, When confirma transacción, Then persiste mensaje Outbox. Given fallo del consumidor, When se reintenta, Then conserva intento y evita duplicar notificación. | EPIC-06 | Implementada |
+| TS35 | Consistencia e idempotencia | Como Developer, deseo ventas atómicas para evitar sobreventa y reenvíos duplicados. | Given una unidad y seis requests concurrentes, When confirman, Then una recibe 201 y cinco 409. Given igual Idempotency-Key y líneas, When se repite, Then devuelve la misma venta sin otra salida. | EPIC-03 | Implementada |
 
-| ID | Categoría | Contexto / capacidad |
-| --- | --- | --- |
-| EPIC-02 | Core | Inventario |
-| EPIC-04 | Core | Logística |
-| EPIC-10 | Soporte | Abastecimiento |
-| EPIC-03 | Soporte | Comercial y devoluciones |
-| EPIC-05 | Soporte | Reporting |
-| EPIC-06 | Soporte | Notificaciones |
-| EPIC-01 | Genérico | Identidad |
-| EPIC-07 | Genérico | Acceso y roles |
-| EPIC-08 | Genérico | Preferencias |
-| EPIC-09 | Canal público | Landing page |
-
-### EPIC-02 · Inventario
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US09 · Registro de artículo** | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Al guardar un SKU único normalizado, se crea con saldo cero. Un SKU duplicado, precio inválido o mínimo negativo se rechaza. | Demo implementada |
-| **US10 · Ingreso de mercadería** | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Dada cantidad entera positiva y motivo, al recibir se suma el saldo y se conserva movimiento/responsable. Cero o fracción se rechaza. | Demo implementada |
-| **US11 · Salida manual** | Como Almacenero, deseo registrar una salida para explicar el saldo. | Con stock suficiente, una salida conserva su motivo y reduce exactamente la cantidad solicitada. Sobrepasar saldo revierte la operación. | Demo implementada |
-| **US12 · Registro de mermas** | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Al registrar pérdida positiva se reduce stock y se guarda tipo LOSS. Conservación y cantidad no se confunden. | Demo implementada |
-| **US13 · Buscador de inventario** | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Dado catálogo cargado, la búsqueda filtra sin modificar datos. Sin coincidencias aparece un estado vacío. | Demo implementada |
-| **US14 · Historial de movimientos** | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Al abrir el historial aparecen producto, tipo, cantidad, motivo y fecha persistidos. Otro tenant no accede a esos registros. | Demo implementada |
-
-### EPIC-04 · Logística
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US19 · Manifiesto de despacho** | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | La venta debe estar confirmada, sin despacho previo ni devolución. Sus líneas se enlazan al manifiesto sin descontar stock nuevamente. | Demo: una venta en UI; varias mediante API |
-| **US20 · Asignación de recursos** | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Se seleccionan recursos existentes. Al iniciar ruta, un conductor o vehículo en otra ruta activa produce conflicto. | Demo implementada |
-| **US21 · Estado y confirmación de entrega** | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Solo PENDING → IN_TRANSIT → DELIVERED; entrega requiere receptor. Estado terminal y saltos se rechazan. | Demo: un destino e intento exitoso |
-| **US22 · Incidencia en ruta** | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Una descripción válida queda ligada al despacho y fecha. La vista muestra su registro persistido. | Demo implementada; resolución pendiente |
-| **US37 · Maestros de recursos logísticos** | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Conductor exige nombre/licencia y vehículo nombre/placa; referencias son del mismo tenant. | Nueva historia: demo implementada |
-
-### EPIC-10 · Abastecimiento
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US35 · Abastecimiento y recepción parcial** | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Proveedor y producto existentes; recibir 2/4 suma dos, conserva recepción y deja PARTIAL; exceso/duplicación revierte la solicitud. | Nueva historia: demo implementada |
-
-### EPIC-03 · Comercial y devoluciones
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US15 · Creación de venta** | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Con líneas válidas se guardan venta, detalles, movimiento, pago demo y comprobante histórico. Una línea inválida revierte todo. | Demo implementada |
-| **US16 · Validación de stock** | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Si falta stock o el artículo no está en buen estado, se rechaza toda la venta. Dos solicitudes concurrentes no venden las mismas unidades en el adaptador HTTP. | Demo implementada |
-| **US17 · Historial de ventas** | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | El historial muestra fecha, estado, importe y comprobante con precios/costos del momento. Recargar conserva datos en el adaptador usado. | Demo implementada |
-| **US18 · Anulación de venta** | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Una venta confirmada sin despacho/devolución repone stock una sola vez. Segundo intento o venta ya despachada se rechaza. | Demo implementada |
-| **US36 · Devolución trazable** | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | No excede lo vendido; RESTOCK reincorpora y LOSS no; se bloquea durante despacho sin finalizar. | Nueva historia: demo implementada; reembolso real pendiente |
-
-### EPIC-05 · Reporting
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US23 · Dashboard operativo** | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Después de una venta/devolución cambian ingresos, contribución y saldo. Reporting directo de otro rol devuelve 403. | Demo implementada; no utilidad neta |
-| **US24 · Reporte de productos más vendidos** | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | El ranking debe derivarse de líneas confirmadas, excluyendo anulaciones y considerando devoluciones. | Pendiente |
-| **US25 · Exportación de datos** | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | La exportación debe respetar empresa, filtros y formato; no incluir secretos ni registros ajenos. | Pendiente; imprimir comprobante no cumple esta historia |
-
-### EPIC-06 · Notificaciones
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US26 · Alerta de stock mínimo** | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Un movimiento que deja stock bajo mínimo genera notificación persistente; la bandeja permite marcarla leída. | Demo implementada; no correo/push |
-| **US27 · Alerta de vencimiento** | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Dado un lote vencido, se genera alerta y se restringe despacho según política validada. | Pendiente: lotes sin flujo operativo completo |
-
-### EPIC-01 · Identidad
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US01 · Registro de cuenta** | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Dado un correo nuevo y contraseña válida, cuando registro el espacio, entonces se crea empresa/administrador/sesión. Correo existente se rechaza. | Demo implementada |
-| **US02 · Inicio de sesión** | Como Usuario, deseo iniciar sesión para operar según mi rol. | Dadas credenciales válidas, al iniciar sesión recibo sesión y ruta autorizada. Contraseña incorrecta devuelve 401. | Demo implementada |
-| **US03 · Cierre de sesión** | Como Usuario, deseo cerrar sesión para terminar el acceso. | Dada una sesión, al salir se invalida y se eliminan credenciales locales. Un acceso posterior sin sesión devuelve 401. | Demo implementada |
-| **US04 · Recuperación de contraseña** | Como Usuario, deseo recuperar el acceso para volver a operar. | Dado un correo, la respuesta no debe revelar si existe; el enlace real debe expirar y permitir recuperación segura. | Pendiente AV2 |
-
-### EPIC-07 · Acceso y roles
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US28 · Creación de usuarios** | Como Administrador, deseo incorporar empleados para distribuir operación. | La provisión registra nombre, correo y rol sin divulgar contraseña. Activación y credencial real requieren flujo posterior. | Parcial: provisión, sin activación/invitación |
-| **US29 · Restricción por roles** | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Navegación y API aplican permisos. Acceso directo no autorizado devuelve 403; referencias ajenas no modifican datos. | Demo implementada; seguridad productiva pendiente |
-
-### EPIC-08 · Preferencias
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US30 · Edición de perfil empresa** | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Una edición validada debe persistir únicamente en el tenant autorizado. | Pendiente |
-| **US31 · Cambio de contraseña** | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Verificar credencial actual, política de hash segura en servidor e invalidación de sesiones según política. | Pendiente AV2 |
-| **US33 · Idioma de aplicación** | Como Usuario, deseo cambiar idioma para comprender la operación. | Inglés predeterminado y español latinoamericano; selector actualiza navegación, formularios, estados y errores y conserva preferencia. | Implementada: en_US / es_419 |
-
-### EPIC-09 · Landing page
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US05 · Propuesta de valor** | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Dada la landing, al leer el hero comprendo inventario/venta/despacho y el carácter académico. | Implementada |
-| **US06 · Capacidades de landing** | Como Visitante, deseo conocer las capacidades para decidir si probar. | Dada la landing, al recorrer capacidades encuentro flujo, roles y acceso a la demo. La ilustración está identificada como muestra. | Implementada |
-| **US07 · Modelo comercial y planes** | Como Comprador, deseo consultar planes para evaluar la adopción. | Dado un modelo comercial validado, se describen condiciones y límites sin simular cobros o suscripciones activas. | Pendiente; sin planes comerciales activos |
-| **US08 · Contacto B2B** | Como Visitante, deseo contactar al equipo para resolver dudas. | El canal debe conducir a un destino real. Un formulario B2B requerirá persistencia, validación y seguimiento. | Parcial: enlace real al proyecto; captación B2B pendiente |
-| **US32 · Testimonios** | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Solo publicar testimonios autorizados con fuente real. Sin fuente se mantiene fuera de la landing. | Pendiente evidencia; no se publican testimonios ficticios |
-| **US34 · Términos y privacidad** | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Se informa alcance académico, persistencia local y ausencia de pagos/facturación real; diálogo accesible y cierre por teclado. | Implementada |
-
-### Technical stories y cambio de contrato
-
-Prefijo común: `/api/v1`. Esta tabla conserva la intención de los TS originales y hace visibles los cambios de contrato. Lo pendiente no se declara en OpenAPI como implementado. El [contrato ejecutable](https://github.com/AI-ToDu/ai-todu-fake-api/blob/fix/tb1-readiness/openapi.json) describe la versión de demo.
-
-| ID | Contrato o capacidad | Validación / diferencia frente a versión anterior |
-| --- | --- | --- |
-| TS05 | `GET /products` | Reemplaza GET /inventory; consulta de catálogo |
-| TS06 | `POST /products` | Reemplaza POST /inventory; SKU único |
-| TS07 | `POST /movements · type RECEIPT` | Reemplaza /inventory/{sku}/entries |
-| TS08 | `POST /movements · type ISSUE o LOSS` | Reemplaza /inventory/{sku}/exits |
-| TS09 | `GET /movements` | Reemplaza /inventory/{sku}/history; producto referenciado |
-| TS14 | `GET /dispatches` | Manifiestos con líneas/paradas/incidencias |
-| TS15 | `POST /dispatches` | Ventas y recursos del mismo tenant |
-| TS16 | `PATCH /dispatches/{id}` | Reemplaza subruta /status; transición y receptor |
-| TS17 | `POST /dispatches/{id}/incidents` | Incidencia persistida |
-| TS32 | `GET/POST /drivers · GET/POST /vehicles` | Nueva: maestros de recursos |
-| TS28 | `POST /purchases` | Nueva: orden y líneas |
-| TS29 | `POST /purchases/{id}/receipts` | Nueva: recepción parcial acotada |
-| TS30 | `GET /suppliers · POST /suppliers` | Nueva: maestro de proveedor |
-| TS10 | `GET /sales` | Historial con detalles y comprobante |
-| TS11 | `POST /sales` | Transacción completa / 201 / conflicto 409 |
-| TS12 | `Detalle incluido en GET /sales` | GET /sales/{id} no está implementado; proyección de consulta documentada |
-| TS13 | `POST /sales/{id}/cancel` | Ajusta método anterior PATCH; reintegro una sola vez |
-| TS31 | `POST /returns` | Nueva: retorno acotado y disposición |
-| TS18 | `GET /metrics` | Reemplaza /analytics/dashboard; administrador |
-| TS19 | `GET /notifications` | Bandeja de alertas persistidas |
-| TS20 | `PATCH /notifications/{id}` | Reemplaza subruta /read |
-| TS01 | `POST /auth/register` | Alta de empresa/administrador en demo |
-| TS02 | `POST /auth/login` | Credencial válida / 401 |
-| TS03 | `POST /auth/logout` | Invalida sesión / 204 |
-| TS04 | `Recuperación de contraseña` | Pendiente; no endpoint implementado |
-| TS21 | `GET /employees` | Proyección de empleados, no listado general de credenciales |
-| TS22 | `POST /employees` | Reemplaza /users/invite solo para provisión; invitación/activación pendiente |
-| TS23 | `GET /auth/me` | Perfil de sesión; sin hash ni contraseña |
-| TS24 | `Edición de perfil` | Pendiente; no endpoint operativo |
-| TS25 | `Cambio de contraseña` | Pendiente AV2 |
-| TS26 | `Captación B2B` | Pendiente; no POST /contact-messages |
-| TS27 | `Planes comerciales` | Pendiente; no GET /landing/plans |
+Prefijo REST: /api/v1. [OpenAPI del servidor](https://ai-todu-api-av2.onrender.com/v3/api-docs) y [schemas públicos](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json). La Fake API conserva el contrato histórico TB1.
 
 ## 3.2. Impact Mapping
 
@@ -160,45 +106,45 @@ Los objetivos comerciales heredados (clientes, retención y ahorro porcentual) s
 
 <div class="backlog-table">
 
-| Orden de revisión | Story ID | Épica | Título | Story points propuestos |
-| --- | --- | --- | --- | --- |
-| 1 | US09 | EPIC-02 | Registro de artículo | 3 |
-| 2 | US10 | EPIC-02 | Ingreso de mercadería | 5 |
-| 3 | US11 | EPIC-02 | Salida manual | 3 |
-| 4 | US12 | EPIC-02 | Registro de mermas | 2 |
-| 5 | US13 | EPIC-02 | Buscador de inventario | 3 |
-| 6 | US14 | EPIC-02 | Historial de movimientos | 3 |
-| 7 | US19 | EPIC-04 | Manifiesto de despacho | 5 |
-| 8 | US20 | EPIC-04 | Asignación de recursos | 3 |
-| 9 | US21 | EPIC-04 | Estado y confirmación de entrega | 3 |
-| 10 | US22 | EPIC-04 | Incidencia en ruta | 3 |
-| 11 | US37 | EPIC-04 | Maestros de recursos logísticos | 5 |
-| 12 | US35 | EPIC-10 | Abastecimiento y recepción parcial | 8 |
-| 13 | US15 | EPIC-03 | Creación de venta | 8 |
-| 14 | US16 | EPIC-03 | Validación de stock | 5 |
-| 15 | US17 | EPIC-03 | Historial de ventas | 3 |
-| 16 | US18 | EPIC-03 | Anulación de venta | 5 |
-| 17 | US36 | EPIC-03 | Devolución trazable | 5 |
-| 18 | US23 | EPIC-05 | Dashboard operativo | 5 |
-| 19 | US24 | EPIC-05 | Reporte de productos más vendidos | 3 |
-| 20 | US25 | EPIC-05 | Exportación de datos | 5 |
-| 21 | US26 | EPIC-06 | Alerta de stock mínimo | 5 |
-| 22 | US27 | EPIC-06 | Alerta de vencimiento | 3 |
-| 23 | US01 | EPIC-01 | Registro de cuenta | 3 |
-| 24 | US02 | EPIC-01 | Inicio de sesión | 3 |
-| 25 | US03 | EPIC-01 | Cierre de sesión | 2 |
-| 26 | US04 | EPIC-01 | Recuperación de contraseña | 5 |
-| 27 | US28 | EPIC-07 | Creación de usuarios | 5 |
-| 28 | US29 | EPIC-07 | Restricción por roles | 5 |
-| 29 | US30 | EPIC-08 | Edición de perfil empresa | 2 |
-| 30 | US31 | EPIC-08 | Cambio de contraseña | 3 |
-| 31 | US33 | EPIC-08 | Idioma de aplicación | 2 |
-| 32 | US05 | EPIC-09 | Propuesta de valor | 3 |
-| 33 | US06 | EPIC-09 | Capacidades de landing | 2 |
-| 34 | US07 | EPIC-09 | Modelo comercial y planes | 2 |
-| 35 | US08 | EPIC-09 | Contacto B2B | 3 |
-| 36 | US32 | EPIC-09 | Testimonios | 2 |
-| 37 | US34 | EPIC-09 | Términos y privacidad | 2 |
+| Orden de revisión | Story ID | Épica | Título | Descripción | Story points propuestos |
+| --- | --- | --- | --- | --- | --- |
+| 1 | US09 | EPIC-02 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | 3 |
+| 2 | US10 | EPIC-02 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | 5 |
+| 3 | US11 | EPIC-02 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | 3 |
+| 4 | US12 | EPIC-02 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | 2 |
+| 5 | US13 | EPIC-02 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | 3 |
+| 6 | US14 | EPIC-02 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | 3 |
+| 7 | US19 | EPIC-04 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | 5 |
+| 8 | US20 | EPIC-04 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | 3 |
+| 9 | US21 | EPIC-04 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | 3 |
+| 10 | US22 | EPIC-04 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | 3 |
+| 11 | US37 | EPIC-04 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | 5 |
+| 12 | US35 | EPIC-10 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | 8 |
+| 13 | US15 | EPIC-03 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | 8 |
+| 14 | US16 | EPIC-03 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | 5 |
+| 15 | US17 | EPIC-03 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | 3 |
+| 16 | US18 | EPIC-03 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | 5 |
+| 17 | US36 | EPIC-03 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | 5 |
+| 18 | US23 | EPIC-05 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | 5 |
+| 19 | US24 | EPIC-05 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | 3 |
+| 20 | US25 | EPIC-05 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | 5 |
+| 21 | US26 | EPIC-06 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | 5 |
+| 22 | US27 | EPIC-06 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | 3 |
+| 23 | US01 | EPIC-01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | 3 |
+| 24 | US02 | EPIC-01 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | 3 |
+| 25 | US03 | EPIC-01 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | 2 |
+| 26 | US04 | EPIC-01 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | 5 |
+| 27 | US28 | EPIC-07 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | 5 |
+| 28 | US29 | EPIC-07 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | 5 |
+| 29 | US30 | EPIC-08 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | 2 |
+| 30 | US31 | EPIC-08 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | 3 |
+| 31 | US33 | EPIC-08 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | 2 |
+| 32 | US05 | EPIC-09 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | 3 |
+| 33 | US06 | EPIC-09 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | 2 |
+| 34 | US07 | EPIC-09 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | 2 |
+| 35 | US08 | EPIC-09 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | 3 |
+| 36 | US32 | EPIC-09 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | 2 |
+| 37 | US34 | EPIC-09 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | 2 |
 
 </div>
 

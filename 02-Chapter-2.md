@@ -63,26 +63,33 @@ Son arquetipos de diseño, no personas reales adicionales ni síntesis empírica
 
 ### 2.3.2. User Task Matrix
 
-| Tarea | Administrador | Almacén | Ventas | Logística |
-| --- | --- | --- | --- | --- |
-| Consultar saldo | Sí | Sí | Sí | Lectura según permisos actuales |
-| Recibir / ajustar inventario | Sí | Sí | No | No |
-| Vender / devolver | Sí | No | Sí | No |
-| Preparar y confirmar despacho | Sí | No | No | Sí |
-| Ver resumen comercial | Sí | No | No | No |
-| Provisionar empleado | Sí | No | No | No |
+Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. **Frecuencias e importancias son hipótesis**, todavía no mediciones de entrevistas verificadas; se sustituirán por los resultados reales.
 
-Esta matriz describe permisos del prototipo. Las reglas se validan también en API, no solo ocultando botones. El entorno de demo no sustituye una frontera de seguridad de servidor.
+| Tarea del negocio | Administrador · frecuencia | Administrador · importancia | Operario · frecuencia | Operario · importancia |
+| --- | --- | --- | --- | --- |
+| Conciliar mercadería disponible | Diaria, por validar | Alta, por validar | Diaria, por validar | Alta, por validar |
+| Contrastar pedido y entrega del proveedor | Por recepción, por validar | Alta, por validar | Por recepción, por validar | Alta, por validar |
+| Registrar entradas, salidas y pérdidas | Diaria, por validar | Alta, por validar | Por movimiento, por validar | Alta, por validar |
+| Comprobar que se puede atender una venta | Por venta, por validar | Alta, por validar | Por preparación, por validar | Alta, por validar |
+| Coordinar recursos y confirmar entrega | Por reparto, por validar | Alta, por validar | Por pedido, por validar | Media/alta, por validar |
+| Explicar diferencias de saldo e importes | Periódica, por validar | Alta, por validar | Al detectar diferencia, por validar | Alta, por validar |
+
+La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferencia por validar está en la supervisión global frente a la comprobación física. Esta matriz no representa permisos de software. Fichas, capturas y matriz en UXPressia, con las fuentes que sustenten sus valores: pendientes.
 
 ### 2.3.3. User Journey Mapping
 
-| Momento | Tarea | Fricción hipotética | Respuesta y criterio observable |
-| --- | --- | --- | --- |
-| Recepción | Contrastar pedido y mercadería | Entrega incompleta | Recibir 2/4 mantiene pedido parcial y suma solo dos al saldo. |
-| Venta | Seleccionar cantidad disponible | Sobreventa o producto dañado | Rechazo completo sin venta ni movimiento parcial. |
-| Preparación | Asignar venta, conductor y vehículo | Recursos duplicados | Una venta no se asigna dos veces; conflicto de recursos al salir. |
-| Entrega | Confirmar recepción | Estado sin evidencia mínima | Secuencia válida y receptor registrado. |
-| Conciliación | Explicar el resultado | Métricas manuales | Saldo e importes derivados de operaciones persistidas. |
+El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Los mapas por persona y capturas en UXPressia quedan pendientes.
+
+| Persona | Etapa actual sin AI-ToDu | Acción del negocio por validar | Fricción hipotética | Fuente |
+| --- | --- | --- | --- | --- |
+| Administrador | Comprueba disponibilidad | Contrasta pedido, registro y confirmación del almacén | Información distribuida entre registros y mensajes | Entrevista pendiente |
+| Administrador | Coordina reparto | Asigna responsable y pide confirmación | Venta y entrega difíciles de relacionar | Entrevista pendiente |
+| Administrador | Concilia jornada | Compara ventas, mercadería y entregas | Diferencias sin referencia compartida | Entrevista pendiente |
+| Operario | Recibe mercadería | Cuenta unidades y compara con pedido | Entrega parcial o dato incompleto | Entrevista pendiente |
+| Operario | Prepara salida | Ubica, separa y vuelve a contar unidades | Saldo desactualizado o doble anotación | Entrevista pendiente |
+| Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Entrevista pendiente |
+
+El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
 
 ### 2.3.4. Empathy Mapping
 

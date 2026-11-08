@@ -2,17 +2,18 @@
 
 <div class="report-cover" align="center">
 
-<img src="assets/report-cover.svg" alt="AI-ToDu · Ingeniería de una operación trazable" width="100%">
+<img class="university-logo" src="assets/upc-logo.png" alt="Universidad Peruana de Ciencias Aplicadas" width="96">
 
 **Universidad Peruana de Ciencias Aplicadas · Ingeniería de Software**<br>
 Desarrollo de Aplicaciones Open Source · **1ASI0729 · NRC 7750**<br>
 Docente: **Efraín Ricardo Bautista Ubillús**<br>
 Startup **IA-INNOVATION** · Período **2026-2**
 
-# Informe de ingeniería · AI-ToDu
+# Informe del Trabajo Final · AI-ToDu
 
-**TB1 — Corrección y preparación de AV2**<br>
-Revisión técnica: **30 de octubre de 2026 · v0.2.0**
+**AV2 · Sprint 3 · Semana 12**<br>
+Versión **0.3.0 · 8 de noviembre de 2026**<br>
+Lima, Perú · Noviembre de 2026
 
 <div class="cover-team">
 
@@ -30,7 +31,7 @@ Revisión técnica: **30 de octubre de 2026 · v0.2.0**
 
 </div>
 
-> **Alcance de esta revisión.** TB1 integra el frontend con una Fake REST API persistente. El servidor Java/Spring Boot, la persistencia PostgreSQL y la autenticación de producción corresponden a AV2. La revisión técnica no sustituye entrevistas, sustentaciones ni registros históricos del equipo.
+> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Las entrevistas, los videos, las reflexiones y las evidencias Scrum aún requieren fuentes reales.
 
 ## Cómo leer y mantener este informe
 
@@ -46,16 +47,30 @@ Este README es el informe completo **generado** desde `report-front.md`, los cin
 
 Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni aprobaciones sin registro.
 
-| Hito / revisión | Fecha verificable | Cambio y referencia |
-| --- | --- | --- |
-| AV1 · línea histórica | 19/09/2026 | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
-| TB1 · frontend inicial | 08/10/2026 | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
-| TB1 · informe base | 09/10/2026 | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
-| Corrección TB1 · v0.2.0 | 30/10/2026 | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
+| Versión / hito | Fecha verificable | Autor | Descripción de modificación |
+| --- | --- | --- | --- |
+| AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
+| TB1 · frontend inicial | 08/10/2026 | Equipo, según historial | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
+| TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
+| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
+| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
 
 ## Student Outcome · ABET 3
 
-**Comunicar eficazmente con diferentes audiencias, de forma oral y escrita.** Cada fila distingue una acción respaldada por Git de la evidencia oral aún pendiente. El commit acredita una contribución al archivo; no prueba por sí solo el aprendizaje individual ni una sustentación.
+El curso contribuye al cumplimiento del Student Outcome ABET: **ABET – EAC - Student Outcome 3**.
+
+**Criterio: Capacidad de comunicarse efectivamente con un rango de audiencias.**
+
+En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
+
+| Criterio específico | Acciones realizadas | Conclusiones |
+| --- | --- | --- |
+| Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: casos y guion técnico preparados; exposición, audiencia, feedback y reflexión individual pendientes. | Aún no se acredita el criterio oral. Los videos deben mostrar comunicación real para la audiencia correspondiente. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión asistida de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
+
+### Registro de acciones y fuentes
+
+Cada fila distingue una contribución respaldada por Git de la evidencia oral pendiente. Un commit acredita un cambio de archivo; no prueba por sí solo aprendizaje individual ni sustentación.
 
 | Integrante | Entrega | Acción escrita realizada y fuente | Acción oral / evidencia requerida |
 | --- | --- | --- | --- |
@@ -70,7 +85,138 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). | Adjuntar explicación de integración y límites de la entrega. |
 | Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). | Adjuntar demostración de venta/métricas y minuto. |
 
-**AV2:** al realizar la entrega, añadir una fila por integrante con su acción efectivamente realizada, audiencia, decisión explicada, artefacto y evidencia oral/escrita. No registrar actividad futura como logro. La comunicación debe acompañarse de una reflexión individual sobre claridad, feedback recibido y mejora aplicada.
+**AV2:** conservamos los aportes históricos. Kevin continúa con el incremento actual y enviará el tablero y los videos existentes; su autenticidad y atribución siguen pendientes. Product Owner, Scrum Master, reflexiones individuales y matriz LACX formal: pendientes de confirmar. No se reconstruyen reuniones ni aportes sin registro.
+
+## Collaboration Insights
+
+[Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. El tablero y las fuentes audiovisuales se incorporarán al recibirlos.
+
+## Tabla de contenidos
+
+- [Informe del Trabajo Final · AI-ToDu](#informe-del-trabajo-final--ai-todu)
+  - [Cómo leer y mantener este informe](#cómo-leer-y-mantener-este-informe)
+  - [Registro de versiones](#registro-de-versiones)
+  - [Student Outcome · ABET 3](#student-outcome--abet-3)
+    - [Registro de acciones y fuentes](#registro-de-acciones-y-fuentes)
+  - [Collaboration Insights](#collaboration-insights)
+- [Capítulo I: Introducción](#capítulo-i-introducción)
+  - [1.1. Startup Profile](#11-startup-profile)
+    - [1.1.1. Descripción de la startup](#111-descripción-de-la-startup)
+    - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+  - [1.2. Solution Profile](#12-solution-profile)
+    - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
+    - [1.2.2. Lean UX Process](#122-lean-ux-process)
+      - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
+      - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
+      - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
+      - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
+  - [1.3. Segmentos objetivo](#13-segmentos-objetivo)
+    - [1.3.1. Dueños y administradores de pequeños negocios](#131-dueños-y-administradores-de-pequeños-negocios)
+    - [1.3.2. Jefes de logística y personal de almacén](#132-jefes-de-logística-y-personal-de-almacén)
+- [Capítulo II: Requirements Elicitation & Analysis](#capítulo-ii-requirements-elicitation--analysis)
+  - [2.1. Competidores](#21-competidores)
+    - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
+    - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
+  - [2.2. Entrevistas](#22-entrevistas)
+    - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
+    - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+    - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
+  - [2.3. Needfinding](#23-needfinding)
+    - [2.3.1. User Personas](#231-user-personas)
+    - [2.3.2. User Task Matrix](#232-user-task-matrix)
+    - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
+    - [2.3.4. Empathy Mapping](#234-empathy-mapping)
+  - [2.4. Big Picture Event Storming](#24-big-picture-event-storming)
+  - [2.5. Ubiquitous Language](#25-ubiquitous-language)
+- [Capítulo III: Requirements Specification](#capítulo-iii-requirements-specification)
+  - [3.1. User Stories](#31-user-stories)
+  - [3.2. Impact Mapping](#32-impact-mapping)
+  - [3.3. Product Backlog](#33-product-backlog)
+- [Capítulo IV: Product Design](#capítulo-iv-product-design)
+  - [4.1. Style Guidelines](#41-style-guidelines)
+    - [4.1.1. General Style Guidelines](#411-general-style-guidelines)
+    - [4.1.2. Web Style Guidelines](#412-web-style-guidelines)
+  - [4.2. Information Architecture](#42-information-architecture)
+    - [4.2.1. Organization Systems](#421-organization-systems)
+    - [4.2.2. Labeling Systems](#422-labeling-systems)
+    - [4.2.3. SEO Tags and Meta Tags](#423-seo-tags-and-meta-tags)
+    - [4.2.4. Searching Systems](#424-searching-systems)
+    - [4.2.5. Navigation Systems](#425-navigation-systems)
+  - [4.3. Landing Page UI Design](#43-landing-page-ui-design)
+    - [4.3.1. Landing Page Wireframe](#431-landing-page-wireframe)
+    - [4.3.2. Landing Page Mock-up](#432-landing-page-mock-up)
+  - [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
+    - [4.4.1. Web Applications Wireframes](#441-web-applications-wireframes)
+    - [4.4.2. Web Applications Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
+    - [4.4.3. Web Applications Mock-ups](#443-web-applications-mock-ups)
+    - [4.4.4. Web Applications User Flow Diagrams](#444-web-applications-user-flow-diagrams)
+  - [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
+  - [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
+    - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
+    - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
+    - [4.6.3. Software Architecture Container Diagrams](#463-software-architecture-container-diagrams)
+    - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
+  - [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
+    - [4.7.1. Class Diagrams](#471-class-diagrams)
+  - [4.8. Database Design](#48-database-design)
+    - [4.8.1. Database Diagrams](#481-database-diagrams)
+      - [4.8.1.1. Esquema ejecutado del incremento AV2](#4811-esquema-ejecutado-del-incremento-av2)
+- [Capítulo V: Product Implementation, Validation & Deployment](#capítulo-v-product-implementation-validation--deployment)
+  - [5.1. Software Configuration Management](#51-software-configuration-management)
+    - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
+    - [5.1.2. Source Code Management](#512-source-code-management)
+    - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
+    - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
+  - [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services--applications-implementation)
+    - [5.2.1. Sprint 1](#521-sprint-1)
+      - [5.2.1.1. Sprint Planning 1](#5211-sprint-planning-1)
+      - [5.2.1.2. Aspect Leaders and Collaborators](#5212-aspect-leaders-and-collaborators)
+      - [5.2.1.3. Sprint Backlog 1](#5213-sprint-backlog-1)
+      - [5.2.1.4. Development Evidence for Sprint Review](#5214-development-evidence-for-sprint-review)
+      - [5.2.1.5. Execution Evidence for Sprint Review](#5215-execution-evidence-for-sprint-review)
+      - [5.2.1.6. Services Documentation Evidence for Sprint Review](#5216-services-documentation-evidence-for-sprint-review)
+      - [5.2.1.7. Software Deployment Evidence for Sprint Review](#5217-software-deployment-evidence-for-sprint-review)
+      - [5.2.1.8. Team Collaboration Insights during Sprint](#5218-team-collaboration-insights-during-sprint)
+    - [5.2.2. Sprint 2](#522-sprint-2)
+      - [5.2.2.1. Sprint Planning 2](#5221-sprint-planning-2)
+      - [5.2.2.2. Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
+      - [5.2.2.3. Sprint Backlog 2](#5223-sprint-backlog-2)
+      - [5.2.2.4. Development Evidence for Sprint Review](#5224-development-evidence-for-sprint-review)
+      - [5.2.2.5. Execution Evidence for Sprint Review](#5225-execution-evidence-for-sprint-review)
+      - [5.2.2.6. Services Documentation Evidence for Sprint Review](#5226-services-documentation-evidence-for-sprint-review)
+      - [5.2.2.7. Software Deployment Evidence for Sprint Review](#5227-software-deployment-evidence-for-sprint-review)
+      - [5.2.2.8. Team Collaboration Insights during Sprint](#5228-team-collaboration-insights-during-sprint)
+    - [5.2.3. Sprint 3](#523-sprint-3)
+      - [5.2.3.1. Sprint Planning 3](#5231-sprint-planning-3)
+      - [5.2.3.2. Aspect Leaders and Collaborators](#5232-aspect-leaders-and-collaborators)
+      - [5.2.3.3. Sprint Backlog 3](#5233-sprint-backlog-3)
+      - [5.2.3.4. Development Evidence for Sprint Review](#5234-development-evidence-for-sprint-review)
+      - [5.2.3.5. Execution Evidence for Sprint Review](#5235-execution-evidence-for-sprint-review)
+      - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
+      - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
+      - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+  - [5.3. Validation Interviews](#53-validation-interviews)
+    - [5.3.1. Diseño de entrevistas](#531-diseño-de-entrevistas)
+    - [5.3.2. Registro de entrevistas](#532-registro-de-entrevistas)
+    - [5.3.3. Evaluación heurística](#533-evaluación-heurística)
+  - [5.4. Video About-the-Product](#54-video-about-the-product)
+  - [5.5. Video About-the-Team](#55-video-about-the-team)
+- [Conclusiones](#conclusiones)
+  - [Mejora continua y autocrítica](#mejora-continua-y-autocrítica)
+  - [Pendientes de evidencia y próxima entrega](#pendientes-de-evidencia-y-próxima-entrega)
+- [Bibliografía y fuentes](#bibliografía-y-fuentes)
+- [Anexos](#anexos)
+  - [Modelo físico · diagramas de detalle](#modelo-físico--diagramas-de-detalle)
+    - [Inventario · core](#inventario--core)
+    - [Logística · core](#logística--core)
+    - [Abastecimiento · soporte](#abastecimiento--soporte)
+    - [Ventas · soporte](#ventas--soporte)
+    - [Devoluciones · soporte](#devoluciones--soporte)
+    - [Notificaciones · soporte](#notificaciones--soporte)
+    - [Identidad · genérico](#identidad--genérico)
+  - [Anexo A. Student Outcome](#anexo-a-student-outcome)
+  - [Anexo B. Participación individual](#anexo-b-participación-individual)
+  - [Anexo C. Testimonios y videos](#anexo-c-testimonios-y-videos)
 
 ---
 
@@ -219,26 +365,33 @@ Son arquetipos de diseño, no personas reales adicionales ni síntesis empírica
 
 ### 2.3.2. User Task Matrix
 
-| Tarea | Administrador | Almacén | Ventas | Logística |
-| --- | --- | --- | --- | --- |
-| Consultar saldo | Sí | Sí | Sí | Lectura según permisos actuales |
-| Recibir / ajustar inventario | Sí | Sí | No | No |
-| Vender / devolver | Sí | No | Sí | No |
-| Preparar y confirmar despacho | Sí | No | No | Sí |
-| Ver resumen comercial | Sí | No | No | No |
-| Provisionar empleado | Sí | No | No | No |
+Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. **Frecuencias e importancias son hipótesis**, todavía no mediciones de entrevistas verificadas; se sustituirán por los resultados reales.
 
-Esta matriz describe permisos del prototipo. Las reglas se validan también en API, no solo ocultando botones. El entorno de demo no sustituye una frontera de seguridad de servidor.
+| Tarea del negocio | Administrador · frecuencia | Administrador · importancia | Operario · frecuencia | Operario · importancia |
+| --- | --- | --- | --- | --- |
+| Conciliar mercadería disponible | Diaria, por validar | Alta, por validar | Diaria, por validar | Alta, por validar |
+| Contrastar pedido y entrega del proveedor | Por recepción, por validar | Alta, por validar | Por recepción, por validar | Alta, por validar |
+| Registrar entradas, salidas y pérdidas | Diaria, por validar | Alta, por validar | Por movimiento, por validar | Alta, por validar |
+| Comprobar que se puede atender una venta | Por venta, por validar | Alta, por validar | Por preparación, por validar | Alta, por validar |
+| Coordinar recursos y confirmar entrega | Por reparto, por validar | Alta, por validar | Por pedido, por validar | Media/alta, por validar |
+| Explicar diferencias de saldo e importes | Periódica, por validar | Alta, por validar | Al detectar diferencia, por validar | Alta, por validar |
+
+La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferencia por validar está en la supervisión global frente a la comprobación física. Esta matriz no representa permisos de software. Fichas, capturas y matriz en UXPressia, con las fuentes que sustenten sus valores: pendientes.
 
 ### 2.3.3. User Journey Mapping
 
-| Momento | Tarea | Fricción hipotética | Respuesta y criterio observable |
-| --- | --- | --- | --- |
-| Recepción | Contrastar pedido y mercadería | Entrega incompleta | Recibir 2/4 mantiene pedido parcial y suma solo dos al saldo. |
-| Venta | Seleccionar cantidad disponible | Sobreventa o producto dañado | Rechazo completo sin venta ni movimiento parcial. |
-| Preparación | Asignar venta, conductor y vehículo | Recursos duplicados | Una venta no se asigna dos veces; conflicto de recursos al salir. |
-| Entrega | Confirmar recepción | Estado sin evidencia mínima | Secuencia válida y receptor registrado. |
-| Conciliación | Explicar el resultado | Métricas manuales | Saldo e importes derivados de operaciones persistidas. |
+El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Los mapas por persona y capturas en UXPressia quedan pendientes.
+
+| Persona | Etapa actual sin AI-ToDu | Acción del negocio por validar | Fricción hipotética | Fuente |
+| --- | --- | --- | --- | --- |
+| Administrador | Comprueba disponibilidad | Contrasta pedido, registro y confirmación del almacén | Información distribuida entre registros y mensajes | Entrevista pendiente |
+| Administrador | Coordina reparto | Asigna responsable y pide confirmación | Venta y entrega difíciles de relacionar | Entrevista pendiente |
+| Administrador | Concilia jornada | Compara ventas, mercadería y entregas | Diferencias sin referencia compartida | Entrevista pendiente |
+| Operario | Recibe mercadería | Cuenta unidades y compara con pedido | Entrega parcial o dato incompleto | Entrevista pendiente |
+| Operario | Prepara salida | Ubica, separa y vuelve a contar unidades | Saldo desactualizado o doble anotación | Entrevista pendiente |
+| Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Entrevista pendiente |
+
+El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
 
 ### 2.3.4. Empathy Mapping
 
@@ -274,148 +427,94 @@ Cada fila muestra la secuencia local de un contexto; se presentan primero los co
 
 ## 3.1. User Stories
 
-Los identificadores históricos se conservan. La presentación sigue **core → soporte → genéricos → canal público**. El orden de lectura del dominio no implica poder ejecutar una operación protegida sin autenticación. Las estimaciones son una base de planificación, no horas reales ni velocidad medida.
+Un único cuadro reúne épicas, historias funcionales y técnicas, en orden core → soporte → genéricos → canal público. Conservamos identificadores y distinguimos implementación de evidencia humana. Los criterios usan Gherkin; los comportamientos pendientes no se presentan como pruebas aprobadas.
 
-### Épicas
+| Epic / Story ID | Título | Descripción | Criterios de aceptación | Relacionado con (Epic ID) | Estado |
+| --- | --- | --- | --- | --- | --- |
+| EPIC-02 | Inventario | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US09 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Given un SKU único y valores válidos, When se registra el artículo, Then se conserva normalizado con saldo cero. Escenario alternativo: Given SKU duplicado o dinero inválido, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US10 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Given un artículo y cantidad entera positiva, When se recibe mercadería, Then aumenta el saldo y registra motivo/responsable. Escenario alternativo: Given cantidad cero o fraccionaria, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US11 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | Given tres unidades disponibles, When se registra salida de dos, Then queda una unidad con movimiento. Escenario alternativo: Given salida mayor al saldo, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US12 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Given stock suficiente, When se registra una merma, Then disminuye saldo con tipo LOSS sin cambiar conservación. Escenario alternativo: Given cantidad no positiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US13 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Given un catálogo, When se busca nombre o SKU, Then obtiene coincidencias sin modificar registros. Escenario alternativo: Given búsqueda sin coincidencias devuelve resultado vacío, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | Demo implementada |
+| US14 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Given movimientos del espacio autorizado, When se consulta su historial, Then obtiene producto, tipo, cantidad, motivo, responsable y fecha. Escenario alternativo: Given identificador de empresa ajena no modifica registros, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| EPIC-04 | Logística | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US19 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | Given una venta confirmada sin despacho ni devolución, When se prepara un manifiesto, Then vincula las líneas sin descontar stock nuevamente. Escenario alternativo: Given venta ya asignada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US20 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Given recursos de la empresa, When se asigna conductor y vehículo, Then conserva referencias existentes. Escenario alternativo: Given recurso ya en tránsito al iniciar otra ruta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US21 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Given despacho PENDING, When se inicia y luego confirma con receptor, Then transita por IN_TRANSIT y finaliza DELIVERED con fecha. Escenario alternativo: Given salto de estado o falta de receptor, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US22 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Given un despacho no finalizado, When se registra una incidencia válida, Then conserva descripción y fecha. Escenario alternativo: Given incidencia posterior a entrega, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US37 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Given nombre y licencia o placa válidos, When se registra un recurso, Then pertenece a la empresa autenticada. Escenario alternativo: Given licencia o placa duplicada en esa empresa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| EPIC-10 | Abastecimiento | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US35 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Given una orden de cuatro unidades, When se recibe dos, Then aumenta el stock dos y queda PARTIAL. Escenario alternativo: Given exceso de recepción o línea duplicada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-10 | AV2 implementada; validación humana pendiente |
+| EPIC-03 | Comercial y devoluciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US15 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Given líneas válidas y stock suficiente, When se confirma la venta, Then guarda snapshots, movimientos y Outbox en una transacción. Escenario alternativo: Given línea inválida revierte toda la venta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US16 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Given una unidad y seis solicitudes concurrentes, When se confirma ventas de una unidad, Then solo una se acepta y cinco reciben conflicto. Escenario alternativo: Given artículo con conservación bloqueada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US17 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | Given ventas registradas, When se consulta el historial, Then conserva fecha, estado, líneas e importe histórico. Escenario alternativo: Given cambio posterior del catálogo no recalcula el snapshot, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US18 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Given venta sin despacho ni devolución, When se anula con motivo, Then repone stock una sola vez. Escenario alternativo: Given anulación repetida o venta despachada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US36 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | Given unidades vendidas no devueltas, When se registra RESTOCK o LOSS, Then resta venta neta y reintegra solo RESTOCK. Escenario alternativo: Given exceso o despacho sin finalizar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| EPIC-05 | Reporting | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US23 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Given operaciones aceptadas, When se consulta indicadores como administrador, Then obtiene importes y saldos derivados. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | AV2 implementada; validación humana pendiente |
+| US24 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | Given ventas registradas, When se consulta el ranking de productos, Then obtiene orden por unidades o importe indicado. Escenario alternativo: Given venta anulada no cuenta como efectiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente |
+| US25 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | Given registros autorizados, When se exporta datos, Then obtiene archivo interpretable con alcance y fecha. Escenario alternativo: Given registros ajenos no aparecen, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente; imprimir comprobante no cumple esta historia |
+| EPIC-06 | Notificaciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US26 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Given stock que cruza el mínimo, When se confirma la salida, Then persiste mensaje y notificación eventual. Escenario alternativo: Given reentrega del evento no duplica notificación, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | AV2 implementada; validación humana pendiente |
+| US27 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Given lotes con vencimiento, When se alcanza el umbral acordado, Then genera alerta vinculada al lote. Escenario alternativo: Given alerta ya procesada no se duplica sin cambio relevante, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | Pendiente: lotes sin flujo operativo completo |
+| EPIC-01 | Identidad | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Given datos válidos y correo disponible, When se registra empresa, Then crea administrador sin exponer hash. Escenario alternativo: Given correo existente o contraseña fuera de política, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US02 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | Given cuenta activa y contraseña válida, When se inicia sesión, Then recibe JWT temporal y perfil. Escenario alternativo: Given credenciales inválidas producen 401 sin token, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US03 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | Given sesión válida, When se cierra sesión, Then el token queda revocado. Escenario alternativo: Given acceso posterior con token revocado produce 401, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US04 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | Given solicitud de recuperación, When se procesa el correo, Then no revela si la cuenta existe. Escenario alternativo: Given enlace vencido o usado no permite cambiar acceso, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | Pendiente AV2 |
+| EPIC-07 | Acceso y roles | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US28 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | Given administrador y datos válidos, When se provisiona empleado con contraseña inicial, Then obtiene perfil sin hash ni contraseña. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2: contraseña inicial; invitación/recuperación pendientes |
+| US29 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Given cuenta activa, When se ejecuta una operación, Then el servidor usa su rol y empresa autenticados. Escenario alternativo: Given rol sin permiso o referencia ajena no modifica datos, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2 implementada; validación humana pendiente |
+| EPIC-08 | Preferencias | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US30 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Given administrador autenticado, When se edita el perfil de empresa, Then persiste únicamente datos de su empresa. Escenario alternativo: Given empresa ajena no se puede editar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente |
+| US31 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Given contraseña actual válida, When se cambia contraseña, Then conserva hash seguro e invalida sesiones según política. Escenario alternativo: Given contraseña actual inválida, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente AV2 |
+| US33 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | Given primera visita sin preferencia, When se inicia aplicación, Then usa en_US. Escenario alternativo: Given selección es_419 persiste al navegar y recargar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Implementada: en_US / es_419 |
+| EPIC-09 | Landing page | Capacidad canal público para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
+| US05 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Given visitante del segmento, When se consulta la propuesta, Then identifica inventario, venta, despacho y alcance académico. Escenario alternativo: Given no se afirman resultados medidos sin evidencia, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| US06 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | Given landing disponible, When se consulta capacidades, Then conoce el flujo y accede a la aplicación. Escenario alternativo: Given ilustración sintética se identifica como muestra, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| US07 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | Given modelo comercial validado, When se consulta planes, Then conoce condiciones y límites reales. Escenario alternativo: Given sin cobros no se simula suscripción activa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente; sin planes comerciales activos |
+| US08 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | Given visitante, When se solicita contacto, Then llega a un destino real. Escenario alternativo: Given un futuro formulario requiere validación y seguimiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Parcial: enlace real al proyecto; captación B2B pendiente |
+| US32 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Given testimonio autorizado y fuente real, When se publica testimonio, Then conserva atribución y contexto. Escenario alternativo: Given sin fuente o consentimiento no se publica, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente evidencia; no se publican testimonios ficticios |
+| US34 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Given visitante, When se consulta privacidad, Then conoce persistencia y ausencia de pagos/SUNAT. Escenario alternativo: Given servidor y demo distinguen sus formas de almacenamiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| TS05 | GET /products | Como Developer, deseo consumir GET /products para integrar la capacidad. Reemplaza GET /inventory; consulta de catálogo. | Given un usuario autorizado, When ejecuta `GET /products`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS06 | POST /products | Como Developer, deseo consumir POST /products para integrar la capacidad. Reemplaza POST /inventory; SKU único. | Given un usuario autorizado, When ejecuta `POST /products`, Then cumple request/response: {sku,name,price,cost,minimum} → 201 ProductResource; duplicado → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS07 | POST /movements · type RECEIPT | Como Developer, deseo consumir POST /movements · type RECEIPT para integrar la capacidad. Reemplaza /inventory/{sku}/entries. | Given un usuario autorizado, When ejecuta `POST /movements · type RECEIPT`, Then cumple request/response: {productId,quantity,type:RECEIPT,reason} → 201; fracción → 422. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS08 | POST /movements · type ISSUE o LOSS | Como Developer, deseo consumir POST /movements · type ISSUE o LOSS para integrar la capacidad. Reemplaza /inventory/{sku}/exits. | Given un usuario autorizado, When ejecuta `POST /movements · type ISSUE o LOSS`, Then cumple request/response: {productId,quantity,type:ISSUE o LOSS,reason} → 201; saldo insuficiente → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS09 | GET /movements | Como Developer, deseo consumir GET /movements para integrar la capacidad. Reemplaza /inventory/{sku}/history; producto referenciado. | Given un usuario autorizado, When ejecuta `GET /movements`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
+| TS14 | GET /dispatches | Como Developer, deseo consumir GET /dispatches para integrar la capacidad. Manifiestos con líneas/paradas/incidencias. | Given un usuario autorizado, When ejecuta `GET /dispatches`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS15 | POST /dispatches | Como Developer, deseo consumir POST /dispatches para integrar la capacidad. Ventas y recursos del mismo tenant. | Given un usuario autorizado, When ejecuta `POST /dispatches`, Then cumple request/response: {saleIds,driverId,vehicleId,destination} → 201 DispatchResource; referencia ajena → 404. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS16 | PATCH /dispatches/{id} | Como Developer, deseo consumir PATCH /dispatches/{id} para integrar la capacidad. Reemplaza subruta /status; transición y receptor. | Given un usuario autorizado, When ejecuta `PATCH /dispatches/{id}`, Then cumple request/response: {status,recipient?} → 200 DispatchResource; salto → 422; recurso ocupado → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS17 | POST /dispatches/{id}/incidents | Como Developer, deseo consumir POST /dispatches/{id}/incidents para integrar la capacidad. Incidencia persistida. | Given un usuario autorizado, When ejecuta `POST /dispatches/{id}/incidents`, Then cumple request/response: {description} → 201 DispatchResource; despacho entregado → 422. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS32 | GET/POST /drivers · GET/POST /vehicles | Como Developer, deseo consumir GET/POST /drivers · GET/POST /vehicles para integrar la capacidad. Nueva: maestros de recursos. | Given un usuario autorizado, When ejecuta `GET/POST /drivers · GET/POST /vehicles`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-04 | AV2; detalle en OpenAPI |
+| TS28 | POST /purchases | Como Developer, deseo consumir POST /purchases para integrar la capacidad. Nueva: orden y líneas. | Given un usuario autorizado, When ejecuta `POST /purchases`, Then cumple request/response: {supplierId,lines:[{productId,quantity}]} → 201 PurchaseResource. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS29 | POST /purchases/{id}/receipts | Como Developer, deseo consumir POST /purchases/{id}/receipts para integrar la capacidad. Nueva: recepción parcial acotada. | Given un usuario autorizado, When ejecuta `POST /purchases/{id}/receipts`, Then cumple request/response: {lines:[{lineId,quantity}]} → 201 PurchaseResource; exceso → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS30 | GET /suppliers · POST /suppliers | Como Developer, deseo consumir GET /suppliers · POST /suppliers para integrar la capacidad. Nueva: maestro de proveedor. | Given un usuario autorizado, When ejecuta `GET /suppliers · POST /suppliers`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-10 | AV2; detalle en OpenAPI |
+| TS10 | GET /sales | Como Developer, deseo consumir GET /sales para integrar la capacidad. Historial con detalles y comprobante. | Given un usuario autorizado, When ejecuta `GET /sales`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS11 | POST /sales | Como Developer, deseo consumir POST /sales para integrar la capacidad. Transacción completa / 201 / conflicto 409. | Given un usuario autorizado, When ejecuta `POST /sales`, Then cumple request/response: {lines:[{productId,quantity}]} y Idempotency-Key opcional → 201 SaleResource; stock insuficiente o clave con otro payload → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS12 | Detalle incluido en GET /sales | Como Developer, deseo consumir Detalle incluido en GET /sales para integrar la capacidad. GET /sales/{id} no está implementado; proyección de consulta documentada. | Given un usuario autorizado, When ejecuta `Detalle incluido en GET /sales`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS13 | POST /sales/{id}/cancel | Como Developer, deseo consumir POST /sales/{id}/cancel para integrar la capacidad. Ajusta método anterior PATCH; reintegro una sola vez. | Given un usuario autorizado, When ejecuta `POST /sales/{id}/cancel`, Then cumple request/response: {reason} → 200 SaleResource; venta despachada o anulación repetida → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS31 | POST /returns | Como Developer, deseo consumir POST /returns para integrar la capacidad. Nueva: retorno acotado y disposición. | Given un usuario autorizado, When ejecuta `POST /returns`, Then cumple request/response: {saleId,saleLineId,quantity,disposition,reason} → 201 ReturnResource; exceso → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-03 | AV2; detalle en OpenAPI |
+| TS18 | GET /metrics | Como Developer, deseo consumir GET /metrics para integrar la capacidad. Reemplaza /analytics/dashboard; administrador. | Given un usuario autorizado, When ejecuta `GET /metrics`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-05 | AV2; detalle en OpenAPI |
+| TS19 | GET /notifications | Como Developer, deseo consumir GET /notifications para integrar la capacidad. Bandeja de alertas persistidas. | Given un usuario autorizado, When ejecuta `GET /notifications`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-06 | AV2; detalle en OpenAPI |
+| TS20 | PATCH /notifications/{id} | Como Developer, deseo consumir PATCH /notifications/{id} para integrar la capacidad. Reemplaza subruta /read. | Given un usuario autorizado, When ejecuta `PATCH /notifications/{id}`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-06 | AV2; detalle en OpenAPI |
+| TS01 | POST /auth/register | Como Developer, deseo consumir POST /auth/register para integrar la capacidad. Alta de empresa/administrador en demo. | Given un usuario autorizado, When ejecuta `POST /auth/register`, Then cumple request/response: {name,company,email,password} → 201 UserResource; correo repetido → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS02 | POST /auth/login | Como Developer, deseo consumir POST /auth/login para integrar la capacidad. Credencial válida / 401. | Given un usuario autorizado, When ejecuta `POST /auth/login`, Then cumple request/response: {email,password} → 200 {token,user}; credencial inválida → 401. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS03 | POST /auth/logout | Como Developer, deseo consumir POST /auth/logout para integrar la capacidad. Invalida sesión / 204. | Given un usuario autorizado, When ejecuta `POST /auth/logout`, Then cumple request/response: Bearer válido y {} → 204; ese token usado después → 401. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS04 | Recuperación de contraseña | Como Developer, deseo consumir Recuperación de contraseña para integrar la capacidad. Pendiente; no endpoint implementado. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-01 | Pendiente |
+| TS21 | GET /employees | Como Developer, deseo consumir GET /employees para integrar la capacidad. Proyección de empleados, no listado general de credenciales. | Given un usuario autorizado, When ejecuta `GET /employees`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-07 | AV2; detalle en OpenAPI |
+| TS22 | POST /employees | Como Developer, deseo consumir POST /employees para integrar la capacidad. Reemplaza /users/invite solo para provisión; invitación/activación pendiente. | Given un usuario autorizado, When ejecuta `POST /employees`, Then cumple request/response: {name,email,role,password} → 201 EmployeeResource; otro rol → 403. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-07 | AV2; detalle en OpenAPI |
+| TS23 | GET /auth/me | Como Developer, deseo consumir GET /auth/me para integrar la capacidad. Perfil de sesión; sin hash ni contraseña. | Given un usuario autorizado, When ejecuta `GET /auth/me`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-01 | AV2; detalle en OpenAPI |
+| TS24 | Edición de perfil | Como Developer, deseo consumir Edición de perfil para integrar la capacidad. Pendiente; no endpoint operativo. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-08 | Pendiente |
+| TS25 | Cambio de contraseña | Como Developer, deseo consumir Cambio de contraseña para integrar la capacidad. Pendiente AV2. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-08 | Pendiente |
+| TS26 | Captación B2B | Como Developer, deseo consumir Captación B2B para integrar la capacidad. Pendiente; no POST /contact-messages. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-09 | Pendiente |
+| TS27 | Planes comerciales | Como Developer, deseo consumir Planes comerciales para integrar la capacidad. Pendiente; no GET /landing/plans. | Given capacidad pendiente, When se prioriza su implementación, Then se define y verifica request/response; no se declara un endpoint operativo actualmente. | EPIC-09 | Pendiente |
+| TS33 | Clima regional | Como Developer, deseo consultar GET /logistics/weather para mostrar condiciones de Lima sin enviar destinos de clientes. | Given rol ADMIN o LOGISTICS, When solicita, Then recibe 200 {location,temperatureC,precipitationMm,windKmh,observedAt,fetchedAt,source,attributionUrl}. Given fallo del proveedor, When solicita, Then recibe 503 UPSTREAM_UNAVAILABLE y puede seguir operando despachos. | EPIC-04 | Implementada |
+| TS34 | Outbox e inbox | Como Developer, deseo mensajes públicos versionados para integrar notificaciones con reintentos. | Given un comando aceptado, When confirma transacción, Then persiste mensaje Outbox. Given fallo del consumidor, When se reintenta, Then conserva intento y evita duplicar notificación. | EPIC-06 | Implementada |
+| TS35 | Consistencia e idempotencia | Como Developer, deseo ventas atómicas para evitar sobreventa y reenvíos duplicados. | Given una unidad y seis requests concurrentes, When confirman, Then una recibe 201 y cinco 409. Given igual Idempotency-Key y líneas, When se repite, Then devuelve la misma venta sin otra salida. | EPIC-03 | Implementada |
 
-| ID | Categoría | Contexto / capacidad |
-| --- | --- | --- |
-| EPIC-02 | Core | Inventario |
-| EPIC-04 | Core | Logística |
-| EPIC-10 | Soporte | Abastecimiento |
-| EPIC-03 | Soporte | Comercial y devoluciones |
-| EPIC-05 | Soporte | Reporting |
-| EPIC-06 | Soporte | Notificaciones |
-| EPIC-01 | Genérico | Identidad |
-| EPIC-07 | Genérico | Acceso y roles |
-| EPIC-08 | Genérico | Preferencias |
-| EPIC-09 | Canal público | Landing page |
-
-### EPIC-02 · Inventario
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US09 · Registro de artículo** | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Al guardar un SKU único normalizado, se crea con saldo cero. Un SKU duplicado, precio inválido o mínimo negativo se rechaza. | Demo implementada |
-| **US10 · Ingreso de mercadería** | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Dada cantidad entera positiva y motivo, al recibir se suma el saldo y se conserva movimiento/responsable. Cero o fracción se rechaza. | Demo implementada |
-| **US11 · Salida manual** | Como Almacenero, deseo registrar una salida para explicar el saldo. | Con stock suficiente, una salida conserva su motivo y reduce exactamente la cantidad solicitada. Sobrepasar saldo revierte la operación. | Demo implementada |
-| **US12 · Registro de mermas** | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Al registrar pérdida positiva se reduce stock y se guarda tipo LOSS. Conservación y cantidad no se confunden. | Demo implementada |
-| **US13 · Buscador de inventario** | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Dado catálogo cargado, la búsqueda filtra sin modificar datos. Sin coincidencias aparece un estado vacío. | Demo implementada |
-| **US14 · Historial de movimientos** | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Al abrir el historial aparecen producto, tipo, cantidad, motivo y fecha persistidos. Otro tenant no accede a esos registros. | Demo implementada |
-
-### EPIC-04 · Logística
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US19 · Manifiesto de despacho** | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | La venta debe estar confirmada, sin despacho previo ni devolución. Sus líneas se enlazan al manifiesto sin descontar stock nuevamente. | Demo: una venta en UI; varias mediante API |
-| **US20 · Asignación de recursos** | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Se seleccionan recursos existentes. Al iniciar ruta, un conductor o vehículo en otra ruta activa produce conflicto. | Demo implementada |
-| **US21 · Estado y confirmación de entrega** | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Solo PENDING → IN_TRANSIT → DELIVERED; entrega requiere receptor. Estado terminal y saltos se rechazan. | Demo: un destino e intento exitoso |
-| **US22 · Incidencia en ruta** | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Una descripción válida queda ligada al despacho y fecha. La vista muestra su registro persistido. | Demo implementada; resolución pendiente |
-| **US37 · Maestros de recursos logísticos** | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Conductor exige nombre/licencia y vehículo nombre/placa; referencias son del mismo tenant. | Nueva historia: demo implementada |
-
-### EPIC-10 · Abastecimiento
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US35 · Abastecimiento y recepción parcial** | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Proveedor y producto existentes; recibir 2/4 suma dos, conserva recepción y deja PARTIAL; exceso/duplicación revierte la solicitud. | Nueva historia: demo implementada |
-
-### EPIC-03 · Comercial y devoluciones
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US15 · Creación de venta** | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Con líneas válidas se guardan venta, detalles, movimiento, pago demo y comprobante histórico. Una línea inválida revierte todo. | Demo implementada |
-| **US16 · Validación de stock** | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Si falta stock o el artículo no está en buen estado, se rechaza toda la venta. Dos solicitudes concurrentes no venden las mismas unidades en el adaptador HTTP. | Demo implementada |
-| **US17 · Historial de ventas** | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | El historial muestra fecha, estado, importe y comprobante con precios/costos del momento. Recargar conserva datos en el adaptador usado. | Demo implementada |
-| **US18 · Anulación de venta** | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Una venta confirmada sin despacho/devolución repone stock una sola vez. Segundo intento o venta ya despachada se rechaza. | Demo implementada |
-| **US36 · Devolución trazable** | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | No excede lo vendido; RESTOCK reincorpora y LOSS no; se bloquea durante despacho sin finalizar. | Nueva historia: demo implementada; reembolso real pendiente |
-
-### EPIC-05 · Reporting
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US23 · Dashboard operativo** | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Después de una venta/devolución cambian ingresos, contribución y saldo. Reporting directo de otro rol devuelve 403. | Demo implementada; no utilidad neta |
-| **US24 · Reporte de productos más vendidos** | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | El ranking debe derivarse de líneas confirmadas, excluyendo anulaciones y considerando devoluciones. | Pendiente |
-| **US25 · Exportación de datos** | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | La exportación debe respetar empresa, filtros y formato; no incluir secretos ni registros ajenos. | Pendiente; imprimir comprobante no cumple esta historia |
-
-### EPIC-06 · Notificaciones
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US26 · Alerta de stock mínimo** | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Un movimiento que deja stock bajo mínimo genera notificación persistente; la bandeja permite marcarla leída. | Demo implementada; no correo/push |
-| **US27 · Alerta de vencimiento** | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Dado un lote vencido, se genera alerta y se restringe despacho según política validada. | Pendiente: lotes sin flujo operativo completo |
-
-### EPIC-01 · Identidad
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US01 · Registro de cuenta** | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Dado un correo nuevo y contraseña válida, cuando registro el espacio, entonces se crea empresa/administrador/sesión. Correo existente se rechaza. | Demo implementada |
-| **US02 · Inicio de sesión** | Como Usuario, deseo iniciar sesión para operar según mi rol. | Dadas credenciales válidas, al iniciar sesión recibo sesión y ruta autorizada. Contraseña incorrecta devuelve 401. | Demo implementada |
-| **US03 · Cierre de sesión** | Como Usuario, deseo cerrar sesión para terminar el acceso. | Dada una sesión, al salir se invalida y se eliminan credenciales locales. Un acceso posterior sin sesión devuelve 401. | Demo implementada |
-| **US04 · Recuperación de contraseña** | Como Usuario, deseo recuperar el acceso para volver a operar. | Dado un correo, la respuesta no debe revelar si existe; el enlace real debe expirar y permitir recuperación segura. | Pendiente AV2 |
-
-### EPIC-07 · Acceso y roles
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US28 · Creación de usuarios** | Como Administrador, deseo incorporar empleados para distribuir operación. | La provisión registra nombre, correo y rol sin divulgar contraseña. Activación y credencial real requieren flujo posterior. | Parcial: provisión, sin activación/invitación |
-| **US29 · Restricción por roles** | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Navegación y API aplican permisos. Acceso directo no autorizado devuelve 403; referencias ajenas no modifican datos. | Demo implementada; seguridad productiva pendiente |
-
-### EPIC-08 · Preferencias
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US30 · Edición de perfil empresa** | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Una edición validada debe persistir únicamente en el tenant autorizado. | Pendiente |
-| **US31 · Cambio de contraseña** | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Verificar credencial actual, política de hash segura en servidor e invalidación de sesiones según política. | Pendiente AV2 |
-| **US33 · Idioma de aplicación** | Como Usuario, deseo cambiar idioma para comprender la operación. | Inglés predeterminado y español latinoamericano; selector actualiza navegación, formularios, estados y errores y conserva preferencia. | Implementada: en_US / es_419 |
-
-### EPIC-09 · Landing page
-
-| ID y título | User story | Criterio de aceptación verificable | Estado TB1 |
-| --- | --- | --- | --- |
-| **US05 · Propuesta de valor** | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Dada la landing, al leer el hero comprendo inventario/venta/despacho y el carácter académico. | Implementada |
-| **US06 · Capacidades de landing** | Como Visitante, deseo conocer las capacidades para decidir si probar. | Dada la landing, al recorrer capacidades encuentro flujo, roles y acceso a la demo. La ilustración está identificada como muestra. | Implementada |
-| **US07 · Modelo comercial y planes** | Como Comprador, deseo consultar planes para evaluar la adopción. | Dado un modelo comercial validado, se describen condiciones y límites sin simular cobros o suscripciones activas. | Pendiente; sin planes comerciales activos |
-| **US08 · Contacto B2B** | Como Visitante, deseo contactar al equipo para resolver dudas. | El canal debe conducir a un destino real. Un formulario B2B requerirá persistencia, validación y seguimiento. | Parcial: enlace real al proyecto; captación B2B pendiente |
-| **US32 · Testimonios** | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Solo publicar testimonios autorizados con fuente real. Sin fuente se mantiene fuera de la landing. | Pendiente evidencia; no se publican testimonios ficticios |
-| **US34 · Términos y privacidad** | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Se informa alcance académico, persistencia local y ausencia de pagos/facturación real; diálogo accesible y cierre por teclado. | Implementada |
-
-### Technical stories y cambio de contrato
-
-Prefijo común: `/api/v1`. Esta tabla conserva la intención de los TS originales y hace visibles los cambios de contrato. Lo pendiente no se declara en OpenAPI como implementado. El [contrato ejecutable](https://github.com/AI-ToDu/ai-todu-fake-api/blob/fix/tb1-readiness/openapi.json) describe la versión de demo.
-
-| ID | Contrato o capacidad | Validación / diferencia frente a versión anterior |
-| --- | --- | --- |
-| TS05 | `GET /products` | Reemplaza GET /inventory; consulta de catálogo |
-| TS06 | `POST /products` | Reemplaza POST /inventory; SKU único |
-| TS07 | `POST /movements · type RECEIPT` | Reemplaza /inventory/{sku}/entries |
-| TS08 | `POST /movements · type ISSUE o LOSS` | Reemplaza /inventory/{sku}/exits |
-| TS09 | `GET /movements` | Reemplaza /inventory/{sku}/history; producto referenciado |
-| TS14 | `GET /dispatches` | Manifiestos con líneas/paradas/incidencias |
-| TS15 | `POST /dispatches` | Ventas y recursos del mismo tenant |
-| TS16 | `PATCH /dispatches/{id}` | Reemplaza subruta /status; transición y receptor |
-| TS17 | `POST /dispatches/{id}/incidents` | Incidencia persistida |
-| TS32 | `GET/POST /drivers · GET/POST /vehicles` | Nueva: maestros de recursos |
-| TS28 | `POST /purchases` | Nueva: orden y líneas |
-| TS29 | `POST /purchases/{id}/receipts` | Nueva: recepción parcial acotada |
-| TS30 | `GET /suppliers · POST /suppliers` | Nueva: maestro de proveedor |
-| TS10 | `GET /sales` | Historial con detalles y comprobante |
-| TS11 | `POST /sales` | Transacción completa / 201 / conflicto 409 |
-| TS12 | `Detalle incluido en GET /sales` | GET /sales/{id} no está implementado; proyección de consulta documentada |
-| TS13 | `POST /sales/{id}/cancel` | Ajusta método anterior PATCH; reintegro una sola vez |
-| TS31 | `POST /returns` | Nueva: retorno acotado y disposición |
-| TS18 | `GET /metrics` | Reemplaza /analytics/dashboard; administrador |
-| TS19 | `GET /notifications` | Bandeja de alertas persistidas |
-| TS20 | `PATCH /notifications/{id}` | Reemplaza subruta /read |
-| TS01 | `POST /auth/register` | Alta de empresa/administrador en demo |
-| TS02 | `POST /auth/login` | Credencial válida / 401 |
-| TS03 | `POST /auth/logout` | Invalida sesión / 204 |
-| TS04 | `Recuperación de contraseña` | Pendiente; no endpoint implementado |
-| TS21 | `GET /employees` | Proyección de empleados, no listado general de credenciales |
-| TS22 | `POST /employees` | Reemplaza /users/invite solo para provisión; invitación/activación pendiente |
-| TS23 | `GET /auth/me` | Perfil de sesión; sin hash ni contraseña |
-| TS24 | `Edición de perfil` | Pendiente; no endpoint operativo |
-| TS25 | `Cambio de contraseña` | Pendiente AV2 |
-| TS26 | `Captación B2B` | Pendiente; no POST /contact-messages |
-| TS27 | `Planes comerciales` | Pendiente; no GET /landing/plans |
+Prefijo REST: /api/v1. [OpenAPI del servidor](https://ai-todu-api-av2.onrender.com/v3/api-docs) y [schemas públicos](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json). La Fake API conserva el contrato histórico TB1.
 
 ## 3.2. Impact Mapping
 
@@ -432,45 +531,45 @@ Los objetivos comerciales heredados (clientes, retención y ahorro porcentual) s
 
 <div class="backlog-table">
 
-| Orden de revisión | Story ID | Épica | Título | Story points propuestos |
-| --- | --- | --- | --- | --- |
-| 1 | US09 | EPIC-02 | Registro de artículo | 3 |
-| 2 | US10 | EPIC-02 | Ingreso de mercadería | 5 |
-| 3 | US11 | EPIC-02 | Salida manual | 3 |
-| 4 | US12 | EPIC-02 | Registro de mermas | 2 |
-| 5 | US13 | EPIC-02 | Buscador de inventario | 3 |
-| 6 | US14 | EPIC-02 | Historial de movimientos | 3 |
-| 7 | US19 | EPIC-04 | Manifiesto de despacho | 5 |
-| 8 | US20 | EPIC-04 | Asignación de recursos | 3 |
-| 9 | US21 | EPIC-04 | Estado y confirmación de entrega | 3 |
-| 10 | US22 | EPIC-04 | Incidencia en ruta | 3 |
-| 11 | US37 | EPIC-04 | Maestros de recursos logísticos | 5 |
-| 12 | US35 | EPIC-10 | Abastecimiento y recepción parcial | 8 |
-| 13 | US15 | EPIC-03 | Creación de venta | 8 |
-| 14 | US16 | EPIC-03 | Validación de stock | 5 |
-| 15 | US17 | EPIC-03 | Historial de ventas | 3 |
-| 16 | US18 | EPIC-03 | Anulación de venta | 5 |
-| 17 | US36 | EPIC-03 | Devolución trazable | 5 |
-| 18 | US23 | EPIC-05 | Dashboard operativo | 5 |
-| 19 | US24 | EPIC-05 | Reporte de productos más vendidos | 3 |
-| 20 | US25 | EPIC-05 | Exportación de datos | 5 |
-| 21 | US26 | EPIC-06 | Alerta de stock mínimo | 5 |
-| 22 | US27 | EPIC-06 | Alerta de vencimiento | 3 |
-| 23 | US01 | EPIC-01 | Registro de cuenta | 3 |
-| 24 | US02 | EPIC-01 | Inicio de sesión | 3 |
-| 25 | US03 | EPIC-01 | Cierre de sesión | 2 |
-| 26 | US04 | EPIC-01 | Recuperación de contraseña | 5 |
-| 27 | US28 | EPIC-07 | Creación de usuarios | 5 |
-| 28 | US29 | EPIC-07 | Restricción por roles | 5 |
-| 29 | US30 | EPIC-08 | Edición de perfil empresa | 2 |
-| 30 | US31 | EPIC-08 | Cambio de contraseña | 3 |
-| 31 | US33 | EPIC-08 | Idioma de aplicación | 2 |
-| 32 | US05 | EPIC-09 | Propuesta de valor | 3 |
-| 33 | US06 | EPIC-09 | Capacidades de landing | 2 |
-| 34 | US07 | EPIC-09 | Modelo comercial y planes | 2 |
-| 35 | US08 | EPIC-09 | Contacto B2B | 3 |
-| 36 | US32 | EPIC-09 | Testimonios | 2 |
-| 37 | US34 | EPIC-09 | Términos y privacidad | 2 |
+| Orden de revisión | Story ID | Épica | Título | Descripción | Story points propuestos |
+| --- | --- | --- | --- | --- | --- |
+| 1 | US09 | EPIC-02 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | 3 |
+| 2 | US10 | EPIC-02 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | 5 |
+| 3 | US11 | EPIC-02 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | 3 |
+| 4 | US12 | EPIC-02 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | 2 |
+| 5 | US13 | EPIC-02 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | 3 |
+| 6 | US14 | EPIC-02 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | 3 |
+| 7 | US19 | EPIC-04 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | 5 |
+| 8 | US20 | EPIC-04 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | 3 |
+| 9 | US21 | EPIC-04 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | 3 |
+| 10 | US22 | EPIC-04 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | 3 |
+| 11 | US37 | EPIC-04 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | 5 |
+| 12 | US35 | EPIC-10 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | 8 |
+| 13 | US15 | EPIC-03 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | 8 |
+| 14 | US16 | EPIC-03 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | 5 |
+| 15 | US17 | EPIC-03 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | 3 |
+| 16 | US18 | EPIC-03 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | 5 |
+| 17 | US36 | EPIC-03 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | 5 |
+| 18 | US23 | EPIC-05 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | 5 |
+| 19 | US24 | EPIC-05 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | 3 |
+| 20 | US25 | EPIC-05 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | 5 |
+| 21 | US26 | EPIC-06 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | 5 |
+| 22 | US27 | EPIC-06 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | 3 |
+| 23 | US01 | EPIC-01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | 3 |
+| 24 | US02 | EPIC-01 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | 3 |
+| 25 | US03 | EPIC-01 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | 2 |
+| 26 | US04 | EPIC-01 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | 5 |
+| 27 | US28 | EPIC-07 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | 5 |
+| 28 | US29 | EPIC-07 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | 5 |
+| 29 | US30 | EPIC-08 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | 2 |
+| 30 | US31 | EPIC-08 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | 3 |
+| 31 | US33 | EPIC-08 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | 2 |
+| 32 | US05 | EPIC-09 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | 3 |
+| 33 | US06 | EPIC-09 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | 2 |
+| 34 | US07 | EPIC-09 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | 2 |
+| 35 | US08 | EPIC-09 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | 3 |
+| 36 | US32 | EPIC-09 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | 2 |
+| 37 | US34 | EPIC-09 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | 2 |
 
 </div>
 
@@ -564,9 +663,13 @@ TB1 es un prototipo funcional con dos transportes que comparten motor: HTTP loca
 
 ### 4.6.1. Design-Level Event Storming
 
-Primero se presentan **Inventory y Logistics (core)**; después Procurement, Commercial/Returns, Reporting y Notifications (soporte); finalmente Identity and Access (genérico). El [análisis arquitectónico](design/architecture.md) define relaciones y tecnología. La [revisión DDD de todo el alcance](design/ddd-review.md) evalúa límites de agregados, objetos de valor, reglas y deuda de cada contexto; diferencia lo implementado del modelo AV2. Eventos como `StockReceived` o `DeliveryConfirmed` son vocabulario de diseño, no mensajes publicados por un broker en esta versión.
+Primero revisamos **Inventory y Logistics (core)**; luego Procurement, Sales/Returns, Reporting y Notifications (soporte); finalmente IAM (genérico). El [análisis arquitectónico](design/architecture.md) registra decisiones. El modelo distingue comandos, agregados, eventos internos, traducción pública, Outbox e inbox. Es un diseño contrastado con código; no acredita un taller colaborativo realizado.
 
-![Context map](design/diagrams/rendered/context-map.svg)
+![Design-Level Event Storming AV2](design/diagrams/rendered/design-level-event-storming.svg)
+
+Los mensajes públicos se añaden al Outbox en la transacción del comando. El relay reintenta entregas y Notifications evita duplicados por ID del evento.
+
+StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -578,41 +681,45 @@ C1 muestra personas y propósito del sistema. No incluye pasarelas fiscales o pr
 
 ![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
 
-TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **propuesta AV2** siguiente:
+TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **implementación AV2** siguiente:
 
-![C4 C2 · propuesta AV2, aún sin implementar](design/diagrams/rendered/c4-containers-av2.svg)
+![C4 C2 · ejecución AV2](design/diagrams/rendered/c4-containers-av2.svg)
 
-Para AV2 se propone un monolito modular Spring Boot y PostgreSQL. Un bounded context no se convierte automáticamente en microservicio. La elección preserva transacciones y permite separar responsabilidades antes de sumar despliegues.
+AV2 implementa un monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
 
 ### 4.6.4. Software Architecture Components Diagrams
 
 ![C4 C3 · componentes reales del motor de demo](design/diagrams/rendered/c4-components.svg)
 
-El dispatcher es un servicio de aplicación compartido. Los tres objetos de dominio están en módulos independientes de Angular, HTTP y almacenamiento. Los adaptadores deciden cómo confirmar la transacción. La separación posterior en servicios de aplicación por contexto y repositorios JPA es trabajo explícito de AV2.
+El diagrama anterior describe TB1. En AV2, los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos.
+
+![C4 C3 · componentes del recorrido core AV2](design/diagrams/rendered/c4-components-av2.svg)
 
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams
 
-![Agregados y value objects](design/diagrams/rendered/class-core.svg)
+![Modelo histórico del prototipo TB1](design/diagrams/rendered/class-core.svg)
 
-| Objeto | Semántica implementada | Representación en frontera |
+La tabla siguiente corresponde al modelo histórico de TB1. En AV2, `Money` conserva centavos en un `long`, `Quantity` es un entero y `DispatchManifest` valida su destino como texto y contiene `DeliveryEvidence` (receptor/fecha). `Sale` y `PurchaseOrder` son agregados independientes. La separación entre clases Java de dominio y entidades JPA se comprueba en el repositorio API; `Address` y `SaleSummary` del dibujo histórico no se presentan como clases actuales del backend.
+
+| Objeto TB1 | Semántica del prototipo | Representación en frontera TB1 |
 | --- | --- | --- |
 | Sku | Normalización y validación; inmutable. | Cadena JSON / columna `sku` única por empresa. |
 | Quantity | Entero no negativo, positivo cuando el comando lo exige; límite explícito. | Número JSON / entero SQL con restricción. |
 | Money | PEN, precisión de centavos, valor finito/no negativo; inmutable. | Número de importe en API de demo; centavos enteros en diseño SQL. |
-| Address | Texto normalizado con longitud válida; inmutable. | DTO / columna de dirección. |
-| InventoryItem | Identidad estable; entrada/salida y aptitud de venta. | DTO de producto y repositorio futuro. |
+| Address | Texto normalizado con longitud válida; inmutable. | Recurso de frontera / columna del prototipo. |
+| InventoryItem | Identidad estable; entrada/salida y aptitud de venta. | Recurso de producto y adaptador de demo. |
 | SaleSummary | Total validado en centavos, sin aritmética acumulada de decimales. | Total serializado; snapshot de líneas. |
-| DispatchManifest | Destino y transición PENDING → IN_TRANSIT → DELIVERED. | Estado serializado y entidad futura. |
+| DispatchManifest | Destino y transición PENDING → IN_TRANSIT → DELIVERED. | Recurso de despacho y adaptador de demo. |
 
-JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor semántico del dominio. No se afirma que todas las filas JSON sean agregados DDD completos. Los precios/costos históricos se conservan en la venta y no se recalculan desde un catálogo modificado.
+JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor semántico del dominio. El servidor usa InventoryItem, Sale, PurchaseOrder y DispatchManifest con operaciones e invariantes; no trata cada fila persistente como agregado independiente. Los precios/costos históricos se conservan en la venta y no se recalculan desde un catálogo modificado.
 
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
 
-El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite para validar estructura y restricciones; su migración PostgreSQL/JPA aún no se implementa. La demo usa 35 **colecciones JSON**, no una base relacional operativa.
+El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite como referencia; TB1 usa 35 colecciones JSON. **AV2 implementa 19 tablas de negocio/infraestructura**, además de flyway_schema_history, definidas por sus [migraciones PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/tree/main/src/main/resources/db/migration). No se declara implementada automáticamente toda la referencia de 35 tablas.
 
 | Área lógica | Tablas | Capacidad operativa actual y brecha |
 | --- | --- | --- |
@@ -627,7 +734,21 @@ El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos
 
 Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rendered/erd-inventory.svg), [Logística](design/diagrams/rendered/erd-logistics.svg), [Abastecimiento](design/diagrams/rendered/erd-procurement.svg), [Ventas](design/diagrams/rendered/erd-sales.svg), [Devoluciones](design/diagrams/rendered/erd-returns.svg), [Notificaciones](design/diagrams/rendered/erd-notifications.svg) e [Identidad](design/diagrams/rendered/erd-identity.svg). El DDL es la referencia completa para relaciones entre áreas.
 
-**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. La serialización camelCase del demo se mapeará explícitamente a columnas snake_case en AV2; no se promete una migración automática ni se expone el esquema físico como contrato HTTP.
+**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. AV2 usa nombres snake_case, centavos enteros, converters para valores simples y embeddables para valores compuestos. No hay migración automática de datos ficticios del navegador al servidor; cada modo mantiene su almacenamiento. El esquema físico no es el contrato HTTP.
+
+#### 4.8.1.1. Esquema ejecutado del incremento AV2
+
+| Área | Tablas PostgreSQL implementadas |
+| --- | --- |
+| IAM y coordinación | workspaces, workspace_locks, users, sessions |
+| Inventario | inventory_items, stock_movements |
+| Ventas | sales, sale_lines |
+| Logística | drivers, vehicles, dispatches, dispatch_lines, delivery_incidents |
+| Compras | suppliers, purchase_orders, purchase_lines |
+| Devoluciones | customer_returns |
+| Integración | integration_outbox, notifications |
+
+Flyway aplica V1–V4 y Hibernate valida el esquema sin generarlo en producción. CI ejecuta las pruebas con PostgreSQL 17. El saldo, su movimiento y la venta se confirman en una transacción. No se implementa event sourcing ni un ledger fiscal.
 
 ---
 
@@ -644,7 +765,7 @@ Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rend
 | Fake API | JavaScript ESM, Node 24 `node:http`; Service Worker e IndexedDB | Contrato de demo, invariantes y persistencia. |
 | Pruebas | `node:test`, SQLite integrado de Node, compilador Angular | Dominio, HTTP real, concurrencia/persistencia, esquema y cobertura de traducciones. |
 | Informe | Markdown, Mermaid/SVG y generadores versionados | README completo, fuentes únicas, comprobación y exportación. |
-| AV2, diseño | Java / Spring Boot / JPA / PostgreSQL | Implementación productiva pendiente. |
+| Backend AV2 | Java 21 / Spring Boot 4.1.2 / JPA / PostgreSQL 17 / Flyway | API con dominio agnóstico, JWT, roles, transacciones y Outbox. |
 
 El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El equipo debe confirmar su tablero de gestión; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
 
@@ -652,12 +773,13 @@ El repositorio incluye lockfile cuando instala dependencias. La Fake API y landi
 
 | Repositorio individual | Artefacto | Rama para esta revisión |
 | --- | --- | --- |
-| [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | Frontend y copia verificable del motor de demo | `fix/tb1-readiness` |
-| [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | Landing | `fix/tb1-readiness` |
+| [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | Frontend y transporte AV2 | `fix/av2-api-integration` |
+| [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | Landing y acceso al servidor AV2 | `fix/av2-platform-scope` |
 | [ai-todu-fake-api](https://github.com/AI-ToDu/ai-todu-fake-api) | Fuente canónica de Fake API, contrato y pruebas | `fix/tb1-readiness` |
-| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/tb1-readiness` |
+| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/av2-report-alignment` |
+| [ai-todu-api](https://github.com/AI-ToDu/ai-todu-api) | Backend, contratos, migraciones y CI | `fix/av2-domain-foundation` y `fix/av2-runtime-configuration` |
 
-**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; `feature/<scope>` desarrolla cambios y `fix/<scope>` prepara correcciones. Esta revisión se propone mediante PR en draft y se revisa antes de merge. No se reescriben commits históricos ni se atribuyen las correcciones asistidas a otros integrantes. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
+**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; las ramas nuevas usan `fix/<scope>`. AV2 se integra mediante PR con comprobaciones de CI antes del merge. No se reescriben commits históricos ni se atribuyen las correcciones asistidas a otros integrantes. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
 
 Los cuatro bloques de corrección son: **(1) integración funcional con Fake API; (2) interfaz, landing e idiomas; (3) DDD/C4/datos; (4) informe, trazabilidad y guía de revisión**. Cada repositorio registra un commit por bloque aplicable; no se crean commits vacíos para aumentar un contador. El paquete nuevo registra además su inicialización real. Los hashes y PR vigentes se consultan en Git, sin duplicar un historial que pueda quedar desactualizado.
 
@@ -673,13 +795,13 @@ Los mensajes visibles se resuelven por clave en `en_US`/`es_419`; el API emite c
 
 | Acceso | URL / comando | Estado y límite |
 | --- | --- | --- |
-| Landing pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-platform/) | La publicación actual conserva la versión anterior hasta aprobar el merge/despliegue. |
-| Webapp pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-webapp/) | Fuente actual verificada: rama `gh-pages`. La revisión se prueba localmente y se entrega por PR. |
+| Landing pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-platform/) | Canal estático público y CTA hacia la webapp. |
+| Webapp pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-webapp/) | GitHub Actions desde main; PR AV2 #5 integrado con CI aprobado. |
 | Workspace + Fake API HTTP | `npm ci` y `npm run demo`, frontend | Sirve interfaz compilada y API en `http://127.0.0.1:8850/?api=http`. |
 | Fake API independiente | `npm test`; `npm start -- --port 8853` | API local `/api/v1`, sin frontend compilado. |
 | Modo estático | Build Pages y origen HTTPS o localhost | Worker/IndexedDB por origen/perfil; no servidor público REST. |
 
-El workflow de verificación revisa ramas `fix/**` y PR. El workflow Pages de la webapp se restringe a `main` después de revisión; exige configurar GitHub Pages como **GitHub Actions** al publicar. Esa configuración y el despliegue de producción quedan fuera de la revisión actual hasta aprobar los cambios. La navegación usa hash para rutas estáticas y el build fija `base-href` `/ai-todu-webapp/`. Se conserva el selector de idioma y CTA de la landing.
+El workflow de verificación revisa ramas `fix/**` y PR. El workflow Pages de la webapp se restringe a `main` después de revisión; exige configurar GitHub Pages como **GitHub Actions** al publicar. Actions y la publicación de webapp se comprobaron; el servidor AV2 se verifica por separado. La navegación usa hash para rutas estáticas y el build fija `base-href` `/ai-todu-webapp/`. Se conserva el selector de idioma y CTA de la landing.
 
 ## 5.2. Landing Page, Services & Applications Implementation
 
@@ -729,7 +851,7 @@ Sprint 1 no acredita un servidor productivo. El alcance documentado es landing/d
 
 #### 5.2.1.7. Software Deployment Evidence for Sprint Review
 
-La URL pública de landing figura en configuración. El historial público y configuración de Pages son evidencia distinta del navegador local; el rediseño se entrega en rama de revisión y aún requiere merge/publicación aprobados.
+La URL pública de landing figura en configuración. El historial público y configuración de Pages son evidencia distinta del navegador local. El rediseño se integró en una revisión posterior; el [PR #4 de AV2](https://github.com/AI-ToDu/ai-todu-platform/pull/4) ajusta el alcance y el acceso al servidor, sin atribuir esta revisión a la entrega histórica de Sprint 1.
 
 #### 5.2.1.8. Team Collaboration Insights during Sprint
 
@@ -807,33 +929,136 @@ El transporte HTTP local y el worker consumen el mismo motor. La URL de Pages `/
 
 #### 5.2.2.7. Software Deployment Evidence for Sprint Review
 
-El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build con ruta base Pages y un workflow de despliegue para versión revisada. La configuración pública actual continúa usando `gh-pages`; tras aprobación se configura Actions y se publica deliberadamente. La existencia de un PR no se registra como despliegue completado.
+El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build con ruta base Pages y un workflow de despliegue para versión revisada. Pages cambió a GitHub Actions el 7/11; el incremento AV2 se publica desde main el 8/11. La existencia de un PR no se registra como despliegue completado.
 
 #### 5.2.2.8. Team Collaboration Insights during Sprint
 
 Los aportes originales se enlazan por integrante y módulo. La corrección no intenta suplir colaboración con volumen de commits: registra trabajo asistido y deja revisión cruzada pendiente. Para completar la evidencia, cada integrante debe revisar su contexto, ejecutar un caso principal/alternativo, comentar un PR y explicar una decisión en la exposición con marca de tiempo.
 
+### 5.2.3. Sprint 3
+
+#### 5.2.3.1. Sprint Planning 3
+
+**Hito:** AV2, semana 12. **Registro técnico:** 7–8/11/2026. Calendario, asistentes, duración de ceremonia y compromiso de capacidad no están acreditados. La selección siguiente documenta el incremento trabajado; no reconstruye una reunión.
+
+> Our focus is on enabling an authorized workspace to reconcile receiving, sales and delivery through the deployed API. We believe it delivers a shared and traceable operational record to business owners and warehouse operators. This will be confirmed when a sale and its delivery preserve stock, historical amounts and recipient across sessions, concurrent sales cannot oversell, and invalid or unauthorized operations leave no partial changes.
+
+El criterio técnico se prueba con datos ficticios; la confianza del usuario sigue como hipótesis. Product Owner y Scrum Master: pendientes de confirmar. Se conserva la atribución histórica sin asignar aportes nuevos no verificados.
+
+#### 5.2.3.2. Aspect Leaders and Collaborators
+
+| Aspecto | Actividad verificada | Responsable y límite |
+| --- | --- | --- |
+| Development | Backend Java e integración Angular en PR | Trabajo asistido autorizado por Kevin; sin atribuirlo a otros integrantes |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; demostración/reflexión individual pendientes |
+| Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
+| Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
+
+Matriz LACX formal y aprobación: pendientes. Los aportes históricos de los integrantes se mantienen con sus fuentes.
+
+#### 5.2.3.3. Sprint Backlog 3
+
+Estimaciones de referencia, no horas registradas ni capacidad medida. La prioridad sigue core → soporte → genérico; autenticación es una dependencia técnica, no el primer objetivo del negocio.
+
+| Task | Historia | Engineering task | Est. | Resultado verificable |
+| --- | --- | --- | --- | --- |
+| S3-T01 | US09–US14 | Implementar InventoryItem, VOs, movimientos y persistencia separada. | 8 h | Reglas, migraciones y rollback |
+| S3-T02 | US15–US18, TS35 | Confirmar/anular ventas atómicas con concurrencia e idempotencia. | 8 h | Solo una de seis ventas de la última unidad se acepta |
+| S3-T03 | US19–US22, US37 | Preparar/iniciar/entregar manifiesto con recursos existentes. | 8 h | Receptor y saldo sin doble descuento |
+| S3-T04 | US35 | Implementar compra y recepción parcial acotada. | 8 h | Exceso y líneas repetidas rechazados |
+| S3-T05 | US36, US23 | Conciliar devoluciones e indicadores. | 4 h | Restock/loss y límite de devolución |
+| S3-T06 | US26, TS34 | Traducir eventos internos a PL v1 con Outbox e inbox. | 8 h | Fallo/reintento y reentrega sin duplicación |
+| S3-T07 | TS33 | Integrar Open-Meteo mediante gateway y caché. | 4 h | Traducción/caché/fallo probados y llamada real |
+| S3-T08 | US01–US03, US28–US29 | Implementar JWT revocables, BCrypt, roles y aislamiento. | 8 h | Sesión y denegaciones verificadas |
+| S3-T09 | US33, contratos TS | Integrar Angular con API y separar sesiones demo/servidor. | 8 h | 21 pruebas y build Pages aprobados |
+| S3-T10 | Transversal | Desplegar API/DB/webapp y comprobar recorrido. | 8 h | Render live, health UP y Pages |
+| S3-T11 | Transversal | Alinear informe, diagramas y servicios. | 8 h | Fuentes y exportación de esta versión |
+| S3-T12 | Validación / ABET 3 | Incorporar entrevistas, tablero, videos y reflexión. | 8 h | Pendiente de evidencia humana real |
+
+El tablero externo y sus responsables siguen pendientes de recibir. Esta tabla no simula transiciones To Do / In Process / To Review / Done ni tiempo trabajado.
+
+#### 5.2.3.4. Development Evidence for Sprint Review
+
+[Backend PR #1](https://github.com/AI-ToDu/ai-todu-api/pull/1) implementa contextos, agregados, recursos, migraciones y Outbox. [PR #2](https://github.com/AI-ToDu/ai-todu-api/pull/2) retira administración del runtime y prueba el gateway externo. [Frontend PR #5](https://github.com/AI-ToDu/ai-todu-webapp/pull/5) integra API, sesiones, idioma, provisión y clima.
+
+El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; converters, embeddables y assemblers pertenecen a infraestructura. Los agregados conservan sus invariantes y los errores esperados se devuelven mediante Result.
+
+#### 5.2.3.5. Execution Evidence for Sprint Review
+
+| Verificación | Resultado y evidencia | Límite |
+| --- | --- | --- |
+| Backend local | 14 pruebas aprobadas | H2 de desarrollo y pruebas del gateway |
+| Backend CI | Suite aprobada con PostgreSQL 17 / Java 21 | Datos aislados; no mide carga empresarial |
+| Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
+| HTTP público | Entrada 5 → venta 2 / PEN 21 → entrega → saldo 3 | Datos ficticios; no equivale a aceptación de usuarios |
+| Open-Meteo/CORS | Respuesta real Lima y origen GitHub Pages autorizado | Clima regional de referencia |
+| Outbox | Fallo/reintento y reentrega sin duplicación | Relay e inbox en el monolito, sin broker externo |
+
+[CI backend](https://github.com/AI-ToDu/ai-todu-api/actions) · [CI/Pages frontend](https://github.com/AI-ToDu/ai-todu-webapp/actions).
+
+![Inventario AV2 publicado después de escribir y recargar](assets/inventario-av2-publicado.png)
+
+Evidencia del 8/11/2026: desde Angular se crea el producto ficticio BROWSER-20261108, se reciben dos unidades y se vende una por PEN 12,50. La recarga y el nuevo inicio de sesión conservan una unidad. El otro artículo corresponde al recorrido HTTP anterior. Los datos son sintéticos y no representan resultados comerciales.
+
+#### 5.2.3.6. Services Documentation Evidence for Sprint Review
+
+[Swagger UI](https://ai-todu-api-av2.onrender.com/swagger-ui.html) · [OpenAPI](https://ai-todu-api-av2.onrender.com/v3/api-docs) · [README API](https://github.com/AI-ToDu/ai-todu-api) · [Published Language v1](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json).
+
+La API /api/v1 es el Open Host Service. Usa recursos JSON, Problem Details y códigos estables; Accept-Language selecciona en-US o es-419. Los eventos internos se traducen antes de cruzar contextos. Fachadas públicas y gateways delimitan la integración; no se importan agregados de otros dominios.
+
+#### 5.2.3.7. Software Deployment Evidence for Sprint Review
+
+| Artefacto | Publicación | Estado |
+| --- | --- | --- |
+| Landing | [Pages](https://ai-todu.github.io/ai-todu-platform/) | Canal estático y CTA |
+| Frontend | [Pages](https://ai-todu.github.io/ai-todu-webapp/) | Workflow main aprobado |
+| API | [Render / health](https://ai-todu-api-av2.onrender.com/actuator/health) | Servicio gratuito live y UP |
+| PostgreSQL | Base aislada aitodu_av2 / usuario aitodu_app | Red privada y sin lectura sobre tablas de otros proyectos |
+
+El runtime recibe solo credenciales propias. La provisión administrativa se ejecutó desde el equipo local con una regla /32 temporal, ya retirada. La instancia gratuita comparte capacidad y caducidad: Dashboard indica 28/11/2026 y la API de Render devuelve su expiración UTC equivalente al 29/11. Se requiere continuidad/exportación antes del vencimiento. El servicio gratuito puede tardar en reactivarse tras inactividad.
+
+#### 5.2.3.8. Team Collaboration Insights during Sprint
+
+PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se espera el tablero y los videos existentes. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+
 ## 5.3. Validation Interviews
 
 ### 5.3.1. Diseño de entrevistas
 
-Realizar una fase de validación distinta de la elicitación: **3–5 personas por segmento**, consentimiento y grabación autorizada. Pedir a administrador y operario que completen recepción parcial, venta y seguimiento de entrega sin instrucciones que indiquen el siguiente clic. Medir éxito, errores, tiempo, solicitudes de ayuda y comprensión del mensaje de rechazo. Comparar con la referencia real antes de afirmar ahorro porcentual.
+Validación es una fase distinta de elicitación: **3–5 personas por segmento**, con consentimiento y grabación autorizada. Para dos segmentos: 6–10 sesiones. Cada persona intenta recibir parcialmente, explicar saldo, vender y seguir entrega sin instrucciones de cada paso. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
 
 ### 5.3.2. Registro de entrevistas
 
-Los registros heredados sobre Carlos Mendoza y Miguel Rojas carecen de una grabación autenticada en esta revisión. No se contabilizan como validación completada. Completar por sesión: identificador anonimizado, segmento, fecha, moderador/observador, enlace accesible, tarea, resultado, citas/minutos y decisión de mejora. Incorporar también tareas fallidas y feedback contrario a la propuesta.
+**Pendiente de recibir/verificar videos.** Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Por sesión se requiere ID anonimizado, segmento, fecha, consentimiento, enlace, minutos, tareas, resultado y mejora. Un registro no se cuenta automáticamente como elicitación y validación.
+
+### 5.3.3. Evaluación heurística
+
+| Principio | Criterio de revisión | Evidencia técnica | Pendiente |
+| --- | --- | --- | --- |
+| Visibilidad | Espera, error y resultado claros | Formularios bloquean doble envío y usan códigos | Comprensión y espera con usuarios |
+| Correspondencia | Referencias entre recepción, venta y entrega | Flujo transaccional verificado | Vocabulario con ambos segmentos |
+| Prevención | Cantidad, stock y estados válidos | Invariantes y rollback probados | Errores de uso no previstos |
+| Control | Anulación y devolución con restricciones | Restitución una vez y retorno acotado | Comprensión y recuperación |
+| Consistencia | Material, idioma y PEN | Traducciones y build | Evaluador externo |
+| Accesibilidad | Teclado, foco, etiquetas y contraste | Implementación semántica y revisión navegador | Auditoría completa y usuarios |
+
+La inspección técnica no sustituye una evaluación heurística independiente. Evaluador, fecha, severidad y hallazgos requieren registro real.
 
 ## 5.4. Video About-the-Product
 
-**Pendiente de evidencia real.** El enlace heredado no se usa como prueba de un video propio sin confirmar contenido y autoría. Guion propuesto: problema/segmentos → alcance académico → recepción 2/4 → venta con rechazo de sobreventa → comprobante demo → despacho/receptor → resultado calculado → idioma/móvil → límites y siguiente hito. Debe acompañarse de nombres/roles reales, enlace, duración y participación individual con marcas de tiempo.
+**Pendiente de enlace y validación.** Requiere 1–3 minutos, Stream/YouTube y publicación embebida en landing al recibir material propio. Guion: problema/segmentos → recepción parcial → rechazo de sobreventa → venta/recibo académico → entrega/receptor → conciliación → límites. Incluir testimonios autorizados de ambos segmentos según Anexo C. No se sustituyen por testimonios generados.
+
+## 5.5. Video About-the-Team
+
+**Pendiente de evidencia real.** Mostrar trabajo, aportes y reflexión de cada participante que corresponda. Las grabaciones históricas se atribuyen con contexto verificable. No se simulan reuniones, integrantes activos ni contribuciones recientes. Enlace, duración, participantes y minutos se completarán al recibir videos.
 
 ---
 
 # Conclusiones
 
 1. El prototipo conecta recepción, saldo, venta y entrega mediante registros persistidos. La prueba técnica demuestra coherencia del recorrido ficticio; no mide reducción de pérdidas o productividad empresarial.
-2. La corrección separa dominio de transporte, incorpora value objects y contrasta arquitectura TB1 con diseño AV2. Un monolito modular es una propuesta proporcionada al alcance actual; no se declaran microservicios inexistentes.
-3. El modelo de 35 tablas organiza capacidades y restricciones. La cobertura operativa sigue siendo parcial en lotes, ubicaciones, clientes, varios intentos/paradas, suscripciones y seguridad productiva. El conteo no sustituye un caso de uso terminado.
+2. La corrección separa dominio de transporte, incorpora value objects y contrasta arquitectura TB1 con diseño AV2. El monolito modular está implementado en Java y desplegado; no se declaran microservicios inexistentes.
+3. El modelo objetivo de 35 tablas organiza capacidades; las migraciones AV2 implementan 19 tablas más historial Flyway. La cobertura operativa sigue siendo parcial en lotes, ubicaciones, clientes, varios intentos/paradas, suscripciones y seguridad productiva. El conteo no sustituye un caso de uso terminado.
 4. La interfaz bilingüe Material y la landing explican alcance y resultados del demo. La aceptación con usuarios, la capacidad de comunicación individual y el proceso colaborativo requieren evidencia humana auténtica.
 
 ## Mejora continua y autocrítica
@@ -841,33 +1066,33 @@ Los registros heredados sobre Carlos Mendoza y Miguel Rojas carecen de una graba
 | Observación del docente | Corrección aplicada | Evidencia / condición pendiente |
 | --- | --- | --- |
 | Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | Evidencia oral y reflexión individual pendientes. |
-| Repositorios faltantes | Repositorios reales enlazados; Fake API independiente y copia trazable. | Backend Java se implementará en AV2. |
+| Repositorios faltantes | Repositorios reales enlazados; Fake API independiente y copia trazable. | Backend Java publicado y CI PostgreSQL aprobado. |
 | Versiones incorrectas | Registro apoyado en fechas/commits; corrección fechada 30/10/2026. | Ratificar fecha formal de las ceremonias. |
 | Imágenes rotas | Referencias ausentes sustituidas por estado explícito; fuentes históricas conservadas. | Adjuntar material real; no intercambiar identidades. |
 | Seis commits y sin develop | Historial preservado, develop incorporada y bloques de corrección revisables. | Colaboración progresiva, revisión y tablero reales del equipo. |
-| Landing sin enlace | URL pública y CTA real en configuración y producto. | Publicar la revisión después de aprobación. |
+| Landing sin enlace | URL pública y CTA real en configuración y producto. | Comprobar el CTA y la versión pública en cada entrega. |
 | Falta de Mock API | Motor persistente, HTTP local, worker estático, OpenAPI y pruebas. | No equivale a servidor productivo multiusuario. |
 | Orden del dominio | Épicas, historias y diagramas core → soporte → genérico; canal público al final. | Revalidar clasificación si cambia el negocio. |
-| C4 débil | C1, C2 actual/futuro y C3 con responsabilidades, límites y tecnología. | Revisar contra servidor AV2 cuando exista. |
-| Tipos primitivos en dominio | Sku, Quantity, Money y Address; límites de agregados. | Migración semántica a Java y repositorios futuros. |
-| Tablas con nomenclatura incorrecta | 35 tablas lowercase snake_case, claves/restricciones/diccionario/ERD. | PostgreSQL/JPA y pruebas de migración. |
+| C4 débil | C1, C2 actual/futuro y C3 con responsabilidades, límites y tecnología. | C2/C3 AV2 y Design-Level Event Storming contrastados con el servidor. |
+| Tipos primitivos en dominio | Sku, Quantity, Money y Address; límites de agregados. | Dominio Java agnóstico y repositorios implementados; ampliar VOs según cambien reglas. |
+| Tablas con nomenclatura incorrecta | 35 tablas lowercase snake_case, claves/restricciones/diccionario/ERD. | Migraciones PostgreSQL V1–V4 y pruebas reales en CI; modelo objetivo aún parcial. |
 | Sprint 1 incompleto / salto a 3 | Sprint 1 y 2 con las ocho secciones, límites históricos explícitos. | Actas, tablero y evidencias históricas pendientes. |
 | Goal sin formato | Outcome/impact/customer/confirmation con estructura del enunciado. | Acuerdo del equipo y validación del impacto con usuarios. |
 | BD poco funcional | Recepción parcial, recursos reales de demo, devoluciones y bandeja operativa. | Profundidad en lotes/ubicaciones/rutas y clientes. |
 
 ## Pendientes de evidencia y próxima entrega
 
-**Antes de presentar TB1 corregido:** revisar y aprobar los PR; publicar landing/webapp revisadas y comprobar URLs; completar entrevistas auténticas por segmento/fase; adjuntar tablero con transiciones y responsables; incorporar videos de sustentación/About-the-Product y comunicación individual; confirmar la matriz LACX y reflexiones de mejora. Preparar presentación, reporte de participación y demás formatos exigidos por el enunciado. La revisión de código no acredita estos documentos como realizados.
+**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, About-the-Product, About-the-Team, evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
 
-**Preparación AV2, en orden de dominio:**
+**Trabajo posterior, en orden del dominio:**
 
-1. Inventory: repositorios JPA, transacciones de stock, almacenes/ubicaciones/lotes y vencimiento; pruebas de no sobreventa y aislamiento en PostgreSQL.
-2. Logistics: manifiestos con múltiples paradas, intentos fallidos y reprogramación; capacidad/ocupación de recursos; evidencia de entrega con política de datos.
-3. Procurement/Commercial/Returns: maestros de clientes, aprobaciones/valorización, devoluciones/cambios y política contable. Pagos/SUNAT solo con alcance y proveedor confirmados.
-4. Identity: hash de contraseñas adecuado en servidor, sesiones/token, autorización, activación/recuperación y auditoría; retirando cualquier supuesto de seguridad del mock.
-5. Operación: migraciones, contrato real, despliegue, observabilidad, gestión de errores e integración del frontend mediante puerto HTTP. Validación con usuarios y evidencia individual/collaborativa por hito.
+1. Inventory: almacenes, ubicaciones, lotes, variantes y vencimiento, con reglas y casos completos.
+2. Logistics: múltiples paradas, intentos fallidos, reprogramación, capacidad y rutas.
+3. Procurement/Sales/Returns: clientes, aprobaciones, política de valorización, cambios y reexpedición. Pagos/SUNAT requieren alcance y proveedor.
+4. IAM: invitaciones, recuperación/cambio de contraseña y auditoría ampliada.
+5. Operación: continuidad/exportación de PostgreSQL antes de su caducidad, observabilidad y pruebas de carga acordes al uso real.
 
-No se asignan fechas, responsables ni estimaciones de AV2 como compromisos del equipo sin su acuerdo.
+No se asignan fechas, responsables ni estimaciones como compromisos del equipo sin acuerdo y evidencia.
 
 # Bibliografía y fuentes
 
@@ -879,6 +1104,10 @@ No se asignan fechas, responsables ni estimaciones de AV2 como compromisos del e
 - GitHub. (s. f.). *Using custom workflows with GitHub Pages*. https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
 - Mermaid Contributors. (s. f.). *Mermaid CLI*. https://github.com/mermaid-js/mermaid-cli
 - Brown, S. (s. f.). *The C4 model for visualising software architecture*. https://c4model.com/
+- Spring Team. *Spring Boot reference*. https://docs.spring.io/spring-boot/
+- JJWT. *Signed JWT creation and parsing*. https://github.com/jwtk/jjwt
+- Render. *Free instances and limits*. https://render.com/docs/free
+- Open-Meteo. *Weather Forecast API*. https://open-meteo.com/en/docs
 - AI-ToDu. (2026). *Repositorios de producto e informe*. https://github.com/AI-ToDu
 
 Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento no se utilizan para sostener porcentajes o resultados. El análisis competitivo vincula páginas oficiales y requiere prueba de edición/fecha antes de afirmar equivalencias de funciones o precio.
@@ -888,14 +1117,14 @@ Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento 
 - [Arquitectura, decisiones y brechas](design/architecture.md).
 - [Diccionario de las 35 tablas](design/database/dictionary.md) y [DDL](design/database/schema.sql).
 - [Registro de investigación y fuentes heredadas](research/README.md).
-- [Checklist de revisión y demostración](REVIEW.md).
+- Las notas de revisión y avances se conservan localmente, fuera del repositorio.
 - Diagramas: fuentes Mermaid junto a los SVG en `design/diagrams`.
 
 El README completo se genera desde las fuentes indicadas en la introducción. `npm run check` valida sincronía, assets locales y límites de estimaciones; la exportación PDF mantiene el mismo texto. Ningún generador completa evidencias humanas pendientes automáticamente.
 
 ## Modelo físico · diagramas de detalle
 
-Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se consultan en el DDL y diccionario; los SVG editables permiten ampliar el detalle sin pérdida de definición. El modelo es diseño AV2, no persistencia relacional ya desplegada.
+Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se consultan en el DDL y diccionario; los SVG editables permiten ampliar el detalle sin pérdida de definición. El modelo de 35 tablas es una referencia de alcance futuro. El esquema AV2 desplegado se enumera en 4.8.1.1 y en las migraciones del backend.
 
 <div class="diagram-appendix">
 
@@ -966,3 +1195,23 @@ Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se cons
 [Fuente SVG ampliable](design/diagrams/rendered/erd-identity.svg) · [DDL completo](design/database/schema.sql).
 
 </div>
+
+## Anexo A. Student Outcome
+
+La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. La evidencia oral y reflexión individual pendiente se incorporará con audiencia, enlace y minuto verificables.
+
+## Anexo B. Participación individual
+
+El Performance Report editable del paquete de entrega mantiene la escala del enunciado (20, 16, 13, 07 o 00), sin asignar una nota automática. El coordinador debe verificar autoría, contribuciones, justificación y firma antes de emitirlo. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
+
+## Anexo C. Testimonios y videos
+
+| Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
+| --- | --- | --- | --- |
+| Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
+| Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
+| About-the-Product | Producto y ambos segmentos | Stream/YouTube, duración y permisos pendientes | Sin video propio verificado |
+| About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
+| Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
+
+Los datos identificables y consentimientos no se publican automáticamente en Git. Solo se adjunta material autorizado para la evaluación.
