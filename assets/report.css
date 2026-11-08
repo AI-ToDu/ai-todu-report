@@ -226,6 +226,9 @@ th strong {
   p:has(+ pre) {
     break-after: avoid;
   }
+  p:has(+ p > img) {
+    break-after: avoid;
+  }
   p {
     orphans: 3;
     widows: 3;
