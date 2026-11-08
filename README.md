@@ -774,7 +774,7 @@ El repositorio incluye lockfile cuando instala dependencias. La Fake API y landi
 | Repositorio individual | Artefacto | Rama para esta revisión |
 | --- | --- | --- |
 | [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | Frontend y transporte AV2 | `fix/av2-api-integration` |
-| [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | Landing | `fix/tb1-readiness` |
+| [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | Landing y acceso al servidor AV2 | `fix/av2-platform-scope` |
 | [ai-todu-fake-api](https://github.com/AI-ToDu/ai-todu-fake-api) | Fuente canónica de Fake API, contrato y pruebas | `fix/tb1-readiness` |
 | [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/av2-report-alignment` |
 | [ai-todu-api](https://github.com/AI-ToDu/ai-todu-api) | Backend, contratos, migraciones y CI | `fix/av2-domain-foundation` y `fix/av2-runtime-configuration` |
