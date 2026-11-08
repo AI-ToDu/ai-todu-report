@@ -11,7 +11,7 @@
 | Fake API | JavaScript ESM, Node 24 `node:http`; Service Worker e IndexedDB | Contrato de demo, invariantes y persistencia. |
 | Pruebas | `node:test`, SQLite integrado de Node, compilador Angular | Dominio, HTTP real, concurrencia/persistencia, esquema y cobertura de traducciones. |
 | Informe | Markdown, Mermaid/SVG y generadores versionados | README completo, fuentes únicas, comprobación y exportación. |
-| AV2, diseño | Java / Spring Boot / JPA / PostgreSQL | Implementación productiva pendiente. |
+| Backend AV2 | Java 21 / Spring Boot 4.1.2 / JPA / PostgreSQL 17 / Flyway | API con dominio agnóstico, JWT, roles, transacciones y Outbox. |
 
 El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El equipo debe confirmar su tablero de gestión; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
 
@@ -19,12 +19,13 @@ El repositorio incluye lockfile cuando instala dependencias. La Fake API y landi
 
 | Repositorio individual | Artefacto | Rama para esta revisión |
 | --- | --- | --- |
-| [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | Frontend y copia verificable del motor de demo | `fix/tb1-readiness` |
+| [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | Frontend y transporte AV2 | `fix/av2-api-integration` |
 | [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | Landing | `fix/tb1-readiness` |
 | [ai-todu-fake-api](https://github.com/AI-ToDu/ai-todu-fake-api) | Fuente canónica de Fake API, contrato y pruebas | `fix/tb1-readiness` |
-| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/tb1-readiness` |
+| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/av2-report-alignment` |
+| [ai-todu-api](https://github.com/AI-ToDu/ai-todu-api) | Backend, contratos, migraciones y CI | `fix/av2-domain-foundation` y `fix/av2-runtime-configuration` |
 
-**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; `feature/<scope>` desarrolla cambios y `fix/<scope>` prepara correcciones. Esta revisión se propone mediante PR en draft y se revisa antes de merge. No se reescriben commits históricos ni se atribuyen las correcciones asistidas a otros integrantes. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
+**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; las ramas nuevas usan `fix/<scope>`. AV2 se integra mediante PR con comprobaciones de CI antes del merge. No se reescriben commits históricos ni se atribuyen las correcciones asistidas a otros integrantes. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
 
 Los cuatro bloques de corrección son: **(1) integración funcional con Fake API; (2) interfaz, landing e idiomas; (3) DDD/C4/datos; (4) informe, trazabilidad y guía de revisión**. Cada repositorio registra un commit por bloque aplicable; no se crean commits vacíos para aumentar un contador. El paquete nuevo registra además su inicialización real. Los hashes y PR vigentes se consultan en Git, sin duplicar un historial que pueda quedar desactualizado.
 
@@ -40,13 +41,13 @@ Los mensajes visibles se resuelven por clave en `en_US`/`es_419`; el API emite c
 
 | Acceso | URL / comando | Estado y límite |
 | --- | --- | --- |
-| Landing pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-platform/) | La publicación actual conserva la versión anterior hasta aprobar el merge/despliegue. |
-| Webapp pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-webapp/) | Fuente actual verificada: rama `gh-pages`. La revisión se prueba localmente y se entrega por PR. |
+| Landing pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-platform/) | Canal estático público y CTA hacia la webapp. |
+| Webapp pública existente | [GitHub Pages](https://ai-todu.github.io/ai-todu-webapp/) | GitHub Actions desde main; PR AV2 #5 integrado con CI aprobado. |
 | Workspace + Fake API HTTP | `npm ci` y `npm run demo`, frontend | Sirve interfaz compilada y API en `http://127.0.0.1:8850/?api=http`. |
 | Fake API independiente | `npm test`; `npm start -- --port 8853` | API local `/api/v1`, sin frontend compilado. |
 | Modo estático | Build Pages y origen HTTPS o localhost | Worker/IndexedDB por origen/perfil; no servidor público REST. |
 
-El workflow de verificación revisa ramas `fix/**` y PR. El workflow Pages de la webapp se restringe a `main` después de revisión; exige configurar GitHub Pages como **GitHub Actions** al publicar. Esa configuración y el despliegue de producción quedan fuera de la revisión actual hasta aprobar los cambios. La navegación usa hash para rutas estáticas y el build fija `base-href` `/ai-todu-webapp/`. Se conserva el selector de idioma y CTA de la landing.
+El workflow de verificación revisa ramas `fix/**` y PR. El workflow Pages de la webapp se restringe a `main` después de revisión; exige configurar GitHub Pages como **GitHub Actions** al publicar. Actions y la publicación de webapp se comprobaron; el servidor AV2 se verifica por separado. La navegación usa hash para rutas estáticas y el build fija `base-href` `/ai-todu-webapp/`. Se conserva el selector de idioma y CTA de la landing.
 
 ## 5.2. Landing Page, Services & Applications Implementation
 
@@ -96,7 +97,7 @@ Sprint 1 no acredita un servidor productivo. El alcance documentado es landing/d
 
 #### 5.2.1.7. Software Deployment Evidence for Sprint Review
 
-La URL pública de landing figura en configuración. El historial público y configuración de Pages son evidencia distinta del navegador local; el rediseño se entrega en rama de revisión y aún requiere merge/publicación aprobados.
+La URL pública de landing figura en configuración. El historial público y configuración de Pages son evidencia distinta del navegador local. El rediseño se integró en una revisión posterior; el [PR #4 de AV2](https://github.com/AI-ToDu/ai-todu-platform/pull/4) ajusta el alcance y el acceso al servidor, sin atribuir esta revisión a la entrega histórica de Sprint 1.
 
 #### 5.2.1.8. Team Collaboration Insights during Sprint
 
@@ -174,22 +175,125 @@ El transporte HTTP local y el worker consumen el mismo motor. La URL de Pages `/
 
 #### 5.2.2.7. Software Deployment Evidence for Sprint Review
 
-El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build con ruta base Pages y un workflow de despliegue para versión revisada. La configuración pública actual continúa usando `gh-pages`; tras aprobación se configura Actions y se publica deliberadamente. La existencia de un PR no se registra como despliegue completado.
+El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build con ruta base Pages y un workflow de despliegue para versión revisada. Pages cambió a GitHub Actions el 7/11; el incremento AV2 se publica desde main el 8/11. La existencia de un PR no se registra como despliegue completado.
 
 #### 5.2.2.8. Team Collaboration Insights during Sprint
 
 Los aportes originales se enlazan por integrante y módulo. La corrección no intenta suplir colaboración con volumen de commits: registra trabajo asistido y deja revisión cruzada pendiente. Para completar la evidencia, cada integrante debe revisar su contexto, ejecutar un caso principal/alternativo, comentar un PR y explicar una decisión en la exposición con marca de tiempo.
 
+### 5.2.3. Sprint 3
+
+#### 5.2.3.1. Sprint Planning 3
+
+**Hito:** AV2, semana 12. **Registro técnico:** 7–8/11/2026. Calendario, asistentes, duración de ceremonia y compromiso de capacidad no están acreditados. La selección siguiente documenta el incremento trabajado; no reconstruye una reunión.
+
+> Our focus is on enabling an authorized workspace to reconcile receiving, sales and delivery through the deployed API. We believe it delivers a shared and traceable operational record to business owners and warehouse operators. This will be confirmed when a sale and its delivery preserve stock, historical amounts and recipient across sessions, concurrent sales cannot oversell, and invalid or unauthorized operations leave no partial changes.
+
+El criterio técnico se prueba con datos ficticios; la confianza del usuario sigue como hipótesis. Product Owner y Scrum Master: pendientes de confirmar. Se conserva la atribución histórica sin asignar aportes nuevos no verificados.
+
+#### 5.2.3.2. Aspect Leaders and Collaborators
+
+| Aspecto | Actividad verificada | Responsable y límite |
+| --- | --- | --- |
+| Development | Backend Java e integración Angular en PR | Trabajo asistido autorizado por Kevin; sin atribuirlo a otros integrantes |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; demostración/reflexión individual pendientes |
+| Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
+| Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
+
+Matriz LACX formal y aprobación: pendientes. Los aportes históricos de los integrantes se mantienen con sus fuentes.
+
+#### 5.2.3.3. Sprint Backlog 3
+
+Estimaciones de referencia, no horas registradas ni capacidad medida. La prioridad sigue core → soporte → genérico; autenticación es una dependencia técnica, no el primer objetivo del negocio.
+
+| Task | Historia | Engineering task | Est. | Resultado verificable |
+| --- | --- | --- | --- | --- |
+| S3-T01 | US09–US14 | Implementar InventoryItem, VOs, movimientos y persistencia separada. | 8 h | Reglas, migraciones y rollback |
+| S3-T02 | US15–US18, TS35 | Confirmar/anular ventas atómicas con concurrencia e idempotencia. | 8 h | Solo una de seis ventas de la última unidad se acepta |
+| S3-T03 | US19–US22, US37 | Preparar/iniciar/entregar manifiesto con recursos existentes. | 8 h | Receptor y saldo sin doble descuento |
+| S3-T04 | US35 | Implementar compra y recepción parcial acotada. | 8 h | Exceso y líneas repetidas rechazados |
+| S3-T05 | US36, US23 | Conciliar devoluciones e indicadores. | 4 h | Restock/loss y límite de devolución |
+| S3-T06 | US26, TS34 | Traducir eventos internos a PL v1 con Outbox e inbox. | 8 h | Fallo/reintento y reentrega sin duplicación |
+| S3-T07 | TS33 | Integrar Open-Meteo mediante gateway y caché. | 4 h | Traducción/caché/fallo probados y llamada real |
+| S3-T08 | US01–US03, US28–US29 | Implementar JWT revocables, BCrypt, roles y aislamiento. | 8 h | Sesión y denegaciones verificadas |
+| S3-T09 | US33, contratos TS | Integrar Angular con API y separar sesiones demo/servidor. | 8 h | 21 pruebas y build Pages aprobados |
+| S3-T10 | Transversal | Desplegar API/DB/webapp y comprobar recorrido. | 8 h | Render live, health UP y Pages |
+| S3-T11 | Transversal | Alinear informe, diagramas y servicios. | 8 h | Fuentes y exportación de esta versión |
+| S3-T12 | Validación / ABET 3 | Incorporar entrevistas, tablero, videos y reflexión. | 8 h | Pendiente de evidencia humana real |
+
+El tablero externo y sus responsables siguen pendientes de recibir. Esta tabla no simula transiciones To Do / In Process / To Review / Done ni tiempo trabajado.
+
+#### 5.2.3.4. Development Evidence for Sprint Review
+
+[Backend PR #1](https://github.com/AI-ToDu/ai-todu-api/pull/1) implementa contextos, agregados, recursos, migraciones y Outbox. [PR #2](https://github.com/AI-ToDu/ai-todu-api/pull/2) retira administración del runtime y prueba el gateway externo. [Frontend PR #5](https://github.com/AI-ToDu/ai-todu-webapp/pull/5) integra API, sesiones, idioma, provisión y clima.
+
+El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; converters, embeddables y assemblers pertenecen a infraestructura. Los agregados conservan sus invariantes y los errores esperados se devuelven mediante Result.
+
+#### 5.2.3.5. Execution Evidence for Sprint Review
+
+| Verificación | Resultado y evidencia | Límite |
+| --- | --- | --- |
+| Backend local | 14 pruebas aprobadas | H2 de desarrollo y pruebas del gateway |
+| Backend CI | Suite aprobada con PostgreSQL 17 / Java 21 | Datos aislados; no mide carga empresarial |
+| Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
+| HTTP público | Entrada 5 → venta 2 / PEN 21 → entrega → saldo 3 | Datos ficticios; no equivale a aceptación de usuarios |
+| Open-Meteo/CORS | Respuesta real Lima y origen GitHub Pages autorizado | Clima regional de referencia |
+| Outbox | Fallo/reintento y reentrega sin duplicación | Relay e inbox en el monolito, sin broker externo |
+
+[CI backend](https://github.com/AI-ToDu/ai-todu-api/actions) · [CI/Pages frontend](https://github.com/AI-ToDu/ai-todu-webapp/actions).
+
+![Inventario AV2 publicado después de escribir y recargar](assets/inventario-av2-publicado.png)
+
+Evidencia del 8/11/2026: desde Angular se crea el producto ficticio BROWSER-20261108, se reciben dos unidades y se vende una por PEN 12,50. La recarga y el nuevo inicio de sesión conservan una unidad. El otro artículo corresponde al recorrido HTTP anterior. Los datos son sintéticos y no representan resultados comerciales.
+
+#### 5.2.3.6. Services Documentation Evidence for Sprint Review
+
+[Swagger UI](https://ai-todu-api-av2.onrender.com/swagger-ui.html) · [OpenAPI](https://ai-todu-api-av2.onrender.com/v3/api-docs) · [README API](https://github.com/AI-ToDu/ai-todu-api) · [Published Language v1](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json).
+
+La API /api/v1 es el Open Host Service. Usa recursos JSON, Problem Details y códigos estables; Accept-Language selecciona en-US o es-419. Los eventos internos se traducen antes de cruzar contextos. Fachadas públicas y gateways delimitan la integración; no se importan agregados de otros dominios.
+
+#### 5.2.3.7. Software Deployment Evidence for Sprint Review
+
+| Artefacto | Publicación | Estado |
+| --- | --- | --- |
+| Landing | [Pages](https://ai-todu.github.io/ai-todu-platform/) | Canal estático y CTA |
+| Frontend | [Pages](https://ai-todu.github.io/ai-todu-webapp/) | Workflow main aprobado |
+| API | [Render / health](https://ai-todu-api-av2.onrender.com/actuator/health) | Servicio gratuito live y UP |
+| PostgreSQL | Base aislada aitodu_av2 / usuario aitodu_app | Red privada y sin lectura sobre tablas de otros proyectos |
+
+El runtime recibe solo credenciales propias. La provisión administrativa se ejecutó desde el equipo local con una regla /32 temporal, ya retirada. La instancia gratuita comparte capacidad y caducidad: Dashboard indica 28/11/2026 y la API de Render devuelve su expiración UTC equivalente al 29/11. Se requiere continuidad/exportación antes del vencimiento. El servicio gratuito puede tardar en reactivarse tras inactividad.
+
+#### 5.2.3.8. Team Collaboration Insights during Sprint
+
+PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se espera el tablero y los videos existentes. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+
 ## 5.3. Validation Interviews
 
 ### 5.3.1. Diseño de entrevistas
 
-Realizar una fase de validación distinta de la elicitación: **3–5 personas por segmento**, consentimiento y grabación autorizada. Pedir a administrador y operario que completen recepción parcial, venta y seguimiento de entrega sin instrucciones que indiquen el siguiente clic. Medir éxito, errores, tiempo, solicitudes de ayuda y comprensión del mensaje de rechazo. Comparar con la referencia real antes de afirmar ahorro porcentual.
+Validación es una fase distinta de elicitación: **3–5 personas por segmento**, con consentimiento y grabación autorizada. Para dos segmentos: 6–10 sesiones. Cada persona intenta recibir parcialmente, explicar saldo, vender y seguir entrega sin instrucciones de cada paso. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
 
 ### 5.3.2. Registro de entrevistas
 
-Los registros heredados sobre Carlos Mendoza y Miguel Rojas carecen de una grabación autenticada en esta revisión. No se contabilizan como validación completada. Completar por sesión: identificador anonimizado, segmento, fecha, moderador/observador, enlace accesible, tarea, resultado, citas/minutos y decisión de mejora. Incorporar también tareas fallidas y feedback contrario a la propuesta.
+**Pendiente de recibir/verificar videos.** Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Por sesión se requiere ID anonimizado, segmento, fecha, consentimiento, enlace, minutos, tareas, resultado y mejora. Un registro no se cuenta automáticamente como elicitación y validación.
+
+### 5.3.3. Evaluación heurística
+
+| Principio | Criterio de revisión | Evidencia técnica | Pendiente |
+| --- | --- | --- | --- |
+| Visibilidad | Espera, error y resultado claros | Formularios bloquean doble envío y usan códigos | Comprensión y espera con usuarios |
+| Correspondencia | Referencias entre recepción, venta y entrega | Flujo transaccional verificado | Vocabulario con ambos segmentos |
+| Prevención | Cantidad, stock y estados válidos | Invariantes y rollback probados | Errores de uso no previstos |
+| Control | Anulación y devolución con restricciones | Restitución una vez y retorno acotado | Comprensión y recuperación |
+| Consistencia | Material, idioma y PEN | Traducciones y build | Evaluador externo |
+| Accesibilidad | Teclado, foco, etiquetas y contraste | Implementación semántica y revisión navegador | Auditoría completa y usuarios |
+
+La inspección técnica no sustituye una evaluación heurística independiente. Evaluador, fecha, severidad y hallazgos requieren registro real.
 
 ## 5.4. Video About-the-Product
 
-**Pendiente de evidencia real.** El enlace heredado no se usa como prueba de un video propio sin confirmar contenido y autoría. Guion propuesto: problema/segmentos → alcance académico → recepción 2/4 → venta con rechazo de sobreventa → comprobante demo → despacho/receptor → resultado calculado → idioma/móvil → límites y siguiente hito. Debe acompañarse de nombres/roles reales, enlace, duración y participación individual con marcas de tiempo.
+**Pendiente de enlace y validación.** Requiere 1–3 minutos, Stream/YouTube y publicación embebida en landing al recibir material propio. Guion: problema/segmentos → recepción parcial → rechazo de sobreventa → venta/recibo académico → entrega/receptor → conciliación → límites. Incluir testimonios autorizados de ambos segmentos según Anexo C. No se sustituyen por testimonios generados.
+
+## 5.5. Video About-the-Team
+
+**Pendiente de evidencia real.** Mostrar trabajo, aportes y reflexión de cada participante que corresponda. Las grabaciones históricas se atribuyen con contexto verificable. No se simulan reuniones, integrantes activos ni contribuciones recientes. Enlace, duración, participantes y minutos se completarán al recibir videos.

@@ -1,0 +1,27 @@
+flowchart TB
+ rest["REST Controllers<br/>Resources y autorización"]
+ sale["SaleService<br/>Comandos y consultas"]
+ logistic["LogisticsService<br/>Comandos y consultas"]
+ inventory["InventoryService<br/>Comandos y consultas"]
+ aclSale["SalesContextFacade<br/>Contrato público"]
+ aclInventory["InventoryContextFacade<br/>Contrato público"]
+ jpa["Adaptadores JPA<br/>Assemblers y entidades separadas"]
+ db[("PostgreSQL<br/>Transacción por workspace")]
+ events["Publishers propios<br/>Published Language v1"]
+ outbox["OutboxRelay<br/>Reintentos e inbox idempotente"]
+ rest --> sale
+ rest --> logistic
+ rest --> inventory
+ logistic -->|"SalesGateway / ACL"| aclSale
+ aclSale --> sale
+ sale -->|"InventoryGateway / ACL"| aclInventory
+ aclInventory --> inventory
+ sale --> jpa
+ logistic --> jpa
+ inventory --> jpa
+ jpa --> db
+ sale --> events
+ logistic --> events
+ inventory --> events
+ events --> outbox
+ outbox --> db

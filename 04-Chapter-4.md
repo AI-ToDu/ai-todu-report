@@ -78,9 +78,13 @@ TB1 es un prototipo funcional con dos transportes que comparten motor: HTTP loca
 
 ### 4.6.1. Design-Level Event Storming
 
-Primero se presentan **Inventory y Logistics (core)**; después Procurement, Commercial/Returns, Reporting y Notifications (soporte); finalmente Identity and Access (genérico). El [análisis arquitectónico](design/architecture.md) define relaciones y tecnología. La [revisión DDD de todo el alcance](design/ddd-review.md) evalúa límites de agregados, objetos de valor, reglas y deuda de cada contexto; diferencia lo implementado del modelo AV2. Eventos como `StockReceived` o `DeliveryConfirmed` son vocabulario de diseño, no mensajes publicados por un broker en esta versión.
+Primero revisamos **Inventory y Logistics (core)**; luego Procurement, Sales/Returns, Reporting y Notifications (soporte); finalmente IAM (genérico). El [análisis arquitectónico](design/architecture.md) registra decisiones. El modelo distingue comandos, agregados, eventos internos, traducción pública, Outbox e inbox. Es un diseño contrastado con código; no acredita un taller colaborativo realizado.
 
-![Context map](design/diagrams/rendered/context-map.svg)
+![Design-Level Event Storming AV2](design/diagrams/rendered/design-level-event-storming.svg)
+
+Los mensajes públicos se añaden al Outbox en la transacción del comando. El relay reintenta entregas y Notifications evita duplicados por ID del evento.
+
+StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -92,41 +96,45 @@ C1 muestra personas y propósito del sistema. No incluye pasarelas fiscales o pr
 
 ![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
 
-TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **propuesta AV2** siguiente:
+TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **implementación AV2** siguiente:
 
-![C4 C2 · propuesta AV2, aún sin implementar](design/diagrams/rendered/c4-containers-av2.svg)
+![C4 C2 · ejecución AV2](design/diagrams/rendered/c4-containers-av2.svg)
 
-Para AV2 se propone un monolito modular Spring Boot y PostgreSQL. Un bounded context no se convierte automáticamente en microservicio. La elección preserva transacciones y permite separar responsabilidades antes de sumar despliegues.
+AV2 implementa un monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
 
 ### 4.6.4. Software Architecture Components Diagrams
 
 ![C4 C3 · componentes reales del motor de demo](design/diagrams/rendered/c4-components.svg)
 
-El dispatcher es un servicio de aplicación compartido. Los tres objetos de dominio están en módulos independientes de Angular, HTTP y almacenamiento. Los adaptadores deciden cómo confirmar la transacción. La separación posterior en servicios de aplicación por contexto y repositorios JPA es trabajo explícito de AV2.
+El diagrama anterior describe TB1. En AV2, los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos.
+
+![C4 C3 · componentes del recorrido core AV2](design/diagrams/rendered/c4-components-av2.svg)
 
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams
 
-![Agregados y value objects](design/diagrams/rendered/class-core.svg)
+![Modelo histórico del prototipo TB1](design/diagrams/rendered/class-core.svg)
 
-| Objeto | Semántica implementada | Representación en frontera |
+La tabla siguiente corresponde al modelo histórico de TB1. En AV2, `Money` conserva centavos en un `long`, `Quantity` es un entero y `DispatchManifest` valida su destino como texto y contiene `DeliveryEvidence` (receptor/fecha). `Sale` y `PurchaseOrder` son agregados independientes. La separación entre clases Java de dominio y entidades JPA se comprueba en el repositorio API; `Address` y `SaleSummary` del dibujo histórico no se presentan como clases actuales del backend.
+
+| Objeto TB1 | Semántica del prototipo | Representación en frontera TB1 |
 | --- | --- | --- |
 | Sku | Normalización y validación; inmutable. | Cadena JSON / columna `sku` única por empresa. |
 | Quantity | Entero no negativo, positivo cuando el comando lo exige; límite explícito. | Número JSON / entero SQL con restricción. |
 | Money | PEN, precisión de centavos, valor finito/no negativo; inmutable. | Número de importe en API de demo; centavos enteros en diseño SQL. |
-| Address | Texto normalizado con longitud válida; inmutable. | DTO / columna de dirección. |
-| InventoryItem | Identidad estable; entrada/salida y aptitud de venta. | DTO de producto y repositorio futuro. |
+| Address | Texto normalizado con longitud válida; inmutable. | Recurso de frontera / columna del prototipo. |
+| InventoryItem | Identidad estable; entrada/salida y aptitud de venta. | Recurso de producto y adaptador de demo. |
 | SaleSummary | Total validado en centavos, sin aritmética acumulada de decimales. | Total serializado; snapshot de líneas. |
-| DispatchManifest | Destino y transición PENDING → IN_TRANSIT → DELIVERED. | Estado serializado y entidad futura. |
+| DispatchManifest | Destino y transición PENDING → IN_TRANSIT → DELIVERED. | Recurso de despacho y adaptador de demo. |
 
-JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor semántico del dominio. No se afirma que todas las filas JSON sean agregados DDD completos. Los precios/costos históricos se conservan en la venta y no se recalculan desde un catálogo modificado.
+JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor semántico del dominio. El servidor usa InventoryItem, Sale, PurchaseOrder y DispatchManifest con operaciones e invariantes; no trata cada fila persistente como agregado independiente. Los precios/costos históricos se conservan en la venta y no se recalculan desde un catálogo modificado.
 
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
 
-El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite para validar estructura y restricciones; su migración PostgreSQL/JPA aún no se implementa. La demo usa 35 **colecciones JSON**, no una base relacional operativa.
+El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite como referencia; TB1 usa 35 colecciones JSON. **AV2 implementa 19 tablas de negocio/infraestructura**, además de flyway_schema_history, definidas por sus [migraciones PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/tree/main/src/main/resources/db/migration). No se declara implementada automáticamente toda la referencia de 35 tablas.
 
 | Área lógica | Tablas | Capacidad operativa actual y brecha |
 | --- | --- | --- |
@@ -141,4 +149,18 @@ El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos
 
 Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rendered/erd-inventory.svg), [Logística](design/diagrams/rendered/erd-logistics.svg), [Abastecimiento](design/diagrams/rendered/erd-procurement.svg), [Ventas](design/diagrams/rendered/erd-sales.svg), [Devoluciones](design/diagrams/rendered/erd-returns.svg), [Notificaciones](design/diagrams/rendered/erd-notifications.svg) e [Identidad](design/diagrams/rendered/erd-identity.svg). El DDL es la referencia completa para relaciones entre áreas.
 
-**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. La serialización camelCase del demo se mapeará explícitamente a columnas snake_case en AV2; no se promete una migración automática ni se expone el esquema físico como contrato HTTP.
+**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. AV2 usa nombres snake_case, centavos enteros, converters para valores simples y embeddables para valores compuestos. No hay migración automática de datos ficticios del navegador al servidor; cada modo mantiene su almacenamiento. El esquema físico no es el contrato HTTP.
+
+#### 4.8.1.1. Esquema ejecutado del incremento AV2
+
+| Área | Tablas PostgreSQL implementadas |
+| --- | --- |
+| IAM y coordinación | workspaces, workspace_locks, users, sessions |
+| Inventario | inventory_items, stock_movements |
+| Ventas | sales, sale_lines |
+| Logística | drivers, vehicles, dispatches, dispatch_lines, delivery_incidents |
+| Compras | suppliers, purchase_orders, purchase_lines |
+| Devoluciones | customer_returns |
+| Integración | integration_outbox, notifications |
+
+Flyway aplica V1–V4 y Hibernate valida el esquema sin generarlo en producción. CI ejecuta las pruebas con PostgreSQL 17. El saldo, su movimiento y la venta se confirman en una transacción. No se implementa event sourcing ni un ledger fiscal.

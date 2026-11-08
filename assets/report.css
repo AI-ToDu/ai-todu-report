@@ -296,3 +296,6 @@ th strong {
 }
 
 @media print{.backlog-table th,.backlog-table td{padding:1.1mm 2mm;line-height:1.2}.backlog-summary{break-inside:avoid}}
+
+.report-cover .university-logo { width:96px; height:96px; object-fit:contain; }
+@media print { .report-cover .university-logo { width:25mm; height:25mm; } }

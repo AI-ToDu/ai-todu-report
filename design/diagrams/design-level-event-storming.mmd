@@ -1,0 +1,29 @@
+flowchart TB
+ subgraph inventory["CORE · Inventory"]
+ direction LR
+ movement["RecordMovement<br/>Command"]:::command --> item["InventoryItem<br/>receive / issue"]:::aggregate
+ item -->|"Si la salida cruza el mínimo"| low["StockBelowMinimum<br/>Evento interno"]:::event
+ low --> invpub["Publisher<br/>del contexto"]:::policy
+ invpub --> invmsg["inventory.stock-below-minimum<br/>Mensaje público v1"]:::read
+ end
+ subgraph logistics["CORE · Logistics"]
+ direction LR
+ transition["TransitionDispatch<br/>Command"]:::command --> manifest["DispatchManifest<br/>start / deliver"]:::aggregate
+ manifest --> delivery["DeliveryConfirmed<br/>Evento interno"]:::event
+ delivery --> logpub["Publisher<br/>del contexto"]:::policy
+ logpub --> logmsg["logistics.delivery-confirmed<br/>Mensaje público v1"]:::read
+ end
+ subgraph commercial["SOPORTE · Sales"]
+ direction LR
+ confirm["ConfirmSale<br/>Command"]:::command --> sale["Sale<br/>confirm"]:::aggregate
+ sale --> confirmed["SaleConfirmed<br/>Evento interno"]:::event
+ confirmed --> salepub["Publisher<br/>del contexto"]:::policy
+ salepub --> salemsg["sales.sale-confirmed<br/>Mensaje público v1"]:::read
+ end
+ inventory ~~~ logistics
+ logistics ~~~ commercial
+ classDef command fill:#dcecff,stroke:#3575a5,color:#17364a
+ classDef aggregate fill:#fff6cb,stroke:#ad8e21,color:#40380b
+ classDef event fill:#ffe0b0,stroke:#b56b0c,color:#3d2d18
+ classDef policy fill:#eee0fa,stroke:#8757a7,color:#3c2751
+ classDef read fill:#ddf2df,stroke:#498359,color:#203f28

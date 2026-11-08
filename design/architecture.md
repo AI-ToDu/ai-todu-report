@@ -1,6 +1,6 @@
 # Domain and architecture decisions
 
-Reviewed baseline: TB1 correction, 2026-10-30. Diagrams describe the current prototype unless marked AV2 design.
+Historical baseline: TB1, 2026-10-30. Current increment: AV2, 2026-11-08. Prototype diagrams are labelled TB1; AV2 diagrams describe the implemented modular monolith.
 
 ## Bounded contexts in review order
 
@@ -16,8 +16,9 @@ Reviewed baseline: TB1 correction, 2026-10-30. Diagrams describe the current pro
 | --- | --- | --- |
 | C1 | [System context](diagrams/rendered/c4-context.svg) | People and AI-ToDu system; no fictitious fiscal or AI provider integration. |
 | C2 TB1 | [Containers](diagrams/rendered/c4-containers-tb1.svg) | Static origin, Angular SPA, self-contained browser worker and IndexedDB. Node/file is an alternative local transport, not a public backend. The worker is bundled before builds to avoid static-host `.mjs` MIME assumptions. |
-| C2 AV2 | [Future containers](diagrams/rendered/c4-containers-av2.svg) | Java/Spring Boot modular monolith and PostgreSQL. Design only. |
-| C3 | [Mock components](diagrams/rendered/c4-components.svg) | Actual dispatcher, three domain objects, VOs and adapter storage; file names identify implementation boundaries. |
+| C2 AV2 | [AV2 containers](diagrams/rendered/c4-containers-av2.svg) | Java 21 / Spring Boot modular monolith, PostgreSQL and the Open-Meteo gateway, deployed on Render. |
+| C3 TB1 | [Mock components](diagrams/rendered/c4-components.svg) | Historical demo dispatcher, domain objects and storage adapters. |
+| C3 AV2 | [API components](diagrams/rendered/c4-components-av2.svg) | Per-context handlers, public facades, repository ports, JPA assemblers and Outbox/inbox. |
 
 Editable `.mmd` sources are alongside the rendered SVGs. Regenerate with `npm ci && npm run diagrams`. On Windows an installed Edge executable can be selected with `MERMAID_CHROME_PATH`. The local executable path is ignored by Git.
 
@@ -25,18 +26,18 @@ Editable `.mmd` sources are alongside the rendered SVGs. Regenerate with `npm ci
 
 ![Core class diagram](diagrams/rendered/class-core.svg)
 
-`Sku`, `Quantity`, `Money` and `Address` are immutable value objects. InventoryItem has stable identity; its values are validated by these objects. SaleSummary calculates in integer cents. DispatchManifest accepts only PENDING → IN_TRANSIT → DELIVERED. Primitive JSON and relational columns are serialization boundaries, not substitutes for domain rules. Context handlers still share one application dispatcher in TB1; there are no production Java aggregate repositories yet.
+`Sku`, `Quantity`, `Money` and `Address` are immutable value objects. InventoryItem has stable identity; its values are validated by these objects. SaleSummary calculates in integer cents. DispatchManifest accepts only PENDING → IN_TRANSIT → DELIVERED. Primitive JSON and relational columns are serialization boundaries, not substitutes for domain rules. TB1 retains its historical shared dispatcher. AV2 has context handlers, plain Java domain objects and repository ports; JPA entities and converters remain outside the domain.
 
 | Aggregate / boundary | Invariant enforced now | Later work |
 | --- | --- | --- |
 | InventoryItem | Nonnegative integer stock; unique normalized SKU; conservation independently blocks sale. | Stock by location/variant/lot and expiration policy. |
-| Sale transaction | Complete validation before commit; immutable price/cost snapshots; no partial stock issue. | Idempotency keys, production payment ledger and fiscal integration. |
+| Sale transaction | Complete validation before commit; immutable price/cost snapshots; no partial stock issue. | Payment ledger and fiscal integration; sale idempotency keys are implemented in AV2. |
 | Purchase order | Positive quantities; receiving never exceeds outstanding amount; duplicate lines rejected. | Approval, supplier catalog and cost valuation policy. |
 | DispatchManifest | Confirmed unassigned sale; resource conflict checks on departure; valid next state and recipient. | Multiple stops, failed delivery attempts, capacity/routing constraints. |
 | Return | Bounded by sale line; restock or loss; no return during an unfinished dispatch. Returned POS sale is not dispatchable in this TB1 scope. | Exchange, actual refund, credit note and reshipment. |
-| Tenant | Direct API role checks and scoped lookups; cross-tenant identifiers rejected. | Real server-side authentication/authorization, audit, credential hashing and recovery. |
+| Tenant | Direct API role checks and scoped lookups; cross-tenant identifiers rejected. | Password recovery, invitations and richer audit; AV2 implements BCrypt, JWT sessions, server-side roles and workspace-scoped lookups. |
 
-The stock ledger is recorded as movements, while a balance is updated in the same accepted draft. This is a consistency invariant in the demo, not an event-sourced implementation. Low-stock notification policy runs synchronously; event storming vocabulary does not imply an implemented message broker. Money uses PEN and standard recorded product cost, not taxes, net business profit or weighted-average cost.
+The stock ledger is recorded as movements, while a balance is updated in the same accepted draft. This is a consistency invariant in the demo, not an event-sourced implementation. TB1 evaluates low stock synchronously. AV2 translates private domain events into versioned integration messages and uses a transactional Outbox; no external broker is claimed. Money uses PEN and standard recorded product cost, not taxes, net business profit or weighted-average cost.
 
 ![Recorded flow](diagrams/rendered/workflow-core.svg)
 
@@ -46,8 +47,32 @@ A pure `handle(state, request)` produces either an entire accepted draft or the 
 
 ## ADR-002 — normalized SQL is a migration target
 
-The reviewed [35-table SQL](database/schema.sql) and [dictionary](database/dictionary.md) use lowercase snake_case, integer cents, nonnegative stock, uniqueness and tenant-aware foreign keys. SQLite executes the DDL in automated validation. The demo persists JSON collections rather than executing SQL. PostgreSQL/JPA migration, server transaction/isolation tests, multi-device concurrency and production authentication are AV2 work. The 35-table count is a coverage inventory, never a completeness metric.
+The reviewed [35-table SQL](database/schema.sql) and [dictionary](database/dictionary.md) use lowercase snake_case, integer cents, nonnegative stock, uniqueness and tenant-aware foreign keys. SQLite executes the DDL in automated validation. The demo persists JSON collections rather than executing SQL. AV2 implements a separate Flyway schema of 19 tables plus migration history; transaction/isolation tests run against PostgreSQL 17. Advanced parts of the 35-table target are future scope. The 35-table count is a coverage inventory, never a completeness metric.
 
 ## ADR-003 — application / domain / infrastructure boundaries
 
-Angular presentation is lazy by domain. Shared application concerns provide session and translation; infrastructure holds the HttpClient adapter. Pure domain objects in `public/mock/domain` have no Angular, Node, HTTP or database dependency. The shared mock dispatcher is an application service with context branches. For AV2 migrate these branches to context application services and repository ports; DTOs stay at the API boundary, and controllers do not contain domain rules. Do not turn each context into a separate deployable service without an operational reason.
+Angular presentation is lazy by domain. Shared application concerns provide session and translation; infrastructure holds the HttpClient adapter. Pure domain objects in `public/mock/domain` have no Angular, Node, HTTP or database dependency. The shared mock dispatcher is an application service with context branches. AV2 moves business commands into each domain and coordinates them through application services and repository ports. REST resources stay at the API boundary; persistence assemblers reconstitute plain aggregates. Do not turn each context into a separate deployable service without an operational reason.
+
+## ADR-004 — atomic commands and workspace locking
+
+The modular monolith keeps stock, sale snapshots and Outbox writes in a single PostgreSQL transaction. A pessimistic workspace lock serializes business commands within one workspace; different workspaces retain independent locks. This is a deliberate throughput tradeoff for the academic workload, not a claim of horizontal scalability. A failed command rolls back all writes before Result reports the domain error.
+
+Only the owning context handles its domain events. Application publishers map StockBelowMinimum, SaleConfirmed and DeliveryConfirmed into Published Language v1. The Outbox relay retries failures with bounded backoff. Notification ID equals event ID; repeated delivery does not duplicate the inbox entry. An external broker would require its own durable delivery/consumer handling and is not implemented.
+
+The REST API is the Open Host Service. Public context facades expose narrow snapshots and operations; consuming gateways translate those contracts. Logistics consumes Sales, Sales consumes Inventory, Procurement and Returns coordinate through public facades, and Reporting uses public read projections. No context imports another context's aggregates or persistence entity.
+
+## ADR-005 — runtime credentials and network isolation
+
+The deployed service receives only its dedicated PostgreSQL role and JWT key. Database administration remains outside the application runtime. The database was provisioned through a temporary /32 ingress rule; that rule was removed after verifying that the application role cannot read the other project's public tables. The instance is shared capacity, while database and application credentials are separate.
+
+Free hosting may sleep after inactivity and the shared free PostgreSQL instance expires in late November 2026. Export/continuity must be arranged before expiry. These limits are deployment constraints, not demonstrated commercial availability.
+
+## ADR-006 — implemented schema versus target model
+
+The 35-table design remains a roadmap. The executed V1–V4 Flyway migrations define 19 application/infrastructure tables plus flyway_schema_history. No automatic migration copies browser demo records into PostgreSQL. Server and demo sessions use separate browser keys; server failure never silently switches the user to fictional local state.
+
+Single-attribute values use infrastructure converters. Multi-attribute persistence values use embeddables. Domain models contain neither JPA nor Spring annotations. Separate assemblers preserve aggregate reconstitution, without claiming that a converter replaces all object mapping.
+
+## External service contract
+
+Open-Meteo supplies regional conditions for fixed central-Lima coordinates. The gateway validates and translates its response, caches for ten minutes, and applies connection/request timeouts. Provider failure yields a stable 503 code; dispatch commands remain usable. Customer destinations are not sent, and the forecast is not route-specific.

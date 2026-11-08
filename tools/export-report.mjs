@@ -31,14 +31,14 @@ md.renderer.rules.link_open = (tokens, index, options, env, self) => {
   if (href && !/^(https?:|#|mailto:)/.test(href))
     tokens[index].attrSet(
       "href",
-      "https://github.com/AI-ToDu/ai-todu-report/blob/fix/tb1-readiness/" +
+      "https://github.com/AI-ToDu/ai-todu-report/blob/main/" +
         href,
     );
   return linkOpen(tokens, index, options, env, self);
 };
 const content = md.render(await reportText());
 const html =
-  '<!doctype html><html lang="es-PE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>AI-ToDu · TB1 · NRC 7750</title><style>' +
+  '<!doctype html><html lang="es-PE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>AI-ToDu · AV2 · NRC 7750</title><style>' +
   css +
   "</style></head><body><main>" +
   content +
@@ -64,7 +64,7 @@ try {
   await page.pdf({
     path: fileURLToPath(
       new URL(
-        "upc-pre-202620-1asi0729-7750-ia-innovation-report-tb1.pdf",
+        "upc-pre-202620-1asi0729-7750-ia-innovation-report-av2.pdf",
         output,
       ),
     ),
@@ -73,9 +73,9 @@ try {
     preferCSSPageSize: true,
     displayHeaderFooter: true,
     headerTemplate:
-      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial">AI-ToDu · TB1 correction · NRC 7750</div>',
+      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial">AI-ToDu · AV2 · Sprint 3 · NRC 7750</div>',
     footerTemplate:
-      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial;display:flex;justify-content:space-between"><span>IA-INNOVATION · 30/10/2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
+      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial;display:flex;justify-content:space-between"><span>IA-INNOVATION · 08/11/2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
     margin: { top: "16mm", bottom: "17mm", left: "16mm", right: "16mm" },
   });
   console.log(

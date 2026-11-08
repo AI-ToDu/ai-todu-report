@@ -1,16 +1,17 @@
 <div class="report-cover" align="center">
 
-<img src="assets/report-cover.svg" alt="AI-ToDu · Ingeniería de una operación trazable" width="100%">
+<img class="university-logo" src="assets/upc-logo.png" alt="Universidad Peruana de Ciencias Aplicadas" width="96">
 
 **Universidad Peruana de Ciencias Aplicadas · Ingeniería de Software**<br>
 Desarrollo de Aplicaciones Open Source · **1ASI0729 · NRC 7750**<br>
 Docente: **Efraín Ricardo Bautista Ubillús**<br>
 Startup **IA-INNOVATION** · Período **2026-2**
 
-# Informe de ingeniería · AI-ToDu
+# Informe del Trabajo Final · AI-ToDu
 
-**TB1 — Corrección y preparación de AV2**<br>
-Revisión técnica: **30 de octubre de 2026 · v0.2.0**
+**AV2 · Sprint 3 · Semana 12**<br>
+Versión **0.3.0 · 8 de noviembre de 2026**<br>
+Lima, Perú · Noviembre de 2026
 
 <div class="cover-team">
 
@@ -28,7 +29,7 @@ Revisión técnica: **30 de octubre de 2026 · v0.2.0**
 
 </div>
 
-> **Alcance de esta revisión.** TB1 integra el frontend con una Fake REST API persistente. El servidor Java/Spring Boot, la persistencia PostgreSQL y la autenticación de producción corresponden a AV2. La revisión técnica no sustituye entrevistas, sustentaciones ni registros históricos del equipo.
+> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Las entrevistas, los videos, las reflexiones y las evidencias Scrum aún requieren fuentes reales.
 
 ## Cómo leer y mantener este informe
 
@@ -44,16 +45,30 @@ Este README es el informe completo **generado** desde `report-front.md`, los cin
 
 Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni aprobaciones sin registro.
 
-| Hito / revisión | Fecha verificable | Cambio y referencia |
-| --- | --- | --- |
-| AV1 · línea histórica | 19/09/2026 | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
-| TB1 · frontend inicial | 08/10/2026 | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
-| TB1 · informe base | 09/10/2026 | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
-| Corrección TB1 · v0.2.0 | 30/10/2026 | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
+| Versión / hito | Fecha verificable | Autor | Descripción de modificación |
+| --- | --- | --- | --- |
+| AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
+| TB1 · frontend inicial | 08/10/2026 | Equipo, según historial | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
+| TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
+| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
+| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
 
 ## Student Outcome · ABET 3
 
-**Comunicar eficazmente con diferentes audiencias, de forma oral y escrita.** Cada fila distingue una acción respaldada por Git de la evidencia oral aún pendiente. El commit acredita una contribución al archivo; no prueba por sí solo el aprendizaje individual ni una sustentación.
+El curso contribuye al cumplimiento del Student Outcome ABET: **ABET – EAC - Student Outcome 3**.
+
+**Criterio: Capacidad de comunicarse efectivamente con un rango de audiencias.**
+
+En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
+
+| Criterio específico | Acciones realizadas | Conclusiones |
+| --- | --- | --- |
+| Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: casos y guion técnico preparados; exposición, audiencia, feedback y reflexión individual pendientes. | Aún no se acredita el criterio oral. Los videos deben mostrar comunicación real para la audiencia correspondiente. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión asistida de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
+
+### Registro de acciones y fuentes
+
+Cada fila distingue una contribución respaldada por Git de la evidencia oral pendiente. Un commit acredita un cambio de archivo; no prueba por sí solo aprendizaje individual ni sustentación.
 
 | Integrante | Entrega | Acción escrita realizada y fuente | Acción oral / evidencia requerida |
 | --- | --- | --- | --- |
@@ -68,6 +83,14 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). | Adjuntar explicación de integración y límites de la entrega. |
 | Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). | Adjuntar demostración de venta/métricas y minuto. |
 
-**AV2:** al realizar la entrega, añadir una fila por integrante con su acción efectivamente realizada, audiencia, decisión explicada, artefacto y evidencia oral/escrita. No registrar actividad futura como logro. La comunicación debe acompañarse de una reflexión individual sobre claridad, feedback recibido y mejora aplicada.
+**AV2:** conservamos los aportes históricos. Kevin continúa con el incremento actual y enviará el tablero y los videos existentes; su autenticidad y atribución siguen pendientes. Product Owner, Scrum Master, reflexiones individuales y matriz LACX formal: pendientes de confirmar. No se reconstruyen reuniones ni aportes sin registro.
+
+## Collaboration Insights
+
+[Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. El tablero y las fuentes audiovisuales se incorporarán al recibirlos.
+
+## Tabla de contenidos
+
+<!-- REPORT_TOC -->
 
 ---
