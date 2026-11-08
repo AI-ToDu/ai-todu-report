@@ -1,0 +1,9 @@
+flowchart LR
+ access["Acceso: WAREHOUSE o ADMIN"] --> inventory["Inventario: buscar SKU y saldo"]
+ inventory --> order["Compra: líneas y pendientes"]
+ order --> receipt["Recepción: unidades por línea"]
+ receipt --> valid{"Cantidad entera y no excesiva"}
+ valid -->|"Sí"| done["Saldo, recibido y pendiente actualizados"]
+ valid -->|"No"| error["Error: conservar datos y explicar regla"]
+ error --> receipt
+ done --> history["Historial: responsable, motivo y delta"]

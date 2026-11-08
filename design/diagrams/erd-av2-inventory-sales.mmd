@@ -1,0 +1,50 @@
+erDiagram
+  inventory_items {
+    uuid id
+    uuid tenant_id
+    string sku
+    string name
+    integer quantity
+    bigint price
+    bigint cost
+    integer minimum
+    string conservation
+    bigint version
+  }
+  stock_movements {
+    uuid id
+    uuid tenant_id
+    uuid product_id
+    uuid actor_id
+    integer delta
+    string type
+    string reason
+    timestamp created_at
+  }
+  sales {
+    uuid id
+    uuid tenant_id
+    string number
+    string status
+    string fulfillment_status
+    uuid dispatch_id
+    string request_key
+    string fingerprint
+    timestamp created_at
+    bigint version
+  }
+  sale_lines {
+    uuid sale_id
+    integer line_order
+    uuid id
+    uuid product_id
+    string name
+    string sku
+    integer quantity
+    integer returned
+    bigint price_cents
+    bigint cost_cents
+  }
+  inventory_items ||--o{ sale_lines : "FK"
+  inventory_items ||--o{ stock_movements : "FK"
+  sales ||--o{ sale_lines : "FK"

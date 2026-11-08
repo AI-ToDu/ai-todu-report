@@ -70,6 +70,10 @@ Propuesta Figma: [inventario desktop](https://www.figma.com/design/Kxkl1QhgvRiFt
 
 ### 4.4.2. Web Applications Wireflow Diagrams
 
+![Objetivo del operario: recepción y conciliación](design/diagrams/rendered/user-flow-operator.svg)
+
+La secuencia corresponde a pantallas de Acceso, Inventario, Compras/recepción e Historial. Desktop conserva navegación lateral y tabla; móvil abre la navegación como panel y desplaza únicamente el contenedor de datos. Los formularios conservan sus datos al rechazarse la operación.
+
 ![Flujo integrado de recepción, venta y entrega](design/diagrams/rendered/workflow-core.svg)
 
 User goal del operario: registrar dos unidades y explicar el saldo. En el wireflow Figma: Acceso → Inventario → Registrar movimiento → Recepción → Saldo actualizado → Inventario. Hay puntos de inicio desktop/mobile; las conexiones son de diseño y no escriben en la base real.
@@ -80,7 +84,27 @@ La fuente de la vista publicada son los componentes Material y `src/styles.css`.
 
 ![Revisión del mockup de recepción móvil dentro de Figma](assets/figma-receipt-mobile.png)
 
+#### 4.4.3.1. Especificación por pantalla
+
+La tabla describe la implementación y sus estados esperados; no afirma que cada estado tenga un frame individual en Figma ni que haya sido validado con usuarios. Las propuestas editables se enlazan en cada apartado y las capturas de ejecución se distinguen de los mockups.
+
+| Pantalla | Propósito | Elementos principales | Estados y alternativas | Desktop / móvil |
+| --- | --- | --- | --- | --- |
+| Acceso | Entrar al espacio correcto | Correo, contraseña, idioma y enlace de registro | Cargando, credencial inválida, sesión válida | Panel/formulario en desktop; columna única y campos completos en móvil |
+| Inventario | Explicar existencia y conservación | Búsqueda SKU/nombre, cantidad, mínimo, precio/costo PEN, acciones | Vacío, sin coincidencias, carga fallida, éxito | Tabla contenida; acciones accesibles sin desplazar toda la página |
+| Movimiento | Registrar entrada, salida o merma | Producto, tipo, cantidad entera, motivo y saldo de referencia | Envío bloqueado, cantidad inválida, stock insuficiente | Diálogo con foco y etiquetas; ancho adaptado al viewport |
+| Compras y recepción | Conciliar orden, recibido y pendiente | Proveedor, producto, unidades ordenadas, recepción parcial | Sin proveedor/artículo, exceso, recepción aceptada | Detalle legible y formulario por línea; UI inicial crea una línea por orden |
+| Ventas | Confirmar solo lo disponible | Catálogo, carrito, unidades, total y comprobante académico | Carrito vacío, artículo bloqueado, falta de stock, confirmación | Catálogo/carrito lado a lado en desktop; secuencia vertical en móvil |
+| Despachos | Asignar y acreditar la entrega | Ventas elegibles, conductor, vehículo, destino, estado y receptor | Recurso ocupado, transición inválida, receptor ausente, entregado | Grupos por estado; controles apilados y destino legible en móvil |
+| Devoluciones | Conciliar unidades retornadas | Venta/línea, pendiente de retorno, RESTOCK/LOSS y motivo | Exceso, despacho activo, retorno aceptado | Formulario rotulado; estado y explicación junto a la acción |
+| Notificaciones | Atender mensajes del negocio | Tipo, fecha, indicador de lectura y acción | Bandeja vacía, mensaje nuevo, leído | Lista con acción por elemento; sin depender solo del color |
+| Dashboard | Relacionar saldo, venta y entrega | Ingresos, contribución bruta, valoración y contadores | Carga, sin operaciones, error y datos derivados | Tarjetas en columnas o apiladas; definición de contribución visible |
+| Equipo | Provisionar permisos | Nombre, correo, rol y contraseña inicial | Correo repetido, rol inválido, éxito sin devolver contraseña | Formulario adaptable; acceso exclusivo de administrador |
+
 ### 4.4.4. Web Applications User Flow Diagrams
+
+![Objetivo del administrador: venta y entrega conciliadas](design/diagrams/rendered/user-flow-admin.svg)
+
 
 El camino principal sigue recibir → consultar saldo → vender → revisar comprobante → crear despacho → iniciar ruta → identificar receptor → confirmar entrega. Los caminos alternativos incluyen credencial inválida, stock insuficiente, artículo bloqueado, recepción excesiva y recurso ocupado. La matriz de pruebas distingue observación de navegador de pruebas del contrato.
 
@@ -104,6 +128,23 @@ Los mensajes públicos se añaden al Outbox en la transacción del comando. El r
 
 StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
 
+#### 4.6.1.1. Transactional Outbox Pattern
+
+![Secuencia del Transactional Outbox Pattern implementado](design/diagrams/rendered/transactional-outbox.svg)
+
+El problema de doble escritura aparece si se confirma la operación de negocio y el proceso falla antes de comunicarla. El patrón guarda el cambio y el mensaje público en la **misma transacción**. JpaIntegrationOutbox exige transacción existente (MANDATORY); una regla rechazada elimina ambos mediante rollback. El evento interno solo lo maneja su contexto: InventoryIntegrationPublisher, SaleIntegrationPublisher y DeliveryIntegrationPublisher lo traducen a IntegrationMessage/Published Language v1 antes de persistirlo.
+
+OutboxRelay lee hasta 25 mensajes PENDING cuyo next_attempt_at ha vencido; bloquea cada fila, llama a suscriptores locales y marca PUBLISHED. Ante fallo revierte efectos y registra attempts, last_error y próximo reintento en otra transacción. La demora crece con límite de 300 segundos. Notifications usa el eventId como clave persistida; una reentrega no crea otra notificación. La entrega es eventual y admite reintentos: no se promete transporte exactly-once.
+
+| Evidencia de código/prueba | Qué demuestra | Límite |
+| --- | --- | --- |
+| V2 / integration_outbox | Mensajes, estado, intentos y próxima ejecución persistidos | Esquema propio de la aplicación |
+| messageRollsBackWithFailedCommand | Un comando rechazado no deja mensaje Outbox | Prueba de integración, no caída de máquina |
+| retryAfterFailureAndDuplicateDeliveryAreDurable | Fallo, rollback del consumidor, reintento y efecto idempotente | Mismo proceso y relay local |
+| notifications.id = eventId | Identidad estable del efecto consumidor | No constituye un inbox genérico para todos los consumidores |
+
+El relay y Notifications comparten PostgreSQL y transacción local al consumir. No se implementó broker externo, dead-letter queue ni prueba de reinicio de proceso; esas capacidades no se atribuyen a esta evidencia. El Outbox durable conserva pendientes para una ejecución posterior.
+
 ### 4.6.2. Software Architecture Context Diagram
 
 ![C4 C1 · personas y sistema](design/diagrams/rendered/c4-context.svg)
@@ -112,25 +153,33 @@ C1 muestra personas y propósito del sistema. No incluye pasarelas fiscales o pr
 
 ### 4.6.3. Software Architecture Container Diagrams
 
-![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
-
-TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **implementación AV2** siguiente:
-
 ![C4 C2 · ejecución AV2](design/diagrams/rendered/c4-containers-av2.svg)
 
-AV2 implementa un monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
+Vista principal AV2: monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
+
+**Referencia histórica TB1:**
+
+![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
+
+TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local.
 
 ### 4.6.4. Software Architecture Components Diagrams
 
-![C4 C3 · componentes reales del motor de demo](design/diagrams/rendered/c4-components.svg)
+![C4 C3 · contratos y componentes reales AV2](design/diagrams/rendered/c4-components-av2.svg)
 
-El diagrama anterior describe TB1. En AV2, los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos.
+Los controladores dependen de CommandService/QueryService. Los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos. El Outbox se guarda antes del commit y el relay procesa los mensajes comprometidos.
 
-![C4 C3 · componentes del recorrido core AV2](design/diagrams/rendered/c4-components-av2.svg)
+**Referencia histórica TB1:**
+
+![C4 C3 · componentes del motor de demo](design/diagrams/rendered/c4-components.svg)
 
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams
+
+![Agregados y valores del backend AV2](design/diagrams/rendered/class-core-av2.svg)
+
+Vista principal del incremento Java: InventoryItem, Sale, PurchaseOrder y DispatchManifest; sus colecciones internas se reconstruyen con assemblers de persistencia. Los comandos/consultas pertenecen al dominio, las interfaces CommandService/QueryService delimitan los casos de uso y las implementaciones internas coordinan transacciones. Los controladores dependen de esos contratos y los assemblers REST construyen los recursos. Las vistas TB1 siguientes se conservan como historial del prototipo.
 
 ![Modelo histórico del prototipo TB1](design/diagrams/rendered/class-core.svg)
 
@@ -151,6 +200,30 @@ JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor s
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
+
+**Vista principal AV2: 19 tablas ejecutadas**, además del historial Flyway. [Diccionario físico por columna y restricción](design/database/dictionary-av2.md). La vista completa siguiente representa las FK del DDL; una FK entre tablas no autoriza importar el agregado de otro bounded context.
+
+![Vista general de relaciones entre las 19 tablas AV2](design/diagrams/rendered/erd-av2-overview.svg)
+
+[Poster físico completo ampliable](design/diagrams/rendered/erd-av2.svg). Las vistas de detalle siguientes muestran las columnas reales por grupo; las FK entre grupos se consultan en el poster y el diccionario. No se añaden asociaciones de dominio como si fueran FK implementadas.
+
+**IAM, coordinación e integración:**
+
+![AV2: identidad, coordinación y Transactional Outbox](design/diagrams/rendered/erd-av2-identity-integration.svg)
+
+**Inventario y ventas:**
+
+![AV2: inventario, movimientos y snapshots de venta](design/diagrams/rendered/erd-av2-inventory-sales.svg)
+
+**Abastecimiento y devoluciones:**
+
+![AV2: compras, recepción parcial y retorno](design/diagrams/rendered/erd-av2-procurement-returns.svg)
+
+**Logística:**
+
+![AV2: recursos, manifiesto, líneas e incidencias](design/diagrams/rendered/erd-av2-logistics.svg)
+
+**Modelo objetivo e histórico de referencia:**
 
 El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite como referencia; TB1 usa 35 colecciones JSON. **AV2 implementa 19 tablas de negocio/infraestructura**, además de flyway_schema_history, definidas por sus [migraciones PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/tree/main/src/main/resources/db/migration). No se declara implementada automáticamente toda la referencia de 35 tablas.
 

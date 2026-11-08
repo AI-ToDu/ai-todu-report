@@ -1,0 +1,47 @@
+erDiagram
+  workspaces {
+    uuid id
+    string name
+  }
+  workspace_locks {
+    uuid id
+  }
+  users {
+    uuid id
+    uuid tenant_id
+    string name
+    string email
+    string password_hash
+    string role
+    boolean active
+  }
+  sessions {
+    string token_hash
+    uuid user_id
+    timestamp expires_at
+  }
+  integration_outbox {
+    uuid id
+    uuid tenant_id
+    string type
+    integer schema_version
+    timestamp occurred_at
+    text payload
+    string status
+    integer attempts
+    timestamp next_attempt_at
+    timestamp published_at
+    string last_error
+  }
+  notifications {
+    uuid id
+    uuid tenant_id
+    string type
+    timestamp created_at
+    boolean is_read
+  }
+  users ||--o{ sessions : "FK"
+  workspaces ||--o{ integration_outbox : "FK"
+  workspaces ||--o{ notifications : "FK"
+  workspaces ||--o{ users : "FK"
+  workspaces ||--o{ workspace_locks : "FK"

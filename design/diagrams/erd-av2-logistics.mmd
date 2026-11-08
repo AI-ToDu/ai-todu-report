@@ -1,0 +1,46 @@
+erDiagram
+  drivers {
+    uuid id
+    uuid tenant_id
+    string name
+    string license
+  }
+  vehicles {
+    uuid id
+    uuid tenant_id
+    string name
+    string plate
+  }
+  dispatches {
+    uuid id
+    uuid tenant_id
+    uuid driver_id
+    uuid vehicle_id
+    string destination
+    string status
+    timestamp created_at
+    string recipient
+    timestamp delivered_at
+    bigint version
+  }
+  dispatch_lines {
+    uuid dispatch_id
+    integer line_order
+    uuid id
+    uuid sale_id
+    uuid sale_line_id
+    uuid product_id
+    string name
+    integer quantity
+  }
+  delivery_incidents {
+    uuid dispatch_id
+    integer incident_order
+    uuid id
+    string description
+    timestamp created_at
+  }
+  dispatches ||--o{ delivery_incidents : "FK"
+  dispatches ||--o{ dispatch_lines : "FK"
+  drivers ||--o{ dispatches : "FK"
+  vehicles ||--o{ dispatches : "FK"
