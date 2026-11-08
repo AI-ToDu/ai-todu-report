@@ -240,4 +240,3 @@ Fuente: migraciones V1–V4 del backend; 19 tablas de aplicación/infraestructur
 | `created_at` | `created_at TIMESTAMP WITH TIME ZONE NOT NULL` |
 | `loss_cents` | `loss_cents BIGINT NOT NULL CHECK(loss_cents>=0)` |
 | `FOREIGN` | `FOREIGN KEY(tenant_id,sale_id) REFERENCES sales(tenant_id,id)` |
-
