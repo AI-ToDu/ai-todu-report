@@ -108,13 +108,14 @@ Cada fila muestra la secuencia local de un contexto; se presentan primero los co
 | Término | Definición y regla compartida |
 | --- | --- |
 | SKU | Identificador normalizado del artículo, único en una empresa. No representa saldo ni ubicación. |
-| Stock / saldo | Cantidad entera disponible en TB1. Nunca negativa. |
-| Conservación | Condición del artículo independiente de su cantidad; puede bloquear una venta. |
-| Movimiento | Cambio de saldo con tipo, cantidad, motivo y responsable. |
-| Orden de compra / recepción | Compromiso con proveedor y hecho de recibir; una recepción puede ser parcial. |
-| Venta | Transacción confirmada que descuenta stock una vez. |
-| Manifiesto de despacho | Asignación de venta, recursos y destino; no vuelve a descontar inventario. |
-| Intento de entrega | Registro del resultado; TB1 registra únicamente confirmación exitosa con receptor. |
-| Devolución | Retorno limitado por la línea vendida; reincorpora stock o registra pérdida según disposición. |
-| Contribución bruta | Venta neta de devoluciones menos costo registrado y pérdidas; excluye otros gastos e impuestos. |
-| Empresa / tenant | Frontera de pertenencia de los registros operativos. |
+| Stock (saldo) | Cantidad entera disponible. Nunca negativa. |
+| Conservation condition (conservación) | Condición del artículo independiente de su cantidad; puede bloquear una venta. |
+| Stock movement (movimiento) | Cambio de saldo con tipo, cantidad, motivo y responsable. |
+| Purchase order (orden de compra) | Compromiso con un proveedor que conserva cantidades pedidas y pendientes. |
+| Goods receipt (recepción) | Hecho de recibir mercadería; una recepción de compra puede ser parcial. |
+| Sale (venta) | Transacción confirmada que descuenta stock una vez. |
+| Dispatch manifest (manifiesto de despacho) | Asignación de venta, recursos y destino; no vuelve a descontar inventario. |
+| Delivery confirmation (confirmación de entrega) | Finalización con receptor y fecha; los intentos fallidos quedan para una extensión futura. |
+| Return (devolución) | Retorno limitado por la línea vendida; reincorpora stock o registra pérdida según disposición. |
+| Gross contribution (contribución bruta) | Venta neta de devoluciones menos costo registrado y pérdidas; excluye otros gastos e impuestos. |
+| Business (empresa) | Organización a la que pertenecen los registros y los usuarios autorizados. |

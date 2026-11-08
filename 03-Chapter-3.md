@@ -102,6 +102,16 @@ Prefijo REST: /api/v1. [OpenAPI del servidor](https://ai-todu-api-av2.onrender.c
 
 Los objetivos comerciales heredados (clientes, retención y ahorro porcentual) se tratan como hipótesis, no como resultados. La primera validación mide comprensión y ejecución; la segunda podrá contrastar tiempo frente al proceso real.
 
+Los siguientes Business Goals son **metas SMART propuestas**, pendientes de ratificación con participantes. El plazo empieza con el primer piloto consentido, cuya fecha aún no se conoce. Las cantidades y tiempos son umbrales de aceptación propuestos, no mediciones realizadas ni compromisos de clientes.
+
+| Business Goal SMART | Actor / persona | Impact esperado | Deliverable | User Story |
+| --- | --- | --- | --- | --- |
+| BG01: en las cuatro primeras semanas del piloto, al menos 3 de 4 operarios completan una recepción y explican el nuevo saldo en hasta tres minutos, sin duplicar el movimiento. | Operario de almacén | Registra la entrada una sola vez y contrasta el saldo con la mercadería. | Recepción con historial y confirmación del saldo. | US10: Como Almacenero, deseo registrar una entrada para conciliar el stock. |
+| BG02: en las cuatro primeras semanas del piloto, al menos 3 de 4 administradores relacionan una venta con su despacho, estado y receptor en hasta cuatro minutos sin ayuda del facilitador. | Administrador del negocio | Consulta evidencia vinculada para responder por una entrega. | Venta vinculada al manifiesto y confirmación con receptor. | US19: Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. |
+| BG03: al terminar la sexta semana del piloto, al menos 3 de 4 administradores concilian el saldo y el importe de un caso con recepción, venta y devolución sin diferencias respecto del registro de referencia. | Administrador del negocio | Comprueba importes e inventario a partir de sus operaciones. | Historial e indicadores con definición y datos de prueba trazables. | US23: Como Administrador, deseo consultar indicadores para comprender las operaciones registradas. |
+
+Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las fichas de User Persona y el Impact Map en UXPressia siguen pendientes de acceso y sustento de investigación; esta tabla prepara su contenido sin presentar una captura inexistente.
+
 ## 3.3. Product Backlog
 
 <div class="backlog-table">
