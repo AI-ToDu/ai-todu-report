@@ -4,8 +4,8 @@ Historical baseline: TB1, 2026-10-30. Current increment: AV2, 2026-11-08. Protot
 
 ## Bounded contexts in review order
 
-1. **Core — Inventory, Logistics.** Inventory owns product stock and conservation. Logistics owns manifests, drivers, vehicles, stops and attempts. Dispatch references a confirmed sale; it never decrements inventory a second time.
-2. **Support — Procurement, Commercial/Returns, Reporting, Notifications.** Receipt increases stock. Sale issues stock atomically. Cancellation restores it once. Return cannot exceed the sold balance. Reporting derives its figures; it does not own a second transactional ledger.
+1. **Core — Inventory, Logistics.** Inventory owns product stock and conservation. AV2 Logistics owns manifests, drivers, vehicles, delivery evidence and incidents. Multi-stop routing and repeated delivery attempts remain target-model capabilities. Dispatch references a confirmed sale; it never decrements inventory a second time.
+2. **Support — Procurement, Sales, Returns, Reporting, Notifications.** Receipt increases stock. Sale issues stock atomically. Cancellation restores it once. Return cannot exceed the sold balance. Reporting derives its figures; it does not own a second transactional ledger.
 3. **Generic — Identity and access.** Tenant, session and role contract is shared. A public landing is a product channel, not a domain bounded context.
 
 ![Context map](diagrams/rendered/context-map.svg)
@@ -76,3 +76,13 @@ Single-attribute values use infrastructure converters. Multi-attribute persisten
 ## External service contract
 
 Open-Meteo supplies regional conditions for fixed central-Lima coordinates. The gateway validates and translates its response, caches for ten minutes, and applies connection/request timeouts. Provider failure yields a stable 503 code; dispatch commands remain usable. Customer destinations are not sent, and the forecast is not route-specific.
+
+## ADR-007 — CQRS contracts and HTTP outcomes
+
+REST controllers depend on application CommandService/QueryService interfaces. Queries are domain records with authenticated workspace identity; read handlers use read-only transactions. REST FromEntity assemblers and persistence assemblers serve different boundaries. An expected Result.Failure becomes a ProblemDetail response directly, without another thrown domain exception. Transport validation returns 400 with a matching body status. Command endpoints explicitly document their success-resource and error schemas, since ResponseEntity<?> represents both possible HTTP bodies.
+
+## ADR-008 — Transactional Outbox Pattern
+
+Business state and the public integration message commit in the same database transaction. The originating context alone interprets its domain event and translates it into Published Language v1. JpaIntegrationOutbox requires an existing transaction. The relay reads at most 25 due PENDING rows, uses a pessimistic message lock and commits notification effects together with PUBLISHED. Failure rolls back consumption before a separate transaction records retry state, with a 300-second maximum delay. Notification identity is eventId, so repeated delivery does not repeat that effect. The tests cover rollback, failure/retry and redelivery in one process; no full-process restart or external broker is asserted.
+
+[Outbox sequence](diagrams/rendered/transactional-outbox.svg) · [AV2 class model](diagrams/rendered/class-core-av2.svg) · [Physical dictionary extracted from V1–V4](database/dictionary-av2.md).

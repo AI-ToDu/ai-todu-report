@@ -1,5 +1,6 @@
 flowchart TB
- rest["REST Controllers<br/>Resources y autorización"]
+ rest["REST Controllers<br/>Resources, validación y autorización"]
+ contracts["CommandService / QueryService<br/>Contratos de aplicación y Result"]
  sale["SaleService<br/>Comandos y consultas"]
  logistic["LogisticsService<br/>Comandos y consultas"]
  inventory["InventoryService<br/>Comandos y consultas"]
@@ -8,10 +9,13 @@ flowchart TB
  jpa["Adaptadores JPA<br/>Assemblers y entidades separadas"]
  db[("PostgreSQL<br/>Transacción por workspace")]
  events["Publishers propios<br/>Published Language v1"]
- outbox["OutboxRelay<br/>Reintentos e inbox idempotente"]
- rest --> sale
- rest --> logistic
- rest --> inventory
+ append["IntegrationOutbox / JpaIntegrationOutbox<br/>PENDING en la transacción del negocio"]
+ outbox["OutboxRelay<br/>Lectura de comprometidos y reintentos"]
+ inbox["Notifications<br/>Consumidor idempotente por eventId"]
+ rest --> contracts
+ contracts --> sale
+ contracts --> logistic
+ contracts --> inventory
  logistic -->|"SalesGateway / ACL"| aclSale
  aclSale --> sale
  sale -->|"InventoryGateway / ACL"| aclInventory
@@ -23,5 +27,8 @@ flowchart TB
  sale --> events
  logistic --> events
  inventory --> events
- events --> outbox
- outbox --> db
+ events --> append
+ append --> db
+ outbox -->|"leer y bloquear pendientes"| db
+ outbox --> inbox
+ inbox --> db

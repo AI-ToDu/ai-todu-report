@@ -1,0 +1,5150 @@
+{
+  "openapi" : "3.1.0",
+  "info" : {
+    "title" : "AI-ToDu Platform API",
+    "description" : "Academic workspace API. Inventory, purchasing, sales, returns and dispatches. Amounts are PEN; quantities are whole units. Business commands are atomic per workspace.",
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "/",
+    "description" : "Current server"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/api/v1/vehicles" : {
+      "get" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "List vehicles",
+        "description" : "Read vehicles registered in this workspace. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "vehicles",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceVehicleResponseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Register a vehicle",
+        "description" : "Register a vehicle and unique plate. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "vehicle",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/VehicleResource"
+              },
+              "example" : {
+                "name" : "Example van",
+                "plate" : "AV2-001"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/VehicleResponseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/suppliers" : {
+      "get" : {
+        "tags" : [ "Procurement" ],
+        "summary" : "List suppliers",
+        "description" : "Read suppliers belonging to this workspace. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "suppliers",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceSupplierResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Procurement" ],
+        "summary" : "Register a supplier",
+        "description" : "Register supplier name and contact information. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "supplier",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateSupplierResource"
+              },
+              "example" : {
+                "name" : "Example supplier",
+                "contact" : "supplier@example.test"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SupplierResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/sales" : {
+      "get" : {
+        "tags" : [ "Sales" ],
+        "summary" : "List sales",
+        "description" : "Read sales, immutable commercial line snapshots and academic receipt references. Allowed roles: ADMIN, SALES. Tenant is never accepted from request input.",
+        "operationId" : "list",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceSaleResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Sales" ],
+        "summary" : "Confirm a sale",
+        "description" : "Atomically record sale, stock issues and integration messages. An identical Idempotency-Key replay returns the existing sale with 201; a conflicting payload returns 409. Allowed roles: ADMIN, SALES. Tenant is never accepted from request input.",
+        "operationId" : "create",
+        "parameters" : [ {
+          "name" : "Idempotency-Key",
+          "in" : "header",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ConfirmSaleResource"
+              },
+              "example" : {
+                "lines" : [ {
+                  "productId" : "00000000-0000-4000-8000-000000000001",
+                  "quantity" : 1
+                } ]
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SaleResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/sales/{id}/cancel" : {
+      "post" : {
+        "tags" : [ "Sales" ],
+        "summary" : "Cancel a sale",
+        "description" : "Cancel a sale that has not been dispatched and restore its stock once. Allowed roles: ADMIN, SALES. Tenant is never accepted from request input.",
+        "operationId" : "cancel",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CancelResource"
+              },
+              "example" : {
+                "reason" : "Customer cancellation"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SaleResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/returns" : {
+      "get" : {
+        "tags" : [ "Returns" ],
+        "summary" : "List customer returns",
+        "description" : "Read previously recorded returns and disposition. Allowed roles: ADMIN, SALES. Tenant is never accepted from request input.",
+        "operationId" : "list_1",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceReturnResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Returns" ],
+        "summary" : "Record a customer return",
+        "description" : "Return units against one sale line. RESTOCK restores stock; LOSS records loss. Previously returned quantities limit the remaining return. Allowed roles: ADMIN, SALES. Tenant is never accepted from request input.",
+        "operationId" : "record",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RecordReturnResource"
+              },
+              "example" : {
+                "saleId" : "00000000-0000-4000-8000-000000000001",
+                "saleLineId" : "00000000-0000-4000-8000-000000000001",
+                "quantity" : 1,
+                "disposition" : "RESTOCK",
+                "reason" : "Customer return"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReturnResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/purchases" : {
+      "get" : {
+        "tags" : [ "Procurement" ],
+        "summary" : "List purchase orders",
+        "description" : "Read orders and ordered/received quantities. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "orders",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourcePurchaseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Procurement" ],
+        "summary" : "Place a purchase order",
+        "description" : "Create an order for an existing supplier and distinct workspace products. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "order",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PlacePurchaseResource"
+              },
+              "example" : {
+                "supplierId" : "00000000-0000-4000-8000-000000000001",
+                "lines" : [ {
+                  "productId" : "00000000-0000-4000-8000-000000000001",
+                  "quantity" : 5
+                } ]
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PurchaseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/purchases/{id}/receipts" : {
+      "post" : {
+        "tags" : [ "Procurement" ],
+        "summary" : "Receive a purchase partially or fully",
+        "description" : "Receive positive quantities by order line; exceeding outstanding units rolls back the entire receipt. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "receipt",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ReceivePurchaseResource"
+              },
+              "example" : {
+                "lines" : [ {
+                  "lineId" : "00000000-0000-4000-8000-000000000001",
+                  "quantity" : 2
+                } ]
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PurchaseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/products" : {
+      "get" : {
+        "tags" : [ "Inventory" ],
+        "summary" : "List products",
+        "description" : "List products in the authenticated workspace; no server-side pagination or filters. Allowed roles: Any active role. Tenant is never accepted from request input.",
+        "operationId" : "products",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceProductResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Inventory" ],
+        "summary" : "Register a product",
+        "description" : "Register a unique workspace SKU with zero initial stock. Amounts are PEN. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "create_1",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateProductResource"
+              },
+              "example" : {
+                "sku" : "AV2-DEMO-001",
+                "name" : "Example item",
+                "price" : 12.5,
+                "cost" : 7,
+                "minimum" : 1
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProductResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/movements" : {
+      "get" : {
+        "tags" : [ "Inventory" ],
+        "summary" : "List stock movements",
+        "description" : "Read the audit history of signed stock movements. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "movements",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceMovementResponseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Inventory" ],
+        "summary" : "Record a stock movement",
+        "description" : "Apply RECEIPT or ISSUE in whole positive units; an issue cannot exceed available stock. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "movement",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MovementResource"
+              },
+              "example" : {
+                "productId" : "00000000-0000-4000-8000-000000000001",
+                "quantity" : 5,
+                "type" : "RECEIPT",
+                "reason" : "Initial receipt"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProductResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/employees" : {
+      "get" : {
+        "tags" : [ "IAM" ],
+        "summary" : "List employees",
+        "description" : "List employees in the authenticated workspace. Allowed roles: ADMIN. Tenant is never accepted from request input.",
+        "operationId" : "list_2",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceEmployeeResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "IAM" ],
+        "summary" : "Create an employee",
+        "description" : "Provision a role and initial password; no password or hash is returned. Allowed roles: ADMIN. Tenant is never accepted from request input.",
+        "operationId" : "create_2",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateEmployeeResource"
+              },
+              "example" : {
+                "name" : "Warehouse operator",
+                "email" : "warehouse@example.test",
+                "role" : "WAREHOUSE",
+                "password" : "ExampleOnly2026!"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/EmployeeResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/drivers" : {
+      "get" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "List drivers",
+        "description" : "Read drivers registered in this workspace. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "drivers",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceDriverResponseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Register a driver",
+        "description" : "Register a driver and unique license. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "driver",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/DriverResource"
+              },
+              "example" : {
+                "name" : "Example driver",
+                "license" : "LIC-AV2-001"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DriverResponseResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/dispatches" : {
+      "get" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "List dispatch manifests",
+        "description" : "Read manifests, lines, incidents and recipient evidence. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "list_3",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceDispatchResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Prepare a dispatch",
+        "description" : "Assign confirmed undispatched sales, a driver, a vehicle and destination. Stock is not deducted again. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "prepare",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PrepareDispatchResource"
+              },
+              "example" : {
+                "saleIds" : [ "00000000-0000-4000-8000-000000000001" ],
+                "driverId" : "00000000-0000-4000-8000-000000000001",
+                "vehicleId" : "00000000-0000-4000-8000-000000000001",
+                "destination" : "Example warehouse, Lima"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DispatchResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/dispatches/{id}/incidents" : {
+      "post" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Record a delivery incident",
+        "description" : "Append an incident description to the selected manifest. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "incident",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IncidentResource"
+              },
+              "example" : {
+                "description" : "Recipient temporarily unavailable"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DispatchResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/auth/register" : {
+      "post" : {
+        "tags" : [ "IAM" ],
+        "summary" : "Register a workspace",
+        "description" : "Create a company and its first administrator; email must be unique. Allowed roles: Public. Tenant is never accepted from request input.",
+        "operationId" : "register",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RegistrationResource"
+              },
+              "example" : {
+                "name" : "AV2 Reviewer",
+                "company" : "Example workspace",
+                "email" : "reviewer@example.test",
+                "password" : "ExampleOnly2026!"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UserResource"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ ]
+      }
+    },
+    "/api/v1/auth/logout" : {
+      "post" : {
+        "tags" : [ "IAM" ],
+        "summary" : "Revoke the current session",
+        "description" : "Revoke the presented token; later access with it returns 401. Allowed roles: Any active role. Tenant is never accepted from request input.",
+        "operationId" : "logout",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Session revoked; no response body"
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/auth/login" : {
+      "post" : {
+        "tags" : [ "IAM" ],
+        "summary" : "Create a session",
+        "description" : "Authenticate an active account and return a revocable JWT. Allowed roles: Public. Tenant is never accepted from request input.",
+        "operationId" : "login",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginResource"
+              },
+              "example" : {
+                "email" : "reviewer@example.test",
+                "password" : "ExampleOnly2026!"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SessionResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Invalid credentials or inactive account",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Invalid credentials or inactive account",
+                  "code" : "INVALID_CREDENTIALS",
+                  "title" : "Invalid credentials or inactive account",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Duplicate identity or conflicting business state",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "code" : "CONFLICT",
+                  "title" : "Duplicate identity or conflicting business state",
+                  "type" : "about:blank",
+                  "status" : 409
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ ]
+      }
+    },
+    "/api/v1/products/{id}" : {
+      "patch" : {
+        "tags" : [ "Inventory" ],
+        "summary" : "Change conservation status",
+        "description" : "Change conservation; this action does not edit price or stock. Allowed roles: ADMIN, WAREHOUSE. Tenant is never accepted from request input.",
+        "operationId" : "conservation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ConservationResource"
+              },
+              "example" : {
+                "conservation" : "GOOD"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProductResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/notifications/{id}" : {
+      "patch" : {
+        "tags" : [ "Notifications" ],
+        "summary" : "Mark a notification as read",
+        "description" : "Mark a workspace notification as read; repeating it preserves the read state. Allowed roles: Any active role. Tenant is never accepted from request input.",
+        "operationId" : "read",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NotificationResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/dispatches/{id}" : {
+      "patch" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Transition a dispatch",
+        "description" : "Transition PENDING to IN_TRANSIT, then DELIVERED with recipient evidence; invalid transitions preserve the previous state. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "transition",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "UUID of a resource in the authenticated workspace",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TransitionResource"
+              },
+              "example" : {
+                "status" : "DELIVERED",
+                "recipient" : "Example recipient"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DispatchResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Malformed request, missing required input or invalid parameter",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "code" : "INVALID_TEXT",
+                  "title" : "Malformed request, missing required input or invalid parameter",
+                  "type" : "about:blank",
+                  "status" : 400
+                }
+              }
+            }
+          },
+          "422" : {
+            "description" : "A domain invariant rejects the supplied values",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "code" : "INVALID_QUANTITY",
+                  "title" : "A domain invariant rejects the supplied values",
+                  "type" : "about:blank",
+                  "status" : 422
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Reference not found in the authenticated workspace",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "code" : "NOT_FOUND",
+                  "title" : "Reference not found in the authenticated workspace",
+                  "type" : "about:blank",
+                  "status" : 404
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/notifications" : {
+      "get" : {
+        "tags" : [ "Notifications" ],
+        "summary" : "List notifications",
+        "description" : "Read workspace notifications produced by committed integration messages. Allowed roles: Any active role. Tenant is never accepted from request input.",
+        "operationId" : "list_4",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceNotificationResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/metrics" : {
+      "get" : {
+        "tags" : [ "Reporting" ],
+        "summary" : "Read operational metrics",
+        "description" : "Read revenue, gross contribution, inventory valuation, low-stock count and dispatch/sale counts. Gross contribution is not net profit. Allowed roles: ADMIN. Tenant is never accepted from request input.",
+        "operationId" : "metrics",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Metrics"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/logistics/weather" : {
+      "get" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "Read regional Lima weather",
+        "description" : "Read fixed central-Lima conditions from Open-Meteo, cached for ten minutes. Provider failure returns 503; dispatch commands remain usable. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "current",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/WeatherResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Weather provider unavailable",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Weather provider unavailable",
+                  "code" : "UPSTREAM_UNAVAILABLE",
+                  "title" : "Weather provider unavailable",
+                  "type" : "about:blank",
+                  "status" : 503
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/dispatch-candidates" : {
+      "get" : {
+        "tags" : [ "Logistics" ],
+        "summary" : "List eligible sales",
+        "description" : "Read confirmed sales that can be assigned to a dispatch. Allowed roles: ADMIN, LOGISTICS. Tenant is never accepted from request input.",
+        "operationId" : "candidates",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResourceCandidateResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Role does not permit this operation",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Role does not permit this operation",
+                  "code" : "FORBIDDEN",
+                  "title" : "Role does not permit this operation",
+                  "type" : "about:blank",
+                  "status" : 403
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/auth/me" : {
+      "get" : {
+        "tags" : [ "IAM" ],
+        "summary" : "Read the current identity",
+        "description" : "Read the authenticated identity; tenant is derived from the token. Allowed roles: Any active role. Tenant is never accepted from request input.",
+        "operationId" : "me",
+        "parameters" : [ {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Localized messages; en-US or es-419. Does not translate user-entered data.",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "en-US",
+            "enum" : [ "en-US", "es-419" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UserResource"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Missing, invalid, expired or revoked session",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "code" : "UNAUTHENTICATED",
+                  "title" : "Missing, invalid, expired or revoked session",
+                  "type" : "about:blank",
+                  "status" : 401
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Unexpected server failure; internal details are not disclosed",
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                },
+                "example" : {
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "code" : "INTERNAL_ERROR",
+                  "title" : "Unexpected server failure; internal details are not disclosed",
+                  "type" : "about:blank",
+                  "status" : 500
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "VehicleResource" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "plate" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "name", "plate" ]
+      },
+      "CreateSupplierResource" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "contact" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "contact", "name" ]
+      },
+      "ConfirmSaleResource" : {
+        "type" : "object",
+        "properties" : {
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/LineRequest"
+            },
+            "minItems" : 1
+          }
+        },
+        "required" : [ "lines" ]
+      },
+      "LineRequest" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "number",
+            "description" : "Positive whole units; fractions are rejected by the domain.",
+            "exclusiveMinimum" : 0,
+            "maximum" : 2147483647,
+            "multipleOf" : 1
+          }
+        },
+        "required" : [ "productId", "quantity" ]
+      },
+      "CancelResource" : {
+        "type" : "object",
+        "properties" : {
+          "reason" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "reason" ]
+      },
+      "RecordReturnResource" : {
+        "type" : "object",
+        "properties" : {
+          "saleId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "saleLineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "number",
+            "description" : "Positive whole units; fractions are rejected by the domain.",
+            "exclusiveMinimum" : 0,
+            "maximum" : 2147483647,
+            "multipleOf" : 1
+          },
+          "disposition" : {
+            "type" : "string",
+            "enum" : [ "RESTOCK", "LOSS" ]
+          },
+          "reason" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "disposition", "quantity", "reason", "saleId", "saleLineId" ]
+      },
+      "PlacePurchaseResource" : {
+        "type" : "object",
+        "properties" : {
+          "supplierId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RequestedPurchaseLineResource"
+            },
+            "minItems" : 1
+          }
+        },
+        "required" : [ "lines", "supplierId" ]
+      },
+      "RequestedPurchaseLineResource" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "number",
+            "description" : "Positive whole units; fractions are rejected by the domain.",
+            "exclusiveMinimum" : 0,
+            "maximum" : 2147483647,
+            "multipleOf" : 1
+          }
+        },
+        "required" : [ "productId", "quantity" ]
+      },
+      "ReceivePurchaseResource" : {
+        "type" : "object",
+        "properties" : {
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ReceivedPurchaseLineResource"
+            },
+            "minItems" : 1
+          }
+        },
+        "required" : [ "lines" ]
+      },
+      "ReceivedPurchaseLineResource" : {
+        "type" : "object",
+        "properties" : {
+          "lineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "number",
+            "description" : "Positive whole units; fractions are rejected by the domain.",
+            "exclusiveMinimum" : 0,
+            "maximum" : 2147483647,
+            "multipleOf" : 1
+          }
+        },
+        "required" : [ "lineId", "quantity" ]
+      },
+      "CreateProductResource" : {
+        "type" : "object",
+        "properties" : {
+          "sku" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "price" : {
+            "type" : "number",
+            "description" : "Non-negative PEN amount with at most two decimal places.",
+            "minimum" : 0,
+            "multipleOf" : 0.01
+          },
+          "cost" : {
+            "type" : "number",
+            "description" : "Non-negative PEN amount with at most two decimal places.",
+            "minimum" : 0,
+            "multipleOf" : 0.01
+          },
+          "minimum" : {
+            "type" : "integer",
+            "format" : "int32",
+            "minimum" : 0
+          }
+        },
+        "required" : [ "cost", "minimum", "name", "price", "sku" ]
+      },
+      "MovementResource" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "number",
+            "description" : "Positive whole units; fractions are rejected by the domain.",
+            "exclusiveMinimum" : 0,
+            "maximum" : 2147483647,
+            "multipleOf" : 1
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "RECEIPT", "ISSUE", "LOSS" ]
+          },
+          "reason" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "productId", "quantity", "reason", "type" ]
+      },
+      "CreateEmployeeResource" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "minLength" : 1
+          },
+          "role" : {
+            "type" : "string",
+            "enum" : [ "ADMIN", "WAREHOUSE", "SALES", "LOGISTICS" ]
+          },
+          "password" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "email", "name", "password", "role" ]
+      },
+      "DriverResource" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "license" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "license", "name" ]
+      },
+      "PrepareDispatchResource" : {
+        "type" : "object",
+        "properties" : {
+          "saleIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            },
+            "minItems" : 1
+          },
+          "driverId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "vehicleId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "destination" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "destination", "driverId", "saleIds", "vehicleId" ]
+      },
+      "IncidentResource" : {
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "description" ]
+      },
+      "RegistrationResource" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "company" : {
+            "type" : "string",
+            "minLength" : 1
+          },
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "minLength" : 1
+          },
+          "password" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "company", "email", "name", "password" ]
+      },
+      "LoginResource" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "minLength" : 1
+          },
+          "password" : {
+            "type" : "string",
+            "minLength" : 1
+          }
+        },
+        "required" : [ "email", "password" ]
+      },
+      "SessionResource" : {
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string"
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/UserResource"
+          }
+        }
+      },
+      "UserResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "tenantId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "role" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ConservationResource" : {
+        "type" : "object",
+        "properties" : {
+          "conservation" : {
+            "type" : "string",
+            "enum" : [ "GOOD", "DAMAGED", "QUARANTINED" ]
+          }
+        },
+        "required" : [ "conservation" ]
+      },
+      "TransitionResource" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "enum" : [ "IN_TRANSIT", "DELIVERED" ]
+          },
+          "recipient" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "status" ]
+      },
+      "CollectionResourceVehicleResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/VehicleResponseResource"
+            }
+          }
+        }
+      },
+      "VehicleResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "plate" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceSupplierResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SupplierResource"
+            }
+          }
+        }
+      },
+      "SupplierResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "contact" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceSaleResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SaleResource"
+            }
+          }
+        }
+      },
+      "LineResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "sku" : {
+            "type" : "string"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "price" : {
+            "type" : "number"
+          },
+          "cost" : {
+            "type" : "number"
+          },
+          "returned" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "ReceiptResource" : {
+        "type" : "object",
+        "properties" : {
+          "number" : {
+            "type" : "string"
+          }
+        }
+      },
+      "SaleResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "number" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "total" : {
+            "type" : "number"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/LineResource"
+            }
+          },
+          "receipt" : {
+            "$ref" : "#/components/schemas/ReceiptResource"
+          }
+        }
+      },
+      "CollectionResourceReturnResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ReturnResource"
+            }
+          }
+        }
+      },
+      "ReturnResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "saleId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "saleLineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "disposition" : {
+            "type" : "string"
+          },
+          "reason" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "CollectionResourcePurchaseResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PurchaseResource"
+            }
+          }
+        }
+      },
+      "PurchaseLineResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "received" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "PurchaseResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "number" : {
+            "type" : "string"
+          },
+          "supplierId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PurchaseLineResource"
+            }
+          }
+        }
+      },
+      "CollectionResourceProductResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ProductResource"
+            }
+          }
+        }
+      },
+      "ProductResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "sku" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "price" : {
+            "type" : "number"
+          },
+          "cost" : {
+            "type" : "number"
+          },
+          "minimum" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "conservation" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceNotificationResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/NotificationResource"
+            }
+          }
+        }
+      },
+      "NotificationResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "read" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "CollectionResourceMovementResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/MovementResponseResource"
+            }
+          }
+        }
+      },
+      "MovementResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "delta" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "reason" : {
+            "type" : "string"
+          },
+          "actorId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Metrics" : {
+        "type" : "object",
+        "properties" : {
+          "revenue" : {
+            "type" : "number"
+          },
+          "grossMargin" : {
+            "type" : "number"
+          },
+          "inventoryValue" : {
+            "type" : "number"
+          },
+          "lowStock" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "dispatches" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "sales" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "WeatherResource" : {
+        "type" : "object",
+        "properties" : {
+          "location" : {
+            "type" : "string"
+          },
+          "temperatureC" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "precipitationMm" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "windKmh" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "observedAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "fetchedAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "source" : {
+            "type" : "string"
+          },
+          "attributionUrl" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceEmployeeResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EmployeeResource"
+            }
+          }
+        }
+      },
+      "EmployeeResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "role" : {
+            "type" : "string"
+          },
+          "active" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "CollectionResourceDriverResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DriverResponseResource"
+            }
+          }
+        }
+      },
+      "DriverResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "license" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceDispatchResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DispatchResource"
+            }
+          }
+        }
+      },
+      "DispatchLineResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "saleId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "saleLineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "DispatchResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "number" : {
+            "type" : "string"
+          },
+          "driverId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "vehicleId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "destination" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "lines" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DispatchLineResource"
+            }
+          },
+          "incidents" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/IncidentResponseResource"
+            }
+          },
+          "recipient" : {
+            "type" : "string"
+          }
+        }
+      },
+      "IncidentResponseResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "CandidateResource" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "number" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResourceCandidateResource" : {
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CandidateResource"
+            }
+          }
+        }
+      },
+      "ProblemDetail" : {
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "example" : "about:blank"
+          },
+          "title" : {
+            "type" : "string",
+            "example" : "Conflict"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 409
+          },
+          "detail" : {
+            "type" : "string",
+            "example" : "There is not enough stock."
+          },
+          "code" : {
+            "type" : "string",
+            "example" : "INSUFFICIENT_STOCK"
+          }
+        },
+        "required" : [ "code", "detail", "status", "title", "type" ]
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

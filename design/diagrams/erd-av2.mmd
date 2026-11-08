@@ -1,0 +1,189 @@
+erDiagram
+  workspaces {
+    uuid id
+    string name
+  }
+  workspace_locks {
+    uuid id
+  }
+  users {
+    uuid id
+    uuid tenant_id
+    string name
+    string email
+    string password_hash
+    string role
+    boolean active
+  }
+  sessions {
+    string token_hash
+    uuid user_id
+    timestamp expires_at
+  }
+  inventory_items {
+    uuid id
+    uuid tenant_id
+    string sku
+    string name
+    integer quantity
+    bigint price
+    bigint cost
+    integer minimum
+    string conservation
+    bigint version
+  }
+  stock_movements {
+    uuid id
+    uuid tenant_id
+    uuid product_id
+    uuid actor_id
+    integer delta
+    string type
+    string reason
+    timestamp created_at
+  }
+  sales {
+    uuid id
+    uuid tenant_id
+    string number
+    string status
+    string fulfillment_status
+    uuid dispatch_id
+    string request_key
+    string fingerprint
+    timestamp created_at
+    bigint version
+  }
+  sale_lines {
+    uuid sale_id
+    integer line_order
+    uuid id
+    uuid product_id
+    string name
+    string sku
+    integer quantity
+    integer returned
+    bigint price_cents
+    bigint cost_cents
+  }
+  drivers {
+    uuid id
+    uuid tenant_id
+    string name
+    string license
+  }
+  vehicles {
+    uuid id
+    uuid tenant_id
+    string name
+    string plate
+  }
+  dispatches {
+    uuid id
+    uuid tenant_id
+    uuid driver_id
+    uuid vehicle_id
+    string destination
+    string status
+    timestamp created_at
+    string recipient
+    timestamp delivered_at
+    bigint version
+  }
+  dispatch_lines {
+    uuid dispatch_id
+    integer line_order
+    uuid id
+    uuid sale_id
+    uuid sale_line_id
+    uuid product_id
+    string name
+    integer quantity
+  }
+  delivery_incidents {
+    uuid dispatch_id
+    integer incident_order
+    uuid id
+    string description
+    timestamp created_at
+  }
+  integration_outbox {
+    uuid id
+    uuid tenant_id
+    string type
+    integer schema_version
+    timestamp occurred_at
+    text payload
+    string status
+    integer attempts
+    timestamp next_attempt_at
+    timestamp published_at
+    string last_error
+  }
+  notifications {
+    uuid id
+    uuid tenant_id
+    string type
+    timestamp created_at
+    boolean is_read
+  }
+  suppliers {
+    uuid id
+    uuid tenant_id
+    string name
+    string contact
+  }
+  purchase_orders {
+    uuid id
+    uuid tenant_id
+    uuid supplier_id
+    timestamp created_at
+    bigint version
+  }
+  purchase_lines {
+    uuid purchase_id
+    integer line_order
+    uuid id
+    uuid product_id
+    integer quantity
+    integer received
+  }
+  customer_returns {
+    uuid id
+    uuid tenant_id
+    uuid sale_id
+    uuid sale_line_id
+    uuid product_id
+    integer quantity
+    string disposition
+    string reason
+    timestamp created_at
+    bigint loss_cents
+  }
+  dispatches ||--o{ delivery_incidents : "FK"
+  dispatches ||--o{ dispatch_lines : "FK"
+  drivers ||--o{ dispatches : "FK"
+  inventory_items ||--o{ customer_returns : "FK"
+  inventory_items ||--o{ dispatch_lines : "FK"
+  inventory_items ||--o{ purchase_lines : "FK"
+  inventory_items ||--o{ sale_lines : "FK"
+  inventory_items ||--o{ stock_movements : "FK"
+  purchase_orders ||--o{ purchase_lines : "FK"
+  sale_lines ||--o{ customer_returns : "FK"
+  sale_lines ||--o{ dispatch_lines : "FK"
+  sales ||--o{ customer_returns : "FK"
+  sales ||--o{ dispatch_lines : "FK"
+  sales ||--o{ sale_lines : "FK"
+  suppliers ||--o{ purchase_orders : "FK"
+  users ||--o{ sessions : "FK"
+  users ||--o{ stock_movements : "FK"
+  vehicles ||--o{ dispatches : "FK"
+  workspaces ||--o{ drivers : "FK"
+  workspaces ||--o{ integration_outbox : "FK"
+  workspaces ||--o{ inventory_items : "FK"
+  workspaces ||--o{ notifications : "FK"
+  workspaces ||--o{ sales : "FK"
+  workspaces ||--o{ suppliers : "FK"
+  workspaces ||--o{ users : "FK"
+  workspaces ||--o{ vehicles : "FK"
+  workspaces ||--o{ workspace_locks : "FK"

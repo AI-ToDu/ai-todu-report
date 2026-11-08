@@ -1,0 +1,30 @@
+sequenceDiagram
+ participant Rest as REST Resource
+ participant App as CommandService
+ participant Domain as Agregado propio
+ participant Tx as Transacción PostgreSQL
+ participant Publisher as Publisher del contexto
+ participant Relay as OutboxRelay
+ participant Inbox as Notifications
+ Rest->>App: Command del dominio
+ App->>Tx: Bloquear empresa e iniciar transacción
+ App->>Domain: Validar y ejecutar operación
+ Domain-->>App: Evento interno del contexto
+ App->>Publisher: Traducir al Published Language v1
+ Publisher->>Tx: Guardar integration_outbox PENDING
+ App->>Tx: Guardar entidades y confirmar
+ alt Falla una regla
+ Tx-->>App: Rollback de negocio y Outbox
+ App-->>Rest: Result.Failure a ProblemDetail
+ else Commit aceptado
+ App-->>Rest: Resource de éxito
+ Relay->>Tx: Leer mensaje comprometido y bloquearlo
+ Relay->>Inbox: IntegrationMessage con eventId
+ alt Consumidor falla
+ Tx-->>Relay: Rollback de efectos y publicación
+ Relay->>Tx: Registrar intento y próximo reintento
+ else Consumidor acepta o eventId existe
+ Inbox->>Tx: Notificación única por eventId
+ Relay->>Tx: Marcar PUBLISHED y confirmar
+ end
+ end

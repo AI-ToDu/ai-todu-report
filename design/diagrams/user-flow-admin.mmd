@@ -1,0 +1,15 @@
+flowchart LR
+ access["Acceso: ADMIN"] --> cart["Venta: catálogo y carrito"]
+ cart --> valid{"Stock y conservación válidos"}
+ valid -->|"No"| correction["Rechazo: corregir cantidad"]
+ correction --> cart
+ valid -->|"Sí"| sale["Venta confirmada y recibo académico"]
+ sale --> assignment["Despacho: conductor, vehículo y destino"]
+ assignment --> free{"Recursos disponibles"}
+ free -->|"No"| assignment
+ free -->|"Sí"| transit["Iniciar tránsito"]
+ transit --> recipient{"Receptor indicado"}
+ recipient -->|"No"| incident["Incidencia y conservar tránsito"]
+ incident --> transit
+ recipient -->|"Sí"| delivered["Entregado: sin descontar stock otra vez"]
+ delivered --> metrics["Dashboard: conciliación y límites"]

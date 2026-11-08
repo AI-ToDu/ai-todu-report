@@ -10,7 +10,7 @@ Startup **IA-INNOVATION** · Período **2026-2**
 # Informe del Trabajo Final · AI-ToDu
 
 **AV2 · Sprint 3 · Semana 12**<br>
-Versión **0.3.0 · 8 de noviembre de 2026**<br>
+Versión **0.3.1 · 8 de noviembre de 2026**<br>
 Lima, Perú · Noviembre de 2026
 
 <div class="cover-team">
@@ -52,6 +52,7 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
 | Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
 | AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
+| Revisión AV2 · v0.3.1 | 08/11/2026 | Revisión técnica asistida autorizada por Kevin | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
 
 ## Student Outcome · ABET 3
 

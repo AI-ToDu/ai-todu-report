@@ -1,0 +1,45 @@
+classDiagram
+ direction LR
+ class InventoryItem {
+  +Sku sku
+  +Quantity quantity
+  +Money price
+  +Money cost
+  +receive(Quantity)
+  +issue(Quantity, boolean)
+  +changeConservation(String)
+ }
+ class Sale {
+  +confirm(...)
+  +cancel()
+  +assignDispatch(UUID)
+  +updateFulfillment(UUID, String)
+ }
+ class SaleLine { +Money price
+  +Money cost
+  +int returned
+ }
+ class PurchaseOrder { +receive(...)
+  +status()
+ }
+ class PurchaseLine { +int quantity
+  +int received
+ }
+ class DispatchManifest { +start()
+  +deliver(String)
+  +reportIncident(...)
+ }
+ class DeliveryEvidence { +String recipient
+  +Instant deliveredAt
+ }
+ class Sku { +String value }
+ class Quantity { +int value }
+ class Money { +long cents }
+ InventoryItem *-- Sku
+ InventoryItem *-- Quantity
+ InventoryItem *-- Money
+ Sale *-- SaleLine
+ SaleLine *-- Money
+ PurchaseOrder *-- PurchaseLine
+ DispatchManifest *-- DeliveryEvidence
+ note for InventoryItem "Dominio Java sin Spring ni JPA. Persistencia y recursos tienen assemblers separados."

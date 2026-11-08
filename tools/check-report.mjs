@@ -89,3 +89,19 @@ for (const [name, expected] of Object.entries(origin.files)) {
     "Relational source drift: " + name,
   );
 }
+
+const services = JSON.parse(await readFile(new URL('../assets/services-openapi-av2.json', import.meta.url), 'utf8'));
+let operations = 0;
+for (const [path, item] of Object.entries(services.paths)) {
+  for (const method of ['get', 'post', 'patch', 'put', 'delete']) {
+    if (!item[method]) continue;
+    operations++;
+    assert.ok(expected.includes(`| ${method.toUpperCase()} | \`${path}\``), `Missing service catalogue row: ${method} ${path}`);
+    assert.ok(item[method].summary && item[method].responses);
+  }
+}
+assert.equal(operations, 34);
+assert.equal([...expected.matchAll(/^##### Servicio \d+\./gm)].length, operations);
+const physical = await readFile(new URL('../design/database/dictionary-av2.md', import.meta.url), 'utf8');
+assert.equal([...physical.matchAll(/^## /gm)].length, 19);
+console.log('AV2 service catalogue, 34 detailed operations and physical dictionary of 19 tables checked.');

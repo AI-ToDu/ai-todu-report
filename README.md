@@ -12,7 +12,7 @@ Startup **IA-INNOVATION** · Período **2026-2**
 # Informe del Trabajo Final · AI-ToDu
 
 **AV2 · Sprint 3 · Semana 12**<br>
-Versión **0.3.0 · 8 de noviembre de 2026**<br>
+Versión **0.3.1 · 8 de noviembre de 2026**<br>
 Lima, Perú · Noviembre de 2026
 
 <div class="cover-team">
@@ -54,6 +54,7 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
 | Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
 | AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
+| Revisión AV2 · v0.3.1 | 08/11/2026 | Revisión técnica asistida autorizada por Kevin | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
 
 ## Student Outcome · ABET 3
 
@@ -149,10 +150,12 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
     - [4.4.1. Web Applications Wireframes](#441-web-applications-wireframes)
     - [4.4.2. Web Applications Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
     - [4.4.3. Web Applications Mock-ups](#443-web-applications-mock-ups)
+      - [4.4.3.1. Especificación por pantalla](#4431-especificación-por-pantalla)
     - [4.4.4. Web Applications User Flow Diagrams](#444-web-applications-user-flow-diagrams)
   - [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
   - [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
     - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
+      - [4.6.1.1. Transactional Outbox Pattern](#4611-transactional-outbox-pattern)
     - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
     - [4.6.3. Software Architecture Container Diagrams](#463-software-architecture-container-diagrams)
     - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
@@ -433,52 +436,52 @@ Un único cuadro reúne épicas, historias funcionales y técnicas, en orden cor
 | Epic / Story ID | Título | Descripción | Criterios de aceptación | Relacionado con (Epic ID) | Estado |
 | --- | --- | --- | --- | --- | --- |
 | EPIC-02 | Inventario | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US09 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Given un SKU único y valores válidos, When se registra el artículo, Then se conserva normalizado con saldo cero. Escenario alternativo: Given SKU duplicado o dinero inválido, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
-| US10 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Given un artículo y cantidad entera positiva, When se recibe mercadería, Then aumenta el saldo y registra motivo/responsable. Escenario alternativo: Given cantidad cero o fraccionaria, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
-| US11 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | Given tres unidades disponibles, When se registra salida de dos, Then queda una unidad con movimiento. Escenario alternativo: Given salida mayor al saldo, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
-| US12 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Given stock suficiente, When se registra una merma, Then disminuye saldo con tipo LOSS sin cambiar conservación. Escenario alternativo: Given cantidad no positiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
-| US13 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Given un catálogo, When se busca nombre o SKU, Then obtiene coincidencias sin modificar registros. Escenario alternativo: Given búsqueda sin coincidencias devuelve resultado vacío, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | Demo implementada |
-| US14 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Given movimientos del espacio autorizado, When se consulta su historial, Then obtiene producto, tipo, cantidad, motivo, responsable y fecha. Escenario alternativo: Given identificador de empresa ajena no modifica registros, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US09 | Registro de artículo | Como Almacenero, deseo registrar un SKU para identificar mercadería. | Given un SKU único y valores válidos, When se registra el artículo, Then se conserva normalizado con saldo cero. Escenario alternativo: Given SKU ya existente en la misma empresa, When se registra otro artículo con ese SKU, Then se devuelve 409 y se conserva un solo artículo con su saldo anterior. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US10 | Ingreso de mercadería | Como Almacenero, deseo registrar una entrada para conciliar el stock. | Given un artículo y cantidad entera positiva, When se recibe mercadería, Then aumenta el saldo y registra motivo/responsable. Escenario alternativo: Given cantidad fraccionaria positiva de 1,5 unidades, When se registra una entrada, Then se devuelve 422 INVALID_QUANTITY sin movimiento ni incremento del saldo. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US11 | Salida manual | Como Almacenero, deseo registrar una salida para explicar el saldo. | Given tres unidades disponibles, When se registra salida de dos, Then queda una unidad con movimiento. Escenario alternativo: Given saldo disponible de una unidad, When se solicita salida manual de dos, Then se devuelve 409 INSUFFICIENT_STOCK sin movimiento de salida ni cambio del saldo. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US12 | Registro de mermas | Como Almacenero, deseo registrar una merma para distinguir pérdida de venta. | Given stock suficiente, When se registra una merma, Then disminuye saldo con tipo LOSS sin cambiar conservación. Escenario alternativo: Given saldo de una unidad, When se registra una merma de dos, Then se rechaza la operación por stock insuficiente sin saldo negativo ni pérdida parcial. | EPIC-02 | AV2 implementada; validación humana pendiente |
+| US13 | Buscador de inventario | Como Operador, deseo buscar por nombre o SKU para encontrar un artículo. | Given un catálogo, When se busca nombre o SKU, Then obtiene coincidencias sin modificar registros. Escenario alternativo: Given catálogo cargado sin coincidencias para el texto buscado, When se aplica el filtro, Then se muestra el estado sin coincidencias y se conserva el catálogo al limpiar la búsqueda. | EPIC-02 | Demo implementada |
+| US14 | Historial de movimientos | Como Administrador, deseo consultar movimientos para explicar un cambio de saldo. | Given movimientos del espacio autorizado, When se consulta su historial, Then obtiene producto, tipo, cantidad, motivo, responsable y fecha. Escenario alternativo: Given operador sin rol de almacén ni administrador, When se solicita historial, Then se devuelve 403 y no se exponen movimientos. | EPIC-02 | AV2 implementada; validación humana pendiente |
 | EPIC-04 | Logística | Capacidad core para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US19 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | Given una venta confirmada sin despacho ni devolución, When se prepara un manifiesto, Then vincula las líneas sin descontar stock nuevamente. Escenario alternativo: Given venta ya asignada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
-| US20 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Given recursos de la empresa, When se asigna conductor y vehículo, Then conserva referencias existentes. Escenario alternativo: Given recurso ya en tránsito al iniciar otra ruta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
-| US21 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Given despacho PENDING, When se inicia y luego confirma con receptor, Then transita por IN_TRANSIT y finaliza DELIVERED con fecha. Escenario alternativo: Given salto de estado o falta de receptor, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
-| US22 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Given un despacho no finalizado, When se registra una incidencia válida, Then conserva descripción y fecha. Escenario alternativo: Given incidencia posterior a entrega, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
-| US37 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Given nombre y licencia o placa válidos, When se registra un recurso, Then pertenece a la empresa autenticada. Escenario alternativo: Given licencia o placa duplicada en esa empresa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US19 | Manifiesto de despacho | Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. | Given una venta confirmada sin despacho ni devolución, When se prepara un manifiesto, Then vincula las líneas sin descontar stock nuevamente. Escenario alternativo: Given venta que ya tiene manifiesto, When se intenta incluirla en otro, Then se rechaza la duplicación y se conserva la asignación original sin nueva salida de stock. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US20 | Asignación de recursos | Como Logístico, deseo asignar conductor y vehículo para responsabilizar recursos. | Given recursos de la empresa, When se asigna conductor y vehículo, Then conserva referencias existentes. Escenario alternativo: Given conductor o vehículo ocupado por un despacho activo, When se prepara otro despacho con el mismo recurso, Then se devuelve 409 RESOURCE_BUSY sin crear el segundo manifiesto. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US21 | Estado y confirmación de entrega | Como Logístico, deseo confirmar el progreso de entrega para saber qué falta atender. | Given despacho PENDING, When se inicia y luego confirma con receptor, Then transita por IN_TRANSIT y finaliza DELIVERED con fecha. Escenario alternativo: Given manifiesto en tránsito, When se solicita entregar sin receptor, Then se devuelve 422 y el manifiesto sigue en tránsito sin evento de entrega. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US22 | Incidencia en ruta | Como Logístico, deseo registrar una incidencia para conservar el problema observado. | Given un despacho no finalizado, When se registra una incidencia válida, Then conserva descripción y fecha. Escenario alternativo: Given manifiesto entregado, When se solicita una nueva incidencia operativa, Then se rechaza la operación y se conserva el historial existente. | EPIC-04 | AV2 implementada; validación humana pendiente |
+| US37 | Maestros de recursos logísticos | Como Logístico, deseo mantener recursos de reparto para asignar entidades existentes. | Given nombre y licencia o placa válidos, When se registra un recurso, Then pertenece a la empresa autenticada. Escenario alternativo: Given licencia o placa ya registrada en la empresa, When se crea otro recurso con ese identificador, Then se devuelve 409 y se conserva un solo registro. | EPIC-04 | AV2 implementada; validación humana pendiente |
 | EPIC-10 | Abastecimiento | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US35 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Given una orden de cuatro unidades, When se recibe dos, Then aumenta el stock dos y queda PARTIAL. Escenario alternativo: Given exceso de recepción o línea duplicada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-10 | AV2 implementada; validación humana pendiente |
+| US35 | Abastecimiento y recepción parcial | Como Almacenero, deseo recibir parcialmente una compra para conciliar pedido y entrada. | Given una orden de cuatro unidades, When se recibe dos, Then aumenta el stock dos y queda PARTIAL. Escenario alternativo: Given línea de compra con dos unidades pendientes, When se reciben tres, Then se devuelve 409 EXCESS_RECEIPT y se conservan saldo, recibido y pendiente. | EPIC-10 | AV2 implementada; validación humana pendiente |
 | EPIC-03 | Comercial y devoluciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US15 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Given líneas válidas y stock suficiente, When se confirma la venta, Then guarda snapshots, movimientos y Outbox en una transacción. Escenario alternativo: Given línea inválida revierte toda la venta, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
-| US16 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Given una unidad y seis solicitudes concurrentes, When se confirma ventas de una unidad, Then solo una se acepta y cinco reciben conflicto. Escenario alternativo: Given artículo con conservación bloqueada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
-| US17 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | Given ventas registradas, When se consulta el historial, Then conserva fecha, estado, líneas e importe histórico. Escenario alternativo: Given cambio posterior del catálogo no recalcula el snapshot, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
-| US18 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Given venta sin despacho ni devolución, When se anula con motivo, Then repone stock una sola vez. Escenario alternativo: Given anulación repetida o venta despachada, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
-| US36 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | Given unidades vendidas no devueltas, When se registra RESTOCK o LOSS, Then resta venta neta y reintegra solo RESTOCK. Escenario alternativo: Given exceso o despacho sin finalizar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US15 | Creación de venta | Como Vendedor, deseo confirmar una venta para registrar salida e importe una vez. | Given líneas válidas y stock suficiente, When se confirma la venta, Then guarda snapshots, movimientos y Outbox en una transacción. Escenario alternativo: Given carrito con dos líneas y stock insuficiente en la segunda, When se confirma la venta, Then se devuelve 409 sin venta, salidas ni mensajes Outbox parciales. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US16 | Validación de stock | Como Vendedor, deseo validar saldo y conservación para evitar sobreventa. | Given una unidad y seis solicitudes concurrentes, When se confirma ventas de una unidad, Then solo una se acepta y cinco reciben conflicto. Escenario alternativo: Given dos solicitudes concurrentes por la última unidad, When se confirman ambas ventas, Then solo una se acepta y el saldo final es cero; la otra devuelve conflicto. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US17 | Historial de ventas | Como Vendedor, deseo consultar ventas históricas para revisar una operación. | Given ventas registradas, When se consulta el historial, Then conserva fecha, estado, líneas e importe histórico. Escenario alternativo: Given venta perteneciente a otra empresa, When se consulta el listado autenticado, Then la venta ajena no aparece y no se exponen sus líneas ni importes. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US18 | Anulación de venta | Como Vendedor, deseo anular una venta para corregir una operación permitida. | Given venta sin despacho ni devolución, When se anula con motivo, Then repone stock una sola vez. Escenario alternativo: Given venta ya vinculada a un despacho, When se solicita anularla, Then se devuelve conflicto y no se restituye stock ni se cambia el estado de la venta. | EPIC-03 | AV2 implementada; validación humana pendiente |
+| US36 | Devolución trazable | Como Vendedor, deseo registrar una devolución para conciliar stock y venta neta. | Given unidades vendidas no devueltas, When se registra RESTOCK o LOSS, Then resta venta neta y reintegra solo RESTOCK. Escenario alternativo: Given línea vendida de dos unidades con una ya devuelta, When se intenta devolver dos más, Then se devuelve 409 EXCESS_RETURN sin nuevo retorno, reintegro ni pérdida. | EPIC-03 | AV2 implementada; validación humana pendiente |
 | EPIC-05 | Reporting | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US23 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Given operaciones aceptadas, When se consulta indicadores como administrador, Then obtiene importes y saldos derivados. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | AV2 implementada; validación humana pendiente |
-| US24 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | Given ventas registradas, When se consulta el ranking de productos, Then obtiene orden por unidades o importe indicado. Escenario alternativo: Given venta anulada no cuenta como efectiva, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente |
-| US25 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | Given registros autorizados, When se exporta datos, Then obtiene archivo interpretable con alcance y fecha. Escenario alternativo: Given registros ajenos no aparecen, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-05 | Pendiente; imprimir comprobante no cumple esta historia |
+| US23 | Dashboard operativo | Como Administrador, deseo ver métricas derivadas para conciliar la operación. | Given operaciones aceptadas, When se consulta indicadores como administrador, Then obtiene importes y saldos derivados. Escenario alternativo: Given usuario con rol WAREHOUSE, When se solicita GET /metrics, Then se devuelve 403 sin métricas comerciales. | EPIC-05 | AV2 implementada; validación humana pendiente |
+| US24 | Reporte de productos más vendidos | Como Administrador, deseo ver productos más vendidos para priorizar decisiones. | Given ventas registradas, When se consulta el ranking de productos, Then obtiene orden por unidades o importe indicado. Escenario alternativo: Given una venta anulada y otra confirmada, When se calcula el ranking, Then solo la confirmada contribuye al ranking; criterio pendiente de implementación. | EPIC-05 | Pendiente |
+| US25 | Exportación de datos | Como Administrador, deseo exportar datos autorizados para analizar fuera del sistema. | Given registros autorizados, When se exporta datos, Then obtiene archivo interpretable con alcance y fecha. Escenario alternativo: Given registros de dos empresas, When se exporta con una de sus cuentas, Then el archivo contiene únicamente registros autorizados e indica alcance y fecha; exportación pendiente. | EPIC-05 | Pendiente; imprimir comprobante no cumple esta historia |
 | EPIC-06 | Notificaciones | Capacidad soporte para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US26 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Given stock que cruza el mínimo, When se confirma la salida, Then persiste mensaje y notificación eventual. Escenario alternativo: Given reentrega del evento no duplica notificación, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | AV2 implementada; validación humana pendiente |
-| US27 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Given lotes con vencimiento, When se alcanza el umbral acordado, Then genera alerta vinculada al lote. Escenario alternativo: Given alerta ya procesada no se duplica sin cambio relevante, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-06 | Pendiente: lotes sin flujo operativo completo |
+| US26 | Alerta de stock mínimo | Como Operador, deseo recibir alerta de mínimo para atender reposición. | Given stock que cruza el mínimo, When se confirma la salida, Then persiste mensaje y notificación eventual. Escenario alternativo: Given mensaje de stock mínimo ya consumido, When el relay lo entrega de nuevo con igual eventId, Then se conserva una sola notificación y la reentrega se marca procesada. | EPIC-06 | AV2 implementada; validación humana pendiente |
+| US27 | Alerta de vencimiento | Como Almacenero, deseo detectar vencimientos por lote para evitar salida vencida. | Given lotes con vencimiento, When se alcanza el umbral acordado, Then genera alerta vinculada al lote. Escenario alternativo: Given alerta de lote ya emitida sin cambios de vencimiento, When se ejecuta de nuevo la política, Then no se duplica la misma alerta; flujo de lotes y vencimientos pendiente. | EPIC-06 | Pendiente: lotes sin flujo operativo completo |
 | EPIC-01 | Identidad | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Given datos válidos y correo disponible, When se registra empresa, Then crea administrador sin exponer hash. Escenario alternativo: Given correo existente o contraseña fuera de política, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
-| US02 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | Given cuenta activa y contraseña válida, When se inicia sesión, Then recibe JWT temporal y perfil. Escenario alternativo: Given credenciales inválidas producen 401 sin token, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
-| US03 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | Given sesión válida, When se cierra sesión, Then el token queda revocado. Escenario alternativo: Given acceso posterior con token revocado produce 401, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | AV2 implementada; validación humana pendiente |
-| US04 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | Given solicitud de recuperación, When se procesa el correo, Then no revela si la cuenta existe. Escenario alternativo: Given enlace vencido o usado no permite cambiar acceso, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-01 | Pendiente AV2 |
+| US01 | Registro de cuenta | Como Administrador, deseo registrar mi empresa para acceder a un espacio separado. | Given datos válidos y correo disponible, When se registra empresa, Then crea administrador sin exponer hash. Escenario alternativo: Given correo ya registrado, When se intenta registrar otra empresa con ese correo, Then se devuelve 409 EMAIL_EXISTS y no se crea empresa ni usuario. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US02 | Inicio de sesión | Como Usuario, deseo iniciar sesión para operar según mi rol. | Given cuenta activa y contraseña válida, When se inicia sesión, Then recibe JWT temporal y perfil. Escenario alternativo: Given cuenta activa y contraseña incorrecta, When se inicia sesión, Then se devuelve 401 INVALID_CREDENTIALS sin token ni nueva sesión. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US03 | Cierre de sesión | Como Usuario, deseo cerrar sesión para terminar el acceso. | Given sesión válida, When se cierra sesión, Then el token queda revocado. Escenario alternativo: Given token revocado al cerrar sesión, When se consulta inventario con ese token, Then se devuelve 401 y no se expone información del espacio. | EPIC-01 | AV2 implementada; validación humana pendiente |
+| US04 | Recuperación de contraseña | Como Usuario, deseo recuperar el acceso para volver a operar. | Given solicitud de recuperación, When se procesa el correo, Then no revela si la cuenta existe. Escenario alternativo: Given enlace de recuperación vencido o previamente utilizado, When se intenta cambiar la contraseña, Then se rechaza el enlace y la contraseña anterior se conserva; criterio pendiente de implementación. | EPIC-01 | Pendiente AV2 |
 | EPIC-07 | Acceso y roles | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US28 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | Given administrador y datos válidos, When se provisiona empleado con contraseña inicial, Then obtiene perfil sin hash ni contraseña. Escenario alternativo: Given otro rol recibe 403, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2: contraseña inicial; invitación/recuperación pendientes |
-| US29 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Given cuenta activa, When se ejecuta una operación, Then el servidor usa su rol y empresa autenticados. Escenario alternativo: Given rol sin permiso o referencia ajena no modifica datos, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-07 | AV2 implementada; validación humana pendiente |
+| US28 | Creación de usuarios | Como Administrador, deseo incorporar empleados para distribuir operación. | Given administrador y datos válidos, When se provisiona empleado con contraseña inicial, Then obtiene perfil sin hash ni contraseña. Escenario alternativo: Given usuario con rol SALES, When se solicita crear empleado, Then se devuelve 403 y no se crea cuenta ni se modifica el equipo. | EPIC-07 | AV2: contraseña inicial; invitación/recuperación pendientes |
+| US29 | Restricción por roles | Como Administrador, deseo restringir acciones por rol para delimitar responsabilidades. | Given cuenta activa, When se ejecuta una operación, Then el servidor usa su rol y empresa autenticados. Escenario alternativo: Given identificador de recurso perteneciente a otra empresa, When se ejecuta un comando autorizado en el espacio actual, Then se devuelve 404 sin modificar ni revelar el recurso ajeno. | EPIC-07 | AV2 implementada; validación humana pendiente |
 | EPIC-08 | Preferencias | Capacidad genérico para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US30 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Given administrador autenticado, When se edita el perfil de empresa, Then persiste únicamente datos de su empresa. Escenario alternativo: Given empresa ajena no se puede editar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente |
-| US31 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Given contraseña actual válida, When se cambia contraseña, Then conserva hash seguro e invalida sesiones según política. Escenario alternativo: Given contraseña actual inválida, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Pendiente AV2 |
-| US33 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | Given primera visita sin preferencia, When se inicia aplicación, Then usa en_US. Escenario alternativo: Given selección es_419 persiste al navegar y recargar, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-08 | Implementada: en_US / es_419 |
+| US30 | Edición de perfil empresa | Como Administrador, deseo editar perfil de empresa para mantener datos vigentes. | Given administrador autenticado, When se edita el perfil de empresa, Then persiste únicamente datos de su empresa. Escenario alternativo: Given identificador de empresa ajena, When se solicita editar su perfil, Then se rechaza la operación y ambos perfiles conservan sus datos; edición pendiente. | EPIC-08 | Pendiente |
+| US31 | Cambio de contraseña | Como Usuario, deseo cambiar contraseña para mantener el acceso. | Given contraseña actual válida, When se cambia contraseña, Then conserva hash seguro e invalida sesiones según política. Escenario alternativo: Given contraseña actual incorrecta, When se solicita cambiarla, Then se rechaza la solicitud sin modificar el hash ni conceder acceso; cambio de contraseña pendiente. | EPIC-08 | Pendiente AV2 |
+| US33 | Idioma de aplicación | Como Usuario, deseo cambiar idioma para comprender la operación. | Given primera visita sin preferencia, When se inicia aplicación, Then usa en_US. Escenario alternativo: Given preferencia es_419 guardada, When se recarga y navega a otra pantalla, Then se mantiene español y formato PEN sin traducir nombres introducidos por el usuario. | EPIC-08 | Implementada: en_US / es_419 |
 | EPIC-09 | Landing page | Capacidad canal público para el flujo trazable del negocio. | Given sus historias relacionadas, When se evalúa la capacidad, Then se comprueban criterios y límites; un módulo existente no acredita terminar la épica. | — | Cobertura parcial |
-| US05 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Given visitante del segmento, When se consulta la propuesta, Then identifica inventario, venta, despacho y alcance académico. Escenario alternativo: Given no se afirman resultados medidos sin evidencia, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
-| US06 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | Given landing disponible, When se consulta capacidades, Then conoce el flujo y accede a la aplicación. Escenario alternativo: Given ilustración sintética se identifica como muestra, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
-| US07 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | Given modelo comercial validado, When se consulta planes, Then conoce condiciones y límites reales. Escenario alternativo: Given sin cobros no se simula suscripción activa, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente; sin planes comerciales activos |
-| US08 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | Given visitante, When se solicita contacto, Then llega a un destino real. Escenario alternativo: Given un futuro formulario requiere validación y seguimiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Parcial: enlace real al proyecto; captación B2B pendiente |
-| US32 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Given testimonio autorizado y fuente real, When se publica testimonio, Then conserva atribución y contexto. Escenario alternativo: Given sin fuente o consentimiento no se publica, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Pendiente evidencia; no se publican testimonios ficticios |
-| US34 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Given visitante, When se consulta privacidad, Then conoce persistencia y ausencia de pagos/SUNAT. Escenario alternativo: Given servidor y demo distinguen sus formas de almacenamiento, When se evalúa el caso, Then se aplica su restricción sin cambios ajenos o parciales. | EPIC-09 | Implementada |
+| US05 | Propuesta de valor | Como Visitante, deseo comprender la propuesta para identificar el problema atendido. | Given visitante del segmento, When se consulta la propuesta, Then identifica inventario, venta, despacho y alcance académico. Escenario alternativo: Given una afirmación de ahorro sin medición documentada, When se revisa el contenido público, Then se presenta como hipótesis o se retira la cifra. | EPIC-09 | Implementada |
+| US06 | Capacidades de landing | Como Visitante, deseo conocer las capacidades para decidir si probar. | Given landing disponible, When se consulta capacidades, Then conoce el flujo y accede a la aplicación. Escenario alternativo: Given muestra de datos ficticios en la landing, When se inspecciona la capacidad anunciada, Then la muestra se identifica como ilustrativa y el CTA abre la aplicación. | EPIC-09 | Implementada |
+| US07 | Modelo comercial y planes | Como Comprador, deseo consultar planes para evaluar la adopción. | Given modelo comercial validado, When se consulta planes, Then conoce condiciones y límites reales. Escenario alternativo: Given prototipo sin pasarela de pago ni suscripción activa, When se revisa la oferta, Then no se representa un cobro ni una suscripción vigente; criterio comercial pendiente. | EPIC-09 | Pendiente; sin planes comerciales activos |
+| US08 | Contacto B2B | Como Visitante, deseo contactar al equipo para resolver dudas. | Given visitante, When se solicita contacto, Then llega a un destino real. Escenario alternativo: Given canal de contacto no configurado, When se intenta enviar una consulta, Then se informa la indisponibilidad sin mostrar envío exitoso; formulario B2B pendiente. | EPIC-09 | Parcial: enlace real al proyecto; captación B2B pendiente |
+| US32 | Testimonios | Como Visitante, deseo leer testimonios auténticos para evaluar experiencias. | Given testimonio autorizado y fuente real, When se publica testimonio, Then conserva atribución y contexto. Escenario alternativo: Given testimonio sin fuente o consentimiento, When se prepara la publicación, Then el testimonio no aparece en la landing y queda pendiente de evidencia. | EPIC-09 | Pendiente evidencia; no se publican testimonios ficticios |
+| US34 | Términos y privacidad | Como Visitante, deseo consultar términos y privacidad para comprender el tratamiento del demo. | Given visitante, When se consulta privacidad, Then conoce persistencia y ausencia de pagos/SUNAT. Escenario alternativo: Given modo servidor seleccionado, When se consulta privacidad, Then se explica la persistencia en servidor y se distingue del almacenamiento local del demo. | EPIC-09 | Implementada |
 | TS05 | GET /products | Como Developer, deseo consumir GET /products para integrar la capacidad. Reemplaza GET /inventory; consulta de catálogo. | Given un usuario autorizado, When ejecuta `GET /products`, Then cumple request/response: GET autenticado → 200 con recurso o {items:[]}; sin sesión → 401; rol sin permiso → 403 cuando corresponde. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
 | TS06 | POST /products | Como Developer, deseo consumir POST /products para integrar la capacidad. Reemplaza POST /inventory; SKU único. | Given un usuario autorizado, When ejecuta `POST /products`, Then cumple request/response: {sku,name,price,cost,minimum} → 201 ProductResource; duplicado → 409. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
 | TS07 | POST /movements · type RECEIPT | Como Developer, deseo consumir POST /movements · type RECEIPT para integrar la capacidad. Reemplaza /inventory/{sku}/entries. | Given un usuario autorizado, When ejecuta `POST /movements · type RECEIPT`, Then cumple request/response: {productId,quantity,type:RECEIPT,reason} → 201; fracción → 422. Given una referencia ajena, When solicita modificarla, Then no cambia datos de otra empresa. | EPIC-02 | AV2; detalle en OpenAPI |
@@ -666,6 +669,10 @@ Propuesta Figma: [inventario desktop](https://www.figma.com/design/Kxkl1QhgvRiFt
 
 ### 4.4.2. Web Applications Wireflow Diagrams
 
+![Objetivo del operario: recepción y conciliación](design/diagrams/rendered/user-flow-operator.svg)
+
+La secuencia corresponde a pantallas de Acceso, Inventario, Compras/recepción e Historial. Desktop conserva navegación lateral y tabla; móvil abre la navegación como panel y desplaza únicamente el contenedor de datos. Los formularios conservan sus datos al rechazarse la operación.
+
 ![Flujo integrado de recepción, venta y entrega](design/diagrams/rendered/workflow-core.svg)
 
 User goal del operario: registrar dos unidades y explicar el saldo. En el wireflow Figma: Acceso → Inventario → Registrar movimiento → Recepción → Saldo actualizado → Inventario. Hay puntos de inicio desktop/mobile; las conexiones son de diseño y no escriben en la base real.
@@ -676,7 +683,27 @@ La fuente de la vista publicada son los componentes Material y `src/styles.css`.
 
 ![Revisión del mockup de recepción móvil dentro de Figma](assets/figma-receipt-mobile.png)
 
+#### 4.4.3.1. Especificación por pantalla
+
+La tabla describe la implementación y sus estados esperados; no afirma que cada estado tenga un frame individual en Figma ni que haya sido validado con usuarios. Las propuestas editables se enlazan en cada apartado y las capturas de ejecución se distinguen de los mockups.
+
+| Pantalla | Propósito | Elementos principales | Estados y alternativas | Desktop / móvil |
+| --- | --- | --- | --- | --- |
+| Acceso | Entrar al espacio correcto | Correo, contraseña, idioma y enlace de registro | Cargando, credencial inválida, sesión válida | Panel/formulario en desktop; columna única y campos completos en móvil |
+| Inventario | Explicar existencia y conservación | Búsqueda SKU/nombre, cantidad, mínimo, precio/costo PEN, acciones | Vacío, sin coincidencias, carga fallida, éxito | Tabla contenida; acciones accesibles sin desplazar toda la página |
+| Movimiento | Registrar entrada, salida o merma | Producto, tipo, cantidad entera, motivo y saldo de referencia | Envío bloqueado, cantidad inválida, stock insuficiente | Diálogo con foco y etiquetas; ancho adaptado al viewport |
+| Compras y recepción | Conciliar orden, recibido y pendiente | Proveedor, producto, unidades ordenadas, recepción parcial | Sin proveedor/artículo, exceso, recepción aceptada | Detalle legible y formulario por línea; UI inicial crea una línea por orden |
+| Ventas | Confirmar solo lo disponible | Catálogo, carrito, unidades, total y comprobante académico | Carrito vacío, artículo bloqueado, falta de stock, confirmación | Catálogo/carrito lado a lado en desktop; secuencia vertical en móvil |
+| Despachos | Asignar y acreditar la entrega | Ventas elegibles, conductor, vehículo, destino, estado y receptor | Recurso ocupado, transición inválida, receptor ausente, entregado | Grupos por estado; controles apilados y destino legible en móvil |
+| Devoluciones | Conciliar unidades retornadas | Venta/línea, pendiente de retorno, RESTOCK/LOSS y motivo | Exceso, despacho activo, retorno aceptado | Formulario rotulado; estado y explicación junto a la acción |
+| Notificaciones | Atender mensajes del negocio | Tipo, fecha, indicador de lectura y acción | Bandeja vacía, mensaje nuevo, leído | Lista con acción por elemento; sin depender solo del color |
+| Dashboard | Relacionar saldo, venta y entrega | Ingresos, contribución bruta, valoración y contadores | Carga, sin operaciones, error y datos derivados | Tarjetas en columnas o apiladas; definición de contribución visible |
+| Equipo | Provisionar permisos | Nombre, correo, rol y contraseña inicial | Correo repetido, rol inválido, éxito sin devolver contraseña | Formulario adaptable; acceso exclusivo de administrador |
+
 ### 4.4.4. Web Applications User Flow Diagrams
+
+![Objetivo del administrador: venta y entrega conciliadas](design/diagrams/rendered/user-flow-admin.svg)
+
 
 El camino principal sigue recibir → consultar saldo → vender → revisar comprobante → crear despacho → iniciar ruta → identificar receptor → confirmar entrega. Los caminos alternativos incluyen credencial inválida, stock insuficiente, artículo bloqueado, recepción excesiva y recurso ocupado. La matriz de pruebas distingue observación de navegador de pruebas del contrato.
 
@@ -700,6 +727,23 @@ Los mensajes públicos se añaden al Outbox en la transacción del comando. El r
 
 StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
 
+#### 4.6.1.1. Transactional Outbox Pattern
+
+![Secuencia del Transactional Outbox Pattern implementado](design/diagrams/rendered/transactional-outbox.svg)
+
+El problema de doble escritura aparece si se confirma la operación de negocio y el proceso falla antes de comunicarla. El patrón guarda el cambio y el mensaje público en la **misma transacción**. JpaIntegrationOutbox exige transacción existente (MANDATORY); una regla rechazada elimina ambos mediante rollback. El evento interno solo lo maneja su contexto: InventoryIntegrationPublisher, SaleIntegrationPublisher y DeliveryIntegrationPublisher lo traducen a IntegrationMessage/Published Language v1 antes de persistirlo.
+
+OutboxRelay lee hasta 25 mensajes PENDING cuyo next_attempt_at ha vencido; bloquea cada fila, llama a suscriptores locales y marca PUBLISHED. Ante fallo revierte efectos y registra attempts, last_error y próximo reintento en otra transacción. La demora crece con límite de 300 segundos. Notifications usa el eventId como clave persistida; una reentrega no crea otra notificación. La entrega es eventual y admite reintentos: no se promete transporte exactly-once.
+
+| Evidencia de código/prueba | Qué demuestra | Límite |
+| --- | --- | --- |
+| V2 / integration_outbox | Mensajes, estado, intentos y próxima ejecución persistidos | Esquema propio de la aplicación |
+| messageRollsBackWithFailedCommand | Un comando rechazado no deja mensaje Outbox | Prueba de integración, no caída de máquina |
+| retryAfterFailureAndDuplicateDeliveryAreDurable | Fallo, rollback del consumidor, reintento y efecto idempotente | Mismo proceso y relay local |
+| notifications.id = eventId | Identidad estable del efecto consumidor | No constituye un inbox genérico para todos los consumidores |
+
+El relay y Notifications comparten PostgreSQL y transacción local al consumir. No se implementó broker externo, dead-letter queue ni prueba de reinicio de proceso; esas capacidades no se atribuyen a esta evidencia. El Outbox durable conserva pendientes para una ejecución posterior.
+
 ### 4.6.2. Software Architecture Context Diagram
 
 ![C4 C1 · personas y sistema](design/diagrams/rendered/c4-context.svg)
@@ -708,25 +752,33 @@ C1 muestra personas y propósito del sistema. No incluye pasarelas fiscales o pr
 
 ### 4.6.3. Software Architecture Container Diagrams
 
-![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
-
-TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local. Se separa de la **implementación AV2** siguiente:
-
 ![C4 C2 · ejecución AV2](design/diagrams/rendered/c4-containers-av2.svg)
 
-AV2 implementa un monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
+Vista principal AV2: monolito modular Spring Boot y PostgreSQL. La SPA usa HTTPS hacia Render; la API conecta su base aislada por red privada y consulta Open-Meteo mediante un gateway. Un bounded context no equivale a un microservicio.
+
+**Referencia histórica TB1:**
+
+![C4 C2 · ejecución TB1](design/diagrams/rendered/c4-containers-tb1.svg)
+
+TB1 sirve archivos estáticos y ejecuta la Fake API en el navegador; el adaptador Node/archivo es una alternativa de desarrollo local.
 
 ### 4.6.4. Software Architecture Components Diagrams
 
-![C4 C3 · componentes reales del motor de demo](design/diagrams/rendered/c4-components.svg)
+![C4 C3 · contratos y componentes reales AV2](design/diagrams/rendered/c4-components-av2.svg)
 
-El diagrama anterior describe TB1. En AV2, los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos.
+Los controladores dependen de CommandService/QueryService. Los handlers coordinan puertos y agregados propios; adaptadores JPA y assemblers mantienen entidades persistentes separadas. Las consultas no ejecutan comandos. El Outbox se guarda antes del commit y el relay procesa los mensajes comprometidos.
 
-![C4 C3 · componentes del recorrido core AV2](design/diagrams/rendered/c4-components-av2.svg)
+**Referencia histórica TB1:**
+
+![C4 C3 · componentes del motor de demo](design/diagrams/rendered/c4-components.svg)
 
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams
+
+![Agregados y valores del backend AV2](design/diagrams/rendered/class-core-av2.svg)
+
+Vista principal del incremento Java: InventoryItem, Sale, PurchaseOrder y DispatchManifest; sus colecciones internas se reconstruyen con assemblers de persistencia. Los comandos/consultas pertenecen al dominio, las interfaces CommandService/QueryService delimitan los casos de uso y las implementaciones internas coordinan transacciones. Los controladores dependen de esos contratos y los assemblers REST construyen los recursos. Las vistas TB1 siguientes se conservan como historial del prototipo.
 
 ![Modelo histórico del prototipo TB1](design/diagrams/rendered/class-core.svg)
 
@@ -747,6 +799,30 @@ JSON y SQL requieren tipos de transporte/persistencia; eso no elimina el valor s
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
+
+**Vista principal AV2: 19 tablas ejecutadas**, además del historial Flyway. [Diccionario físico por columna y restricción](design/database/dictionary-av2.md). La vista completa siguiente representa las FK del DDL; una FK entre tablas no autoriza importar el agregado de otro bounded context.
+
+![Vista general de relaciones entre las 19 tablas AV2](design/diagrams/rendered/erd-av2-overview.svg)
+
+[Poster físico completo ampliable](design/diagrams/rendered/erd-av2.svg). Las vistas de detalle siguientes muestran las columnas reales por grupo; las FK entre grupos se consultan en el poster y el diccionario. No se añaden asociaciones de dominio como si fueran FK implementadas.
+
+**IAM, coordinación e integración:**
+
+![AV2: identidad, coordinación y Transactional Outbox](design/diagrams/rendered/erd-av2-identity-integration.svg)
+
+**Inventario y ventas:**
+
+![AV2: inventario, movimientos y snapshots de venta](design/diagrams/rendered/erd-av2-inventory-sales.svg)
+
+**Abastecimiento y devoluciones:**
+
+![AV2: compras, recepción parcial y retorno](design/diagrams/rendered/erd-av2-procurement-returns.svg)
+
+**Logística:**
+
+![AV2: recursos, manifiesto, líneas e incidencias](design/diagrams/rendered/erd-av2-logistics.svg)
+
+**Modelo objetivo e histórico de referencia:**
 
 El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos en minúsculas y `snake_case`, claves, unicidad, restricciones y referencias por empresa. [El diccionario](design/database/dictionary.md) enumera cada columna. Se ejecutó en SQLite como referencia; TB1 usa 35 colecciones JSON. **AV2 implementa 19 tablas de negocio/infraestructura**, además de flyway_schema_history, definidas por sus [migraciones PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/tree/main/src/main/resources/db/migration). No se declara implementada automáticamente toda la referencia de 35 tablas.
 
@@ -974,6 +1050,19 @@ Los aportes originales se enlazan por integrante y módulo. La corrección no in
 
 El criterio técnico se prueba con datos ficticios; la confianza del usuario sigue como hipótesis. Product Owner y Scrum Master: pendientes de confirmar. Se conserva la atribución histórica sin asignar aportes nuevos no verificados.
 
+| Sprint Planning Background | Registro |
+| --- | --- |
+| Sprint | 3 / AV2 / semana 12 |
+| Date / Time / Location | Pendiente: fecha, hora y lugar reales de la ceremonia |
+| Prepared by | Preparación técnica asistida solicitada por Kevin; validación del responsable pendiente |
+| Attendees | Pendiente de acta o tablero; no se presume asistencia de integrantes retirados |
+| Review of previous Sprint | Evidencias TB1 y AV1 conservadas; conclusiones de la reunión pendientes |
+| Retrospective of previous Sprint | Pendiente de registro real y acciones acordadas |
+| Sprint Goal | Conciliar recepción, venta y entrega mediante API, conservando saldo e importes históricos |
+| Sprint Goal Metric | Flujo persistente y rechazos atómicos; cobertura HTTP de las 34 operaciones; aceptación humana pendiente |
+| Sprint Velocity | No medida: falta fuente de puntos completados de sprints anteriores |
+| Sum of Story Points | Pendiente de estimación del equipo; horas de tareas no equivalen a story points |
+
 #### 5.2.3.2. Aspect Leaders and Collaborators
 
 | Aspecto | Actividad verificada | Responsable y límite |
@@ -989,24 +1078,35 @@ Matriz LACX formal y aprobación: pendientes. Los aportes históricos de los int
 
 Estimaciones de referencia, no horas registradas ni capacidad medida. La prioridad sigue core → soporte → genérico; autenticación es una dependencia técnica, no el primer objetivo del negocio.
 
-| Task | Historia | Engineering task | Est. | Resultado verificable |
-| --- | --- | --- | --- | --- |
-| S3-T01 | US09–US14 | Implementar InventoryItem, VOs, movimientos y persistencia separada. | 8 h | Reglas, migraciones y rollback |
-| S3-T02 | US15–US18, TS35 | Confirmar/anular ventas atómicas con concurrencia e idempotencia. | 8 h | Solo una de seis ventas de la última unidad se acepta |
-| S3-T03 | US19–US22, US37 | Preparar/iniciar/entregar manifiesto con recursos existentes. | 8 h | Receptor y saldo sin doble descuento |
-| S3-T04 | US35 | Implementar compra y recepción parcial acotada. | 8 h | Exceso y líneas repetidas rechazados |
-| S3-T05 | US36, US23 | Conciliar devoluciones e indicadores. | 4 h | Restock/loss y límite de devolución |
-| S3-T06 | US26, TS34 | Traducir eventos internos a PL v1 con Outbox e inbox. | 8 h | Fallo/reintento y reentrega sin duplicación |
-| S3-T07 | TS33 | Integrar Open-Meteo mediante gateway y caché. | 4 h | Traducción/caché/fallo probados y llamada real |
-| S3-T08 | US01–US03, US28–US29 | Implementar JWT revocables, BCrypt, roles y aislamiento. | 8 h | Sesión y denegaciones verificadas |
-| S3-T09 | US33, contratos TS | Integrar Angular con API y separar sesiones demo/servidor. | 8 h | 21 pruebas y build Pages aprobados |
-| S3-T10 | Transversal | Desplegar API/DB/webapp y comprobar recorrido. | 8 h | Render live, health UP y Pages |
-| S3-T11 | Transversal | Alinear informe, diagramas y servicios. | 8 h | Fuentes y exportación de esta versión |
-| S3-T12 | Validación / ABET 3 | Incorporar entrevistas, tablero, videos y reflexión. | 8 h | Pendiente de evidencia humana real |
+| Story Id | Story Title | Task Id | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| US09 | Registro de artículo | S3-T01 | Implementar InventoryItem, VOs, movimientos y persistencia separada | Implementar InventoryItem, VOs, movimientos y persistencia separada. Evidencia: Reglas, migraciones y rollback. Cobertura asociada: US10–US14. | 8 h | Pendiente de confirmar | To-Review |
+| US15 | Creación de venta | S3-T02 | Confirmar/anular ventas atómicas con concurrencia e idempotencia | Confirmar/anular ventas atómicas con concurrencia e idempotencia. Evidencia: Solo una de seis ventas de la última unidad se acepta. Cobertura asociada: US16–US18, TS35. | 8 h | Pendiente de confirmar | To-Review |
+| US19 | Manifiesto de despacho | S3-T03 | Preparar/iniciar/entregar manifiesto con recursos existentes | Preparar/iniciar/entregar manifiesto con recursos existentes. Evidencia: Receptor y saldo sin doble descuento. Cobertura asociada: US20–US22, US37. | 8 h | Pendiente de confirmar | To-Review |
+| US35 | Abastecimiento y recepción parcial | S3-T04 | Implementar compra y recepción parcial acotada | Implementar compra y recepción parcial acotada. Evidencia: Exceso y líneas repetidas rechazados. Cobertura asociada: TS28–TS30. | 8 h | Pendiente de confirmar | To-Review |
+| US36 | Devolución trazable | S3-T05 | Conciliar devoluciones e indicadores | Conciliar devoluciones e indicadores. Evidencia: Restock/loss y límite de devolución. Cobertura asociada: US23. | 4 h | Pendiente de confirmar | To-Review |
+| US26 | Alerta de stock mínimo | S3-T06 | Traducir eventos internos a PL v1 con Outbox e inbox | Traducir eventos internos a PL v1 con Outbox e inbox. Evidencia: Fallo/reintento y reentrega sin duplicación. Cobertura asociada: TS34. | 8 h | Pendiente de confirmar | To-Review |
+| TS33 | Clima regional | S3-T07 | Integrar Open-Meteo mediante gateway y caché | Integrar Open-Meteo mediante gateway y caché. Evidencia: Traducción/caché/fallo probados y llamada real. Cobertura asociada: Integración externa de Logistics. | 4 h | Pendiente de confirmar | To-Review |
+| US01 | Registro de cuenta | S3-T08 | Implementar JWT revocables, BCrypt, roles y aislamiento | Implementar JWT revocables, BCrypt, roles y aislamiento. Evidencia: Sesión y denegaciones verificadas. Cobertura asociada: US02–US03, US28–US29. | 8 h | Pendiente de confirmar | To-Review |
+| US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Pendiente de confirmar | To-Review |
+| Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Pendiente de confirmar | To-Review |
+| Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Pendiente de confirmar | To-Review |
+| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Pendiente de evidencia humana real. | 8 h | Pendiente de confirmar | To-do |
 
-El tablero externo y sus responsables siguen pendientes de recibir. Esta tabla no simula transiciones To Do / In Process / To Review / Done ni tiempo trabajado.
+Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El tablero externo y sus responsables siguen pendientes de recibir. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To sigue pendiente de confirmación.
 
 #### 5.2.3.4. Development Evidence for Sprint Review
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+| --- | --- | --- | --- | --- | --- |
+| [ai-todu-api](https://github.com/AI-ToDu/ai-todu-api) | `fix/av2-api-contracts` | [067abc7bd258](https://github.com/AI-ToDu/ai-todu-api/commit/067abc7bd2583d0286dc1cc4e84c17d292c0afc2) | fix: align HTTP contracts and CQRS boundaries | Document all 34 service operations with concrete success and ProblemDetail schemas. Map expected failures directly to HTTP, validate transport resources and keep response status consistent.<br><br>Separate command/query and session contracts from implementation classes, move REST transformation into assemblers and exercise every operation with sanitized evidence. Verification: 15 local tests pass with H2; CI independently verifies PostgreSQL 17 and Java 21.<br> | 2026-11-08T13:44:13-05:00 |
+| [ai-todu-webapp](https://github.com/AI-ToDu/ai-todu-webapp) | `fix/av2-readme-consistency` | [36944ba02bf2](https://github.com/AI-ToDu/ai-todu-webapp/commit/36944ba02bf23218cb1222bd8fc6852aa01993e7) | docs: align README with the published AV2 increment | Preserve the original structure and historical team attribution while linking current branches and distinguishing server contracts from the demonstration API.<br> | 2026-11-08T13:45:09-05:00 |
+| [ai-todu-platform](https://github.com/AI-ToDu/ai-todu-platform) | `fix/av2-readme-consistency` | [737a4f09820c](https://github.com/AI-ToDu/ai-todu-platform/commit/737a4f09820cd463f7b551f8b35a57b7cb39b8b9) | docs: align README with the published AV2 increment | Preserve the original structure and historical team attribution while linking current branches and distinguishing server contracts from the demonstration API.<br> | 2026-11-08T13:45:10-05:00 |
+| [ai-todu-fake-api](https://github.com/AI-ToDu/ai-todu-fake-api) | `fix/av2-readme-consistency` | [2b4c05a89593](https://github.com/AI-ToDu/ai-todu-fake-api/commit/2b4c05a89593bbc281eeeaf559f2296ba44d9525) | docs: align README with the published AV2 increment | Preserve the original structure and historical team attribution while linking current branches and distinguishing server contracts from the demonstration API.<br> | 2026-11-08T13:45:10-05:00 |
+| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | `fix/av2-design-evidence` | [0ac9c2e78391](https://github.com/AI-ToDu/ai-todu-report/commit/0ac9c2e783918efc1dd0d53d085060e8ed48fdef) | docs: add measurable goals and editable AV2 design evidence | Sin cuerpo adicional | 2026-11-08T09:35:50-05:00 |
+| [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | `fix/av2-report-evidence` | [968efcafa0f4](https://github.com/AI-ToDu/ai-todu-report/commit/968efcafa0f43519b78cc1e0b0b72cad5a16739a) | docs: align AV2 service evidence and DDD views with the rubric | Document all 34 service operations with sanitized HTTP examples and Swagger captures. Make current AV2 architecture, Transactional Outbox Pattern and 19-table physical views primary while preserving the historical design.<br><br>Complete Sprint Planning, backlog and commit evidence columns, refine 37 alternative scenarios, and describe screen states and user flows. Keep unknown human evidence pending. Validation: synchronized report, local assets, endpoint catalogue and physical dictionary checks pass. | 2026-11-08T13:59:44-05:00 |
+
+Los hashes y fechas proceden del historial Git local de los repositorios identificados. Las filas del informe identifican la evidencia de diseño previa y el commit de documentación que incorpora esta revisión. La anotación de trazabilidad posterior no modifica la autoría de esos cambios. Un commit no acredita una reunión Scrum ni participación de un integrante.
 
 [Backend PR #1](https://github.com/AI-ToDu/ai-todu-api/pull/1) implementa contextos, agregados, recursos, migraciones y Outbox. [PR #2](https://github.com/AI-ToDu/ai-todu-api/pull/2) retira administración del runtime y prueba el gateway externo. [Frontend PR #5](https://github.com/AI-ToDu/ai-todu-webapp/pull/5) integra API, sesiones, idioma, provisión y clima.
 
@@ -1016,8 +1116,8 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 
 | Verificación | Resultado y evidencia | Límite |
 | --- | --- | --- |
-| Backend local | 14 pruebas aprobadas | H2 de desarrollo y pruebas del gateway |
-| Backend CI | Suite aprobada con PostgreSQL 17 / Java 21 | Datos aislados; no mide carga empresarial |
+| Backend local | 15 pruebas aprobadas; 34 operaciones y rechazos HTTP contrastados | H2 de desarrollo; clima fixture en el recorrido de contratos; gateway probado por separado |
+| Backend CI | 15 pruebas aprobadas con PostgreSQL 17 / Java 21, commit 067abc7 | [Run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771); datos aislados, no mide carga empresarial |
 | Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
 | HTTP público | Entrada 5 → venta 2 / PEN 21 → entrega → saldo 3 | Datos ficticios; no equivale a aceptación de usuarios |
 | Open-Meteo/CORS | Respuesta real Lima y origen GitHub Pages autorizado | Clima regional de referencia |
@@ -1031,9 +1131,1044 @@ Evidencia del 8/11/2026: desde Angular se crea el producto ficticio BROWSER-2026
 
 #### 5.2.3.6. Services Documentation Evidence for Sprint Review
 
-[Swagger UI](https://ai-todu-api-av2.onrender.com/swagger-ui.html) · [OpenAPI](https://ai-todu-api-av2.onrender.com/v3/api-docs) · [README API](https://github.com/AI-ToDu/ai-todu-api) · [Published Language v1](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json).
+**Versión documentada:** [067abc7](https://github.com/AI-ToDu/ai-todu-api/commit/067abc7bd2583d0286dc1cc4e84c17d292c0afc2), rama fix/av2-api-contracts, [PR #3](https://github.com/AI-ToDu/ai-todu-api/pull/3). CI Java 21/PostgreSQL 17 aprobado en [run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771). El Swagger público conserva la versión desplegada anterior hasta integrar y desplegar esta revisión.
 
-La API /api/v1 es el Open Host Service. Usa recursos JSON, Problem Details y códigos estables; Accept-Language selecciona en-US o es-419. Los eventos internos se traducen antes de cruzar contextos. Fachadas públicas y gateways delimitan la integración; no se importan agregados de otros dominios.
+[Swagger UI](https://ai-todu-api-av2.onrender.com/swagger-ui.html) · [OpenAPI](https://ai-todu-api-av2.onrender.com/v3/api-docs) · [Repositorio Web Services](https://github.com/AI-ToDu/ai-todu-api) · [Published Language v1](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json).
+
+La API `/api/v1` es el **Open Host Service**. Recursos JSON y OpenAPI definen el contrato HTTP; los esquemas versionados definen el Published Language de integración. Los eventos internos se traducen dentro de su bounded context antes de cruzarlo. Tenant y rol provienen de la identidad autenticada; no se reciben desde el cuerpo. Las colecciones usan `{"items":[]}`.
+
+**Bases:** desarrollo `http://localhost:8080/api/v1`; despliegue `https://ai-todu-api-av2.onrender.com/api/v1`. Se anexa el path de cada ficha a la base correspondiente. No hay parámetros query de paginación ni filtros de servidor implementados. Todo `{id}` es UUID de un recurso del espacio autenticado.
+
+**Headers:** `Content-Type: application/json` cuando hay cuerpo; `Authorization: Bearer <token>` en operaciones protegidas; `Accept-Language: en-US` o `es-419` para mensajes localizados. `POST /sales` admite además `Idempotency-Key` opcional. Los ejemplos usan identidades ficticias y ocultan contraseña/token. Los UUID de respuesta deben sustituir las referencias ilustrativas de la siguiente petición.
+
+**Origen y límites:** las solicitudes y respuestas siguientes provienen de ServicesContractIntegrationTest, ejecutado localmente con H2 en modo PostgreSQL y datos sintéticos. El ejemplo de clima usa un fixture determinista; WeatherGatewayTest verifica traducción/caché/fallo y la integración pública previa documenta Open-Meteo real. Esta ejecución local no acredita despliegue ni validación con personas. La verificación CI PostgreSQL se identifica separadamente por commit y run.
+
+| Código | Significado y contrato |
+| --- | --- |
+| 200 | Consulta o transición aceptada; devuelve el recurso descrito |
+| 201 | Creación aceptada; devuelve el recurso; replay idempotente de venta conserva 201 |
+| 204 | Sesión revocada; respuesta sin cuerpo |
+| 400 | JSON ilegible, parámetro inválido o validación de entrada incompleta |
+| 401 / 403 | Sesión ausente/inválida/revocada o rol sin permiso |
+| 404 | Identificador/referencia no encontrado en el espacio autenticado |
+| 409 | Duplicado o conflicto de negocio, como stock insuficiente |
+| 422 | Regla del dominio rechaza valores válidos a nivel de transporte |
+| 503 | Proveedor climático no disponible |
+| 500 | Fallo inesperado; no expone detalles internos |
+
+Los errores usan `application/problem+json` con `type`, `title`, `status`, `detail` y `code`. HTTP y `status` del cuerpo coinciden. Cada ficha lista únicamente los códigos declarados para esa operación; una declaración no implica haber provocado todos sus fallos.
+
+[OpenAPI de esta versión](assets/services-openapi-av2.json) · [Solicitudes y respuestas sanitizadas](assets/service-http-examples-av2.json).
+
+##### Interacción real con Swagger UI
+
+Capturas locales del 8/11/2026, con datos ficticios y base H2 en memoria. Las imágenes documentan respuestas observadas y se distinguen del despliegue público.
+
+![Swagger: producto creado con 201 y ProductResource](assets/swagger-product-201.png)
+
+POST /products crea un artículo con saldo cero. El identificador retornado permite registrar la recepción posterior.
+
+![Swagger: venta rechazada con 409 y código INSUFFICIENT_STOCK](assets/swagger-sale-409.png)
+
+Sin saldo, POST /sales devuelve 409. La prueba de integración comprueba que no quedan venta, salidas ni Outbox parciales.
+
+![Swagger: venta confirmada con 201 después de recibir existencias](assets/swagger-sale-201.png)
+
+Después de recibir dos unidades, vender una devuelve 201 con líneas históricas, total PEN 12,50 y referencia de recibo académico.
+
+##### Catálogo de las 34 operaciones
+
+| Verbo | Ruta | Acción / contexto | Éxito | Roles |
+| --- | --- | --- | --- | --- |
+| POST | `/api/v1/auth/register` | Register a workspace / IAM | 201 | Public |
+| POST | `/api/v1/auth/login` | Create a session / IAM | 200 | Public |
+| GET | `/api/v1/auth/me` | Read the current identity / IAM | 200 | Any active role |
+| POST | `/api/v1/auth/logout` | Revoke the current session / IAM | 204 | Any active role |
+| GET | `/api/v1/employees` | List employees / IAM | 200 | ADMIN |
+| POST | `/api/v1/employees` | Create an employee / IAM | 201 | ADMIN |
+| GET | `/api/v1/products` | List products / Inventory | 200 | Any active role |
+| POST | `/api/v1/products` | Register a product / Inventory | 201 | ADMIN, WAREHOUSE |
+| PATCH | `/api/v1/products/{id}` | Change conservation status / Inventory | 200 | ADMIN, WAREHOUSE |
+| GET | `/api/v1/movements` | List stock movements / Inventory | 200 | ADMIN, WAREHOUSE |
+| POST | `/api/v1/movements` | Record a stock movement / Inventory | 201 | ADMIN, WAREHOUSE |
+| GET | `/api/v1/suppliers` | List suppliers / Procurement | 200 | ADMIN, WAREHOUSE |
+| POST | `/api/v1/suppliers` | Register a supplier / Procurement | 201 | ADMIN, WAREHOUSE |
+| GET | `/api/v1/purchases` | List purchase orders / Procurement | 200 | ADMIN, WAREHOUSE |
+| POST | `/api/v1/purchases` | Place a purchase order / Procurement | 201 | ADMIN, WAREHOUSE |
+| POST | `/api/v1/purchases/{id}/receipts` | Receive a purchase partially or fully / Procurement | 201 | ADMIN, WAREHOUSE |
+| GET | `/api/v1/sales` | List sales / Sales | 200 | ADMIN, SALES |
+| POST | `/api/v1/sales` | Confirm a sale / Sales | 201 | ADMIN, SALES |
+| POST | `/api/v1/sales/{id}/cancel` | Cancel a sale / Sales | 200 | ADMIN, SALES |
+| GET | `/api/v1/returns` | List customer returns / Returns | 200 | ADMIN, SALES |
+| POST | `/api/v1/returns` | Record a customer return / Returns | 201 | ADMIN, SALES |
+| GET | `/api/v1/dispatches` | List dispatch manifests / Logistics | 200 | ADMIN, LOGISTICS |
+| POST | `/api/v1/dispatches` | Prepare a dispatch / Logistics | 201 | ADMIN, LOGISTICS |
+| PATCH | `/api/v1/dispatches/{id}` | Transition a dispatch / Logistics | 200 | ADMIN, LOGISTICS |
+| POST | `/api/v1/dispatches/{id}/incidents` | Record a delivery incident / Logistics | 201 | ADMIN, LOGISTICS |
+| GET | `/api/v1/dispatch-candidates` | List eligible sales / Logistics | 200 | ADMIN, LOGISTICS |
+| GET | `/api/v1/drivers` | List drivers / Logistics | 200 | ADMIN, LOGISTICS |
+| POST | `/api/v1/drivers` | Register a driver / Logistics | 201 | ADMIN, LOGISTICS |
+| GET | `/api/v1/vehicles` | List vehicles / Logistics | 200 | ADMIN, LOGISTICS |
+| POST | `/api/v1/vehicles` | Register a vehicle / Logistics | 201 | ADMIN, LOGISTICS |
+| GET | `/api/v1/logistics/weather` | Read regional Lima weather / Logistics | 200 | ADMIN, LOGISTICS |
+| GET | `/api/v1/notifications` | List notifications / Notifications | 200 | Any active role |
+| PATCH | `/api/v1/notifications/{id}` | Mark a notification as read / Notifications | 200 | Any active role |
+| GET | `/api/v1/metrics` | Read operational metrics / Reporting | 200 | ADMIN |
+
+##### Servicio 01. Register a workspace
+
+**POST `/api/v1/auth/register`** · Contexto IAM · Permisos: Public.
+
+Create a company and its first administrator; email must be unique.
+
+**Recurso de solicitud:** `RegistrationResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `name` | `string` | Obligatorio |
+| `company` | `string` | Obligatorio |
+| `email` | `string` | Obligatorio; email |
+| `password` | `string` | Obligatorio; registro: mínimo 8 caracteres y máximo 72 bytes UTF-8 |
+
+Solicitud de ejemplo:
+
+```json
+{"name":"Contract review","company":"Synthetic company","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","password":"[REDACTED]"}
+```
+
+**Respuesta:** 201 con `UserResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 02. Create a session
+
+**POST `/api/v1/auth/login`** · Contexto IAM · Permisos: Public.
+
+Authenticate an active account and return a revocable JWT.
+
+**Recurso de solicitud:** `LoginResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `email` | `string` | Obligatorio; email |
+| `password` | `string` | Obligatorio; registro: mínimo 8 caracteres y máximo 72 bytes UTF-8 |
+
+Solicitud de ejemplo:
+
+```json
+{"email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","password":"[REDACTED]"}
+```
+
+**Respuesta:** 200 con `SessionResource`.
+
+Ejemplo observado:
+
+```json
+{"token":"[REDACTED]","user":{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Invalid credentials or inactive account; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 03. Read the current identity
+
+**GET `/api/v1/auth/me`** · Contexto IAM · Permisos: Any active role.
+
+Read the authenticated identity; tenant is derived from the token.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `UserResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 04. Revoke the current session
+
+**POST `/api/v1/auth/logout`** · Contexto IAM · Permisos: Any active role.
+
+Revoke the presented token; later access with it returns 401.
+
+**Solicitud:** sin cuerpo. El token que se revoca es el presentado en Authorization.
+
+**Respuesta:** 204 sin cuerpo.
+
+**Interpretación:** La sesión deja de autorizar solicitudes; el cuerpo vacío es intencional.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 05. List employees
+
+**GET `/api/v1/employees`** · Contexto IAM · Permisos: ADMIN.
+
+List employees in the authenticated workspace.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceEmployeeResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN","active":true},{"id":"689715f7-8d90-40ca-800d-4c26784e1186","name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","active":true}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 06. Create an employee
+
+**POST `/api/v1/employees`** · Contexto IAM · Permisos: ADMIN.
+
+Provision a role and initial password; no password or hash is returned.
+
+**Recurso de solicitud:** `CreateEmployeeResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `name` | `string` | Obligatorio |
+| `email` | `string` | Obligatorio; email |
+| `role` | `string` | Obligatorio; Valores: ADMIN, WAREHOUSE, SALES, LOGISTICS |
+| `password` | `string` | Obligatorio; registro: mínimo 8 caracteres y máximo 72 bytes UTF-8 |
+
+Solicitud de ejemplo:
+
+```json
+{"name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","password":"[REDACTED]"}
+```
+
+**Respuesta:** 201 con `EmployeeResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"689715f7-8d90-40ca-800d-4c26784e1186","name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","active":true}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 07. List products
+
+**GET `/api/v1/products`** · Contexto Inventory · Permisos: Any active role.
+
+List products in the authenticated workspace; no server-side pagination or filters.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceProductResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 08. Register a product
+
+**POST `/api/v1/products`** · Contexto Inventory · Permisos: ADMIN, WAREHOUSE.
+
+Register a unique workspace SKU with zero initial stock. Amounts are PEN.
+
+**Recurso de solicitud:** `CreateProductResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `sku` | `string` | Obligatorio |
+| `name` | `string` | Obligatorio |
+| `price` | `number` | Obligatorio; PEN ≥ 0; precisión de centavos |
+| `cost` | `number` | Obligatorio; PEN ≥ 0; precisión de centavos |
+| `minimum` | `integer` | Obligatorio; int32 |
+
+Solicitud de ejemplo:
+
+```json
+{"sku":"CONTRACT-001","name":"Example item","price":12.5,"cost":7,"minimum":1}
+```
+
+**Respuesta:** 201 con `ProductResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 09. Change conservation status
+
+**PATCH `/api/v1/products/{id}`** · Contexto Inventory · Permisos: ADMIN, WAREHOUSE.
+
+Change conservation; this action does not edit price or stock.
+
+**Path:** `id` UUID obligatorio; identificador de artículo.
+
+**Recurso de solicitud:** `ConservationResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `conservation` | `string` | Obligatorio; Valores: GOOD, DAMAGED, QUARANTINED |
+
+Solicitud de ejemplo:
+
+```json
+{"conservation":"GOOD"}
+```
+
+**Respuesta:** 200 con `ProductResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 10. List stock movements
+
+**GET `/api/v1/movements`** · Contexto Inventory · Permisos: ADMIN, WAREHOUSE.
+
+Read the audit history of signed stock movements.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceMovementResponseResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"55e61117-905e-4f6f-bab4-453d55b55f62","productId":"71633291-7316-43de-a084-7473e47bc466","delta":5,"type":"RECEIPT","reason":"Initial receipt","actorId":"97ff2372-db30-4ee4-a376-382cadc6f234","createdAt":"2026-11-08T18:43:19.085409Z"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 11. Record a stock movement
+
+**POST `/api/v1/movements`** · Contexto Inventory · Permisos: ADMIN, WAREHOUSE.
+
+Apply RECEIPT or ISSUE in whole positive units; an issue cannot exceed available stock.
+
+**Recurso de solicitud:** `MovementResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `productId` | `string` | Obligatorio; uuid |
+| `quantity` | `number` | Obligatorio; entero positivo |
+| `type` | `string` | Obligatorio; Valores: RECEIPT, ISSUE, LOSS |
+| `reason` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":5,"type":"RECEIPT","reason":"Initial receipt"}
+```
+
+**Respuesta:** 201 con `ProductResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":5,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 12. List suppliers
+
+**GET `/api/v1/suppliers`** · Contexto Procurement · Permisos: ADMIN, WAREHOUSE.
+
+Read suppliers belonging to this workspace.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceSupplierResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"ea689c0b-798f-4295-a250-bc5b3cea91aa","name":"Example supplier","contact":"supplier@example.test"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 13. Register a supplier
+
+**POST `/api/v1/suppliers`** · Contexto Procurement · Permisos: ADMIN, WAREHOUSE.
+
+Register supplier name and contact information.
+
+**Recurso de solicitud:** `CreateSupplierResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `name` | `string` | Obligatorio |
+| `contact` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"name":"Example supplier","contact":"supplier@example.test"}
+```
+
+**Respuesta:** 201 con `SupplierResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"ea689c0b-798f-4295-a250-bc5b3cea91aa","name":"Example supplier","contact":"supplier@example.test"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 14. List purchase orders
+
+**GET `/api/v1/purchases`** · Contexto Procurement · Permisos: ADMIN, WAREHOUSE.
+
+Read orders and ordered/received quantities.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourcePurchaseResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"OPEN","createdAt":"2026-11-08T18:43:19.161628Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":0}]}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 15. Place a purchase order
+
+**POST `/api/v1/purchases`** · Contexto Procurement · Permisos: ADMIN, WAREHOUSE.
+
+Create an order for an existing supplier and distinct workspace products.
+
+**Recurso de solicitud:** `PlacePurchaseResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `supplierId` | `string` | Obligatorio; uuid |
+| `lines` | `List<RequestedPurchaseLineResource>` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","lines":[{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3}]}
+```
+
+Elementos `RequestedPurchaseLineResource`:
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `productId` | `string` | Obligatorio; uuid |
+| `quantity` | `number` | Obligatorio; entero positivo |
+
+**Respuesta:** 201 con `PurchaseResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"OPEN","createdAt":"2026-11-08T18:43:19.161628400Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":0}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 16. Receive a purchase partially or fully
+
+**POST `/api/v1/purchases/{id}/receipts`** · Contexto Procurement · Permisos: ADMIN, WAREHOUSE.
+
+Receive positive quantities by order line; exceeding outstanding units rolls back the entire receipt.
+
+**Path:** `id` UUID obligatorio; identificador de compra.
+
+**Recurso de solicitud:** `ReceivePurchaseResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `lines` | `List<ReceivedPurchaseLineResource>` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"lines":[{"lineId":"1e7d4586-e255-408f-a763-e102fa4c57b0","quantity":2}]}
+```
+
+Elementos `ReceivedPurchaseLineResource`:
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `lineId` | `string` | Obligatorio; uuid |
+| `quantity` | `number` | Obligatorio; entero positivo |
+
+**Respuesta:** 201 con `PurchaseResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"PARTIAL","createdAt":"2026-11-08T18:43:19.161628Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":2}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 17. List sales
+
+**GET `/api/v1/sales`** · Contexto Sales · Permisos: ADMIN, SALES.
+
+Read sales, immutable commercial line snapshots and academic receipt references.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceSaleResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-08T18:43:19.238105Z","lines":[{"id":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-b55c8a8c"}}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 18. Confirm a sale
+
+**POST `/api/v1/sales`** · Contexto Sales · Permisos: ADMIN, SALES.
+
+Atomically record sale, stock issues and integration messages. An identical Idempotency-Key replay returns the existing sale with 201; a conflicting payload returns 409.
+
+**Recurso de solicitud:** `ConfirmSaleResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `lines` | `List<LineRequest>` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"lines":[{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":2}]}
+```
+
+Elementos `LineRequest`:
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `productId` | `string` | Obligatorio; uuid |
+| `quantity` | `number` | Obligatorio; entero positivo |
+
+**Header opcional:** `Idempotency-Key`; repetirlo con iguales productos/cantidades conserva la venta y devuelve 201; con otro contenido devuelve 409.
+
+**Respuesta:** 201 con `SaleResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-08T18:43:19.238105100Z","lines":[{"id":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-b55c8a8c"}}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 19. Cancel a sale
+
+**POST `/api/v1/sales/{id}/cancel`** · Contexto Sales · Permisos: ADMIN, SALES.
+
+Cancel a sale that has not been dispatched and restore its stock once.
+
+**Path:** `id` UUID obligatorio; identificador de venta.
+
+**Recurso de solicitud:** `CancelResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `reason` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"reason":"Example cancellation"}
+```
+
+**Respuesta:** 200 con `SaleResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"2cfe9035-b68f-4ad4-8612-032cb36272bf","number":"SAL-2cfe9035","status":"CANCELLED","total":12.5,"createdAt":"2026-11-08T18:43:19.516651Z","lines":[{"id":"4ce64e5e-a745-44f4-b655-64d36fc9c645","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":1,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-2cfe9035"}}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 20. List customer returns
+
+**GET `/api/v1/returns`** · Contexto Returns · Permisos: ADMIN, SALES.
+
+Read previously recorded returns and disposition.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceReturnResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"ec84466b-9ff4-432f-b042-986b6d0b4bb3","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-08T18:43:19.480300Z"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 21. Record a customer return
+
+**POST `/api/v1/returns`** · Contexto Returns · Permisos: ADMIN, SALES.
+
+Return units against one sale line. RESTOCK restores stock; LOSS records loss. Previously returned quantities limit the remaining return.
+
+**Recurso de solicitud:** `RecordReturnResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `saleId` | `string` | Obligatorio; uuid |
+| `saleLineId` | `string` | Obligatorio; uuid |
+| `quantity` | `number` | Obligatorio; entero positivo |
+| `disposition` | `string` | Obligatorio; Valores: RESTOCK, LOSS |
+| `reason` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return"}
+```
+
+**Respuesta:** 201 con `ReturnResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"ec84466b-9ff4-432f-b042-986b6d0b4bb3","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-08T18:43:19.480300200Z"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 22. List dispatch manifests
+
+**GET `/api/v1/dispatches`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Read manifests, lines, incidents and recipient evidence.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceDispatchResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[],"recipient":null}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 23. Prepare a dispatch
+
+**POST `/api/v1/dispatches`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Assign confirmed undispatched sales, a driver, a vehicle and destination. Stock is not deducted again.
+
+**Recurso de solicitud:** `PrepareDispatchResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `saleIds` | `List<string>` | Obligatorio |
+| `driverId` | `string` | Obligatorio; uuid |
+| `vehicleId` | `string` | Obligatorio; uuid |
+| `destination` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"saleIds":["b55c8a8c-73d7-4210-8555-f8481861c01a"],"driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse"}
+```
+
+**Respuesta:** 201 con `DispatchResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757100Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[],"recipient":null}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 24. Transition a dispatch
+
+**PATCH `/api/v1/dispatches/{id}`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Transition PENDING to IN_TRANSIT, then DELIVERED with recipient evidence; invalid transitions preserve the previous state.
+
+**Path:** `id` UUID obligatorio; identificador de manifiesto.
+
+**Recurso de solicitud:** `TransitionResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `status` | `string` | Obligatorio; Valores: IN_TRANSIT, DELIVERED |
+| `recipient` | `string` | obligatorio al entregar |
+
+Solicitud de ejemplo:
+
+```json
+{"status":"IN_TRANSIT"}
+```
+
+**Respuesta:** 200 con `DispatchResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"IN_TRANSIT","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[{"id":"3feefe20-adad-4a6c-92ca-499d18f8dabc","description":"Recipient contacted before delivery","createdAt":"2026-11-08T18:43:19.411362Z"}],"recipient":null}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 25. Record a delivery incident
+
+**POST `/api/v1/dispatches/{id}/incidents`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Append an incident description to the selected manifest.
+
+**Path:** `id` UUID obligatorio; identificador de manifiesto.
+
+**Recurso de solicitud:** `IncidentResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `description` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"description":"Recipient contacted before delivery"}
+```
+
+**Respuesta:** 201 con `DispatchResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[{"id":"3feefe20-adad-4a6c-92ca-499d18f8dabc","description":"Recipient contacted before delivery","createdAt":"2026-11-08T18:43:19.411361500Z"}],"recipient":null}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 26. List eligible sales
+
+**GET `/api/v1/dispatch-candidates`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Read confirmed sales that can be assigned to a dispatch.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceCandidateResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 27. List drivers
+
+**GET `/api/v1/drivers`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Read drivers registered in this workspace.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceDriverResponseResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"06449429-0047-481d-9f1c-b1d1e37cc7a1","name":"Example driver","license":"LIC-CONTRACT"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 28. Register a driver
+
+**POST `/api/v1/drivers`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Register a driver and unique license.
+
+**Recurso de solicitud:** `DriverResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `name` | `string` | Obligatorio |
+| `license` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"name":"Example driver","license":"LIC-CONTRACT"}
+```
+
+**Respuesta:** 201 con `DriverResponseResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"06449429-0047-481d-9f1c-b1d1e37cc7a1","name":"Example driver","license":"LIC-CONTRACT"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 29. List vehicles
+
+**GET `/api/v1/vehicles`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Read vehicles registered in this workspace.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceVehicleResponseResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"569f1cb0-cb5b-4482-98ae-d941d425508c","name":"Example van","plate":"CON-001"}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 30. Register a vehicle
+
+**POST `/api/v1/vehicles`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Register a vehicle and unique plate.
+
+**Recurso de solicitud:** `VehicleResource`.
+
+| Campo | Tipo | Validación / semántica |
+| --- | --- | --- |
+| `name` | `string` | Obligatorio |
+| `plate` | `string` | Obligatorio |
+
+Solicitud de ejemplo:
+
+```json
+{"name":"Example van","plate":"CON-001"}
+```
+
+**Respuesta:** 201 con `VehicleResponseResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"569f1cb0-cb5b-4482-98ae-d941d425508c","name":"Example van","plate":"CON-001"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 409 Duplicate identity or conflicting business state; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 31. Read regional Lima weather
+
+**GET `/api/v1/logistics/weather`** · Contexto Logistics · Permisos: ADMIN, LOGISTICS.
+
+Read fixed central-Lima conditions from Open-Meteo, cached for ten minutes. Provider failure returns 503; dispatch commands remain usable.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `WeatherResource`.
+
+Ejemplo observado:
+
+```json
+{"location":"Lima fixture","temperatureC":21.0,"precipitationMm":0.0,"windKmh":8.0,"observedAt":"2026-11-08T12:00:00Z","fetchedAt":"2026-11-08T12:00:00Z","source":"Open-Meteo","attributionUrl":"https://open-meteo.com/"}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 503 Weather provider unavailable; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 32. List notifications
+
+**GET `/api/v1/notifications`** · Contexto Notifications · Permisos: Any active role.
+
+Read workspace notifications produced by committed integration messages.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `CollectionResourceNotificationResource`.
+
+Ejemplo observado:
+
+```json
+{"items":[{"id":"5c21a07f-de0d-4091-b492-ce1dacd8126c","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.516651Z","read":false},{"id":"ba5a8ad2-adc8-4f9c-ad76-40b6d9f749e5","type":"DELIVERY_CONFIRMED","createdAt":"2026-11-08T18:43:19.452569Z","read":false},{"id":"6ed61054-e5e0-429a-b064-2ce2fd2058f0","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.238105Z","read":false}]}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 33. Mark a notification as read
+
+**PATCH `/api/v1/notifications/{id}`** · Contexto Notifications · Permisos: Any active role.
+
+Mark a workspace notification as read; repeating it preserves the read state.
+
+**Path:** `id` UUID obligatorio; identificador de notificación.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `NotificationResource`.
+
+Ejemplo observado:
+
+```json
+{"id":"5c21a07f-de0d-4091-b492-ce1dacd8126c","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.516651Z","read":true}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 400 Malformed request, missing required input or invalid parameter; 422 A domain invariant rejects the supplied values; 404 Reference not found in the authenticated workspace; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Servicio 34. Read operational metrics
+
+**GET `/api/v1/metrics`** · Contexto Reporting · Permisos: ADMIN.
+
+Read revenue, gross contribution, inventory valuation, low-stock count and dispatch/sale counts. Gross contribution is not net profit.
+
+**Solicitud:** sin cuerpo. No admite filtros query de servidor.
+
+**Respuesta:** 200 con `Metrics`.
+
+Ejemplo observado:
+
+```json
+{"revenue":12.5,"grossMargin":5.5,"inventoryValue":42.0,"lowStock":0,"dispatches":0,"sales":1}
+```
+
+**Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
+
+**Errores aplicables:** 401 Missing, invalid, expired or revoked session; 403 Role does not permit this operation; 500 Unexpected server failure; internal details are not disclosed.
+
+##### Ejemplos de rechazo observados
+
+**POST /api/v1/products → 400**
+
+```json
+{"detail":"Revisa la longitud del texto y los campos obligatorios.","instance":"/api/v1/products","status":400,"title":"Bad Request","type":"about:blank","code":"INVALID_TEXT"}
+```
+
+**POST /api/v1/products → 400**
+
+```json
+{"detail":"Revisa la longitud del texto y los campos obligatorios.","instance":"/api/v1/products","status":400,"title":"Bad Request","type":"about:blank","code":"INVALID_TEXT"}
+```
+
+**POST /api/v1/sales → 400**
+
+```json
+{"detail":"Revisa la longitud del texto y los campos obligatorios.","instance":"/api/v1/sales","status":400,"title":"Bad Request","type":"about:blank","code":"INVALID_TEXT"}
+```
+
+**PATCH /api/v1/products/not-a-uuid → 400**
+
+```json
+{"detail":"Revisa la longitud del texto y los campos obligatorios.","instance":"/api/v1/products/not-a-uuid","status":400,"title":"Bad Request","type":"about:blank","code":"INVALID_TEXT"}
+```
+
+**POST /api/v1/sales → 409**
+
+```json
+{"detail":"La cantidad supera el stock disponible. Revisa el carrito.","instance":"/api/v1/sales","status":409,"title":"Conflict","type":"about:blank","code":"INSUFFICIENT_STOCK"}
+```
+
+**POST /api/v1/movements → 422**
+
+```json
+{"detail":"Ingresa una cantidad entera positiva.","instance":"/api/v1/movements","status":422,"title":"Unprocessable Content","type":"about:blank","code":"INVALID_QUANTITY"}
+```
+
+**GET /api/v1/metrics → 403**
+
+```json
+{"detail":"Tu rol no tiene acceso a esta operación.","instance":"/api/v1/metrics","status":403,"title":"Forbidden","type":"about:blank","code":"FORBIDDEN"}
+```
+
+**GET /api/v1/products → 401**
+
+```json
+{"detail":"Vuelve a iniciar sesión para continuar.","code":"UNAUTHENTICATED","title":"Unauthorized","type":"about:blank","status":401}
+```
 
 #### 5.2.3.7. Software Deployment Evidence for Sprint Review
 
