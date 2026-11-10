@@ -65,9 +65,19 @@ Angular presentation is lazy by domain. Shared application concerns provide sess
 
 ## ADR-004 — atomic commands and workspace locking
 
-The modular monolith keeps stock, sale snapshots and Outbox writes in a single PostgreSQL transaction. A pessimistic workspace lock serializes business commands within one workspace; different workspaces retain independent locks. This is a deliberate throughput tradeoff for the academic workload, not a claim of horizontal scalability. A failed command rolls back all writes before Result reports the domain error.
+`CommandExecutor` coordinates the unit of work through Spring's `TransactionTemplate`. It acquires a pessimistic workspace lock inside the transaction, so business commands for one workspace serialize while other workspaces use independent locks. The lock trades within-workspace concurrency for simpler coordination. A failed command rolls back its writes before `Result` returns the domain error.
 
-Only the owning context handles its domain events. Application publishers map StockBelowMinimum, SaleConfirmed and DeliveryConfirmed into Published Language v1. The Outbox relay retries failures with bounded backoff. Notification ID equals event ID; repeated delivery does not duplicate the inbox entry. An external broker would require its own durable delivery/consumer handling and is not implemented.
+| Operation | Consistency boundary | Invariant protected |
+| --- | --- | --- |
+| `ConfirmSaleCommand` | Strong across Sales and Inventory, including Outbox writes | The sale, line snapshots and all stock deductions commit together. Two concurrent requests cannot both sell the last unit. |
+| `CancelSaleCommand` | Strong across Sales and Inventory | An eligible sale becomes cancelled and its stock is restored once in the same transaction. |
+| `PrepareDispatchCommand` | Strong across Logistics and Sales | A sale claimed by a dispatch and the manifest are saved together, so a failed preparation leaves the sale available for another attempt. |
+| `TransitionDispatchCommand` | Strong across Logistics and Sales, including the delivery Outbox write | Sales fulfillment and the manifest stay aligned. Return eligibility depends on fulfillment when the sale belongs to a dispatch. |
+| `ReceivePurchaseCommand` | Strong across Procurement and Inventory | The received quantity and corresponding stock increase commit together, within the ordered balance. |
+| `RecordReturnCommand` | Strong across Returns and Sales, and Inventory for `RESTOCK` | The returned quantity updates the sale line and return record together. Only `RESTOCK` restores stock. |
+| Notifications | Eventual relative to the originating command | The producer commits its business state and pending message together. A later relay transaction registers the notification once per `eventId` and marks the message published. |
+
+The [transaction tests](https://github.com/AI-ToDu/ai-todu-api/blob/067abc7bd2583d0286dc1cc4e84c17d292c0afc2/src/test/java/com/aitodu/platform/TransactionIntegrationTest.java) cover concurrent sales, sale rollback, partial receipts and returns. ADR-008 describes the separate consumer transaction and retry tests.
 
 ## ADR-005 — runtime credentials and network isolation
 
@@ -78,6 +88,17 @@ Free hosting may sleep after inactivity and the shared free PostgreSQL instance 
 ## ADR-006 — implemented schema versus target model
 
 The 35-table design remains a roadmap. The executed V1–V4 Flyway migrations define 19 application/infrastructure tables plus flyway_schema_history. No automatic migration copies browser demo records into PostgreSQL. Server and demo sessions use separate browser keys; server failure never silently switches the user to fictional local state.
+
+The current schema uses foreign keys within aggregates, such as `sale_lines.sale_id` and `dispatch_lines.dispatch_id`. It also retains the following physical dependencies between aggregates or contexts in the shared PostgreSQL schema.
+
+| References | What the database preserves | Coupling |
+| --- | --- | --- |
+| Sale, purchase and dispatch lines, plus customer returns → Inventory product | A product referenced by an operational record still exists. The product FK checks its UUID. | A product deletion must account for its references in other contexts. |
+| Dispatch lines and customer returns → Sales sale and sale line | A source sale and line still exist for traceability. The return's sale FK checks `(tenant_id, sale_id)`. The line FKs check the line UUID. | Sales history must remain available while Logistics and Returns reference it. |
+| Dispatch → driver and vehicle, purchase order → supplier | Composite FKs require the referenced resource to belong to the same workspace. | The dependent aggregate requires the resource to remain present. |
+| Workspace-scoped records → workspace, stock movement → actor | Workspace and actor references retain links to existing IAM records wherever V1–V4 declare the FK. The movement's actor FK checks the user UUID. | Cleanup of workspace and user records must account for dependent history. |
+
+The use cases check workspace scope and related identities through repository queries and public facades. For example, Returns loads the sale for the authenticated workspace and selects the line from that aggregate. The individual UUID constraints enforce existence. Composite constraints additionally enforce workspace membership where declared.
 
 Single-attribute values use infrastructure converters. Multi-attribute persistence values use embeddables. Domain models contain neither JPA nor Spring annotations. Separate assemblers preserve aggregate reconstitution, without claiming that a converter replaces all object mapping.
 
