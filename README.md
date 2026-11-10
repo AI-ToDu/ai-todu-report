@@ -156,6 +156,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
     - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
       - [4.6.1.1. Transactional Outbox Pattern](#4611-transactional-outbox-pattern)
+      - [4.6.1.2. Context Map de AV2](#4612-context-map-de-av2)
     - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
     - [4.6.3. Software Architecture Container Diagrams](#463-software-architecture-container-diagrams)
     - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
@@ -741,6 +742,12 @@ OutboxRelay lee hasta 25 mensajes PENDING cuyo next_attempt_at ha vencido; bloqu
 | notifications.id = eventId | Identidad estable del efecto consumidor | No constituye un inbox genérico para todos los consumidores |
 
 El relay y Notifications comparten PostgreSQL y transacción local al consumir. No se implementó broker externo, dead-letter queue ni prueba de reinicio de proceso; esas capacidades no se atribuyen a esta evidencia. El Outbox durable conserva pendientes para una ejecución posterior.
+
+#### 4.6.1.2. Context Map de AV2
+
+![Context Map de AV2](design/diagrams/rendered/context-map.svg)
+
+Las flechas continuas entre contextos muestran quién consume el contrato de quién. `InventoryGateway.take` y `SalesGateway.claim` traducen datos al modelo del consumidor. Compras y Devoluciones invocan fachadas públicas, y Reporting combina consultas públicas. Los mensajes de integración siguen la ruta punteada del productor al Outbox y a Notifications. IAM aporta la identidad autenticada a la API REST, que funciona como Open Host Service. El [análisis arquitectónico](design/architecture.md#bounded-contexts-in-review-order) detalla las operaciones de cada relación.
 
 ### 4.6.2. Software Architecture Context Diagram
 

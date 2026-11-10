@@ -1,30 +1,36 @@
+---
+config:
+  flowchart:
+    nodeSpacing: 26
+    rankSpacing: 40
+---
 flowchart TB
- subgraph core["CORE AV2"]
- inventory["Inventory: saldo, conservación y movimientos"]
- logistics["Logistics: manifiesto, recursos y entrega"]
+ web["Webapp"] --> ohs["Open Host Service<br/>REST /api/v1 · Resources · OpenAPI"]
+ ohs --> platform
+ subgraph platform["AI-ToDu · monolito modular"]
+ inventory["Inventory<br/>Core"]:::context
+ logistics["Logistics<br/>Core"]:::context
+ procurement["Procurement"]:::context
+ sales["Sales"]:::context
+ returns["Returns"]:::context
+ reporting["Reporting"]:::context
+ notifications["Notifications"]:::context
+ iam["IAM<br/>Empresa, identidad y sesión"]:::context
+ outbox["Outbox y relay local<br/>Published Language v1"]:::integration
+ sales -->|"ACL · InventoryGateway<br/>Producto → SaleLine"| inventory
+ logistics -->|"ACL · SalesGateway.claim<br/>Línea de venta → DispatchLine"| sales
+ procurement -->|"Fachada · consultar y recibir stock"| inventory
+ returns -->|"Fachada · reponer stock"| inventory
+ returns -->|"Fachada · registrar devolución"| sales
+ reporting -->|"Lectura · productos"| inventory
+ reporting -->|"Lectura · métricas"| sales
+ reporting -->|"Lectura · despachos activos"| logistics
+ reporting -->|"Lectura · pérdida registrada"| returns
+ inventory -.->|"Stock mínimo"| outbox
+ sales -.->|"Venta confirmada"| outbox
+ logistics -.->|"Entrega confirmada"| outbox
+ outbox -.->|"Entrega eventual"| notifications
  end
- procurement["Procurement: compras y recepción"]
- sales["Sales: venta, snapshots y anulación"]
- returns["Returns: devolución y pérdida"]
- reporting["Reporting: proyecciones de lectura"]
- notifications["Notifications: inbox idempotente"]
- iam["IAM: empresa, identidad, rol y sesión"]
- ohs["Open Host Service: REST /api/v1 y recursos OpenAPI"]
- outbox["Transactional Outbox: Published Language v1"]
- sales -->|"ACL gateway consume Inventory facade"| inventory
- procurement -->|"Facade: recibir existencias"| inventory
- returns -->|"Facade: reintegrar existencias"| inventory
- returns -->|"ACL: consultar y marcar cantidades devueltas"| sales
- logistics -->|"ACL SalesGateway: ventas y fulfillment"| sales
- inventory -.->|"stock-below-minimum"| outbox
- sales -.->|"sale-confirmed"| outbox
- logistics -.->|"delivery-confirmed"| outbox
- outbox -.->|"relay local: PL v1, reintentos"| notifications
- reporting -->|"facades de lectura"| inventory
- reporting --> sales
- reporting --> logistics
- reporting --> returns
- ohs --> inventory
- ohs --> sales
- ohs --> logistics
- iam -.->|"identidad y empresa autenticadas"| ohs
+ ohs -->|"Identidad y rol"| iam
+ classDef context fill:#e6f4f2,stroke:#168880,color:#17364a
+ classDef integration fill:#e5edf4,stroke:#526d80,color:#17364a

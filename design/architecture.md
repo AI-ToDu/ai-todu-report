@@ -10,6 +10,16 @@ Historical baseline: TB1, 2026-10-30. Current increment: AV2, 2026-11-08. Protot
 
 ![Context map](diagrams/rendered/context-map.svg)
 
+Solid arrows between contexts run from consumer to provider. Dashed event arrows run from producer to consumer through the transactional Outbox and relay. The REST `/api/v1` entry point is the Open Host Service. Resources and OpenAPI describe its HTTP contract, while the [versioned integration schema](https://github.com/AI-ToDu/ai-todu-api/blob/067abc7bd2583d0286dc1cc4e84c17d292c0afc2/contracts/integration-messages.v1.schema.json) describes the Published Language delivered to Notifications.
+
+| Consumer → provider | Pattern in the implemented flow |
+| --- | --- |
+| Sales → Inventory | `InventoryGateway.take` calls `InventoryContextFacade` and translates a product snapshot into a Sales `SaleLine`. |
+| Logistics → Sales | `SalesGateway.claim` translates Sales lines into Logistics `DispatchLine` instances. `fulfillment` delegates the status update, and `candidates` passes through Sales snapshots. |
+| Procurement → Inventory | `ProcurementService` calls the public facade to check products and receive quantities. |
+| Returns → Sales and Inventory | `ReturnService` calls the public facades directly. It uses the Sales line snapshot to build `CustomerReturn` in the use case and receives stock through Inventory for `RESTOCK`. |
+| Reporting → Inventory, Sales, Logistics and Returns | `MetricsQueryServiceImpl` combines public queries in a read-only transaction. |
+
 ## C4
 
 | Level | Reviewed artifact | Boundary and status |
@@ -58,8 +68,6 @@ Angular presentation is lazy by domain. Shared application concerns provide sess
 The modular monolith keeps stock, sale snapshots and Outbox writes in a single PostgreSQL transaction. A pessimistic workspace lock serializes business commands within one workspace; different workspaces retain independent locks. This is a deliberate throughput tradeoff for the academic workload, not a claim of horizontal scalability. A failed command rolls back all writes before Result reports the domain error.
 
 Only the owning context handles its domain events. Application publishers map StockBelowMinimum, SaleConfirmed and DeliveryConfirmed into Published Language v1. The Outbox relay retries failures with bounded backoff. Notification ID equals event ID; repeated delivery does not duplicate the inbox entry. An external broker would require its own durable delivery/consumer handling and is not implemented.
-
-The REST API is the Open Host Service. Public context facades expose narrow snapshots and operations; consuming gateways translate those contracts. Logistics consumes Sales, Sales consumes Inventory, Procurement and Returns coordinate through public facades, and Reporting uses public read projections. No context imports another context's aggregates or persistence entity.
 
 ## ADR-005 — runtime credentials and network isolation
 
