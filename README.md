@@ -2200,7 +2200,18 @@ Validación es una fase distinta de elicitación: **3–5 personas por segmento*
 
 ### 5.3.2. Registro de entrevistas
 
-**Pendiente de recibir/verificar videos.** Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Por sesión se requiere ID anonimizado, segmento, fecha, consentimiento, enlace, minutos, tareas, resultado y mejora. Un registro no se cuenta automáticamente como elicitación y validación.
+Se recibieron dos grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La publicación permite localizar cada fuente; la síntesis de tareas, observaciones y hallazgos se completará después de revisar el contenido.
+
+| ID | Participante | Perfil indicado | Inicio del archivo | Duración del reproductor | Fuente |
+| --- | --- | --- | --- | --- | --- |
+| VAL-S3-01 | Junior | Administrador; supervisor de Entel | 00:00 | 14:00 | [Entrevista de Junior](https://youtu.be/4JEE-XqUjrM) |
+| VAL-S3-02 | Fabiana | Operaria; asesora de Entel | 00:00 | 09:31 | [Entrevista de Fabiana](https://youtu.be/5jAaAcLhDPM) |
+
+**Estado de incorporación:** dos grabaciones recibidas y publicadas, una por perfil indicado. Kevin está realizando otras tres entrevistas. La muestra prevista de cinco personas aún no alcanza el mínimo de seis para dos segmentos; se requiere confirmar la distribución y completar al menos tres participantes de cada segmento.
+
+**Ficha y evaluación por completar:** fecha de la sesión, datos del formato académico autorizados, alcance del consentimiento, captura representativa, inicio efectivo de la entrevista, tareas realizadas, resultados, asistencia y comentarios con sus minutos. También quedan pendientes las fuentes en Microsoft Stream y la edición consolidada del Anexo C. Los enlaces anteriores corresponden a las grabaciones originales.
+
+Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Un registro no se cuenta automáticamente como elicitación y validación; publicar una grabación no acredita por sí solo el cumplimiento de sus tareas o hipótesis.
 
 ### 5.3.3. Evaluación heurística
 
@@ -2381,8 +2392,8 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
-| Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
-| Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
+| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Grabación publicada; ficha y evaluación pendientes |
+| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Grabación publicada; ficha y evaluación pendientes |
 | About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |

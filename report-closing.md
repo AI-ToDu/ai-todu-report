@@ -152,8 +152,8 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
-| Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
-| Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
+| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Grabación publicada; ficha y evaluación pendientes |
+| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Grabación publicada; ficha y evaluación pendientes |
 | About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
