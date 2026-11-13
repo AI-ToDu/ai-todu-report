@@ -21,7 +21,7 @@ La diferenciación propuesta es la comprensión del recorrido de una operación,
 
 ### 2.2.1. Diseño de entrevistas
 
-La investigación requiere **3–5 participantes por segmento y fase**, conforme al enunciado. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto.
+La elicitación inicial se registra por segmento objetivo. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto. El plan y los registros de validación del incremento AV2 se presentan por separado en la sección 5.3.
 
 | Etapa | Preguntas y actividad | Registro requerido |
 | --- | --- | --- |

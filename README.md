@@ -280,7 +280,7 @@ Estas son suposiciones. La demo no prueba disposición de pago, tamaño de merca
 
 | Hipótesis | Experimento propuesto | Criterio objetivo, aún no medido |
 | --- | --- | --- |
-| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a 3–5 operarios que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
+| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a los participantes con funciones de almacén que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
 | H2 · El manifiesto enlazado evita pérdida de referencia. | Dueños y operarios preparan el mismo despacho desde una venta. | 80% completa el flujo sin duplicar venta ni descontar stock nuevamente. |
 | H3 · La interfaz bilingüe conserva comprensión del flujo. | Repetir una tarea en el idioma preferido, observar etiquetas y errores. | Sin mensajes clave sin traducir; 80% comprende el rechazo de sobreventa. |
 
@@ -327,7 +327,7 @@ La diferenciación propuesta es la comprensión del recorrido de una operación,
 
 ### 2.2.1. Diseño de entrevistas
 
-La investigación requiere **3–5 participantes por segmento y fase**, conforme al enunciado. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto.
+La elicitación inicial se registra por segmento objetivo. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto. El plan y los registros de validación del incremento AV2 se presentan por separado en la sección 5.3.
 
 | Etapa | Preguntas y actividad | Registro requerido |
 | --- | --- | --- |
@@ -2196,7 +2196,7 @@ PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueba
 
 ### 5.3.1. Diseño de entrevistas
 
-Validación es una fase distinta de elicitación: **3–5 personas por segmento**, con consentimiento y grabación autorizada. Para dos segmentos: 6–10 sesiones. Cada persona intenta recibir parcialmente, explicar saldo, vender y seguir entrega sin instrucciones de cada paso. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
+El plan de validación del Sprint 3 contempla **cinco entrevistas en total**, con participantes de los dos segmentos objetivo, consentimiento y grabación autorizada. Esta fase se registra por separado de la elicitación inicial. Ambos perfiles revisan la landing; las tareas de la aplicación se adaptan a su función: recepción parcial y explicación del saldo para almacén, y venta y seguimiento de entrega para administración. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
 
 ### 5.3.2. Registro de entrevistas
 
@@ -2207,7 +2207,7 @@ Se recibieron dos grabaciones originales y se publicaron como **no listadas** en
 | VAL-S3-01 | Junior | Administrador; supervisor de Entel | 00:00 | 14:00 | [Entrevista de Junior](https://youtu.be/4JEE-XqUjrM) |
 | VAL-S3-02 | Fabiana | Operaria; asesora de Entel | 00:00 | 09:31 | [Entrevista de Fabiana](https://youtu.be/5jAaAcLhDPM) |
 
-**Estado de incorporación:** dos grabaciones recibidas y publicadas, una por perfil indicado. Kevin está realizando otras tres entrevistas. La muestra prevista de cinco personas aún no alcanza el mínimo de seis para dos segmentos; se requiere confirmar la distribución y completar al menos tres participantes de cada segmento.
+**Estado de incorporación: 2 de 5 entrevistas.** Se recibieron y publicaron dos grabaciones, una por perfil indicado. Las tres entrevistas restantes están en proceso de grabación. Se registrará la distribución final entre ambos segmentos junto con sus resultados.
 
 **Ficha y evaluación por completar:** fecha de la sesión, datos del formato académico autorizados, alcance del consentimiento, captura representativa, inicio efectivo de la entrevista, tareas realizadas, resultados, asistencia y comentarios con sus minutos. También quedan pendientes las fuentes en Microsoft Stream y la edición consolidada del Anexo C. Los enlaces anteriores corresponden a las grabaciones originales.
 
