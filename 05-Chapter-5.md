@@ -1330,11 +1330,22 @@ PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueba
 
 ### 5.3.1. Diseño de entrevistas
 
-Validación es una fase distinta de elicitación: **3–5 personas por segmento**, con consentimiento y grabación autorizada. Para dos segmentos: 6–10 sesiones. Cada persona intenta recibir parcialmente, explicar saldo, vender y seguir entrega sin instrucciones de cada paso. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
+El plan de validación del Sprint 3 contempla **cinco entrevistas en total**, con participantes de los dos segmentos objetivo, consentimiento y grabación autorizada. Esta fase se registra por separado de la elicitación inicial. Ambos perfiles revisan la landing; las tareas de la aplicación se adaptan a su función: recepción parcial y explicación del saldo para almacén, y venta y seguimiento de entrega para administración. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
 
 ### 5.3.2. Registro de entrevistas
 
-**Pendiente de recibir/verificar videos.** Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Por sesión se requiere ID anonimizado, segmento, fecha, consentimiento, enlace, minutos, tareas, resultado y mejora. Un registro no se cuenta automáticamente como elicitación y validación.
+Se recibieron dos grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La publicación permite localizar cada fuente; la síntesis de tareas, observaciones y hallazgos se completará después de revisar el contenido.
+
+| ID | Participante | Perfil indicado | Inicio del archivo | Duración del reproductor | Fuente |
+| --- | --- | --- | --- | --- | --- |
+| VAL-S3-01 | Junior | Administrador; supervisor de Entel | 00:00 | 14:00 | [Entrevista de Junior](https://youtu.be/4JEE-XqUjrM) |
+| VAL-S3-02 | Fabiana | Operaria; asesora de Entel | 00:00 | 09:31 | [Entrevista de Fabiana](https://youtu.be/5jAaAcLhDPM) |
+
+**Estado de incorporación: 2 de 5 entrevistas.** Se recibieron y publicaron dos grabaciones, una por perfil indicado. Las tres entrevistas restantes están en proceso de grabación. Se registrará la distribución final entre ambos segmentos junto con sus resultados.
+
+**Ficha y evaluación por completar:** fecha de la sesión, datos del formato académico autorizados, alcance del consentimiento, captura representativa, inicio efectivo de la entrevista, tareas realizadas, resultados, asistencia y comentarios con sus minutos. También quedan pendientes las fuentes en Microsoft Stream y la edición consolidada del Anexo C. Los enlaces anteriores corresponden a las grabaciones originales.
+
+Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Un registro no se cuenta automáticamente como elicitación y validación; publicar una grabación no acredita por sí solo el cumplimiento de sus tareas o hipótesis.
 
 ### 5.3.3. Evaluación heurística
 
@@ -1351,7 +1362,9 @@ La inspección técnica no sustituye una evaluación heurística independiente. 
 
 ## 5.4. Video About-the-Product
 
-**Pendiente de enlace y validación.** Requiere 1–3 minutos, Stream/YouTube y publicación embebida en landing al recibir material propio. Guion: problema/segmentos → recepción parcial → rechazo de sobreventa → venta/recibo académico → entrega/receptor → conciliación → límites. Incluir testimonios autorizados de ambos segmentos según Anexo C. No se sustituyen por testimonios generados.
+La versión promocional disponible se titula **PROMO: Ai ToDu**, fue publicada por **Kevin Salazar Marquina** y tiene una duración verificada de **00:10**. El enlace estaba conservado en el registro histórico y fue confirmado nuevamente el 13/11/2026. [Ver video en YouTube](https://youtu.be/NXNWTw8_6GY).
+
+Para completar la versión requerida en AV2, queda ampliar el video a **1–3 minutos**, incluir escenas de uso del producto y al menos una opinión autorizada de cada segmento objetivo, conforme al Anexo C. También quedan por incorporar el enlace de Microsoft Stream, una captura representativa, los tiempos de las secciones y el video embebido en la landing. El registro de esta versión permite seguir la evolución del material promocional.
 
 ## 5.5. Video About-the-Team
 

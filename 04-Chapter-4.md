@@ -120,13 +120,11 @@ AV2 añade la webapp conectada al servidor y la propuesta navegable Figma con cu
 
 ### 4.6.1. Design-Level Event Storming
 
-Primero revisamos **Inventory y Logistics (core)**; luego Procurement, Sales/Returns, Reporting y Notifications (soporte); finalmente IAM (genérico). El [análisis arquitectónico](design/architecture.md) registra decisiones. El modelo distingue comandos, agregados, eventos internos, traducción pública, Outbox e inbox. Es un diseño contrastado con código; no acredita un taller colaborativo realizado.
+El modelo representa tres flujos de AV2 a partir del código. Los roles de almacén, ventas y logística disparan sus respectivos comandos, y el administrador también tiene acceso a esas operaciones. En una salida de inventario, `StockBelowMinimum` aparece solo cuando el saldo pasa de estar por encima del mínimo a quedar en el mínimo o por debajo. En una venta, la falta de stock en cualquier línea revierte los cambios de todas las líneas. En una entrega, el manifiesto debe estar en tránsito. El modelo sirve como evidencia de diseño basada en la implementación.
 
 ![Design-Level Event Storming AV2](design/diagrams/rendered/design-level-event-storming.svg)
 
-Los mensajes públicos se añaden al Outbox en la transacción del comando. El relay reintenta entregas y Notifications evita duplicados por ID del evento.
-
-StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
+Los publishers del contexto propietario traducen `StockBelowMinimum`, `SaleConfirmed` y `DeliveryConfirmed` a mensajes de integración v1. La política de Notifications es registrar una notificación por cada uno de esos mensajes. `NotificationService.accept` ejecuta la política y usa `eventId` para identificar el registro. La bandeja se consulta por separado con `GET /api/v1/notifications`. La [secuencia del Outbox](#4611-transactional-outbox-pattern) muestra la entrega posterior al commit, el rollback ante un fallo del consumidor y el reintento. Las relaciones entre contextos se detallan en el [Context Map](design/diagrams/rendered/context-map.svg) y el [análisis arquitectónico](design/architecture.md).
 
 #### 4.6.1.1. Transactional Outbox Pattern
 
@@ -144,6 +142,12 @@ OutboxRelay lee hasta 25 mensajes PENDING cuyo next_attempt_at ha vencido; bloqu
 | notifications.id = eventId | Identidad estable del efecto consumidor | No constituye un inbox genérico para todos los consumidores |
 
 El relay y Notifications comparten PostgreSQL y transacción local al consumir. No se implementó broker externo, dead-letter queue ni prueba de reinicio de proceso; esas capacidades no se atribuyen a esta evidencia. El Outbox durable conserva pendientes para una ejecución posterior.
+
+#### 4.6.1.2. Context Map de AV2
+
+![Context Map de AV2](design/diagrams/rendered/context-map.svg)
+
+Las flechas continuas entre contextos muestran quién consume el contrato de quién. `InventoryGateway.take` y `SalesGateway.claim` traducen datos al modelo del consumidor. Compras y Devoluciones invocan fachadas públicas, y Reporting combina consultas públicas. Los mensajes de integración siguen la ruta punteada del productor al Outbox y a Notifications. IAM aporta la identidad autenticada a la API REST, que funciona como Open Host Service. El [análisis arquitectónico](design/architecture.md#bounded-contexts-in-review-order) detalla las operaciones de cada relación.
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -240,7 +244,9 @@ El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos
 
 Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rendered/erd-inventory.svg), [Logística](design/diagrams/rendered/erd-logistics.svg), [Abastecimiento](design/diagrams/rendered/erd-procurement.svg), [Ventas](design/diagrams/rendered/erd-sales.svg), [Devoluciones](design/diagrams/rendered/erd-returns.svg), [Notificaciones](design/diagrams/rendered/erd-notifications.svg) e [Identidad](design/diagrams/rendered/erd-identity.svg). El DDL es la referencia completa para relaciones entre áreas.
 
-**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. AV2 usa nombres snake_case, centavos enteros, converters para valores simples y embeddables para valores compuestos. No hay migración automática de datos ficticios del navegador al servidor; cada modo mantiene su almacenamiento. El esquema físico no es el contrato HTTP.
+La venta y sus salidas de stock se confirman en una sola transacción. Las pruebas cubren la reversión de todas las líneas ante falta de stock y la venta concurrente de la última unidad. Las notificaciones aparecen después del commit a través del Outbox. El [ADR de consistencia](design/architecture.md#adr-004--atomic-commands-and-workspace-locking) identifica las demás operaciones que comparten una transacción y la regla que protege cada una.
+
+Las migraciones AV2 usan FK por UUID y FK compuestas, según la relación. Por ejemplo, `sale_lines.product_id` comprueba la existencia del producto y `customer_returns(tenant_id, sale_id)` comprueba la pertenencia de la venta a la empresa. La aplicación valida el alcance del workspace en sus consultas y fachadas. El [ADR del esquema](design/architecture.md#adr-006--implemented-schema-versus-target-model) documenta las dependencias físicas que se conservan entre contextos. AV2 usa nombres `snake_case`, centavos enteros, converters para valores simples y embeddables para valores compuestos. Los datos de demo en el navegador y los datos del servidor se almacenan por separado.
 
 #### 4.8.1.1. Esquema ejecutado del incremento AV2
 

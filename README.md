@@ -156,6 +156,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
     - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
       - [4.6.1.1. Transactional Outbox Pattern](#4611-transactional-outbox-pattern)
+      - [4.6.1.2. Context Map de AV2](#4612-context-map-de-av2)
     - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
     - [4.6.3. Software Architecture Container Diagrams](#463-software-architecture-container-diagrams)
     - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
@@ -279,7 +280,7 @@ Estas son suposiciones. La demo no prueba disposición de pago, tamaño de merca
 
 | Hipótesis | Experimento propuesto | Criterio objetivo, aún no medido |
 | --- | --- | --- |
-| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a 3–5 operarios que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
+| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a los participantes con funciones de almacén que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
 | H2 · El manifiesto enlazado evita pérdida de referencia. | Dueños y operarios preparan el mismo despacho desde una venta. | 80% completa el flujo sin duplicar venta ni descontar stock nuevamente. |
 | H3 · La interfaz bilingüe conserva comprensión del flujo. | Repetir una tarea en el idioma preferido, observar etiquetas y errores. | Sin mensajes clave sin traducir; 80% comprende el rechazo de sobreventa. |
 
@@ -326,7 +327,7 @@ La diferenciación propuesta es la comprensión del recorrido de una operación,
 
 ### 2.2.1. Diseño de entrevistas
 
-La investigación requiere **3–5 participantes por segmento y fase**, conforme al enunciado. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto.
+La elicitación inicial se registra por segmento objetivo. Preparar consentimiento, guion, ficha de contexto y registro accesible. Evitar preguntas que sugieran una respuesta favorable al producto. El plan y los registros de validación del incremento AV2 se presentan por separado en la sección 5.3.
 
 | Etapa | Preguntas y actividad | Registro requerido |
 | --- | --- | --- |
@@ -719,13 +720,11 @@ AV2 añade la webapp conectada al servidor y la propuesta navegable Figma con cu
 
 ### 4.6.1. Design-Level Event Storming
 
-Primero revisamos **Inventory y Logistics (core)**; luego Procurement, Sales/Returns, Reporting y Notifications (soporte); finalmente IAM (genérico). El [análisis arquitectónico](design/architecture.md) registra decisiones. El modelo distingue comandos, agregados, eventos internos, traducción pública, Outbox e inbox. Es un diseño contrastado con código; no acredita un taller colaborativo realizado.
+El modelo representa tres flujos de AV2 a partir del código. Los roles de almacén, ventas y logística disparan sus respectivos comandos, y el administrador también tiene acceso a esas operaciones. En una salida de inventario, `StockBelowMinimum` aparece solo cuando el saldo pasa de estar por encima del mínimo a quedar en el mínimo o por debajo. En una venta, la falta de stock en cualquier línea revierte los cambios de todas las líneas. En una entrega, el manifiesto debe estar en tránsito. El modelo sirve como evidencia de diseño basada en la implementación.
 
 ![Design-Level Event Storming AV2](design/diagrams/rendered/design-level-event-storming.svg)
 
-Los mensajes públicos se añaden al Outbox en la transacción del comando. El relay reintenta entregas y Notifications evita duplicados por ID del evento.
-
-StockBelowMinimum, SaleConfirmed y DeliveryConfirmed son eventos internos del contexto propietario. Su application publisher los traduce al Published Language v1. Notifications consume únicamente mensajes públicos. La coordinación Inventory–Sales–Logistics usa fachadas/gateways dentro de la transacción del monolito; no un broker distribuido. [Context map](design/diagrams/rendered/context-map.svg).
+Los publishers del contexto propietario traducen `StockBelowMinimum`, `SaleConfirmed` y `DeliveryConfirmed` a mensajes de integración v1. La política de Notifications es registrar una notificación por cada uno de esos mensajes. `NotificationService.accept` ejecuta la política y usa `eventId` para identificar el registro. La bandeja se consulta por separado con `GET /api/v1/notifications`. La [secuencia del Outbox](#4611-transactional-outbox-pattern) muestra la entrega posterior al commit, el rollback ante un fallo del consumidor y el reintento. Las relaciones entre contextos se detallan en el [Context Map](design/diagrams/rendered/context-map.svg) y el [análisis arquitectónico](design/architecture.md).
 
 #### 4.6.1.1. Transactional Outbox Pattern
 
@@ -743,6 +742,12 @@ OutboxRelay lee hasta 25 mensajes PENDING cuyo next_attempt_at ha vencido; bloqu
 | notifications.id = eventId | Identidad estable del efecto consumidor | No constituye un inbox genérico para todos los consumidores |
 
 El relay y Notifications comparten PostgreSQL y transacción local al consumir. No se implementó broker externo, dead-letter queue ni prueba de reinicio de proceso; esas capacidades no se atribuyen a esta evidencia. El Outbox durable conserva pendientes para una ejecución posterior.
+
+#### 4.6.1.2. Context Map de AV2
+
+![Context Map de AV2](design/diagrams/rendered/context-map.svg)
+
+Las flechas continuas entre contextos muestran quién consume el contrato de quién. `InventoryGateway.take` y `SalesGateway.claim` traducen datos al modelo del consumidor. Compras y Devoluciones invocan fachadas públicas, y Reporting combina consultas públicas. Los mensajes de integración siguen la ruta punteada del productor al Outbox y a Notifications. IAM aporta la identidad autenticada a la API REST, que funciona como Open Host Service. El [análisis arquitectónico](design/architecture.md#bounded-contexts-in-review-order) detalla las operaciones de cada relación.
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -839,7 +844,9 @@ El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos
 
 Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rendered/erd-inventory.svg), [Logística](design/diagrams/rendered/erd-logistics.svg), [Abastecimiento](design/diagrams/rendered/erd-procurement.svg), [Ventas](design/diagrams/rendered/erd-sales.svg), [Devoluciones](design/diagrams/rendered/erd-returns.svg), [Notificaciones](design/diagrams/rendered/erd-notifications.svg) e [Identidad](design/diagrams/rendered/erd-identity.svg). El DDL es la referencia completa para relaciones entre áreas.
 
-**Reglas de consistencia:** saldo no negativo; recepción acumulada no supera orden; venta confirma todo o nada; anulación restituye una vez; despacho conserva referencia sin doble salida; devolución no excede línea; referencias del tenant se validan en aplicación y se modelan con FK compuestas en SQL. AV2 usa nombres snake_case, centavos enteros, converters para valores simples y embeddables para valores compuestos. No hay migración automática de datos ficticios del navegador al servidor; cada modo mantiene su almacenamiento. El esquema físico no es el contrato HTTP.
+La venta y sus salidas de stock se confirman en una sola transacción. Las pruebas cubren la reversión de todas las líneas ante falta de stock y la venta concurrente de la última unidad. Las notificaciones aparecen después del commit a través del Outbox. El [ADR de consistencia](design/architecture.md#adr-004--atomic-commands-and-workspace-locking) identifica las demás operaciones que comparten una transacción y la regla que protege cada una.
+
+Las migraciones AV2 usan FK por UUID y FK compuestas, según la relación. Por ejemplo, `sale_lines.product_id` comprueba la existencia del producto y `customer_returns(tenant_id, sale_id)` comprueba la pertenencia de la venta a la empresa. La aplicación valida el alcance del workspace en sus consultas y fachadas. El [ADR del esquema](design/architecture.md#adr-006--implemented-schema-versus-target-model) documenta las dependencias físicas que se conservan entre contextos. AV2 usa nombres `snake_case`, centavos enteros, converters para valores simples y embeddables para valores compuestos. Los datos de demo en el navegador y los datos del servidor se almacenan por separado.
 
 #### 4.8.1.1. Esquema ejecutado del incremento AV2
 
@@ -2189,11 +2196,22 @@ PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueba
 
 ### 5.3.1. Diseño de entrevistas
 
-Validación es una fase distinta de elicitación: **3–5 personas por segmento**, con consentimiento y grabación autorizada. Para dos segmentos: 6–10 sesiones. Cada persona intenta recibir parcialmente, explicar saldo, vender y seguir entrega sin instrucciones de cada paso. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
+El plan de validación del Sprint 3 contempla **cinco entrevistas en total**, con participantes de los dos segmentos objetivo, consentimiento y grabación autorizada. Esta fase se registra por separado de la elicitación inicial. Ambos perfiles revisan la landing; las tareas de la aplicación se adaptan a su función: recepción parcial y explicación del saldo para almacén, y venta y seguimiento de entrega para administración. Registrar éxito, errores, tiempo, ayuda y feedback contrario. No afirmar ahorro porcentual sin una referencia medida.
 
 ### 5.3.2. Registro de entrevistas
 
-**Pendiente de recibir/verificar videos.** Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Por sesión se requiere ID anonimizado, segmento, fecha, consentimiento, enlace, minutos, tareas, resultado y mejora. Un registro no se cuenta automáticamente como elicitación y validación.
+Se recibieron dos grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La publicación permite localizar cada fuente; la síntesis de tareas, observaciones y hallazgos se completará después de revisar el contenido.
+
+| ID | Participante | Perfil indicado | Inicio del archivo | Duración del reproductor | Fuente |
+| --- | --- | --- | --- | --- | --- |
+| VAL-S3-01 | Junior | Administrador; supervisor de Entel | 00:00 | 14:00 | [Entrevista de Junior](https://youtu.be/4JEE-XqUjrM) |
+| VAL-S3-02 | Fabiana | Operaria; asesora de Entel | 00:00 | 09:31 | [Entrevista de Fabiana](https://youtu.be/5jAaAcLhDPM) |
+
+**Estado de incorporación: 2 de 5 entrevistas.** Se recibieron y publicaron dos grabaciones, una por perfil indicado. Las tres entrevistas restantes están en proceso de grabación. Se registrará la distribución final entre ambos segmentos junto con sus resultados.
+
+**Ficha y evaluación por completar:** fecha de la sesión, datos del formato académico autorizados, alcance del consentimiento, captura representativa, inicio efectivo de la entrevista, tareas realizadas, resultados, asistencia y comentarios con sus minutos. También quedan pendientes las fuentes en Microsoft Stream y la edición consolidada del Anexo C. Los enlaces anteriores corresponden a las grabaciones originales.
+
+Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Un registro no se cuenta automáticamente como elicitación y validación; publicar una grabación no acredita por sí solo el cumplimiento de sus tareas o hipótesis.
 
 ### 5.3.3. Evaluación heurística
 
@@ -2210,7 +2228,9 @@ La inspección técnica no sustituye una evaluación heurística independiente. 
 
 ## 5.4. Video About-the-Product
 
-**Pendiente de enlace y validación.** Requiere 1–3 minutos, Stream/YouTube y publicación embebida en landing al recibir material propio. Guion: problema/segmentos → recepción parcial → rechazo de sobreventa → venta/recibo académico → entrega/receptor → conciliación → límites. Incluir testimonios autorizados de ambos segmentos según Anexo C. No se sustituyen por testimonios generados.
+La versión promocional disponible se titula **PROMO: Ai ToDu**, fue publicada por **Kevin Salazar Marquina** y tiene una duración verificada de **00:10**. El enlace estaba conservado en el registro histórico y fue confirmado nuevamente el 13/11/2026. [Ver video en YouTube](https://youtu.be/NXNWTw8_6GY).
+
+Para completar la versión requerida en AV2, queda ampliar el video a **1–3 minutos**, incluir escenas de uso del producto y al menos una opinión autorizada de cada segmento objetivo, conforme al Anexo C. También quedan por incorporar el enlace de Microsoft Stream, una captura representativa, los tiempos de las secciones y el video embebido en la landing. El registro de esta versión permite seguir la evolución del material promocional.
 
 ## 5.5. Video About-the-Team
 
@@ -2246,7 +2266,7 @@ La inspección técnica no sustituye una evaluación heurística independiente. 
 
 ## Pendientes de evidencia y próxima entrega
 
-**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, About-the-Product, About-the-Team, evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
+**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, completar la versión AV2 de About-the-Product, grabar About-the-Team y adjuntar evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -2372,9 +2392,9 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
-| Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
-| Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
-| About-the-Product | Producto y ambos segmentos | Stream/YouTube, duración y permisos pendientes | Sin video propio verificado |
+| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Grabación publicada; ficha y evaluación pendientes |
+| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Grabación publicada; ficha y evaluación pendientes |
+| About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
 

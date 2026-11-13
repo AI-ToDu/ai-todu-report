@@ -52,7 +52,7 @@ Estas son suposiciones. La demo no prueba disposición de pago, tamaño de merca
 
 | Hipótesis | Experimento propuesto | Criterio objetivo, aún no medido |
 | --- | --- | --- |
-| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a 3–5 operarios que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
+| H1 · Un saldo acompañado por historial genera comprensión. | Pedir a los participantes con funciones de almacén que expliquen un cambio de saldo después de una recepción y una venta. | Al menos 80% identifica cantidad y motivo sin ayuda. |
 | H2 · El manifiesto enlazado evita pérdida de referencia. | Dueños y operarios preparan el mismo despacho desde una venta. | 80% completa el flujo sin duplicar venta ni descontar stock nuevamente. |
 | H3 · La interfaz bilingüe conserva comprensión del flujo. | Repetir una tarea en el idioma preferido, observar etiquetas y errores. | Sin mensajes clave sin traducir; 80% comprende el rechazo de sobreventa. |
 
