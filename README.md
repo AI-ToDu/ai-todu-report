@@ -2217,7 +2217,9 @@ La inspección técnica no sustituye una evaluación heurística independiente. 
 
 ## 5.4. Video About-the-Product
 
-**Pendiente de enlace y validación.** Requiere 1–3 minutos, Stream/YouTube y publicación embebida en landing al recibir material propio. Guion: problema/segmentos → recepción parcial → rechazo de sobreventa → venta/recibo académico → entrega/receptor → conciliación → límites. Incluir testimonios autorizados de ambos segmentos según Anexo C. No se sustituyen por testimonios generados.
+La versión promocional disponible se titula **PROMO: Ai ToDu**, fue publicada por **Kevin Salazar Marquina** y tiene una duración verificada de **00:10**. El enlace estaba conservado en el registro histórico y fue confirmado nuevamente el 13/11/2026. [Ver video en YouTube](https://youtu.be/NXNWTw8_6GY).
+
+Para completar la versión requerida en AV2, queda ampliar el video a **1–3 minutos**, incluir escenas de uso del producto y al menos una opinión autorizada de cada segmento objetivo, conforme al Anexo C. También quedan por incorporar el enlace de Microsoft Stream, una captura representativa, los tiempos de las secciones y el video embebido en la landing. El registro de esta versión permite seguir la evolución del material promocional.
 
 ## 5.5. Video About-the-Team
 
@@ -2253,7 +2255,7 @@ La inspección técnica no sustituye una evaluación heurística independiente. 
 
 ## Pendientes de evidencia y próxima entrega
 
-**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, About-the-Product, About-the-Team, evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
+**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, completar la versión AV2 de About-the-Product, grabar About-the-Team y adjuntar evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -2381,7 +2383,7 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 | --- | --- | --- | --- |
 | Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
 | Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
-| About-the-Product | Producto y ambos segmentos | Stream/YouTube, duración y permisos pendientes | Sin video propio verificado |
+| About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
 

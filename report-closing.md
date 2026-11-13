@@ -26,7 +26,7 @@
 
 ## Pendientes de evidencia y próxima entrega
 
-**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, About-the-Product, About-the-Team, evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
+**Para cerrar AV2:** incorporar tablero auténtico, entrevistas por segmento/fase, completar la versión AV2 de About-the-Product, grabar About-the-Team y adjuntar evidencias orales y reflexiones individuales; ratificar roles Scrum y matriz LACX. La presentación y el reporte de participación se preparan como borradores editables y no acreditan actividades ni calificaciones todavía no confirmadas.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -154,7 +154,7 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 | --- | --- | --- | --- |
 | Testimonio de validación | Administrador del negocio | Pendiente | No contabilizado |
 | Testimonio de validación | Operario de almacén | Pendiente | No contabilizado |
-| About-the-Product | Producto y ambos segmentos | Stream/YouTube, duración y permisos pendientes | Sin video propio verificado |
+| About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
 
