@@ -121,6 +121,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [2.2. Entrevistas](#22-entrevistas)
     - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
     - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+      - [Archivo visual de la elicitación inicial](#archivo-visual-de-la-elicitación-inicial)
     - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
   - [2.3. Needfinding](#23-needfinding)
     - [2.3.1. User Personas](#231-user-personas)
@@ -238,15 +239,17 @@ TB1 demuestra esta cadena con datos ficticios y una Fake REST API. El nombre del
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-Perfiles académicos declarados en el informe base, conservados como presentación del equipo. Las acciones verificadas por entrega se registran por separado en Student Outcome.
+Perfiles académicos y fotografías del informe base. Se conserva la presentación histórica del equipo; la preparación y el seguimiento actuales de AV2 están a cargo de **Kevin Junior Salazar Marquina**. Los aportes se atribuyen por entrega con sus fuentes en Student Outcome.
 
-| Integrante | Perfil académico declarado |
-| --- | --- |
-| Bernal Torres, Carlos Alberto | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). |
-| Chui Kcomt, Luis Carlos | Estudiante responsable con conocimientos en Python, C++, HTML. Aporta calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. |
-| Condezo Pacheco, Fernando André | Estudiante con conocimientos en C++ y Python. Aporta colaboración con el equipo y buen ambiente. |
-| Salazar Marquina, Kevin Junior | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
-| Salazar Quiche, Darikson Bill | [Pendiente de redacción] |
+| Fotografía original | Integrante y código | Perfil académico declarado |
+| --- | --- | --- |
+| <img src="Images/Foto-Carlitos.jpg" alt="Carlos Alberto Bernal Torres" width="84"> | Bernal Torres, Carlos Alberto · U202420071 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). |
+| <img src="Images/Foto-Carlos.jpg" alt="Luis Carlos Chui Kcomt" width="84"> | Chui Kcomt, Luis Carlos · U20241i327 | Estudiante responsable con conocimientos en Python, C++, HTML. Aporta calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. |
+| Fotografía original no disponible | Condezo Pacheco, Fernando André · U202411324 | Estudiante con conocimientos en C++ y Python. Aporta colaboración con el equipo y buen ambiente. |
+| <img src="Images/Foto-Kevin.jpg" alt="Kevin Junior Salazar Marquina" width="84"> | Salazar Marquina, Kevin Junior · U202417747 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
+| <img src="Images/Foto-Darikson.jpg" alt="Darikson Bill Salazar Quiche" width="84"> | Salazar Quiche, Darikson Bill · U202422620 | Estudiante proactivo, enfocado en el desarrollo de interfaces amigables (UI/UX) y en el análisis de las necesidades operativas de los negocios MYPE. |
+
+Las cuatro imágenes y los perfiles se recuperan del informe TB1. La referencia histórica a `Foto-Nando.jpg` no tiene un archivo correspondiente en el historial revisado; no se sustituye por una fotografía de otra persona.
 
 ## 1.2. Solution Profile
 
@@ -351,6 +354,21 @@ La elicitación inicial se registra por segmento objetivo. Preparar consentimien
 | Diego Ramirez | El capítulo registra Jorge Quispe; el README conserva ese alt | `Images/Entrevista_Diego_Ramirez.jpg` |
 
 Las fichas y respuestas de **ambas versiones** están en el [archivo de investigación](research/README.md). La presencia de archivos no resuelve estas diferencias ni acredita por sí sola las entrevistas. Confirmar cada registro con el equipo y completar responsable real, fecha, enlace autorizado, duración, transcripción y marcas de tiempo antes de contabilizarlo como evidencia.
+
+#### Archivo visual de la elicitación inicial
+
+Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
+
+| Archivo conservado | Evidencia visual original |
+| --- | --- |
+| `Carlos_Mendoza.jpeg` | <img src="Images/Carlos_Mendoza.jpeg" alt="Registro visual histórico: archivo Carlos_Mendoza" width="260"> |
+| `Lucia_Valdivia1.jpeg` | <img src="Images/Lucia_Valdivia1.jpeg" alt="Registro visual histórico: archivo Lucia_Valdivia1" width="260"> |
+| `Entrevista_ Sebastian.jpg` | <img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura histórica con el nombre Sebastián en pantalla; ficha por conciliar" width="260"> |
+| `Raul_Delgado.jpeg` | <img src="Images/Raul_Delgado.jpeg" alt="Registro visual histórico: archivo Raul_Delgado; ficha por conciliar" width="260"> |
+| `Entrevista_Maria_Morales.jpg` | <img src="Images/Entrevista_Maria_Morales.jpg" alt="Registro visual histórico: archivo Entrevista_Maria_Morales; ficha por conciliar" width="260"> |
+| `Entrevista_Diego_Ramirez.jpg` | <img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Registro visual histórico: archivo Entrevista_Diego_Ramirez; ficha por conciliar" width="260"> |
+
+En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
 
 ### 2.2.3. Análisis de entrevistas
 
