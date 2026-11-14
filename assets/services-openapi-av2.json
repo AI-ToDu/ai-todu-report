@@ -49,11 +49,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -66,11 +66,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -83,11 +83,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -146,11 +146,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -163,11 +163,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -180,11 +180,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -197,11 +197,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -214,11 +214,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -231,11 +231,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -282,11 +282,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -299,11 +299,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -316,11 +316,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -379,11 +379,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -396,11 +396,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -413,11 +413,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -430,11 +430,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -447,11 +447,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -464,11 +464,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -515,11 +515,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -532,11 +532,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -549,11 +549,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -621,11 +621,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -638,11 +638,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -655,11 +655,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -672,11 +672,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -689,11 +689,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -706,11 +706,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -723,11 +723,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -796,11 +796,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -813,11 +813,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -830,11 +830,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -847,11 +847,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -864,11 +864,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -881,11 +881,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -898,11 +898,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -949,11 +949,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -966,11 +966,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -983,11 +983,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1049,11 +1049,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1066,11 +1066,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1083,11 +1083,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1100,11 +1100,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1117,11 +1117,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1134,11 +1134,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1151,11 +1151,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1202,11 +1202,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1219,11 +1219,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1236,11 +1236,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1302,11 +1302,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1319,11 +1319,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1336,11 +1336,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1353,11 +1353,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1370,11 +1370,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1387,11 +1387,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1404,11 +1404,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1480,11 +1480,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1497,11 +1497,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1514,11 +1514,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1531,11 +1531,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1548,11 +1548,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1565,11 +1565,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1582,11 +1582,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1633,11 +1633,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1650,11 +1650,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1716,11 +1716,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1733,11 +1733,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1750,11 +1750,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1767,11 +1767,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1784,11 +1784,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1801,11 +1801,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1852,11 +1852,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1869,11 +1869,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1886,11 +1886,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1951,11 +1951,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1968,11 +1968,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -1985,11 +1985,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2002,11 +2002,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2019,11 +2019,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2036,11 +2036,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2053,11 +2053,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2104,11 +2104,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2121,11 +2121,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2138,11 +2138,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2203,11 +2203,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2220,11 +2220,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2237,11 +2237,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2254,11 +2254,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2271,11 +2271,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2288,11 +2288,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2339,11 +2339,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2356,11 +2356,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2373,11 +2373,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2436,11 +2436,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2453,11 +2453,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2470,11 +2470,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2487,11 +2487,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2504,11 +2504,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2521,11 +2521,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2572,11 +2572,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2589,11 +2589,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2606,11 +2606,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2671,11 +2671,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2688,11 +2688,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2705,11 +2705,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2722,11 +2722,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2739,11 +2739,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2756,11 +2756,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2773,11 +2773,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2846,11 +2846,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2863,11 +2863,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2880,11 +2880,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2897,11 +2897,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2914,11 +2914,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2931,11 +2931,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -2948,11 +2948,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3015,11 +3015,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3032,11 +3032,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3049,11 +3049,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3066,11 +3066,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3115,11 +3115,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3132,11 +3132,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3197,11 +3197,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Invalid credentials or inactive account",
-                  "code" : "INVALID_CREDENTIALS",
                   "title" : "Invalid credentials or inactive account",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "INVALID_CREDENTIALS",
+                  "detail" : "Invalid credentials or inactive account",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3214,11 +3214,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3231,11 +3231,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3248,11 +3248,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Duplicate identity or conflicting business state",
-                  "code" : "CONFLICT",
                   "title" : "Duplicate identity or conflicting business state",
-                  "type" : "about:blank",
-                  "status" : 409
+                  "code" : "CONFLICT",
+                  "detail" : "Duplicate identity or conflicting business state",
+                  "status" : 409,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3265,11 +3265,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3336,11 +3336,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3353,11 +3353,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3370,11 +3370,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3387,11 +3387,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3404,11 +3404,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3421,11 +3421,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3481,11 +3481,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3498,11 +3498,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3515,11 +3515,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3532,11 +3532,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3549,11 +3549,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3623,11 +3623,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3640,11 +3640,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3657,11 +3657,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Malformed request, missing required input or invalid parameter",
-                  "code" : "INVALID_TEXT",
                   "title" : "Malformed request, missing required input or invalid parameter",
-                  "type" : "about:blank",
-                  "status" : 400
+                  "code" : "INVALID_TEXT",
+                  "detail" : "Malformed request, missing required input or invalid parameter",
+                  "status" : 400,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3674,11 +3674,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "A domain invariant rejects the supplied values",
-                  "code" : "INVALID_QUANTITY",
                   "title" : "A domain invariant rejects the supplied values",
-                  "type" : "about:blank",
-                  "status" : 422
+                  "code" : "INVALID_QUANTITY",
+                  "detail" : "A domain invariant rejects the supplied values",
+                  "status" : 422,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3691,11 +3691,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Reference not found in the authenticated workspace",
-                  "code" : "NOT_FOUND",
                   "title" : "Reference not found in the authenticated workspace",
-                  "type" : "about:blank",
-                  "status" : 404
+                  "code" : "NOT_FOUND",
+                  "detail" : "Reference not found in the authenticated workspace",
+                  "status" : 404,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3708,11 +3708,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3759,11 +3759,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3776,11 +3776,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3827,11 +3827,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3844,11 +3844,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3861,11 +3861,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3912,11 +3912,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3929,11 +3929,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3946,11 +3946,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Weather provider unavailable",
-                  "code" : "UPSTREAM_UNAVAILABLE",
                   "title" : "Weather provider unavailable",
-                  "type" : "about:blank",
-                  "status" : 503
+                  "code" : "UPSTREAM_UNAVAILABLE",
+                  "detail" : "Weather provider unavailable",
+                  "status" : 503,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -3963,11 +3963,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4014,11 +4014,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4031,11 +4031,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Role does not permit this operation",
-                  "code" : "FORBIDDEN",
                   "title" : "Role does not permit this operation",
-                  "type" : "about:blank",
-                  "status" : 403
+                  "code" : "FORBIDDEN",
+                  "detail" : "Role does not permit this operation",
+                  "status" : 403,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4048,11 +4048,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4099,11 +4099,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Missing, invalid, expired or revoked session",
-                  "code" : "UNAUTHENTICATED",
                   "title" : "Missing, invalid, expired or revoked session",
-                  "type" : "about:blank",
-                  "status" : 401
+                  "code" : "UNAUTHENTICATED",
+                  "detail" : "Missing, invalid, expired or revoked session",
+                  "status" : 401,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4116,11 +4116,11 @@
                   "$ref" : "#/components/schemas/ProblemDetail"
                 },
                 "example" : {
-                  "detail" : "Unexpected server failure; internal details are not disclosed",
-                  "code" : "INTERNAL_ERROR",
                   "title" : "Unexpected server failure; internal details are not disclosed",
-                  "type" : "about:blank",
-                  "status" : 500
+                  "code" : "INTERNAL_ERROR",
+                  "detail" : "Unexpected server failure; internal details are not disclosed",
+                  "status" : 500,
+                  "type" : "about:blank"
                 }
               }
             }
@@ -4826,6 +4826,10 @@
           },
           "read" : {
             "type" : "boolean"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
           }
         }
       },

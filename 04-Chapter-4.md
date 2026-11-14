@@ -260,4 +260,4 @@ Las migraciones AV2 usan FK por UUID y FK compuestas, según la relación. Por e
 | Devoluciones | customer_returns |
 | Integración | integration_outbox, notifications |
 
-Flyway aplica V1–V4 y Hibernate valida el esquema sin generarlo en producción. CI ejecuta las pruebas con PostgreSQL 17. El saldo, su movimiento y la venta se confirman en una transacción. No se implementa event sourcing ni un ledger fiscal.
+Flyway aplica V1–V5 y Hibernate valida el esquema sin generarlo en producción. V5 añade `notifications.product_id` nullable para conservar la referencia del mensaje de stock; los avisos históricos siguen siendo legibles. No se añade una FK entre contextos. CI ejecuta las pruebas con PostgreSQL 17. El saldo, su movimiento y la venta se confirman en una transacción. No se implementa event sourcing ni un ledger fiscal.

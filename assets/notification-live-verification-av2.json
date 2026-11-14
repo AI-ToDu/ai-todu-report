@@ -1,0 +1,79 @@
+{
+  "verifiedAtUtc": "2026-11-14T04:31:13.139114+00:00",
+  "service": "https://ai-todu-api-av2.onrender.com",
+  "health": "UP",
+  "commit": "e13914816c3016c3f4cd5de299964654c0cf6be2",
+  "scope": "Isolated fictional workspace; no existing user records changed",
+  "productId": "9f0d8749-9b9d-48b6-a685-7f32c043a40c",
+  "notificationId": "6612f464-be51-46b5-b2e5-52ad897d6f8c",
+  "productReferencePreserved": true,
+  "notificationRead": true,
+  "stock": {
+    "received": 3,
+    "sold": 1,
+    "remaining": 2
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/actuator/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v3/api-docs",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/products",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/movements",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sales",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/notifications",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/notifications/6612f464-be51-46b5-b2e5-52ad897d6f8c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/products",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "status": 204
+    }
+  ],
+  "limitations": "Technical HTTP check; not a participant retest or business performance measurement. Credentials and token are omitted."
+}

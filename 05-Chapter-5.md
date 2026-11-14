@@ -13,7 +13,7 @@
 | Informe | Markdown, Mermaid/SVG y generadores versionados | README completo, fuentes únicas, comprobación y exportación. |
 | Backend AV2 | Java 21 / Spring Boot 4.1.2 / JPA / PostgreSQL 17 / Flyway | API con dominio agnóstico, JWT, roles, transacciones y Outbox. |
 
-El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El equipo debe confirmar su tablero de gestión; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
+El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El tablero de cierre AV2 está enlazado en §5.2.3.3; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
 
 ### 5.1.2. Source Code Management
 
@@ -189,13 +189,13 @@ Los aportes originales se enlazan por integrante y módulo. La corrección no in
 
 > Our focus is on enabling an authorized workspace to reconcile receiving, sales and delivery through the deployed API. We believe it delivers a shared and traceable operational record to business owners and warehouse operators. This will be confirmed when a sale and its delivery preserve stock, historical amounts and recipient across sessions, concurrent sales cannot oversell, and invalid or unauthorized operations leave no partial changes.
 
-El criterio técnico se prueba con datos ficticios; la confianza del usuario sigue como hipótesis. Product Owner y Scrum Master: pendientes de confirmar. Se conserva la atribución histórica sin asignar aportes nuevos no verificados.
+El criterio técnico se prueba con datos ficticios; la confianza del usuario se contrasta cualitativamente en cinco recorridos guiados. **Responsable actual de priorización, desarrollo y seguimiento: Kevin Junior Salazar Marquina.** No se acredita una ceremonia ni una asignación formal separada de Product Owner y Scrum Master. Los aportes históricos mantienen su atribución.
 
 | Sprint Planning Background | Registro |
 | --- | --- |
 | Sprint | 3 / AV2 / semana 12 |
 | Date / Time / Location | Pendiente: fecha, hora y lugar reales de la ceremonia |
-| Prepared by | Preparación técnica asistida solicitada por Kevin; validación del responsable pendiente |
+| Prepared by | Kevin Junior Salazar Marquina, con preparación técnica asistida |
 | Attendees | Pendiente de acta o tablero; no se presume asistencia de integrantes retirados |
 | Review of previous Sprint | Evidencias TB1 y AV1 conservadas; conclusiones de la reunión pendientes |
 | Retrospective of previous Sprint | Pendiente de registro real y acciones acordadas |
@@ -213,7 +213,16 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario sig
 | Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
 | Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
 
-Matriz LACX formal y aprobación: pendientes. Los aportes históricos de los integrantes se mantienen con sus fuentes.
+La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento. La asistencia técnica no se registra como un integrante del equipo.
+
+| Aspecto | Kevin | Carlos | Luis | Fernando | Darikson |
+| --- | --- | --- | --- | --- | --- |
+| Development | L | — | — | — | — |
+| Execution | L | — | — | — | — |
+| Documentation | L | — | — | — | — |
+| Deployment | L | — | — | — | — |
+
+La matriz no es una calificación, acta de reunión ni registro de horas. Los aportes de AV1/TB1 se conservan con sus fuentes.
 
 #### 5.2.3.3. Sprint Backlog 3
 
@@ -221,20 +230,29 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 
 | Story Id | Story Title | Task Id | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| US09 | Registro de artículo | S3-T01 | Implementar InventoryItem, VOs, movimientos y persistencia separada | Implementar InventoryItem, VOs, movimientos y persistencia separada. Evidencia: Reglas, migraciones y rollback. Cobertura asociada: US10–US14. | 8 h | Pendiente de confirmar | To-Review |
-| US15 | Creación de venta | S3-T02 | Confirmar/anular ventas atómicas con concurrencia e idempotencia | Confirmar/anular ventas atómicas con concurrencia e idempotencia. Evidencia: Solo una de seis ventas de la última unidad se acepta. Cobertura asociada: US16–US18, TS35. | 8 h | Pendiente de confirmar | To-Review |
-| US19 | Manifiesto de despacho | S3-T03 | Preparar/iniciar/entregar manifiesto con recursos existentes | Preparar/iniciar/entregar manifiesto con recursos existentes. Evidencia: Receptor y saldo sin doble descuento. Cobertura asociada: US20–US22, US37. | 8 h | Pendiente de confirmar | To-Review |
-| US35 | Abastecimiento y recepción parcial | S3-T04 | Implementar compra y recepción parcial acotada | Implementar compra y recepción parcial acotada. Evidencia: Exceso y líneas repetidas rechazados. Cobertura asociada: TS28–TS30. | 8 h | Pendiente de confirmar | To-Review |
-| US36 | Devolución trazable | S3-T05 | Conciliar devoluciones e indicadores | Conciliar devoluciones e indicadores. Evidencia: Restock/loss y límite de devolución. Cobertura asociada: US23. | 4 h | Pendiente de confirmar | To-Review |
-| US26 | Alerta de stock mínimo | S3-T06 | Traducir eventos internos a PL v1 con Outbox e inbox | Traducir eventos internos a PL v1 con Outbox e inbox. Evidencia: Fallo/reintento y reentrega sin duplicación. Cobertura asociada: TS34. | 8 h | Pendiente de confirmar | To-Review |
-| TS33 | Clima regional | S3-T07 | Integrar Open-Meteo mediante gateway y caché | Integrar Open-Meteo mediante gateway y caché. Evidencia: Traducción/caché/fallo probados y llamada real. Cobertura asociada: Integración externa de Logistics. | 4 h | Pendiente de confirmar | To-Review |
-| US01 | Registro de cuenta | S3-T08 | Implementar JWT revocables, BCrypt, roles y aislamiento | Implementar JWT revocables, BCrypt, roles y aislamiento. Evidencia: Sesión y denegaciones verificadas. Cobertura asociada: US02–US03, US28–US29. | 8 h | Pendiente de confirmar | To-Review |
-| US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Pendiente de evidencia humana real. | 8 h | Pendiente de confirmar | To-do |
+| US09 | Registro de artículo | S3-T01 | Implementar InventoryItem, VOs, movimientos y persistencia separada | Implementar InventoryItem, VOs, movimientos y persistencia separada. Evidencia: Reglas, migraciones y rollback. Cobertura asociada: US10–US14. | 8 h | Kevin Salazar | To-Review |
+| US15 | Creación de venta | S3-T02 | Confirmar/anular ventas atómicas con concurrencia e idempotencia | Confirmar/anular ventas atómicas con concurrencia e idempotencia. Evidencia: Solo una de seis ventas de la última unidad se acepta. Cobertura asociada: US16–US18, TS35. | 8 h | Kevin Salazar | To-Review |
+| US19 | Manifiesto de despacho | S3-T03 | Preparar/iniciar/entregar manifiesto con recursos existentes | Preparar/iniciar/entregar manifiesto con recursos existentes. Evidencia: Receptor y saldo sin doble descuento. Cobertura asociada: US20–US22, US37. | 8 h | Kevin Salazar | To-Review |
+| US35 | Abastecimiento y recepción parcial | S3-T04 | Implementar compra y recepción parcial acotada | Implementar compra y recepción parcial acotada. Evidencia: Exceso y líneas repetidas rechazados. Cobertura asociada: TS28–TS30. | 8 h | Kevin Salazar | To-Review |
+| US36 | Devolución trazable | S3-T05 | Conciliar devoluciones e indicadores | Conciliar devoluciones e indicadores. Evidencia: Restock/loss y límite de devolución. Cobertura asociada: US23. | 4 h | Kevin Salazar | To-Review |
+| US26 | Alerta de stock mínimo | S3-T06 | Traducir eventos internos a PL v1 con Outbox e inbox | Traducir eventos internos a PL v1 con Outbox e inbox. Evidencia: Fallo/reintento y reentrega sin duplicación. Cobertura asociada: TS34. | 8 h | Kevin Salazar | To-Review |
+| TS33 | Clima regional | S3-T07 | Integrar Open-Meteo mediante gateway y caché | Integrar Open-Meteo mediante gateway y caché. Evidencia: Traducción/caché/fallo probados y llamada real. Cobertura asociada: Integración externa de Logistics. | 4 h | Kevin Salazar | To-Review |
+| US01 | Registro de cuenta | S3-T08 | Implementar JWT revocables, BCrypt, roles y aislamiento | Implementar JWT revocables, BCrypt, roles y aislamiento. Evidencia: Sesión y denegaciones verificadas. Cobertura asociada: US02–US03, US28–US29. | 8 h | Kevin Salazar | To-Review |
+| US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream; lectura concedida al docente; reflexión pendiente. | 8 h | Kevin Salazar | In-Process |
 
-Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El tablero externo y sus responsables siguen pendientes de recibir. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To sigue pendiente de confirmación.
+Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin, incluyendo trabajo asistido.
+
+| Tarjetas del cierre actual | Tareas del incremento | Criterio de seguimiento |
+| --- | --- | --- |
+| S3-C01, S3-C03, S3-C07–C10, S3-C12 | S3-T12 · validación y comunicación | Cinco originales publicados; fichas/hallazgos y edición disponibles; publicación institucional y reflexión se cierran con fuente real. |
+| S3-C02, S3-C05, S3-C11 | S3-T11 · documentación | Fotografías recuperadas, fuentes consistentes y exportación verificada; revisión de archivos de entrega. |
+| S3-C04 | S3-T09 · frontend | Acciones, vocabulario, historial, esperas y alertas; PR #7 con comprobación técnica. |
+| S3-C06 | S3-T01–T08 y S3-T10 | Revisión de reglas, API, Outbox, CI y versión desplegada. |
+
+Una tarjeta puede terminar una parte acotada: S3-C12 registra recibir/publicar cinco originales; no afirma cerrar toda la validación. Las tarjetas de revisión y sus fuentes no equivalen a aceptación académica.
 
 #### 5.2.3.4. Development Evidence for Sprint Review
 
@@ -258,6 +276,8 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 | Verificación | Resultado y evidencia | Límite |
 | --- | --- | --- |
 | Backend local | 15 pruebas aprobadas; 34 operaciones y rechazos HTTP contrastados | H2 de desarrollo; clima fixture en el recorrido de contratos; gateway probado por separado |
+| Backend revisión 13/11 | 17 pruebas locales y CI PostgreSQL 17 / Java 21; referencia de producto en alertas | [PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [CI 43550024736](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736); V5 en rama de revisión, integración/despliegue pendientes |
+| Frontend revisión 13/11 | 21 pruebas y build; venta por teclado, error de stock, responsable y navegación alerta → SKU; acciones dentro de 390 px | [PR #7 integrado](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); Pages publicado con CI aprobado; navegador demo local, no una segunda sesión con participantes |
 | Backend CI | 15 pruebas aprobadas con PostgreSQL 17 / Java 21, commit 067abc7 | [Run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771); datos aislados, no mide carga empresarial |
 | Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
 | HTTP público | Entrada 5 → venta 2 / PEN 21 → entrega → saldo 3 | Datos ficticios; no equivale a aceptación de usuarios |
@@ -270,9 +290,30 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 
 Evidencia del 8/11/2026: desde Angular se crea el producto ficticio BROWSER-20261108, se reciben dos unidades y se vende una por PEN 12,50. La recarga y el nuevo inicio de sesión conservan una unidad. El otro artículo corresponde al recorrido HTTP anterior. Los datos son sintéticos y no representan resultados comerciales.
 
+##### Comprobación del incremento público del 13/11/2026
+
+Backend [e139148](https://github.com/AI-ToDu/ai-todu-api/commit/e13914816c3016c3f4cd5de299964654c0cf6be2) en Render, deploy `dep-dbru67l6e07s73895tp0` con estado live. Los logs confirman V5 aplicada y `/actuator/health` devuelve 200/UP. Un espacio de trabajo ficticio aislado recibe 3 unidades y vende 1; el saldo final es 2. `GET /notifications` devuelve LOW_STOCK con el mismo `productId`; PATCH conserva la referencia al marcar el aviso leído. La sesión se cierra con 204. [Registro HTTP sanitizado](assets/notification-live-verification-av2.json).
+
+Frontend [df8c119](https://github.com/AI-ToDu/ai-todu-webapp/commit/df8c119bca2d87abc7bab3b6d9c73eb91b0c21d3), con [publicación Pages aprobada](https://github.com/AI-ToDu/ai-todu-webapp/actions/runs/43551273943). Landing [PR #6 integrado](https://github.com/AI-ToDu/ai-todu-platform/pull/6), con el video verificado en la URL pública. Estas comprobaciones son técnicas; no miden impacto empresarial ni aceptación de usuarios.
+
+##### Product Navigation del incremento AV2
+
+[Recorrido completo en YouTube, 7:59](https://youtu.be/yJ4Z1_eoIPs) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-Product-Navigation-AV2-revision.mp4). El montaje incluye **3:02 de landing** y **4:51 de aplicación**, más cinco segundos de cierre. El archivo dura aproximadamente 7:58; YouTube lo muestra como 7:59. Se identifican las sesiones guiadas y los datos ficticios. El último tramo incluye la confirmación de entrega, sin afirmar transferencia entre sedes ni entregas parciales.
+
+| Inicio | Recorrido | Fuente original |
+| --- | --- | --- |
+| 00:00 | Landing: presentación, contenido y acceso | Kimberlin 00:59–02:43; Shirley 01:00–02:13; portada inicial de 5 s |
+| 03:02 | Aplicación: inventario e historial | Shirley 03:20–04:53; portada de 5 s |
+| 04:40 | Recepción de mercadería | Shirley 05:02–05:45 |
+| 05:23 | Venta y comprobante demo | Shirley 06:16–06:48 |
+| 05:55 | Despacho y confirmación de entrega | Shirley 07:28–09:26 |
+| 07:53 | Cierre académico | Portada final de 5 s |
+
+![Confirmación de entrega en el recorrido de navegación, 07:41](assets/validation/navigation-av2.png)
+
 #### 5.2.3.6. Services Documentation Evidence for Sprint Review
 
-**Versión documentada:** [067abc7](https://github.com/AI-ToDu/ai-todu-api/commit/067abc7bd2583d0286dc1cc4e84c17d292c0afc2), rama fix/av2-api-contracts, [PR #3](https://github.com/AI-ToDu/ai-todu-api/pull/3). CI Java 21/PostgreSQL 17 aprobado en [run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771). El Swagger público conserva la versión desplegada anterior hasta integrar y desplegar esta revisión.
+**Versión documentada:** backend [6014719](https://github.com/AI-ToDu/ai-todu-api/commit/60147198e5e7776059f2177d495c2d9f7ebb509c), integrado mediante [PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4). Las 17 pruebas y el contrato de 34 operaciones pasan en CI Java 21/PostgreSQL 17 ([run 43550024736](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736)). Los ejemplos siguientes proceden de la ejecución local del 13/11/2026; la comprobación pública se documenta por separado.
 
 [Swagger UI](https://ai-todu-api-av2.onrender.com/swagger-ui.html) · [OpenAPI](https://ai-todu-api-av2.onrender.com/v3/api-docs) · [Repositorio Web Services](https://github.com/AI-ToDu/ai-todu-api) · [Published Language v1](https://github.com/AI-ToDu/ai-todu-api/blob/main/contracts/integration-messages.v1.schema.json).
 
@@ -374,7 +415,7 @@ Create a company and its first administrator; email must be unique.
 Solicitud de ejemplo:
 
 ```json
-{"name":"Contract review","company":"Synthetic company","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","password":"[REDACTED]"}
+{"name":"Contract review","company":"Synthetic company","email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","password":"[REDACTED]"}
 ```
 
 **Respuesta:** 201 con `UserResource`.
@@ -382,7 +423,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}
+{"id":"7f87254a-c54f-4a82-a01b-f016951d697c","tenantId":"097ff020-2910-4ed6-93da-e8b259e38f22","name":"Contract review","email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","role":"ADMIN"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -405,7 +446,7 @@ Authenticate an active account and return a revocable JWT.
 Solicitud de ejemplo:
 
 ```json
-{"email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","password":"[REDACTED]"}
+{"email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","password":"[REDACTED]"}
 ```
 
 **Respuesta:** 200 con `SessionResource`.
@@ -413,7 +454,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"token":"[REDACTED]","user":{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}}
+{"token":"[REDACTED]","user":{"id":"7f87254a-c54f-4a82-a01b-f016951d697c","tenantId":"097ff020-2910-4ed6-93da-e8b259e38f22","name":"Contract review","email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","role":"ADMIN"}}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -433,7 +474,7 @@ Read the authenticated identity; tenant is derived from the token.
 Ejemplo observado:
 
 ```json
-{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","tenantId":"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN"}
+{"id":"7f87254a-c54f-4a82-a01b-f016951d697c","tenantId":"097ff020-2910-4ed6-93da-e8b259e38f22","name":"Contract review","email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","role":"ADMIN"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -467,7 +508,7 @@ List employees in the authenticated workspace.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"97ff2372-db30-4ee4-a376-382cadc6f234","name":"Contract review","email":"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test","role":"ADMIN","active":true},{"id":"689715f7-8d90-40ca-800d-4c26784e1186","name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","active":true}]}
+{"items":[{"id":"7f87254a-c54f-4a82-a01b-f016951d697c","name":"Contract review","email":"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test","role":"ADMIN","active":true},{"id":"525db239-6865-4dd9-8c9d-0b6ccd721c7e","name":"Operator","email":"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test","role":"WAREHOUSE","active":true}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -492,7 +533,7 @@ Provision a role and initial password; no password or hash is returned.
 Solicitud de ejemplo:
 
 ```json
-{"name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","password":"[REDACTED]"}
+{"name":"Operator","email":"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test","role":"WAREHOUSE","password":"[REDACTED]"}
 ```
 
 **Respuesta:** 201 con `EmployeeResource`.
@@ -500,7 +541,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"689715f7-8d90-40ca-800d-4c26784e1186","name":"Operator","email":"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test","role":"WAREHOUSE","active":true}
+{"id":"525db239-6865-4dd9-8c9d-0b6ccd721c7e","name":"Operator","email":"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test","role":"WAREHOUSE","active":true}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -520,7 +561,7 @@ List products in the authenticated workspace; no server-side pagination or filte
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}]}
+{"items":[{"id":"305ced5a-9473-442c-9b19-1137ff3304ce","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -554,7 +595,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+{"id":"305ced5a-9473-442c-9b19-1137ff3304ce","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -586,7 +627,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+{"id":"305ced5a-9473-442c-9b19-1137ff3304ce","sku":"CONTRACT-001","name":"Example item","quantity":0,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -606,7 +647,7 @@ Read the audit history of signed stock movements.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"55e61117-905e-4f6f-bab4-453d55b55f62","productId":"71633291-7316-43de-a084-7473e47bc466","delta":5,"type":"RECEIPT","reason":"Initial receipt","actorId":"97ff2372-db30-4ee4-a376-382cadc6f234","createdAt":"2026-11-08T18:43:19.085409Z"}]}
+{"items":[{"id":"da0276c3-1112-41cd-a6bc-c4db962cd799","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","delta":5,"type":"RECEIPT","reason":"Initial receipt","actorId":"7f87254a-c54f-4a82-a01b-f016951d697c","createdAt":"2026-11-14T03:04:20.793988Z"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -631,7 +672,7 @@ Apply RECEIPT or ISSUE in whole positive units; an issue cannot exceed available
 Solicitud de ejemplo:
 
 ```json
-{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":5,"type":"RECEIPT","reason":"Initial receipt"}
+{"productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":5,"type":"RECEIPT","reason":"Initial receipt"}
 ```
 
 **Respuesta:** 201 con `ProductResource`.
@@ -639,7 +680,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"71633291-7316-43de-a084-7473e47bc466","sku":"CONTRACT-001","name":"Example item","quantity":5,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
+{"id":"305ced5a-9473-442c-9b19-1137ff3304ce","sku":"CONTRACT-001","name":"Example item","quantity":5,"price":12.5,"cost":7.0,"minimum":1,"conservation":"GOOD"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -659,7 +700,7 @@ Read suppliers belonging to this workspace.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"ea689c0b-798f-4295-a250-bc5b3cea91aa","name":"Example supplier","contact":"supplier@example.test"}]}
+{"items":[{"id":"4986775d-e1c8-456e-9144-19e7981b91c1","name":"Example supplier","contact":"supplier@example.test"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -690,7 +731,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"ea689c0b-798f-4295-a250-bc5b3cea91aa","name":"Example supplier","contact":"supplier@example.test"}
+{"id":"4986775d-e1c8-456e-9144-19e7981b91c1","name":"Example supplier","contact":"supplier@example.test"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -710,7 +751,7 @@ Read orders and ordered/received quantities.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"OPEN","createdAt":"2026-11-08T18:43:19.161628Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":0}]}]}
+{"items":[{"id":"5dbfad60-0379-4422-9b34-1fe9946bcbd7","number":"PO-5dbfad60","supplierId":"4986775d-e1c8-456e-9144-19e7981b91c1","status":"OPEN","createdAt":"2026-11-14T03:04:20.886128Z","lines":[{"id":"8084851c-1d58-48d5-b37f-6bcbf2fd0edb","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":3,"received":0}]}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -733,7 +774,7 @@ Create an order for an existing supplier and distinct workspace products.
 Solicitud de ejemplo:
 
 ```json
-{"supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","lines":[{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3}]}
+{"supplierId":"4986775d-e1c8-456e-9144-19e7981b91c1","lines":[{"productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":3}]}
 ```
 
 Elementos `RequestedPurchaseLineResource`:
@@ -748,7 +789,7 @@ Elementos `RequestedPurchaseLineResource`:
 Ejemplo observado:
 
 ```json
-{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"OPEN","createdAt":"2026-11-08T18:43:19.161628400Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":0}]}
+{"id":"5dbfad60-0379-4422-9b34-1fe9946bcbd7","number":"PO-5dbfad60","supplierId":"4986775d-e1c8-456e-9144-19e7981b91c1","status":"OPEN","createdAt":"2026-11-14T03:04:20.886127500Z","lines":[{"id":"8084851c-1d58-48d5-b37f-6bcbf2fd0edb","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":3,"received":0}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -772,7 +813,7 @@ Receive positive quantities by order line; exceeding outstanding units rolls bac
 Solicitud de ejemplo:
 
 ```json
-{"lines":[{"lineId":"1e7d4586-e255-408f-a763-e102fa4c57b0","quantity":2}]}
+{"lines":[{"lineId":"8084851c-1d58-48d5-b37f-6bcbf2fd0edb","quantity":2}]}
 ```
 
 Elementos `ReceivedPurchaseLineResource`:
@@ -787,7 +828,7 @@ Elementos `ReceivedPurchaseLineResource`:
 Ejemplo observado:
 
 ```json
-{"id":"2bcf4876-2b0e-4421-9000-6963f4a965bd","number":"PO-2bcf4876","supplierId":"ea689c0b-798f-4295-a250-bc5b3cea91aa","status":"PARTIAL","createdAt":"2026-11-08T18:43:19.161628Z","lines":[{"id":"1e7d4586-e255-408f-a763-e102fa4c57b0","productId":"71633291-7316-43de-a084-7473e47bc466","quantity":3,"received":2}]}
+{"id":"5dbfad60-0379-4422-9b34-1fe9946bcbd7","number":"PO-5dbfad60","supplierId":"4986775d-e1c8-456e-9144-19e7981b91c1","status":"PARTIAL","createdAt":"2026-11-14T03:04:20.886128Z","lines":[{"id":"8084851c-1d58-48d5-b37f-6bcbf2fd0edb","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":3,"received":2}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -807,7 +848,7 @@ Read sales, immutable commercial line snapshots and academic receipt references.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-08T18:43:19.238105Z","lines":[{"id":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-b55c8a8c"}}]}
+{"items":[{"id":"98771c96-002f-4faa-971c-4fdfe9f60d3c","number":"SAL-98771c96","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-14T03:04:20.982749Z","lines":[{"id":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-98771c96"}}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -829,7 +870,7 @@ Atomically record sale, stock issues and integration messages. An identical Idem
 Solicitud de ejemplo:
 
 ```json
-{"lines":[{"productId":"71633291-7316-43de-a084-7473e47bc466","quantity":2}]}
+{"lines":[{"productId":"305ced5a-9473-442c-9b19-1137ff3304ce","quantity":2}]}
 ```
 
 Elementos `LineRequest`:
@@ -846,7 +887,7 @@ Elementos `LineRequest`:
 Ejemplo observado:
 
 ```json
-{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-08T18:43:19.238105100Z","lines":[{"id":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-b55c8a8c"}}
+{"id":"98771c96-002f-4faa-971c-4fdfe9f60d3c","number":"SAL-98771c96","status":"CONFIRMED","total":25.0,"createdAt":"2026-11-14T03:04:20.982748600Z","lines":[{"id":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","sku":"CONTRACT-001","quantity":2,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-98771c96"}}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -878,7 +919,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"2cfe9035-b68f-4ad4-8612-032cb36272bf","number":"SAL-2cfe9035","status":"CANCELLED","total":12.5,"createdAt":"2026-11-08T18:43:19.516651Z","lines":[{"id":"4ce64e5e-a745-44f4-b655-64d36fc9c645","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","sku":"CONTRACT-001","quantity":1,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-2cfe9035"}}
+{"id":"ce6169e7-93f5-4441-9b90-29e901354860","number":"SAL-ce6169e7","status":"CANCELLED","total":12.5,"createdAt":"2026-11-14T03:04:21.339909Z","lines":[{"id":"91c1942c-1ae0-4a0c-9ab9-7c8f9026365d","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","sku":"CONTRACT-001","quantity":1,"price":12.5,"cost":7.0,"returned":0}],"receipt":{"number":"REC-SAL-ce6169e7"}}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -898,7 +939,7 @@ Read previously recorded returns and disposition.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"ec84466b-9ff4-432f-b042-986b6d0b4bb3","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-08T18:43:19.480300Z"}]}
+{"items":[{"id":"722fec71-ee69-4498-9390-c0e72ea8508f","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-14T03:04:21.296884Z"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -924,7 +965,7 @@ Return units against one sale line. RESTOCK restores stock; LOSS records loss. P
 Solicitud de ejemplo:
 
 ```json
-{"saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return"}
+{"saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","quantity":1,"disposition":"RESTOCK","reason":"Example return"}
 ```
 
 **Respuesta:** 201 con `ReturnResource`.
@@ -932,7 +973,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"ec84466b-9ff4-432f-b042-986b6d0b4bb3","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-08T18:43:19.480300200Z"}
+{"id":"722fec71-ee69-4498-9390-c0e72ea8508f","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","quantity":1,"disposition":"RESTOCK","reason":"Example return","createdAt":"2026-11-14T03:04:21.296884400Z"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -952,7 +993,7 @@ Read manifests, lines, incidents and recipient evidence.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[],"recipient":null}]}
+{"items":[{"id":"1e25dd22-28c0-46d3-b99e-0f53aef41889","number":"DSP-1e25dd22","driverId":"fa947858-2d51-43dd-afff-d206e524cd21","vehicleId":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-14T03:04:21.115278Z","lines":[{"id":"e67e0ff7-df81-4325-8165-335fe57679b9","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","quantity":2}],"incidents":[],"recipient":null}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -977,7 +1018,7 @@ Assign confirmed undispatched sales, a driver, a vehicle and destination. Stock 
 Solicitud de ejemplo:
 
 ```json
-{"saleIds":["b55c8a8c-73d7-4210-8555-f8481861c01a"],"driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse"}
+{"saleIds":["98771c96-002f-4faa-971c-4fdfe9f60d3c"],"driverId":"fa947858-2d51-43dd-afff-d206e524cd21","vehicleId":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","destination":"Example Lima warehouse"}
 ```
 
 **Respuesta:** 201 con `DispatchResource`.
@@ -985,7 +1026,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757100Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[],"recipient":null}
+{"id":"1e25dd22-28c0-46d3-b99e-0f53aef41889","number":"DSP-1e25dd22","driverId":"fa947858-2d51-43dd-afff-d206e524cd21","vehicleId":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-14T03:04:21.115278300Z","lines":[{"id":"e67e0ff7-df81-4325-8165-335fe57679b9","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","quantity":2}],"incidents":[],"recipient":null}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1018,7 +1059,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"IN_TRANSIT","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[{"id":"3feefe20-adad-4a6c-92ca-499d18f8dabc","description":"Recipient contacted before delivery","createdAt":"2026-11-08T18:43:19.411362Z"}],"recipient":null}
+{"id":"1e25dd22-28c0-46d3-b99e-0f53aef41889","number":"DSP-1e25dd22","driverId":"fa947858-2d51-43dd-afff-d206e524cd21","vehicleId":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","destination":"Example Lima warehouse","status":"IN_TRANSIT","createdAt":"2026-11-14T03:04:21.115278Z","lines":[{"id":"e67e0ff7-df81-4325-8165-335fe57679b9","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","quantity":2}],"incidents":[{"id":"77bfa107-40ab-44c9-8336-b2fab11d0f10","description":"Recipient contacted before delivery","createdAt":"2026-11-14T03:04:21.159400Z"}],"recipient":null}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1050,7 +1091,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"86410196-6937-4ccc-b971-efcf11d06ce4","number":"DSP-86410196","driverId":"06449429-0047-481d-9f1c-b1d1e37cc7a1","vehicleId":"569f1cb0-cb5b-4482-98ae-d941d425508c","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-08T18:43:19.364757Z","lines":[{"id":"bf8817fa-a350-4432-aa8c-67e23446b700","saleId":"b55c8a8c-73d7-4210-8555-f8481861c01a","saleLineId":"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8","productId":"71633291-7316-43de-a084-7473e47bc466","name":"Example item","quantity":2}],"incidents":[{"id":"3feefe20-adad-4a6c-92ca-499d18f8dabc","description":"Recipient contacted before delivery","createdAt":"2026-11-08T18:43:19.411361500Z"}],"recipient":null}
+{"id":"1e25dd22-28c0-46d3-b99e-0f53aef41889","number":"DSP-1e25dd22","driverId":"fa947858-2d51-43dd-afff-d206e524cd21","vehicleId":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","destination":"Example Lima warehouse","status":"PENDING","createdAt":"2026-11-14T03:04:21.115278Z","lines":[{"id":"e67e0ff7-df81-4325-8165-335fe57679b9","saleId":"98771c96-002f-4faa-971c-4fdfe9f60d3c","saleLineId":"8ab855cb-5863-4d27-9160-d3163732c4cf","productId":"305ced5a-9473-442c-9b19-1137ff3304ce","name":"Example item","quantity":2}],"incidents":[{"id":"77bfa107-40ab-44c9-8336-b2fab11d0f10","description":"Recipient contacted before delivery","createdAt":"2026-11-14T03:04:21.159399500Z"}],"recipient":null}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1070,7 +1111,7 @@ Read confirmed sales that can be assigned to a dispatch.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"b55c8a8c-73d7-4210-8555-f8481861c01a","number":"SAL-b55c8a8c"}]}
+{"items":[{"id":"98771c96-002f-4faa-971c-4fdfe9f60d3c","number":"SAL-98771c96"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -1090,7 +1131,7 @@ Read drivers registered in this workspace.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"06449429-0047-481d-9f1c-b1d1e37cc7a1","name":"Example driver","license":"LIC-CONTRACT"}]}
+{"items":[{"id":"fa947858-2d51-43dd-afff-d206e524cd21","name":"Example driver","license":"LIC-CONTRACT"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -1121,7 +1162,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"06449429-0047-481d-9f1c-b1d1e37cc7a1","name":"Example driver","license":"LIC-CONTRACT"}
+{"id":"fa947858-2d51-43dd-afff-d206e524cd21","name":"Example driver","license":"LIC-CONTRACT"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1141,7 +1182,7 @@ Read vehicles registered in this workspace.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"569f1cb0-cb5b-4482-98ae-d941d425508c","name":"Example van","plate":"CON-001"}]}
+{"items":[{"id":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","name":"Example van","plate":"CON-001"}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
@@ -1172,7 +1213,7 @@ Solicitud de ejemplo:
 Ejemplo observado:
 
 ```json
-{"id":"569f1cb0-cb5b-4482-98ae-d941d425508c","name":"Example van","plate":"CON-001"}
+{"id":"9aeea7f9-ad25-45ba-ad6a-b4213b712912","name":"Example van","plate":"CON-001"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1212,12 +1253,14 @@ Read workspace notifications produced by committed integration messages.
 Ejemplo observado:
 
 ```json
-{"items":[{"id":"5c21a07f-de0d-4091-b492-ce1dacd8126c","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.516651Z","read":false},{"id":"ba5a8ad2-adc8-4f9c-ad76-40b6d9f749e5","type":"DELIVERY_CONFIRMED","createdAt":"2026-11-08T18:43:19.452569Z","read":false},{"id":"6ed61054-e5e0-429a-b064-2ce2fd2058f0","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.238105Z","read":false}]}
+{"items":[{"id":"c0616be7-9eab-405f-8515-bf58915dc778","type":"LOW_STOCK","createdAt":"2026-11-14T03:04:21.383444Z","read":false,"productId":"305ced5a-9473-442c-9b19-1137ff3304ce"},{"id":"dd31670a-e58e-40c8-bdc7-426513445a02","type":"SALE_CONFIRMED","createdAt":"2026-11-14T03:04:21.339909Z","read":false,"productId":null},{"id":"b6367a7e-15a2-4998-bd55-5566975c7619","type":"DELIVERY_CONFIRMED","createdAt":"2026-11-14T03:04:21.261877Z","read":false,"productId":null},{"id":"47b14a9b-16a7-48b9-861f-696a748a36da","type":"SALE_CONFIRMED","createdAt":"2026-11-14T03:04:20.982749Z","read":false,"productId":null}]}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. `items` contiene los recursos del espacio autenticado; una lista vacía es un resultado válido.
 
 **Errores aplicables:** 401 Missing, invalid, expired or revoked session; 500 Unexpected server failure; internal details are not disclosed.
+
+**Contexto del producto:** `productId` es UUID opcional. Las nuevas alertas LOW_STOCK conservan el producto del mensaje; avisos de otro tipo y registros anteriores pueden devolver null. La interfaz consulta nombre/SKU dentro de la empresa autorizada.
 
 ##### Servicio 33. Mark a notification as read
 
@@ -1234,7 +1277,7 @@ Mark a workspace notification as read; repeating it preserves the read state.
 Ejemplo observado:
 
 ```json
-{"id":"5c21a07f-de0d-4091-b492-ce1dacd8126c","type":"SALE_CONFIRMED","createdAt":"2026-11-08T18:43:19.516651Z","read":true}
+{"id":"c0616be7-9eab-405f-8515-bf58915dc778","type":"LOW_STOCK","createdAt":"2026-11-14T03:04:21.383444Z","read":true,"productId":"305ced5a-9473-442c-9b19-1137ff3304ce"}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1254,7 +1297,7 @@ Read revenue, gross contribution, inventory valuation, low-stock count and dispa
 Ejemplo observado:
 
 ```json
-{"revenue":12.5,"grossMargin":5.5,"inventoryValue":42.0,"lowStock":0,"dispatches":0,"sales":1}
+{"revenue":12.5,"grossMargin":5.5,"inventoryValue":0.0,"lowStock":1,"dispatches":0,"sales":1}
 ```
 
 **Interpretación:** El objeto conserva los identificadores y valores aceptados. Los importes monetarios están expresados en PEN y las cantidades en unidades enteras.
@@ -1308,7 +1351,7 @@ Ejemplo observado:
 **GET /api/v1/products → 401**
 
 ```json
-{"detail":"Vuelve a iniciar sesión para continuar.","code":"UNAUTHENTICATED","title":"Unauthorized","type":"about:blank","status":401}
+{"title":"Unauthorized","code":"UNAUTHENTICATED","detail":"Vuelve a iniciar sesión para continuar.","status":401,"type":"about:blank"}
 ```
 
 #### 5.2.3.7. Software Deployment Evidence for Sprint Review
@@ -1324,7 +1367,7 @@ El runtime recibe solo credenciales propias. La provisión administrativa se eje
 
 #### 5.2.3.8. Team Collaboration Insights during Sprint
 
-PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se espera el tablero y los videos existentes. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
 
 ## 5.3. Validation Interviews
 
@@ -1440,7 +1483,7 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 **Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. No se presenta una nueva prueba con usuarios que todavía no se ha realizado.
 
-Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. La edición consolidada de 3–5 minutos por participante y las fuentes en Microsoft Stream se registran en el Anexo C cuando estén disponibles. Los registros heredados no se cuentan como nuevas validaciones.
+Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); ambos PR están integrados, frontend publicado en Pages y backend actualizado en Render. La comprobación técnica no equivale a una nueva sesión con participantes. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
 
 ### 5.3.3. Evaluación heurística
 
@@ -1461,9 +1504,24 @@ La necesidad H-06 de marcas/sedes es una solicitud de capacidad adicional, no un
 
 ## 5.4. Video About-the-Product
 
-La versión promocional disponible se titula **PROMO: Ai ToDu**, fue publicada por **Kevin Salazar Marquina** y tiene una duración verificada de **00:10**. El enlace estaba conservado en el registro histórico y fue confirmado nuevamente el 13/11/2026. [Ver video en YouTube](https://youtu.be/NXNWTw8_6GY).
+La versión AV2 **AI-ToDu | AV2 Sprint 3 | About-the-Product** reúne escenas reales de recepción, venta y despacho y opiniones de administración (Kimberlin) y operación (Fabiana). Usa extractos de las sesiones guiadas del 13/11/2026, datos ficticios y las autorizaciones de publicación correspondientes. No presenta las opiniones como resultados empresariales ni como pruebas autónomas.
 
-Para completar la versión requerida en AV2, queda ampliar el video a **1–3 minutos**, incluir escenas de uso del producto y al menos una opinión autorizada de cada segmento objetivo, conforme al Anexo C. También quedan por incorporar el enlace de Microsoft Stream, una captura representativa, los tiempos de las secciones y el video embebido en la landing. El registro de esta versión permite seguir la evolución del material promocional.
+[Ver en YouTube, 2:21](https://youtu.be/nvsYXk91k4c) · [Reproducir en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-About-the-Product-AV2-revision.mp4) · [Video embebido en la landing pública](https://ai-todu.github.io/ai-todu-platform/#product-video). El archivo tiene aproximadamente 2:20; YouTube redondea a 2:21. La reproducción institucional se verificó desde la cuenta propietaria; se concedió acceso de lectura al docente, sin notificación. No se comprobó su inicio de sesión.
+
+![Escena de venta del About-the-Product AV2, 00:42](assets/validation/about-product-av2.png)
+
+| Inicio | Sección | Fuente |
+| --- | --- | --- |
+| 00:00 | Propuesta de valor y contexto académico | Portada de edición |
+| 00:05 | Recepción de mercadería | Shirley, 05:02–05:33 |
+| 00:36 | Venta y comprobante demo | Shirley, 06:16–06:48 |
+| 01:08 | Despacho | Kimberlin, 07:11–07:39 |
+| 01:36 | Opinión de administración | Kimberlin, 09:59–10:16 |
+| 01:53 | Opinión de operación | Fabiana, 08:08–08:18 |
+| 02:03 | Mejora sugerida por operación | Fabiana, 08:59–09:11 |
+| 02:15 | Cierre | Portada final |
+
+Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.be/NXNWTw8_6GY), de aproximadamente 10 segundos. La edición AV2 amplía esa evidencia sin sustituir su procedencia histórica.
 
 ## 5.5. Video About-the-Team
 

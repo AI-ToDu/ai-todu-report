@@ -75,7 +75,7 @@ try {
     headerTemplate:
       '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial">AI-ToDu · AV2 · Sprint 3 · NRC 7750</div>',
     footerTemplate:
-      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial;display:flex;justify-content:space-between"><span>IA-INNOVATION · 08/11/2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
+      '<div style="font-size:8px;color:#526d80;width:100%;margin:0 16mm;font-family:Arial;display:flex;justify-content:space-between"><span>IA-INNOVATION · 13/11/2026</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
     margin: { top: "16mm", bottom: "17mm", left: "16mm", right: "16mm" },
   });
   console.log(

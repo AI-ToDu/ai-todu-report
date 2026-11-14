@@ -1,6 +1,6 @@
 # Esquema físico AV2: PostgreSQL
 
-Fuente: migraciones V1–V4 del backend; 19 tablas de aplicación/infraestructura. Flyway mantiene además su propio historial. Los nombres y restricciones se extraen del DDL; el modelo objetivo de 35 tablas se conserva por separado.
+Fuente: migraciones V1–V5 del backend; 19 tablas de aplicación/infraestructura. Flyway mantiene además su propio historial. Los nombres y restricciones se extraen del DDL; el modelo objetivo de 35 tablas se conserva por separado.
 
 ## workspaces
 
@@ -191,6 +191,9 @@ Fuente: migraciones V1–V4 del backend; 19 tablas de aplicación/infraestructur
 | `type` | `type VARCHAR(60) NOT NULL` |
 | `created_at` | `created_at TIMESTAMP WITH TIME ZONE NOT NULL` |
 | `is_read` | `is_read BOOLEAN NOT NULL` |
+| `product_id` | `product_id UUID` (nullable, V5) |
+
+V5 conserva los registros anteriores con `product_id` nulo. La referencia proviene del Published Language; no se añade una FK a Inventory ni se infiere el artículo para mensajes antiguos.
 
 ## suppliers
 
