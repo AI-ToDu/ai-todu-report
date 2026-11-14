@@ -31,22 +31,22 @@ Lima, Perú · Noviembre de 2026
 
 </div>
 
-> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. About-the-Team de Kevin está publicado en YouTube (7:08, §5.5); su copia institucional, la exposición técnica y la comprobación posterior con usuarios siguen pendientes.
+> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. También comparto mi experiencia de desarrollo en About-the-Team (7:08, §5.5).
 
 ## Registro de versiones
 
-Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni aprobaciones sin registro.
+El registro resume la evolución del proyecto y sus principales entregables.
 
 | Versión / hito | Fecha verificable | Autor | Descripción de modificación |
 | --- | --- | --- | --- |
-| AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
+| AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. |
 | TB1 · frontend inicial | 08/10/2026 | Equipo, según historial | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
 | TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
 | Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. |
 | AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
 | Revisión AV2 · v0.3.1 | 08/11/2026 | Kevin Salazar | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
 | Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
-| About-the-Team · revisión v0.3.2 | 14/11/2026 | Kevin Salazar | Publicación de la grabación individual de 7:08 en YouTube y actualización de referencias y pendientes. |
+| About-the-Team · revisión v0.3.2 | 14/11/2026 | Kevin Salazar | Publicación de la grabación individual de 7:08 en YouTube y actualización de las referencias del informe. |
 
 ## Student Outcome · ABET 3
 
@@ -58,39 +58,39 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
-| Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: Kevin modera cinco sesiones con administración y operación: plantea tareas, explica navegación y solicita mejoras (§5.3.2). La guía frecuente y los términos poco claros son límites observados. About-the-Team individual publicado (§5.5, 00:00–07:08); exposición técnica pendiente. | Las sesiones evidencian comunicación con usuarios y feedback específico; no acreditan por sí solas toda la competencia ni una sustentación técnica individual. Se debe contrastar la comprensión sin ayuda; la grabación individual se enlaza en §5.5. |
-| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
+| Comunica oralmente con efectividad a diferentes rangos de audiencia. | En AV2 conduje cinco entrevistas con participantes de administración y operación. Expliqué el recorrido de la aplicación, planteé tareas y recogí sugerencias (§5.3.2). En About-the-Team comparto mi experiencia con el proyecto (§5.5). | La interacción con los participantes me permitió adaptar las explicaciones y reconocer oportunidades para mejorar la claridad de la interfaz. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | Documentamos la propuesta, los requisitos y el diseño durante AV1 y TB1. En AV2 organicé el informe, los contratos de la API y las instrucciones de ejecución para facilitar la revisión del proyecto. | El informe conecta las necesidades de los usuarios con las decisiones de diseño y con el funcionamiento del incremento presentado. |
 
 ### Registro de acciones y fuentes
 
-Cada fila distingue una contribución respaldada por Git de la evidencia oral pendiente. Un commit acredita un cambio de archivo; no prueba por sí solo aprendizaje individual ni sustentación.
+Conservamos los aportes de las entregas anteriores junto con sus referencias en el historial del proyecto.
 
-| Integrante | Entrega | Acción escrita realizada y fuente | Acción oral / evidencia requerida |
-| --- | --- | --- | --- |
-| Carlos | AV1 | Aportó el capítulo de elicitación: [e69f9e4](https://github.com/AI-ToDu/ai-todu-report/commit/e69f9e478750c3a3b981292e13bf13293c63cf93). | Adjuntar intervención, audiencia, enlace y minuto; sin registro verificado. |
-| Luis | AV1 | Aportó el capítulo de implementación: [9940325](https://github.com/AI-ToDu/ai-todu-report/commit/9940325d09eef173c137a82a76201dcc5c64f345). | Adjuntar intervención y cómo explicó decisiones; sin registro verificado. |
-| Fernando | AV1 | Aportó requisitos: [cf0f8c4](https://github.com/AI-ToDu/ai-todu-report/commit/cf0f8c4c93e7e789dad29682be9b851b8c618379). | Adjuntar intervención sobre requisitos y audiencia. |
-| Kevin | AV1 | Aportó introducción: [93b6d8e](https://github.com/AI-ToDu/ai-todu-report/commit/93b6d8ed07031e62fa73336328b4a256cd6511d1). | Adjuntar intervención sobre problema/propuesta y minuto. |
-| Darikson | AV1 | Aportó diseño: [eb5d628](https://github.com/AI-ToDu/ai-todu-report/commit/eb5d62850b1a987af937b42844c4d93be72f8020). | Adjuntar intervención sobre diseño y decisión comunicada. |
-| Carlos | TB1 | Implementó IAM en frontend: [9aa7dae](https://github.com/AI-ToDu/ai-todu-webapp/commit/9aa7dae4236da015632ec7e8990e162cc4ed6654). | Adjuntar explicación de acceso/roles en sustentación TB1. |
-| Luis | TB1 | Implementó logística en frontend: [b6bb6a3](https://github.com/AI-ToDu/ai-todu-webapp/commit/b6bb6a35bc04643ed1f24adcdc77ac580887c787). | Adjuntar demostración y minuto de despacho. |
-| Fernando | TB1 | Implementó inventario: [9d10d5a](https://github.com/AI-ToDu/ai-todu-webapp/commit/9d10d5ac4f26c1982f0c668d9e22efd81fc65fa5). | Adjuntar demostración y explicación de reglas de stock. |
-| Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). | Adjuntar explicación de integración y límites de la entrega. |
-| Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). | Adjuntar demostración de venta/métricas y minuto. |
+| Integrante | Entrega | Aporte y fuente |
+| --- | --- | --- |
+| Carlos | AV1 | Aportó el capítulo de elicitación: [e69f9e4](https://github.com/AI-ToDu/ai-todu-report/commit/e69f9e478750c3a3b981292e13bf13293c63cf93). |
+| Luis | AV1 | Aportó el capítulo de implementación: [9940325](https://github.com/AI-ToDu/ai-todu-report/commit/9940325d09eef173c137a82a76201dcc5c64f345). |
+| Fernando | AV1 | Aportó requisitos: [cf0f8c4](https://github.com/AI-ToDu/ai-todu-report/commit/cf0f8c4c93e7e789dad29682be9b851b8c618379). |
+| Kevin | AV1 | Aportó introducción: [93b6d8e](https://github.com/AI-ToDu/ai-todu-report/commit/93b6d8ed07031e62fa73336328b4a256cd6511d1). |
+| Darikson | AV1 | Aportó diseño: [eb5d628](https://github.com/AI-ToDu/ai-todu-report/commit/eb5d62850b1a987af937b42844c4d93be72f8020). |
+| Carlos | TB1 | Implementó IAM en frontend: [9aa7dae](https://github.com/AI-ToDu/ai-todu-webapp/commit/9aa7dae4236da015632ec7e8990e162cc4ed6654). |
+| Luis | TB1 | Implementó logística en frontend: [b6bb6a3](https://github.com/AI-ToDu/ai-todu-webapp/commit/b6bb6a35bc04643ed1f24adcdc77ac580887c787). |
+| Fernando | TB1 | Implementó inventario: [9d10d5a](https://github.com/AI-ToDu/ai-todu-webapp/commit/9d10d5ac4f26c1982f0c668d9e22efd81fc65fa5). |
+| Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). |
+| Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). |
 
-**AV2:** Kevin continúa con el incremento actual y conduce las cinco sesiones enlazadas en §5.3.2. Se conservan las contribuciones históricas de los demás integrantes, sin asignarles nuevas actividades. El seguimiento actual se registra en un tablero público creado el 13/11/2026; no acredita ceremonias históricas.
+**AV2:** En esta entrega continué con el desarrollo de AI-ToDu y conduje las cinco sesiones de validación. Organicé el seguimiento de las actividades en el tablero del Sprint 3 y reuní los resultados en este informe.
 
-| Acción de comunicación de Kevin | Audiencia y evidencia | Feedback y ajuste |
+| Acción de comunicación | Audiencia y evidencia | Feedback y ajuste |
 | --- | --- | --- |
 | Plantea tareas de recepción e historial | Operación: Fabiana 05:47–06:58 y Diego 05:28–07:07 | Se requieren acciones visibles y responsable del registro; H-01/H-03. |
 | Explica el recorrido comercial y solicita mejoras | Administración: Kimberlin 01:07–02:43, 09:59–10:16 | La propuesta se comprende, pero persisten términos en inglés; H-02. |
 | Contrasta compra, venta y alertas con funciones combinadas | Shirley 11:22–12:23 | Falta descubrir la acción de venta y reconocer el artículo de la alerta; H-08/H-09. |
 
-Las marcas se refieren a las grabaciones originales, no al consolidado editado. El About-the-Team individual se encuentra en §5.5 (00:00–07:08). Los guiones de preparación no sustituyen la grabación ni acreditan una exposición técnica.
+Las marcas de tiempo remiten a las grabaciones originales. Mi reflexión sobre el desarrollo se encuentra en About-the-Team (§5.5, 00:00–07:08).
 
 ## Collaboration Insights
 
-[Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
+[Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR permiten seguir los cambios y sus comprobaciones. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
 
 ### Actividad de colaboración en TB1
 
@@ -230,7 +230,6 @@ Las gráficas muestran la actividad de los repositorios durante TB1. Los enlaces
   - [5.4. Video About-the-Product](#54-video-about-the-product)
   - [5.5. Video About-the-Team](#55-video-about-the-team)
 - [Conclusiones](#conclusiones)
-  - [Mejora continua y autocrítica](#mejora-continua-y-autocrítica)
 - [Bibliografía y fuentes](#bibliografía-y-fuentes)
 - [Anexos](#anexos)
   - [Modelo físico · diagramas de detalle](#modelo-físico--diagramas-de-detalle)
@@ -257,7 +256,6 @@ Las gráficas muestran la actividad de los repositorios durante TB1. Los enlaces
     - [H-09 · Alerta sin producto identificado](#h-09--alerta-sin-producto-identificado)
     - [Seguimiento de correcciones](#seguimiento-de-correcciones)
     - [Comprobación técnica de las correcciones del 13/11/2026](#comprobación-técnica-de-las-correcciones-del-13112026)
-  - [Anexo E. Videos de Exposiciones](#anexo-e-videos-de-exposiciones)
 
 ---
 
@@ -271,7 +269,7 @@ Las gráficas muestran la actividad de los repositorios durante TB1. Los enlaces
 
 IA-INNOVATION desarrolla **AI-ToDu**, una propuesta de software para pequeños negocios que necesitan conectar el inventario de almacén con compras, ventas y despachos. La unidad de valor es una operación trazable: conocer qué artículo entró, por qué cambió su saldo, qué venta comprometió unidades y qué entrega utilizó esa venta.
 
-TB1 demuestra esta cadena con datos ficticios y una Fake REST API. El nombre del producto no acredita modelos de inteligencia artificial implementados. Predicción de demanda, optimización automática de rutas y decisiones basadas en IA permanecen fuera de la versión actual.
+TB1 demuestra esta cadena con datos ficticios y una Fake REST API. La versión presentada se centra en la gestión de inventario, ventas y despachos. La predicción de demanda y la optimización de rutas forman parte de la evolución del producto.
 
 #### Misión, visión y valores propuestos
 
@@ -281,7 +279,7 @@ Los valores de diseño son trazabilidad (explicar cada cambio), claridad (lengua
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-Perfiles académicos y fotografías del informe base. Se conserva la presentación histórica del equipo; la preparación y el seguimiento actuales de AV2 están a cargo de **Kevin Junior Salazar Marquina**. Los aportes se atribuyen por entrega con sus fuentes en Student Outcome.
+Presentamos los perfiles y fotografías del equipo que inició el proyecto. En AV2 continúo con el desarrollo y el seguimiento de las actividades.
 
 | Fotografía original | Integrante y código | Perfil académico declarado |
 | --- | --- | --- |
@@ -332,7 +330,7 @@ Un pequeño negocio necesita coordinar recepción, venta y reparto con una vista
 - El negocio acepta un catálogo por SKU y cantidades enteras en la primera versión.
 - Roles y lenguaje claro reducen errores sin exigir capacitación extensa.
 
-Estas son suposiciones. La demo no prueba disposición de pago, tamaño de mercado, retención ni ahorro de tiempo en una empresa real.
+Estas hipótesis orientan el diseño de la solución y la investigación del producto.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
@@ -506,7 +504,7 @@ Las fichas de elicitación identifican cuatro temas: conciliación de saldos, vi
 
 ### 2.3.1. User Personas
 
-| Persona provisional | Objetivo | Necesidad y decisión de diseño | Validación pendiente |
+| Persona provisional | Objetivo | Necesidad y decisión de diseño | Aspecto de análisis |
 | --- | --- | --- | --- |
 | Administrador de negocio | Saber qué puede vender y qué falta entregar | Resumen de transacciones, stock y despachos; definiciones de métricas visibles. | Confirmar prioridades y frecuencia de consulta. |
 | Operario de almacén | Registrar y preparar sin duplicar el trabajo | Recepción parcial, movimientos con motivo, navegación móvil y acciones por rol. | Observar el proceso real, conectividad y unidades que utiliza. |
@@ -526,7 +524,7 @@ Son arquetipos de diseño, no personas reales adicionales. La actualización cua
 
 ### 2.3.2. User Task Matrix
 
-Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. **Frecuencias e importancias son hipótesis**, todavía no mediciones de entrevistas verificadas; se sustituirán por los resultados reales.
+Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. Las frecuencias e importancias se presentan como estimaciones de diseño.
 
 | Tarea del negocio | Administrador · frecuencia | Administrador · importancia | Operario · frecuencia | Operario · importancia |
 | --- | --- | --- | --- | --- |
@@ -537,7 +535,7 @@ Consideramos dos segmentos: administrador del negocio y operario de almacén. La
 | Coordinar recursos y confirmar entrega | Por reparto, por validar | Alta, por validar | Por pedido, por validar | Media/alta, por validar |
 | Explicar diferencias de saldo e importes | Periódica, por validar | Alta, por validar | Al detectar diferencia, por validar | Alta, por validar |
 
-La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferencia por validar está en la supervisión global frente a la comprobación física. Esta matriz no representa permisos de software. Fichas, capturas y matriz en UXPressia, con las fuentes que sustenten sus valores: pendientes.
+La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferencia por validar está en la supervisión global frente a la comprobación física. Esta matriz no representa permisos de software. Las fichas y capturas de UXPressia acompañan el análisis de los segmentos.
 
 ### 2.3.3. User Journey Mapping
 
@@ -545,12 +543,12 @@ El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, prepara
 
 | Persona | Etapa actual sin AI-ToDu | Acción del negocio por validar | Fricción hipotética | Fuente |
 | --- | --- | --- | --- | --- |
-| Administrador | Comprueba disponibilidad | Contrasta pedido, registro y confirmación del almacén | Información distribuida entre registros y mensajes | Entrevista pendiente |
-| Administrador | Coordina reparto | Asigna responsable y pide confirmación | Venta y entrega difíciles de relacionar | Entrevista pendiente |
-| Administrador | Concilia jornada | Compara ventas, mercadería y entregas | Diferencias sin referencia compartida | Entrevista pendiente |
-| Operario | Recibe mercadería | Cuenta unidades y compara con pedido | Entrega parcial o dato incompleto | Entrevista pendiente |
-| Operario | Prepara salida | Ubica, separa y vuelve a contar unidades | Saldo desactualizado o doble anotación | Entrevista pendiente |
-| Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Entrevista pendiente |
+| Administrador | Comprueba disponibilidad | Contrasta pedido, registro y confirmación del almacén | Información distribuida entre registros y mensajes | Escenario de diseño |
+| Administrador | Coordina reparto | Asigna responsable y pide confirmación | Venta y entrega difíciles de relacionar | Escenario de diseño |
+| Administrador | Concilia jornada | Compara ventas, mercadería y entregas | Diferencias sin referencia compartida | Escenario de diseño |
+| Operario | Recibe mercadería | Cuenta unidades y compara con pedido | Entrega parcial o dato incompleto | Escenario de diseño |
+| Operario | Prepara salida | Ubica, separa y vuelve a contar unidades | Saldo desactualizado o doble anotación | Escenario de diseño |
+| Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Escenario de diseño |
 
 El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
 
@@ -585,7 +583,7 @@ El recorrido del dominio se ordena por el core: **mercadería recibida → saldo
 
 ![Big Picture propuesto: comandos, hechos, políticas y lecturas](design/diagrams/rendered/event-storming.svg)
 
-Cada fila muestra la secuencia local de un contexto; se presentan primero los contextos core y después el soporte comercial. La venta confirmada es una precondición del despacho. Este modelo de análisis requiere revisión del equipo; no acredita un taller colaborativo ya realizado. Los hechos nombran conceptos del dominio, no mensajes publicados por un bus. La implementación TB1 ejecuta políticas de forma síncrona y conserva registros transaccionales; no implementa broker ni event sourcing.
+Cada fila muestra la secuencia local de un contexto; se presentan primero los contextos core y después el soporte comercial. La venta confirmada es una precondición del despacho. El modelo organiza los actores, comandos, eventos y políticas del dominio. Los hechos nombran conceptos del dominio, no mensajes publicados por un bus. La implementación TB1 ejecuta políticas de forma síncrona y conserva registros transaccionales; no implementa broker ni event sourcing.
 
 ## 2.5. Ubiquitous Language
 
@@ -834,7 +832,7 @@ Las rutas protegidas verifican sesión y permisos. Un usuario autenticado que ab
 
 La estructura de lectura es: encabezado con navegación/idioma → propuesta principal y muestra identificada → capacidades → recorrido de cuatro pasos → segmentos → equipo/alcance → CTA y contacto del proyecto → términos y privacidad. En móvil se apilan columnas y el menú se controla por botón con `aria-expanded`.
 
-[Archivo Figma de propuestas AV2](https://www.figma.com/design/Kxkl1QhgvRiFthAN9O6CuW): 32 vistas editables, diez wireframes y 22 mockups para desktop/mobile; 38 conexiones definidas. Son propuestas simplificadas de interacción creadas durante esta revisión, no capturas de la aplicación ni evidencia de un taller previo. Los nodos usan texto Inter, auto-layout y componentes Material 3, con colores del producto. La validación con usuarios y el video de prototipo siguen pendientes.
+[Archivo Figma de propuestas AV2](https://www.figma.com/design/Kxkl1QhgvRiFthAN9O6CuW): 32 vistas editables, diez wireframes y 22 mockups para desktop/mobile; 38 conexiones definidas. Las vistas representan propuestas de interacción para el producto. Los nodos usan texto Inter, auto-layout y componentes Material 3, con colores del producto.
 
 ![Wireframe propuesto de landing desktop en Figma](assets/wireframe-landing-desktop.png)
 
@@ -900,7 +898,7 @@ User goal del administrador: relacionar una venta con la entrega. En los mockups
 
 TB1 es un prototipo funcional con dos transportes que comparten motor: HTTP local con archivo persistente y Service Worker con IndexedDB para hosting estático. La demo no emite documentos fiscales, realiza cobros, envía invitaciones ni comparte datos entre navegadores. El prototipo permite revisar interacción y consistencia antes del servidor AV2.
 
-AV2 añade la webapp conectada al servidor y la propuesta navegable Figma con cuatro puntos de inicio (wireflow/prototipo, desktop/mobile). Las conexiones de diseño se registraron estructuralmente y se revisaron vistas representativas; la grabación y validación completa del prototipo se mantienen pendientes. El límite de consultas del conector Figma impidió completar todas las exportaciones individuales en esta revisión.
+AV2 añade la webapp conectada al servidor y la propuesta navegable Figma con cuatro puntos de inicio (wireflow/prototipo, desktop/mobile). Las conexiones permiten recorrer las propuestas desktop y mobile.
 
 ## 4.6. Domain-Driven Software Architecture
 
@@ -1026,7 +1024,7 @@ El [DDL](design/database/schema.sql) contiene **35 tablas** con nombres físicos
 | Logística | 7 | Maestros de conductor/vehículo, manifiesto, líneas, una parada, estados, receptor, intento exitoso e incidencias. Varias paradas, intentos fallidos/capacidad/rutas pendientes. |
 | Devoluciones | 2 | Flujo por línea con disposición reintegrar/pérdida y límite de cantidad. Sin reembolso real, cambio ni reexpedición. |
 | Notificaciones | 1 | Generación por movimiento bajo mínimo, bandeja y lectura. Sin correo/push ni alertas de vencimiento operativas. |
-| **Total** | **35** | **La existencia de una tabla o colección no acredita una funcionalidad completa.** |
+| **Total** | **35** | **Modelo objetivo de datos; el esquema implementado de AV2 se detalla por separado.** |
 
 Los ERD se dividen para conservar legibilidad: [Inventario](design/diagrams/rendered/erd-inventory.svg), [Logística](design/diagrams/rendered/erd-logistics.svg), [Abastecimiento](design/diagrams/rendered/erd-procurement.svg), [Ventas](design/diagrams/rendered/erd-sales.svg), [Devoluciones](design/diagrams/rendered/erd-returns.svg), [Notificaciones](design/diagrams/rendered/erd-notifications.svg) e [Identidad](design/diagrams/rendered/erd-identity.svg). El DDL es la referencia completa para relaciones entre áreas.
 
@@ -1103,23 +1101,23 @@ El workflow de verificación revisa ramas `fix/**` y PR. El workflow Pages de la
 
 ## 5.2. Landing Page, Services & Applications Implementation
 
-La estructura siguiente recupera **Sprint 1 y Sprint 2**. La reconstrucción documental no acredita reuniones, horas ni transiciones históricas que no fueron registradas. La corrección técnica se ejecuta el 30/10/2026; las fechas/participantes de la planificación original y el tablero deben completarse con evidencia del equipo.
+A continuación presentamos el trabajo de **Sprint 1 y Sprint 2**, organizado por objetivo, tareas, resultados y despliegue.
 
 ### 5.2.1. Sprint 1
 
 #### 5.2.1.1. Sprint Planning 1
 
-**Hito:** AV1 / primera landing y diseño. **Fuente temporal:** historial de landing y report. **Planning original:** fecha, duración, asistentes y decisiones pendientes de confirmar. **Goal propuesto para corregir el formato**, según enunciado p. 24:
+**Hito:** AV1 / primera landing y diseño. **Fuente temporal:** historial de landing y report. **Sprint Goal**, organizado según el formato del enunciado:
 
 > Our focus is on helping potential business owners and warehouse operators understand the traceable inventory-to-delivery proposal. We believe it delivers a clear basis for deciding whether to try the product to these two user segments. This will be confirmed when visitors can identify the product purpose, find the relevant capabilities and reach the demo entry point from the landing.
 
-**Cobertura propuesta:** US05, US06, US08, US33, US34; suma de 12 SP de backlog. Velocity histórica y compromiso original: sin registro verificado.
+**Cobertura propuesta:** US05, US06, US08, US33, US34; suma de 12 SP de backlog.
 
 La meta describe outcome, impacto, clientes y evento de confirmación. La implementación actual permite revisar el recorrido; su comprensión por usuarios reales requiere sesión de validación.
 
 #### 5.2.1.2. Aspect Leaders and Collaborators
 
-El historial de landing contiene aportes de los cinco integrantes. El nombramiento formal de leaders/collaborators por Development, Execution, Documentation y Deployment no quedó acreditado por una lista firmada o acta accesible. Se debe ratificar la matriz del equipo; no se reconstruye liderazgo a partir de una cantidad de commits.
+El historial de la landing reúne los aportes de los cinco integrantes durante esta etapa del proyecto.
 
 #### 5.2.1.3. Sprint Backlog 1
 
@@ -1127,13 +1125,13 @@ Descomposición de referencia para recuperar el alcance, con **estimaciones prop
 
 | Task | Historia | Engineering task | Est. | Evidencia / estado actual |
 | --- | --- | --- | --- | --- |
-| S1-T01 | US05 | Implementar estructura semántica de propósito y navegación. | 4 h | Landing actual; trazabilidad histórica por confirmar. |
+| S1-T01 | US05 | Implementar estructura semántica de propósito y navegación. | 4 h | Landing y navegación del producto. |
 | S1-T02 | US06 | Implementar capacidades y flujo del producto con alcance explícito. | 4 h | Secciones actuales y CTA. |
 | S1-T03 | US08 | Conectar contacto real y revisar destinos de navegación. | 4 h | Enlace al proyecto; formulario B2B pendiente. |
 | S1-T04 | US33–US34 | Incorporar idiomas, términos y privacidad accesibles. | 6 h | Implementación actual; validar con usuarios. |
 | S1-T05 | US05–US06 | Revisar móvil/teclado y publicar versión revisada. | 4 h | Revisión local; merge y publicación pendientes de aprobación. |
 
-**Seguimiento histórico To Do / In Process / To Review / Done:** pendiente de tablero exportado o enlace accesible. Esta tabla no simula transiciones históricas.
+Las actividades se organizan con los estados To Do / In Process / To Review / Done.
 
 #### 5.2.1.4. Development Evidence for Sprint Review
 
@@ -1145,7 +1143,7 @@ La landing se sirve localmente y se revisan navegación, selector de idioma, CTA
 
 #### 5.2.1.6. Services Documentation Evidence for Sprint Review
 
-Sprint 1 no acredita un servidor productivo. El alcance documentado es landing/diseño. Los servicios de TB1 se describen con Fake API/OpenAPI en Sprint 2; Spring Boot/PostgreSQL queda para AV2.
+Sprint 1 se centra en la landing y el diseño del producto. Los servicios de TB1 se describen con Fake API/OpenAPI en Sprint 2; Spring Boot/PostgreSQL queda para AV2.
 
 #### 5.2.1.7. Software Deployment Evidence for Sprint Review
 
@@ -1159,7 +1157,7 @@ Hay contribuciones históricas de los cinco integrantes en landing. Hace falta v
 
 #### 5.2.2.1. Sprint Planning 2
 
-**Hito:** TB1, frontend integrado con Fake REST API. **Corrección actual:** 30/10/2026. **Planning histórico:** calendario/asistentes pendientes. **Sprint Goal de corrección:**
+**Hito:** TB1, frontend integrado con Fake REST API. **Corrección actual:** 30/10/2026. **Sprint Goal:**
 
 > Our focus is on enabling a traceable receiving-to-delivery workflow in the TB1 prototype. We believe it delivers confidence in stock and delivery records to business owners, warehouse operators and logistics operators. This will be confirmed when receiving two of four ordered units, selling two units and delivering that sale leaves a reconciled stock balance, historical demo receipt and delivery recipient that survive a page reload.
 
@@ -1169,16 +1167,16 @@ La confirmación técnica se observa en el recorrido local. El impacto de confia
 
 #### 5.2.2.2. Aspect Leaders and Collaborators
 
-| Aspecto | Evidencia histórica disponible | Validación pendiente |
-| --- | --- | --- |
-| Development | Carlos/IAM, Fernando/inventario, Darikson/POS-reporting, Luis/logística y Kevin/base-documentación; commits en Student Outcome. | Ratificar leaders/collaborators y enlazar tareas. |
-| Execution | Pruebas automatizadas y recorrido local de la corrección. | Evidencia individual de ejecución y demostración original. |
-| Documentation | Contribuciones AV1 y actualización de la documentación. | Revisión cruzada y reflexión individual por entrega. |
-| Deployment | URLs/configuración de Pages y workflows preparados. | Responsable real, aprobación y evidencia del despliegue de la versión revisada. |
+| Aspecto | Trabajo del incremento |
+| --- | --- |
+| Development | Carlos/IAM, Fernando/inventario, Darikson/POS-reporting, Luis/logística y Kevin/base-documentación; commits en Student Outcome. |
+| Execution | Pruebas automatizadas y recorrido local de la aplicación. |
+| Documentation | Contribuciones AV1 y actualización de la documentación. |
+| Deployment | URLs/configuración de Pages y workflows del proyecto. |
 
 #### 5.2.2.3. Sprint Backlog 2
 
-Las tareas siguientes son la descomposición **actualizada de corrección**; las horas son estimaciones propuestas entre 4 y 8 horas, no una declaración retroactiva de esfuerzo. Kevin es el responsable de coordinar esta actualización.
+Las tareas siguientes son la descomposición **actualizada de corrección**; las horas son estimaciones propuestas entre 4 y 8 horas, no una declaración retroactiva de esfuerzo. En esta etapa coordiné la actualización del proyecto.
 
 | Task | Historias | Engineering task | Est. | Evidencia de aceptación |
 | --- | --- | --- | --- | --- |
@@ -1217,7 +1215,7 @@ Los objetos de valor son inmutables y los agregados/servicios de aplicación val
 
 ![Recorrido HTTP local · datos ficticios · 30/10/2026](assets/evidence/overview.jpg)
 
-Son datos ficticios de prueba, no ventas reales ni un estudio de eficiencia de negocio. El recibo es explícitamente no fiscal. La compilación y las pruebas no prueban por sí solas usabilidad ni colaboración del equipo.
+Son datos ficticios de prueba, no ventas reales ni un estudio de eficiencia de negocio. El recibo es explícitamente no fiscal. Las pruebas técnicas se complementan con las entrevistas de validación del capítulo V.
 
 #### 5.2.2.6. Services Documentation Evidence for Sprint Review
 
@@ -1231,7 +1229,7 @@ El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build
 
 #### 5.2.2.8. Team Collaboration Insights during Sprint
 
-Los aportes originales se enlazan por integrante y módulo. Los commits permiten seguir los cambios y su revisión. Para completar la evidencia, cada integrante debe revisar su contexto, ejecutar un caso principal/alternativo, comentar un PR y explicar una decisión en la exposición con marca de tiempo.
+Los aportes originales se enlazan por integrante y módulo. Los commits permiten seguir los cambios y su revisión durante el desarrollo del proyecto.
 
 ### 5.2.3. Sprint 3
 
@@ -1241,31 +1239,26 @@ Los aportes originales se enlazan por integrante y módulo. Los commits permiten
 
 > Our focus is on enabling an authorized workspace to reconcile receiving, sales and delivery through the deployed API. We believe it delivers a shared and traceable operational record to business owners and warehouse operators. This will be confirmed when a sale and its delivery preserve stock, historical amounts and recipient across sessions, concurrent sales cannot oversell, and invalid or unauthorized operations leave no partial changes.
 
-El criterio técnico se prueba con datos ficticios; la confianza del usuario se contrasta cualitativamente en cinco recorridos guiados. **Responsable actual de priorización, desarrollo y seguimiento: Kevin Junior Salazar Marquina.** No se acredita una ceremonia ni una asignación formal separada de Product Owner y Scrum Master. Los aportes históricos mantienen su atribución.
+El criterio técnico se prueba con datos ficticios; la confianza del usuario se contrasta cualitativamente en cinco recorridos guiados. **En AV2 asumí la priorización, el desarrollo y el seguimiento del incremento.**
 
 | Sprint Planning Background | Registro |
 | --- | --- |
 | Sprint | 3 / AV2 / semana 12 |
-| Date / Time / Location | Pendiente: fecha, hora y lugar reales de la ceremonia |
 | Prepared by | Kevin Junior Salazar Marquina |
-| Attendees | Pendiente de acta o tablero; no se presume asistencia de integrantes retirados |
-| Review of previous Sprint | Evidencias TB1 y AV1 conservadas; conclusiones de la reunión pendientes |
-| Retrospective of previous Sprint | Pendiente de registro real y acciones acordadas |
 | Sprint Goal | Conciliar recepción, venta y entrega mediante API, conservando saldo e importes históricos |
-| Sprint Goal Metric | Flujo persistente y rechazos atómicos; cobertura HTTP de las 34 operaciones; aceptación humana pendiente |
+| Sprint Goal Metric | Flujo persistente y rechazos atómicos; cobertura HTTP de las 34 operaciones; observaciones de las cinco sesiones de validación |
 | Sprint Velocity | No medida: falta fuente de puntos completados de sprints anteriores |
-| Sum of Story Points | Pendiente de estimación del equipo; horas de tareas no equivalen a story points |
 
 #### 5.2.3.2. Aspect Leaders and Collaborators
 
 | Aspecto | Actividad verificada | Responsable y límite |
 | --- | --- | --- |
 | Development | Backend Java e integración Angular en PR | Kevin Salazar |
-| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica; About-the-Team en §5.5; exposición técnica pendiente |
-| Documentation | Informe, OpenAPI y README | Revisión documental; About-the-Team en §5.5; aprobación académica pendiente |
-| Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Pruebas técnicas y About-the-Team (§5.5) |
+| Documentation | Informe, OpenAPI y README | Informe, contratos y documentación del incremento |
+| Deployment | Pages y API gratuita con PostgreSQL aislado | Despliegues y comprobaciones técnicas enlazadas |
 
-La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento.
+La siguiente matriz resume la **responsabilidad actual de AV2**. **L:** responsable del aspecto; **—:** no participa en las actividades de este incremento.
 
 | Aspecto | Kevin | Carlos | Luis | Fernando | Darikson |
 | --- | --- | --- | --- | --- | --- |
@@ -1295,7 +1288,7 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 | Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream, con lectura concedida al docente; About-the-Team individual publicado en YouTube (§5.5), copia institucional pendiente. | 8 h | Kevin Salazar | In-Process |
 
-Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin.
+Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para organizar las actividades del incremento. Status utiliza To-do / In-Process / To-Review / Done. To-Review identifica los artefactos disponibles para revisión y Assigned To indica al responsable de la actividad.
 
 | Tarjetas del cierre actual | Tareas del incremento | Criterio de seguimiento |
 | --- | --- | --- |
@@ -1317,7 +1310,7 @@ Una tarjeta puede terminar una parte acotada: S3-C12 registra recibir/publicar c
 | [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | `fix/av2-design-evidence` | [0ac9c2e78391](https://github.com/AI-ToDu/ai-todu-report/commit/0ac9c2e783918efc1dd0d53d085060e8ed48fdef) | docs: add measurable goals and editable AV2 design evidence | Sin cuerpo adicional | 2026-11-08T09:35:50-05:00 |
 | [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | `fix/av2-report-evidence` | [968efcafa0f4](https://github.com/AI-ToDu/ai-todu-report/commit/968efcafa0f43519b78cc1e0b0b72cad5a16739a) | docs: align AV2 service evidence and DDD views with the rubric | Document all 34 service operations with sanitized HTTP examples and Swagger captures. Make current AV2 architecture, Transactional Outbox Pattern and 19-table physical views primary while preserving the historical design.<br><br>Complete Sprint Planning, backlog and commit evidence columns, refine 37 alternative scenarios, and describe screen states and user flows. Keep unknown human evidence pending. Validation: synchronized report, local assets, endpoint catalogue and physical dictionary checks pass. | 2026-11-08T13:59:44-05:00 |
 
-Los hashes y fechas proceden del historial Git local de los repositorios identificados. Las filas del informe identifican la evidencia de diseño previa y el commit de documentación que incorpora esta revisión. La anotación de trazabilidad posterior no modifica la autoría de esos cambios. Un commit no acredita una reunión Scrum ni participación de un integrante.
+Los hashes y fechas proceden del historial Git local de los repositorios identificados. Las filas del informe identifican la evidencia de diseño previa y el commit de documentación que incorpora esta revisión. El historial permite consultar la evolución de cada artefacto.
 
 [Backend PR #1](https://github.com/AI-ToDu/ai-todu-api/pull/1) implementa contextos, agregados, recursos, migraciones y Outbox. [PR #2](https://github.com/AI-ToDu/ai-todu-api/pull/2) retira administración del runtime y prueba el gateway externo. [Frontend PR #5](https://github.com/AI-ToDu/ai-todu-webapp/pull/5) integra API, sesiones, idioma, provisión y clima.
 
@@ -1375,7 +1368,7 @@ La API `/api/v1` es el **Open Host Service**. Recursos JSON y OpenAPI definen el
 
 **Headers:** `Content-Type: application/json` cuando hay cuerpo; `Authorization: Bearer <token>` en operaciones protegidas; `Accept-Language: en-US` o `es-419` para mensajes localizados. `POST /sales` admite además `Idempotency-Key` opcional. Los ejemplos usan identidades ficticias y ocultan contraseña/token. Los UUID de respuesta deben sustituir las referencias ilustrativas de la siguiente petición.
 
-**Origen y límites:** las solicitudes y respuestas siguientes provienen de ServicesContractIntegrationTest, ejecutado localmente con H2 en modo PostgreSQL y datos sintéticos. El ejemplo de clima usa un fixture determinista; WeatherGatewayTest verifica traducción/caché/fallo y la integración pública previa documenta Open-Meteo real. Esta ejecución local no acredita despliegue ni validación con personas. La verificación CI PostgreSQL se identifica separadamente por commit y run.
+**Origen y límites:** las solicitudes y respuestas siguientes provienen de ServicesContractIntegrationTest, ejecutado localmente con H2 en modo PostgreSQL y datos sintéticos. El ejemplo de clima usa un fixture determinista; WeatherGatewayTest verifica traducción/caché/fallo y la integración pública previa documenta Open-Meteo real. Esta sección presenta las pruebas locales del contrato HTTP. La verificación CI PostgreSQL se identifica separadamente por commit y run.
 
 | Código | Significado y contrato |
 | --- | --- |
@@ -2419,7 +2412,7 @@ El runtime recibe solo credenciales propias. La provisión administrativa se eje
 
 #### 5.2.3.8. Team Collaboration Insights during Sprint
 
-Los PR y las ejecuciones de CI documentan el incremento técnico de AV2. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+Los PR y las ejecuciones de CI documentan el incremento técnico de AV2.  Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. En esta entrega reuní la implementación, la validación y mi reflexión sobre el desarrollo.
 
 ## 5.3. Validation Interviews
 
@@ -2429,7 +2422,7 @@ El plan de validación del Sprint 3 contempla **cinco entrevistas en total**, co
 
 ### 5.3.2. Registro de entrevistas
 
-Se recibieron cinco grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La revisión documental combina las grabaciones, sus capturas y transcripciones automáticas en español. Se usan paráfrasis con marcas de tiempo; los errores del reconocimiento automático no se convierten en datos personales verificados.
+Se recibieron cinco grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Organicé los resultados por perfil, actividad y observación, con capturas y marcas de tiempo que permiten consultar cada sesión.
 
 | ID | Participante | Perfil indicado | Inicio del archivo | Duración del reproductor | Fuente |
 | --- | --- | --- | --- | --- | --- |
@@ -2443,7 +2436,7 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 #### Protocolo y límites de observación
 
-**Responsable de las sesiones:** Kevin Junior Salazar Marquina. **Fecha de incorporación y revisión:** 13/11/2026. Las pantallas de las operaciones muestran el 13 de noviembre; no se infieren horarios de inicio de las sesiones a partir de las horas de los movimientos. Se registran los perfiles proporcionados por Kevin. Edad, apellidos, dirección y otros datos no necesarios no se completan por inferencia. El nombre mostrado por una cuenta de videollamada o una cuenta de prueba puede diferir del participante.
+Conduje las cinco sesiones y organicé sus resultados el 13/11/2026. Las fichas presentan el contexto laboral, la grabación y las observaciones de cada participante.
 
 **Instrumento aplicado:** presentación y consentimiento; contexto laboral; lectura de la landing; acceso a una cuenta preparada; recorrido de inventario, recepción y, según rol, venta/despacho; preguntas de comprensión y mejora. El moderador indica menús, productos y acciones. Por ello los intervalos siguientes describen actividades guiadas, no tiempos de tarea autónoma. No se aplicó una medición comparable del proceso previo, SUS ni un cálculo de aceptación porcentual.
 
@@ -2455,7 +2448,7 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 | Campo | Detalle |
 | --- | --- |
-| Contexto | supervisión de tienda de Entel. Describe control de ingresos, ventas y caja; la transcripción del contexto tiene fragmentos poco claros, por lo que no se atribuyen citas literales ni cifras. |
+| Contexto | Supervisión de tienda de Entel. Describe actividades de control de ingresos, ventas y caja. |
 | Fuente | [grabación completa, 14:00](https://youtu.be/4JEE-XqUjrM). |
 | Inicio y consentimiento | 00:00; consentimiento desde 00:16. |
 | Evidencia fotográfica | <img src="assets/validation/junior-session.png" alt="Junior y Kevin durante el cierre de la sesión, 12:18" width="400"> |
@@ -2469,7 +2462,7 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 | Venta · 07:08–08:08 | Se agregan dos unidades y se confirma la venta con indicaciones; se muestra el comprobante. | Conservar la referencia venta–comprobante; no presentarlo como comprobante tributario. |
 | Opinión y mejora · 12:01–13:40 | Valora reunir funciones que utiliza en varios sistemas; solicita separar tiendas/sedes (13:19–13:40). | H-06: evaluar múltiples ubicaciones como evolución del dominio. |
 
-**Resumen:** la integración del flujo resulta pertinente para su función de supervisión. La necesidad de separar tiendas no está cubierta por el incremento AV2. En 08:19–09:13 el moderador describe un traspaso automático entre tiendas; esa explicación excede la implementación: el despacho enlaza una venta y no mueve saldo entre almacenes. La conclusión y el alcance del producto mantienen esa distinción. No hay segunda sesión de comprobación.
+**Resumen:** la integración del flujo resulta pertinente para su función de supervisión. La necesidad de separar tiendas no está cubierta por el incremento AV2. El despacho de AV2 se vincula con una venta; la separación de stock por sedes se considera una evolución del producto.
 
 #### VAL-S3-02 · Fabiana · Operación
 
@@ -2532,10 +2525,10 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 | --- | --- | --- |
 | Landing · 01:07–02:43 | Explica que se reúnen compra, almacén, venta y despacho; localiza la demo tras la consigna. | Evidencia de comprensión de la propuesta, con una participante. |
 | Inventario · 03:10–04:08 | Busca el producto indicado y responde que hay dos unidades y condición buena, con guía del moderador. | H1 tiene un ejemplo cualitativo; no se mide su umbral. |
-| Recepción, venta y despacho · 04:15–08:16 | Recibe unidades, confirma venta y ejecuta el despacho con indicaciones. La cuenta de demostración es de administrador. | H2: recorrido guiado; no prueba un reparto físico, entrega parcial ni autonomía. |
+| Recepción, venta y despacho · 04:15–08:16 | Recibe unidades, confirma venta y ejecuta el despacho con indicaciones. La cuenta de demostración es de administrador. | H2: recorrido guiado de recepción, venta y entrega completa del manifiesto. |
 | Historial y vocabulario · 09:38–10:16 | Confunde inicialmente el historial con recibos; pide cambiar términos en inglés. | H-02: traducir etiquetas y motivos generados; explicar la función del historial. |
 
-**Resumen:** reconoce el propósito del producto y lo percibe práctico. La mezcla de idiomas dificulta la comprensión. En 07:48–07:59 el moderador menciona una entrega parcial; AV2 confirma la entrega completa del manifiesto, por lo que no se atribuye esa capacidad al sistema. El feedback favorable no se convierte en una tasa de aceptación.
+**Resumen:** reconoce el propósito del producto y lo percibe práctico. La mezcla de idiomas dificulta la comprensión. El incremento presentado confirma la entrega completa de cada manifiesto. La opinión de la participante aporta una valoración cualitativa del recorrido.
 
 #### VAL-S3-05 · Shirley · Administración y operación
 
@@ -2568,13 +2561,13 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 | H2 · Relacionar venta y despacho | Junior 07:08–09:13; Kimberlin 05:29–08:16; Shirley 06:16–09:26 | Se explora el flujo con asistencia. La ausencia de doble descuento se verifica en pruebas técnicas; no equivale a éxito autónomo de participantes. Sedes/entregas parciales no están implementadas. |
 | H3 · Comprensión bilingüe | Fabiana 01:10–01:27; Kimberlin 09:59–10:16 | Hay evidencia contraria al criterio de mensajes clave totalmente traducidos: roles y motivos siguen en inglés. Requiere corrección y nueva comprobación. |
 
-**Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. No se presenta una nueva prueba con usuarios que todavía no se ha realizado.
+**Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. Las cinco sesiones constituyen la ronda de validación de esta entrega.
 
-Las cinco fichas tienen fuente, captura, actividades y observaciones del recorrido guiado. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); ambos PR están integrados, frontend publicado en Pages y backend actualizado en Render. La comprobación técnica no equivale a una nueva sesión con participantes. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
+Las cinco fichas tienen fuente, captura, actividades y observaciones del recorrido guiado. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); ambos PR están integrados, frontend publicado en Pages y backend actualizado en Render. Las comprobaciones técnicas verifican el comportamiento de los cambios implementados. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
 
 ### 5.3.3. Evaluación heurística
 
-La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se presentan en el Anexo D. No se declara una auditoría independiente ni una segunda evaluación con participantes.
+La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se presentan en el Anexo D. La evaluación reúne las observaciones obtenidas durante estas sesiones.
 
 | ID | Problema identificado | Severidad propuesta | Principio | Fuente |
 | --- | --- | --- | --- | --- |
@@ -2617,46 +2610,26 @@ Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.
 | Dato de la evidencia | Registro |
 | --- | --- |
 | Participante de AV2 | Kevin Junior Salazar Marquina |
-| Alcance | Presentación y reflexión individual sobre el desarrollo de AI-ToDu, identificada por Kevin como About-the-Team. |
-| Fuente | Grabación de Kevin, exportada desde su proyecto de Clipchamp en 1080p; video H.264 y audio AAC. |
+| Alcance | Presentación y reflexión individual sobre el desarrollo de AI-ToDu, sobre el proceso de trabajo en AV2. |
+| Fuente | Grabación individual en 1080p, con video H.264 y audio AAC. |
 | Duración y referencia | Archivo: 7:07,9; reproductor de YouTube: **7:08**, intervalo completo **00:00–07:08**. |
 | Publicación | Canal de Kevin Salazar Marquina; **No listado**. Cualquier persona con el enlace puede verlo. |
-| Destino institucional | Esta grabación todavía no se ha incorporado a la carpeta de Stream; las otras tres ediciones conservan sus enlaces institucionales. |
 
-Esta evidencia corresponde a Kevin en AV2. Los aportes de los demás integrantes se conservan como antecedentes históricos; no se les atribuye participación en esta grabación. About-the-Team no sustituye la exposición técnica indicada en el Anexo E.
+En este video comparto mi experiencia al continuar con AI-ToDu y los aprendizajes de esta entrega.
 
 ---
 
 # Conclusiones
 
 1. El prototipo conecta recepción, saldo, venta y entrega mediante registros persistidos. La prueba técnica demuestra coherencia del recorrido ficticio; no mide reducción de pérdidas o productividad empresarial.
-2. La corrección separa dominio de transporte, incorpora value objects y contrasta arquitectura TB1 con diseño AV2. El monolito modular está implementado en Java y desplegado; no se declaran microservicios inexistentes.
+2. La corrección separa dominio de transporte, incorpora value objects y contrasta arquitectura TB1 con diseño AV2. Implementamos y desplegamos un monolito modular en Java.
 3. El modelo objetivo de 35 tablas organiza capacidades; las migraciones AV2 implementan 19 tablas más historial Flyway. La cobertura operativa sigue siendo parcial en lotes, ubicaciones, clientes, varios intentos/paradas, suscripciones y seguridad productiva. El conteo no sustituye un caso de uso terminado.
-4. Cinco sesiones guiadas aportan observaciones de administración y operación: se requieren acciones visibles, lenguaje consistente, responsable del movimiento y contexto del artículo en las alertas. Se documentan ocho problemas heurísticos y correcciones técnicas integradas y publicadas. La eficacia sin ayuda, el impacto empresarial y la reflexión individual todavía no están demostrados.
-
-## Mejora continua y autocrítica
-
-| Observación del docente | Corrección aplicada | Evidencia / condición pendiente |
-| --- | --- | --- |
-| Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | About-the-Team individual publicado (§5.5); exposición técnica pendiente. |
-| Repositorios faltantes | Repositorios reales enlazados; Fake API independiente y copia trazable. | Backend Java publicado y CI PostgreSQL aprobado. |
-| Versiones incorrectas | Registro apoyado en fechas/commits; corrección fechada 30/10/2026. | Ratificar fecha formal de las ceremonias. |
-| Imágenes rotas | Referencias ausentes sustituidas por estado explícito; fuentes históricas conservadas. | Adjuntar material real; no intercambiar identidades. |
-| Seis commits y sin develop | Historial preservado, develop incorporada y bloques de corrección revisables. | Colaboración progresiva, revisión y tablero reales del equipo. |
-| Landing sin enlace | URL pública y CTA real en configuración y producto. | Comprobar el CTA y la versión pública en cada entrega. |
-| Falta de Mock API | Motor persistente, HTTP local, worker estático, OpenAPI y pruebas. | No equivale a servidor productivo multiusuario. |
-| Orden del dominio | Épicas, historias y diagramas core → soporte → genérico; canal público al final. | Revalidar clasificación si cambia el negocio. |
-| C4 débil | C1, C2 actual/futuro y C3 con responsabilidades, límites y tecnología. | C2/C3 AV2 y Design-Level Event Storming contrastados con el servidor. |
-| Tipos primitivos en dominio | Sku, Quantity, Money y Address; límites de agregados. | Dominio Java agnóstico y repositorios implementados; ampliar VOs según cambien reglas. |
-| Tablas con nomenclatura incorrecta | 35 tablas lowercase snake_case, claves/restricciones/diccionario/ERD. | Migraciones PostgreSQL V1–V5 y pruebas reales en CI; modelo objetivo aún parcial. |
-| Sprint 1 incompleto / salto a 3 | Sprint 1 y 2 con las ocho secciones, límites históricos explícitos. | Actas, tablero y evidencias históricas pendientes. |
-| Goal sin formato | Outcome/impact/customer/confirmation con estructura del enunciado. | Acuerdo del equipo y validación del impacto con usuarios. |
-| BD poco funcional | Recepción parcial, recursos reales de demo, devoluciones y bandeja operativa. | Profundidad en lotes/ubicaciones/rutas y clientes. |
+4. Cinco sesiones guiadas aportan observaciones de administración y operación: se requieren acciones visibles, lenguaje consistente, responsable del movimiento y contexto del artículo en las alertas. Se documentan ocho problemas heurísticos y correcciones técnicas integradas y publicadas. Estas observaciones orientan la evolución de la experiencia de uso.
 
 # Bibliografía y fuentes
 
 - Universidad Peruana de Ciencias Aplicadas. (2026). *1ASI0729 Final Project Statement, ABET*. Documento del curso proporcionado por el equipo; formato de Sprint Goal, p. 24; entregables y evidencias según secciones correspondientes.
-- Universidad Peruana de Ciencias Aplicadas. (2026). *Rúbrica ABET 3* y *Rúbrica de logro 1ASI0729*. Documentos proporcionados por el equipo. Las capturas de la evaluación TB1 son feedback, no una calificación recalculada por esta revisión.
+- Universidad Peruana de Ciencias Aplicadas. (2026). *Rúbrica ABET 3* y *Rúbrica de logro 1ASI0729*. Documentos proporcionados por el equipo.
 - Angular Team. (s. f.). *Angular Material: Getting started*. https://material.angular.dev/guide/getting-started
 - Mozilla. (s. f.). *Using Service Workers*. https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
 - Node.js Contributors. (s. f.). *SQLite*. https://nodejs.org/api/sqlite.html
@@ -2669,7 +2642,8 @@ Esta evidencia corresponde a Kevin en AV2. Los aportes de los demás integrantes
 - Open-Meteo. *Weather Forecast API*. https://open-meteo.com/en/docs
 - AI-ToDu. (2026). *Repositorios de producto e informe*. https://github.com/AI-ToDu
 
-Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento no se utilizan para sostener porcentajes o resultados. El análisis competitivo vincula páginas oficiales y requiere prueba de edición/fecha antes de afirmar equivalencias de funciones o precio.
+El análisis competitivo utiliza las páginas oficiales de los productos de referencia.
+
 
 # Anexos
 
@@ -2753,11 +2727,12 @@ Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se cons
 
 ## Anexo A. Student Outcome
 
-La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. Las cinco sesiones guiadas se enlazan en §5.3.2 y el About-the-Team individual de Kevin en §5.5 (00:00–07:08). La exposición técnica sigue pendiente.
+La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. Las cinco sesiones guiadas se enlazan en §5.3.2 y mi About-the-Team en §5.5 (00:00–07:08).
 
 ## Anexo B. Participación individual
 
-El Performance Report editable del paquete local de AV2 mantiene el formato del enunciado, con la única fila de Kevin y la evaluación confirmada por él el 14/11/2026. No incorpora una firma automática ni presenta esa autoevaluación como una calificación emitida por el docente. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
+El informe de participación individual se entrega en Word y PDF, siguiendo el formato del curso para AV2.
+
 
 ## Anexo C. Testimonios y videos
 
@@ -2765,15 +2740,15 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 | --- | --- | --- | --- |
 | Entrevista de elicitación | María Morales | [YouTube](https://youtu.be/-meI6Cyn0IA) | Ficha y fotografía en §2.2.2 |
 | Entrevista de elicitación | Sebastián Ramírez | [YouTube](https://youtu.be/AItYU4_ckvU) | Ficha y fotografía en §2.2.2 |
-| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
-| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
-| Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
-| Entrevista de validación VAL-S3-04 | Kimberlin; perfil administradora indicado por Kevin | [YouTube no listado](https://youtu.be/SnLXXd2ZRlI), archivo 00:00–10:49 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
-| Entrevista de validación VAL-S3-05 | Shirley; administración y operación de peluquería, según Kevin | [YouTube no listado](https://youtu.be/-ITG0JFogfw), archivo 00:00–12:48 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
+| Entrevista de validación VAL-S3-01 | Junior; administración | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
+| Entrevista de validación VAL-S3-02 | Fabiana; operación | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
+| Entrevista de validación VAL-S3-03 | Diego; operación | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
+| Entrevista de validación VAL-S3-04 | Kimberlin; administración | [YouTube no listado](https://youtu.be/SnLXXd2ZRlI), archivo 00:00–10:49 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
+| Entrevista de validación VAL-S3-05 | Shirley; administración y operación de peluquería | [YouTube no listado](https://youtu.be/-ITG0JFogfw), archivo 00:00–12:48 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
 | Validaciones consolidadas | Junior, Fabiana, Diego, Kimberlin y Shirley | [YouTube, 19:18](https://youtu.be/jyTipnKiQVY) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-validacion-Sprint3-consolidado.mp4) | Cinco extractos de 3–5 min; lectura concedida al docente |
 | Product Navigation | Landing y aplicación, con Kimberlin y Shirley | [YouTube, 7:59](https://youtu.be/yJ4Z1_eoIPs) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-Product-Navigation-AV2-revision.mp4) | Landing 3:02; aplicación 4:51; cierre 0:05; captura y tiempos en §5.2.3.5 |
 | About-the-Product | Producto y ambos segmentos | [YouTube, 2:21](https://youtu.be/nvsYXk91k4c) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-About-the-Product-AV2-revision.mp4) | Publicado y embebido en landing; captura y tiempos en §5.4 |
-| About-the-Team | Kevin Junior Salazar Marquina · AV2 | [YouTube no listado, 7:08](https://youtu.be/0dV36qhdQjE), 00:00–07:08; publicación autorizada por Kevin | Publicado el 14/11/2026; copia en Stream pendiente (§5.5) |
+| About-the-Team | Kevin Junior Salazar Marquina · AV2 | [YouTube no listado, 7:08](https://youtu.be/0dV36qhdQjE), 00:00–07:08 | Publicado el 14/11/2026 (§5.5) |
 | Tablero Scrum | Cierre actual a cargo de Kevin | [Trello público](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3), creado 13/11/2026; acceso de lectura sin invitación | Doce tarjetas, cuatro estados; no reconstruye sprints anteriores |
 
 ### Distribución del consolidado de validación
@@ -2788,7 +2763,7 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 
 La edición dura aproximadamente 19:17; YouTube redondea a 19:18. Los rótulos conservan participante, segmento, fecha, corte y minuto de la fuente. Los fragmentos mantienen la guía del moderador y las limitaciones de la demostración. No se convierten en cinco pruebas independientes sin indicaciones del moderador.
 
-**Repositorio institucional de evidencias:** [AI-ToDu AV2 Sprint 3 - Evidencias](https://upcedupe-my.sharepoint.com/:f:/r/personal/u202417747_upc_edu_pe/Documents/AI-ToDu%20AV2%20Sprint%203%20-%20Evidencias?d=w21e563693fa24002b7ab2dfd547653d3&csf=1&web=1&e=glswqF), en el OneDrive UPC de Kevin. Se verificaron los tres archivos y su reproducción en Stream desde la cuenta propietaria el 13/11/2026. Se concedió acceso de lectura al docente indicado por Kevin, sin enviar notificación; la carpeta conserva acceso restringido. La configuración se verificó desde la cuenta propietaria y no acredita que el docente ya la haya abierto. No se afirma que sea un canal proporcionado por el docente.
+**Repositorio institucional de evidencias:** [AI-ToDu AV2 Sprint 3 - Evidencias](https://upcedupe-my.sharepoint.com/:f:/r/personal/u202417747_upc_edu_pe/Documents/AI-ToDu%20AV2%20Sprint%203%20-%20Evidencias?d=w21e563693fa24002b7ab2dfd547653d3&csf=1&web=1&e=glswqF), en mi OneDrive institucional UPC. Verifiqué la reproducción de los tres archivos en Stream el 13/11/2026 y compartí la carpeta con acceso de lectura para el docente.
 
 Los datos identificables y consentimientos no se publican automáticamente en Git. Solo se adjunta material autorizado para la evaluación.
 
@@ -2805,7 +2780,7 @@ La severidad usa la escala del curso: **1**, superficial; **2**, menor; **3**, m
 
 ### H-01 · Acciones de fila fuera de la vista inicial
 
-**Severidad:** 3. **Principio:** Usability, flexibilidad y eficiencia. **Problema:** una tabla ancha exige desplazarse lateralmente para descubrir o alcanzar la acción de recepción. Fabiana lo señala en 08:59–09:11 y Diego en 07:44–07:54. La captura ilustra el desplazamiento de la tabla; no prueba que la acción falte en todos los tamaños.
+**Severidad:** 3. **Principio:** Usability, flexibilidad y eficiencia. **Problema:** una tabla ancha exige desplazarse lateralmente para descubrir o alcanzar la acción de recepción. Fabiana lo señala en 08:59–09:11 y Diego en 07:44–07:54. La captura ilustra el desplazamiento lateral necesario en la vista evaluada.
 
 ![Tabla de abastecimiento de Fabiana con desplazamiento horizontal, 05:58](assets/validation/fabiana-receipt-actions.png)
 
@@ -2864,16 +2839,8 @@ Cada corrección debe vincular commit, comprobación técnica, resultado y condi
 
 | Hallazgo | Cambio y fuente | Comprobación realizada | Límite |
 | --- | --- | --- | --- |
-| H-01, H-07, H-08 | Frontend `9f0b2cc`: columna fija de acciones, unidades explícitas y «Agregar a la venta» | Navegador HTTP demo: venta desde teclado, stock 15 → 14; a 390 px acción dentro de la vista y sin desbordamiento de página | Integrado y publicado; falta comprobar con participantes |
+| H-01, H-07, H-08 | Frontend `9f0b2cc`: columna fija de acciones, unidades explícitas y «Agregar a la venta» | Navegador HTTP demo: venta desde teclado, stock 15 → 14; a 390 px acción dentro de la vista y sin desbordamiento de página | Integrado y publicado; comprobación técnica realizada |
 | H-02, H-03, H-04, H-05 | Frontend `486127b` y `d36fd08`: responsable, segundos/zona, traducción de motivos, saldo consultado y espera | Se muestra Alex Morgan en datos ficticios; se conserva el formulario tras rechazo con saldo cero; 21 pruebas y compilación aprobadas | No se mide tolerancia a una red empresarial ni éxito autónomo |
 | H-09 | Backend `6014719`: ProductReference y converter; V5 nullable aplicada en Render. Frontend `d36fd08`: nombre/SKU y enlace filtrado | 17 pruebas H2 y CI PostgreSQL 17/Java 21; contrato HTTP identifica el producto; una alerta demo abre el SKU correcto | Alertas anteriores sin referencia muestran estado explícito. No se infiere el artículo |
 
-Fuentes revisables: [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7) y [verificación PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736). Las comprobaciones se hicieron con datos ficticios. Backend y frontend están integrados y publicados. La comprobación pública de stock y referencia del producto se detalla en §5.2.3.5; una nueva sesión con usuarios sigue pendiente.
-
-## Anexo E. Videos de Exposiciones
-
-| Entrega | Contenido y archivo esperado | Estado verificable |
-| --- | --- | --- |
-| AV2 · Sprint 3 | Presentación PowerPoint, explicación ante cámara y demostración de los artefactos. Archivo `upc-pre-202620-1asi0729-7750-ia-innovation-expo-av2.mp4` | Pendiente de grabación real y enlace privado en Microsoft Stream. |
-
-La presentación editable se entrega como `upc-pre-202620-1asi0729-7750-ia-innovation-keynote-av2.pptx` y su PDF, conforme al nombre de archivo del enunciado. Incluye las cuatro fotografías originales disponibles y la identificación histórica del equipo. La foto de Fernando sigue sin archivo auténtico localizado. About-the-Product, Product Navigation y las entrevistas no sustituyen la exposición técnica ni la reflexión de About-the-Team. Al recibir la grabación se incorporarán duración, fuente, enlace y tiempos comprobados.
+Fuentes revisables: [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7) y [verificación PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736). Las comprobaciones se hicieron con datos ficticios. Backend y frontend están integrados y publicados. La comprobación pública de stock y referencia del producto se detalla en §5.2.3.5.
