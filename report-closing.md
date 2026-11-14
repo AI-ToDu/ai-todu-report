@@ -152,11 +152,11 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
-| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-04 | Kimberlin; perfil administradora indicado por Kevin | [YouTube no listado](https://youtu.be/SnLXXd2ZRlI), archivo 00:00–10:49 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-05 | Shirley; administración y operación de peluquería, según Kevin | [YouTube no listado](https://youtu.be/-ITG0JFogfw), archivo 00:00–12:48 | Grabación publicada; ficha y evaluación pendientes |
+| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-04 | Kimberlin; perfil administradora indicado por Kevin | [YouTube no listado](https://youtu.be/SnLXXd2ZRlI), archivo 00:00–10:49 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-05 | Shirley; administración y operación de peluquería, según Kevin | [YouTube no listado](https://youtu.be/-ITG0JFogfw), archivo 00:00–12:48 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
 | About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
