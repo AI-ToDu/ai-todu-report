@@ -209,8 +209,8 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario se 
 | Aspecto | Actividad verificada | Responsable y límite |
 | --- | --- | --- |
 | Development | Backend Java e integración Angular en PR | Trabajo asistido autorizado por Kevin; sin atribuirlo a otros integrantes |
-| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; demostración/reflexión individual pendientes |
-| Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; About-the-Team en §5.5; exposición técnica pendiente |
+| Documentation | Informe, OpenAPI y README | Revisión asistida; About-the-Team en §5.5; aprobación académica pendiente |
 | Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
 
 La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento. La asistencia técnica no se registra como un integrante del equipo.
@@ -241,7 +241,7 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 | US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
-| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream; lectura concedida al docente; reflexión pendiente. | 8 h | Kevin Salazar | In-Process |
+| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream, con lectura concedida al docente; About-the-Team individual publicado en YouTube (§5.5), copia institucional pendiente. | 8 h | Kevin Salazar | In-Process |
 
 Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin, incluyendo trabajo asistido.
 
@@ -1525,4 +1525,15 @@ Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.
 
 ## 5.5. Video About-the-Team
 
-**Pendiente de evidencia real.** Mostrar trabajo, aportes y reflexión de cada participante que corresponda. Las grabaciones históricas se atribuyen con contexto verificable. No se simulan reuniones, integrantes activos ni contribuciones recientes. Enlace, duración, participantes y minutos se completarán al recibir videos.
+**Publicado el 14/11/2026.** [Ver About-the-Team · AV2 · Sprint 3 en YouTube](https://youtu.be/0dV36qhdQjE).
+
+| Dato de la evidencia | Registro |
+| --- | --- |
+| Participante de AV2 | Kevin Junior Salazar Marquina |
+| Alcance | Presentación y reflexión individual sobre el desarrollo de AI-ToDu, identificada por Kevin como About-the-Team. |
+| Fuente | Grabación de Kevin, exportada desde su proyecto de Clipchamp en 1080p; video H.264 y audio AAC. |
+| Duración y referencia | Archivo: 7:07,9; reproductor de YouTube: **7:08**, intervalo completo **00:00–07:08**. |
+| Publicación | Canal de Kevin Salazar Marquina; **No listado**. Cualquier persona con el enlace puede verlo. |
+| Destino institucional | Esta grabación todavía no se ha incorporado a la carpeta de Stream; las otras tres ediciones conservan sus enlaces institucionales. |
+
+Esta evidencia corresponde a Kevin en AV2. Los aportes de los demás integrantes se conservan como antecedentes históricos; no se les atribuye participación en esta grabación. About-the-Team no sustituye la exposición técnica indicada en el Anexo E.
