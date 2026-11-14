@@ -46,7 +46,6 @@ Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento 
 
 - [Arquitectura, decisiones y brechas](design/architecture.md).
 - [Diccionario de las 35 tablas](design/database/dictionary.md) y [DDL](design/database/schema.sql).
-- [Registro de investigación y fuentes heredadas](research/README.md).
 - Diagramas: fuentes Mermaid junto a los SVG en `design/diagrams`.
 
 ## Modelo físico · diagramas de detalle
@@ -135,6 +134,8 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
+| Entrevista de elicitación | María Morales | [YouTube](https://youtu.be/-meI6Cyn0IA) | Ficha y fotografía en §2.2.2 |
+| Entrevista de elicitación | Sebastián Ramírez | [YouTube](https://youtu.be/AItYU4_ckvU) | Ficha y fotografía en §2.2.2 |
 | Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
 | Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
 | Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
@@ -156,7 +157,7 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 | Kimberlin | 10:38 | 4:21 |
 | Shirley | 14:59 | 4:18 |
 
-La edición dura aproximadamente 19:17; YouTube redondea a 19:18. Los rótulos conservan participante, segmento, fecha, corte y minuto de la fuente. Los fragmentos mantienen la guía del moderador y las limitaciones de la demostración. No se convierten en cinco pruebas independientes sin asistencia.
+La edición dura aproximadamente 19:17; YouTube redondea a 19:18. Los rótulos conservan participante, segmento, fecha, corte y minuto de la fuente. Los fragmentos mantienen la guía del moderador y las limitaciones de la demostración. No se convierten en cinco pruebas independientes sin indicaciones del moderador.
 
 **Repositorio institucional de evidencias:** [AI-ToDu AV2 Sprint 3 - Evidencias](https://upcedupe-my.sharepoint.com/:f:/r/personal/u202417747_upc_edu_pe/Documents/AI-ToDu%20AV2%20Sprint%203%20-%20Evidencias?d=w21e563693fa24002b7ab2dfd547653d3&csf=1&web=1&e=glswqF), en el OneDrive UPC de Kevin. Se verificaron los tres archivos y su reproducción en Stream desde la cuenta propietaria el 13/11/2026. Se concedió acceso de lectura al docente indicado por Kevin, sin enviar notificación; la carpeta conserva acceso restringido. La configuración se verificó desde la cuenta propietaria y no acredita que el docente ya la haya abierto. No se afirma que sea un canal proporcionado por el docente.
 
@@ -165,7 +166,7 @@ Los datos identificables y consentimientos no se publican automáticamente en Gi
 
 ## Anexo D. Evaluación de User Experience según heurísticas
 
-**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina, con revisión documental/técnica asistida. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026. **Revisión final del responsable y auditoría independiente:** no acreditadas por este documento.
+**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026.
 
 ### Alcance e instrumento
 

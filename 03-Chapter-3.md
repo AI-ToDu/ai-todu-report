@@ -112,9 +112,9 @@ Los siguientes Business Goals son **metas SMART propuestas**, pendientes de rati
 
 Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las capturas históricas de User Persona se conservan en §2.3.1 y la del Impact Map se muestra a continuación. Su presencia documenta el diseño TB1; no demuestra el cumplimiento de los objetivos de negocio.
 
-**Impact Mapping del diseño TB1.** Captura original situada bajo Impact Mapping en el informe anterior (p. 58). Se conserva como antecedente de los objetivos y relaciones propuestos, junto con el análisis revisado anterior.
+**Impact Mapping de TB1.** El diagrama relaciona los objetivos, actores, impactos y entregables del diseño inicial.
 
-![Impact Mapping histórico de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
+![Impact Mapping de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
 
 ## 3.3. Product Backlog
 

@@ -26,7 +26,6 @@ Perfiles académicos y fotografías del informe base. Se conserva la presentaci�
 | <img src="Images/Foto-Kevin.jpg" alt="Kevin Junior Salazar Marquina" width="84"> | Salazar Marquina, Kevin Junior · U202417747 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
 | <img src="Images/Foto-Darikson.jpg" alt="Darikson Bill Salazar Quiche" width="84"> | Salazar Quiche, Darikson Bill · U202422620 | Estudiante proactivo, enfocado en el desarrollo de interfaces amigables (UI/UX) y en el análisis de las necesidades operativas de los negocios MYPE. |
 
-Las cuatro imágenes y los perfiles se recuperan del informe TB1. La referencia histórica a `Foto-Nando.jpg` no tiene un archivo correspondiente en el historial revisado; no se sustituye por una fotografía de otra persona.
 
 ## 1.2. Solution Profile
 
@@ -84,7 +83,7 @@ Los porcentajes son umbrales de decisión del experimento, no resultados del pro
 
 ![Lean UX Canvas específico de AI-ToDu](assets/lean-ux-canvas.svg)
 
-**Canvas de la entrega TB1.** Se conserva la imagen original como antecedente del proceso; el canvas anterior presenta la síntesis revisada para AI-ToDu.
+**Lean UX Canvas de TB1.** La siguiente lámina presenta la versión inicial del canvas.
 
 ![Lean UX Canvas histórico de TB1](Images/Lean_UX_Canvas.jpeg)
 

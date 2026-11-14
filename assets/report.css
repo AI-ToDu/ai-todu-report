@@ -315,3 +315,8 @@ th strong {
 
 .report-cover .university-logo { width:96px; height:96px; object-fit:contain; }
 @media print { .report-cover .university-logo { width:25mm; height:25mm; } }
+
+@media print {
+  .interview-record { break-inside: avoid; }
+  .interview-record td:first-child { width: 23%; }
+}
