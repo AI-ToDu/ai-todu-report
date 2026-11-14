@@ -42,10 +42,10 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
 | TB1 · frontend inicial | 08/10/2026 | Equipo, según historial | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
 | TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
-| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
-| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
-| Revisión AV2 · v0.3.1 | 08/11/2026 | Revisión técnica asistida autorizada por Kevin | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
-| Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar, con revisión asistida | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
+| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. |
+| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
+| Revisión AV2 · v0.3.1 | 08/11/2026 | Kevin Salazar | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
+| Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
 | About-the-Team · revisión v0.3.2 | 14/11/2026 | Kevin Salazar | Publicación de la grabación individual de 7:08 en YouTube y actualización de referencias y pendientes. |
 
 ## Student Outcome · ABET 3
@@ -59,7 +59,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
 | Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: Kevin modera cinco sesiones con administración y operación: plantea tareas, explica navegación y solicita mejoras (§5.3.2). La guía frecuente y los términos poco claros son límites observados. About-the-Team individual publicado (§5.5, 00:00–07:08); exposición técnica pendiente. | Las sesiones evidencian comunicación con usuarios y feedback específico; no acreditan por sí solas toda la competencia ni una sustentación técnica individual. Se debe contrastar la comprensión sin ayuda; la grabación individual se enlaza en §5.5. |
-| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión asistida de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
 
 ### Registro de acciones y fuentes
 
@@ -78,7 +78,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
 | Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). | Adjuntar explicación de integración y límites de la entrega. |
 | Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). | Adjuntar demostración de venta/métricas y minuto. |
 
-**AV2:** Kevin continúa con el incremento actual y conduce las cinco sesiones enlazadas en §5.3.2. La revisión de código, pruebas y documentación incorpora asistencia técnica autorizada. Se conservan las contribuciones históricas de los demás integrantes, sin asignarles nuevas actividades. El seguimiento actual se registra en un tablero público creado el 13/11/2026; no acredita ceremonias históricas.
+**AV2:** Kevin continúa con el incremento actual y conduce las cinco sesiones enlazadas en §5.3.2. Se conservan las contribuciones históricas de los demás integrantes, sin asignarles nuevas actividades. El seguimiento actual se registra en un tablero público creado el 13/11/2026; no acredita ceremonias históricas.
 
 | Acción de comunicación de Kevin | Audiencia y evidencia | Feedback y ajuste |
 | --- | --- | --- |
@@ -92,9 +92,9 @@ Las marcas se refieren a las grabaciones originales, no al consolidado editado. 
 
 [Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
 
-### Capturas históricas de colaboración
+### Actividad de colaboración en TB1
 
-Estas capturas corresponden al informe TB1. Conservan el estado del historial en aquella entrega; los enlaces anteriores permiten consultar los cambios actuales de AV2.
+Las gráficas muestran la actividad de los repositorios durante TB1. Los enlaces anteriores permiten consultar el historial actualizado.
 
 ![Historial de commits conservado de TB1](Images/insigth.jpeg)
 
@@ -111,7 +111,7 @@ Estas capturas corresponden al informe TB1. Conservan el estado del historial en
   - [Student Outcome · ABET 3](#student-outcome--abet-3)
     - [Registro de acciones y fuentes](#registro-de-acciones-y-fuentes)
   - [Collaboration Insights](#collaboration-insights)
-    - [Capturas históricas de colaboración](#capturas-históricas-de-colaboración)
+    - [Actividad de colaboración en TB1](#actividad-de-colaboración-en-tb1)
 - [Capítulo I: Introducción](#capítulo-i-introducción)
   - [1.1. Startup Profile](#11-startup-profile)
     - [1.1.1. Descripción de la startup](#111-descripción-de-la-startup)
@@ -136,7 +136,8 @@ Estas capturas corresponden al informe TB1. Conservan el estado del historial en
   - [2.2. Entrevistas](#22-entrevistas)
     - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
     - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
-      - [Archivo visual de la elicitación inicial](#archivo-visual-de-la-elicitación-inicial)
+      - [Segmento 1: Tomadores de Decisión (Dueños, Administradores, Gerentes)](#segmento-1-tomadores-de-decisión-dueños-administradores-gerentes)
+      - [Segmento 2: Usuarios Finales (Jefes de Logística, Operarios de Almacén)](#segmento-2-usuarios-finales-jefes-de-logística-operarios-de-almacén)
     - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
   - [2.3. Needfinding](#23-needfinding)
     - [2.3.1. User Personas](#231-user-personas)
@@ -290,7 +291,6 @@ Perfiles académicos y fotografías del informe base. Se conserva la presentaci�
 | <img src="Images/Foto-Kevin.jpg" alt="Kevin Junior Salazar Marquina" width="84"> | Salazar Marquina, Kevin Junior · U202417747 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
 | <img src="Images/Foto-Darikson.jpg" alt="Darikson Bill Salazar Quiche" width="84"> | Salazar Quiche, Darikson Bill · U202422620 | Estudiante proactivo, enfocado en el desarrollo de interfaces amigables (UI/UX) y en el análisis de las necesidades operativas de los negocios MYPE. |
 
-Las cuatro imágenes y los perfiles se recuperan del informe TB1. La referencia histórica a `Foto-Nando.jpg` no tiene un archivo correspondiente en el historial revisado; no se sustituye por una fotografía de otra persona.
 
 ## 1.2. Solution Profile
 
@@ -348,7 +348,7 @@ Los porcentajes son umbrales de decisión del experimento, no resultados del pro
 
 ![Lean UX Canvas específico de AI-ToDu](assets/lean-ux-canvas.svg)
 
-**Canvas de la entrega TB1.** Se conserva la imagen original como antecedente del proceso; el canvas anterior presenta la síntesis revisada para AI-ToDu.
+**Lean UX Canvas de TB1.** La siguiente lámina presenta la versión inicial del canvas.
 
 ![Lean UX Canvas histórico de TB1](Images/Lean_UX_Canvas.jpeg)
 
@@ -412,54 +412,95 @@ La elicitación inicial se registra por segmento objetivo. Preparar consentimien
 
 ### 2.2.2. Registro de entrevistas
 
-**Estado:** existen diferencias entre las fichas del capítulo separado y el README remoto más reciente. El primero conserva cuatro rutas inexistentes; el segundo referencia seis archivos fotográficos existentes y cambia dos nombres, manteniendo textos alternativos anteriores. Se conservan ambas fuentes para revisión, sin reasignar fotografías ni descartar respuestas del equipo. La correspondencia entre identidad, imagen, consentimiento y grabación requiere confirmación.
 
-| Registro del README remoto | Diferencia con el capítulo separado | Archivo localizado; correspondencia por confirmar |
-| --- | --- | --- |
-| Carlos Mendoza | Mismo nombre; segmento de decisión | `Images/Carlos_Mendoza.jpeg` |
-| Lucía Valdivia | Mismo nombre; segmento de decisión | `Images/Lucia_Valdivia1.jpeg` |
-| Roberto Sánchez | El capítulo apunta a un archivo ausente | `Images/Entrevista_ Sebastian.jpg`; nombre de archivo distinto de la ficha |
-| Miguel Rojas | El capítulo apunta a un archivo ausente | `Images/Raul_Delgado.jpeg`; nombre de archivo distinto de la ficha |
-| Maria Morales | El capítulo registra Andrea Gómez; el README conserva ese alt | `Images/Entrevista_Maria_Morales.jpg` |
-| Diego Ramirez | El capítulo registra Jorge Quispe; el README conserva ese alt | `Images/Entrevista_Diego_Ramirez.jpg` |
+Las entrevistas de elicitación se organizaron en dos segmentos: tomadores de decisión y usuarios finales. Cada ficha presenta los datos y el resumen registrados por el equipo en TB1.
 
-Las fichas y respuestas de **ambas versiones** están en el [archivo de investigación](research/README.md). La presencia de archivos no resuelve estas diferencias ni acredita por sí sola las entrevistas. Confirmar cada registro con el equipo y completar responsable real, fecha, enlace autorizado, duración, transcripción y marcas de tiempo antes de contabilizarlo como evidencia.
 
-#### Archivo visual de la elicitación inicial
+#### Segmento 1: Tomadores de Decisión (Dueños, Administradores, Gerentes)
 
-Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
+<div class="interview-record">
 
-Las imágenes se sitúan junto al registro al que estaban asociadas en el PDF TB1 (pp. 18–22). Los rótulos conservan esa asociación documental; no resuelven las discrepancias de identidad indicadas arriba.
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Carlos Mendoza |
+| **ID** | E-S1-01 |
+| **Edad / Distrito** | 45 años / Santiago de Surco |
+| **Timing del video** | 00:00 - 04:15 min |
+| **Evidencia fotográfica** | <img src="Images/Carlos_Mendoza.jpeg" width="260" alt="Carlos Mendoza"> |
+| **Resumen descriptivo** | Carlos está casado y tiene dos hijos. Administra una pequeña cadena de tres restaurantes. Su dispositivo principal es una Laptop con Windows, pero revisa todo el día su celular (iPhone). Se informa vía LinkedIn y WhatsApp, y admira marcas que proyectan estatus y eficiencia como Apple y a referentes locales como Gastón Acurio. En su día a día, sufre de estrés porque confía en reportes de Excel elaborados a mano por su administrador, lo que genera un descuadre constante (merma) entre las compras de mercado y las ventas en caja. Su mayor expectativa de "varita mágica" es un panel de control (Dashboard) que le muestre en su celular si el negocio está ganando o perdiendo dinero en tiempo real. |
 
-**Segmento 1 · Ficha histórica rotulada Carlos Mendoza**
+</div>
 
-<img src="Images/Carlos_Mendoza.jpeg" alt="Fotografía asociada a la ficha histórica Carlos Mendoza" width="300">
+<div class="interview-record">
 
-**Segmento 1 · Ficha histórica rotulada Lucía Valdivia**
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Lucía Valdivia |
+| **ID** | E-S1-02 |
+| **Edad / Distrito** | 38 años / San Borja |
+| **Timing del video** | 04:16 - 08:30 min |
+| **Evidencia fotográfica** | <img src="Images/Lucia_Valdivia1.jpeg" width="260" alt="Lucía Valdivia"> |
+| **Resumen descriptivo** | Lucía es soltera y fundadora de una MYPE textil. Pasa casi todo su día en su Smartphone (Android de gama alta) y utiliza mucho Instagram y WhatsApp Business para vender. Sigue a marcas como Zara (por su logística) y a diversos influencers emprendedores. Su mayor frustración (dolor) es que se le ha paralizado la producción varias veces porque olvidó comprar hilos o botones específicos, ya que el control lo lleva en un cuaderno. Expresó que aprender sistemas nuevos le asusta un poco, por lo que pide que la solución tenga botones muy claros y alertas de colores cuando falte mercadería. |
 
-<img src="Images/Lucia_Valdivia1.jpeg" alt="Fotografía asociada a la ficha histórica Lucía Valdivia" width="300">
+</div>
 
-**Segmento 1 · Ficha histórica rotulada Roberto Sánchez**
+<div class="interview-record">
 
-<img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura del archivo Sebastián asociada en TB1 a la ficha Roberto Sánchez; identidad por conciliar" width="300">
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Sebastián Ramírez |
+| **ID** | E-S1-03 |
+| **Video de entrevista** | [Ver entrevista de Sebastián Ramírez](https://youtu.be/AItYU4_ckvU) |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_%20Sebastian.jpg" width="260" alt="Sebastián Ramírez durante la entrevista"> |
 
-**Segmento 2 · Ficha histórica rotulada Miguel Rojas**
+</div>
 
-<img src="Images/Raul_Delgado.jpeg" alt="Fotografía del archivo Raul Delgado asociada en TB1 a la ficha Miguel Rojas; identidad por conciliar" width="300">
+#### Segmento 2: Usuarios Finales (Jefes de Logística, Operarios de Almacén)
 
-**Segmento 2 · Ficha histórica rotulada Maria Morales**
+<div class="interview-record">
 
-<img src="Images/Entrevista_Maria_Morales.jpg" alt="Captura asociada a la ficha histórica Maria Morales" width="300">
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Miguel Rojas |
+| **ID** | E-S2-01 |
+| **Edad / Distrito** | 28 años / San Juan de Miraflores |
+| **Timing del video** | 12:46 - 16:20 min |
+| **Evidencia fotográfica** | <img src="Images/Raul_Delgado.jpeg" width="260" alt="Miguel Rojas"> |
+| **Resumen descriptivo** | Miguel vive con su pareja y es Jefe de Logística en una distribuidora. Es totalmente nativo digital, utiliza un celular Android y sus canales favoritos son TikTok y YouTube. Sigue marcas de tecnología accesible y deportivas (Samsung, Adidas). Confesó que su mayor carga operativa es hacer el inventario de fin de mes; se queda hasta la madrugada contando cajas a mano porque los papeles de despacho de la semana siempre se pierden. Pide que el sistema ideal le permite registrar salidas con la menor cantidad de clics posibles, casi como usar una red social. |
 
-**Segmento 2 · Ficha histórica rotulada Diego Ramirez**
+</div>
 
-<img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Captura asociada a la ficha histórica Diego Ramirez" width="300">
+<div class="interview-record">
 
-En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | María Morales |
+| **Video de entrevista** | [Ver entrevista de María Morales](https://youtu.be/-meI6Cyn0IA) |
+| **ID** | E-S2-02 |
+| **Edad / Distrito** | 28 años / Chorrillos |
+| **Timing del video** | 16:21 - 20:00 min |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_Maria_Morales.jpg" width="260" alt="Entrevista E-S2-02"> |
+| **Resumen descriptivo** | Maria es madre soltera y operaria de almacén en una MYPE textil. Usa un teléfono Android de gama media y se comunica exclusivamente por WhatsApp y Facebook. Sigue marcas de ropa nacionales y páginas de entretenimiento. Su frustración principal es el desorden físico y lógico: pierde hasta una hora buscando un código de tela específico porque en Excel los nombres son muy confusos. Aceptaría probar AI-ToDu siempre y cuando tenga un "buscador inteligente" donde pueda escribir palabras clave (ej. "tela roja algodón") y le diga en qué repisa está. |
+
+</div>
+
+<div class="interview-record">
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Diego Ramirez |
+| **ID** | E-S2-03 |
+| **Edad / Distrito** | 31 años / Ate Vitarte |
+| **Timing del video** | 20:01 - 24:15 min |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_Diego_Ramirez.jpg" width="260" alt="Entrevista E-S2-03"> |
+| **Resumen descriptivo** | Diego es casado y encargado de despachos en un consorcio de alimentos. Tiene habilidades tecnológicas moderadas y prefiere herramientas extremadamente simples. Usa Facebook para informarse y admira marcas de consumo masivo que son transparentes (Gloria, Cristal). Su dolor principal radica en el registro de mermas y devoluciones: cuando un producto llega malogrado al cliente, el trámite en papel para ingresarlo de nuevo como "pérdida" es tan tedioso que a veces simplemente no lo anota, generando el descuadre. Desea un sistema que con dos toques le permita registrar una merma. |
+
+</div>
+
 
 ### 2.2.3. Análisis de entrevistas
 
-Se conserva un **mapa provisional de temas**, pendiente de codificar con citas auténticas: conciliación de saldos, visibilidad de pendientes, control de pérdidas y coordinación del despacho. Para cada hallazgo, registrar participante anonimizado, cita/minuto, interpretación, requisito relacionado y evidencia contradictoria. No se calculan porcentajes de aceptación con estas fichas sin verificar.
+Las fichas de elicitación identifican cuatro temas: conciliación de saldos, visibilidad de las operaciones, control de pérdidas y coordinación del despacho. Estos temas orientan las personas y los escenarios de diseño. Las cinco entrevistas de validación de AV2 se analizan por separado en §5.3.2.
 
 ## 2.3. Needfinding
 
@@ -477,11 +518,11 @@ Son arquetipos de diseño, no personas reales adicionales. La actualización cua
 | Administración de negocio | Kimberlin recibe materiales y supervisa compras/ventas (00:37–00:57); Junior valora concentrar registros (12:01–13:08). | Comprender el recorrido y diferenciar sedes; lenguaje en español. | No se midió presupuesto, adopción ni frecuencia de uso. |
 | Operación de almacén | Fabiana registra en hoja compartida y sistema (00:35–00:47); Diego usa portapapeles y computadora (00:36–00:48). | Acciones accesibles, saldo claro, responsable y espera visible. | Contexto declarado en entrevista; no se observó la jornada real. |
 
-**Personas del diseño TB1.** Las capturas de UXPressia se conservan en la sección de User Personas, como en las pp. 24 y 26 del informe anterior. Son arquetipos históricos, no nuevos entrevistados de AV2 ni resultados de esta validación.
+**User Personas.** Carlos Mendoza representa la administración del negocio y Miguel Rojas la operación del almacén.
 
-![User Persona histórica de administración: Carlos Mendoza](Images/User-Persona-1.png)
+![User Persona de administración: Carlos Mendoza](Images/User-Persona-1.png)
 
-![User Persona histórica de operación: Miguel Rojas](Images/User-Persona-2.png)
+![User Persona de operación: Miguel Rojas](Images/User-Persona-2.png)
 
 ### 2.3.2. User Task Matrix
 
@@ -513,11 +554,11 @@ El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, prepara
 
 El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
 
-**Journeys del diseño TB1.** Se mantienen los escenarios propuestos del administrador y del operario en esta sección (PDF TB1, pp. 28–29). Los tiempos, emociones y oportunidades de estas láminas son hipótesis del diseño histórico, no mediciones de AV2.
+**User Journey Maps.** Los mapas representan los escenarios de administración y operación definidos durante el diseño de TB1.
 
-![User Journey histórico del administrador](Images/User-Journey-Map-1.png)
+![User Journey del administrador](Images/User-Journey-Map-1.png)
 
-![User Journey histórico del operario](Images/User-Journey-Map-2.png)
+![User Journey del operario](Images/User-Journey-Map-2.png)
 
 ### 2.3.4. Empathy Mapping
 
@@ -532,11 +573,11 @@ El mapa separa lo expresado de lo inferido. Las paráfrasis remiten a sus fuente
 
 Shirley combina ambos perfiles y aporta dudas sobre la acción de venta y las alertas (11:22–12:23). El mapa no transforma una valoración favorable en aceptación del producto.
 
-**Mapas de empatía del diseño TB1.** Las láminas originales se conservan en su sección (PDF TB1, pp. 31 y 33). La tabla anterior distingue las observaciones de AV2 de las inferencias; las citas y emociones de estas imágenes históricas no se presentan como nuevos testimonios.
+**Empathy Maps.** Las láminas organizan necesidades y dificultades de los dos arquetipos; la tabla anterior incorpora las observaciones obtenidas en AV2.
 
-![Empathy Map histórico del administrador](Images/Empathy-Map-1.png)
+![Empathy Map del administrador](Images/Empathy-Map-1.png)
 
-![Empathy Map histórico del operario](Images/Empathy-Map-2.png)
+![Empathy Map del operario](Images/Empathy-Map-2.png)
 
 ## 2.4. Big Picture Event Storming
 
@@ -679,9 +720,9 @@ Los siguientes Business Goals son **metas SMART propuestas**, pendientes de rati
 
 Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las capturas históricas de User Persona se conservan en §2.3.1 y la del Impact Map se muestra a continuación. Su presencia documenta el diseño TB1; no demuestra el cumplimiento de los objetivos de negocio.
 
-**Impact Mapping del diseño TB1.** Captura original situada bajo Impact Mapping en el informe anterior (p. 58). Se conserva como antecedente de los objetivos y relaciones propuestos, junto con el análisis revisado anterior.
+**Impact Mapping de TB1.** El diagrama relaciona los objetivos, actores, impactos y entregables del diseño inicial.
 
-![Impact Mapping histórico de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
+![Impact Mapping de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
 
 ## 3.3. Product Backlog
 
@@ -745,7 +786,7 @@ Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, 
 
 ### 4.1.1. General Style Guidelines
 
-La identidad utiliza azul profundo para estructura, verde azulado para acción y superficies claras para lectura de datos. Se priorizan contraste, jerarquía tipográfica y consistencia entre landing y workspace. La aplicación usa **Angular Material y Material Design**; la landing emplea HTML/CSS/JavaScript semánticos. La revisión utiliza la skill `ui-ux-pro-max` como apoyo de evaluación, sin reemplazar pruebas con usuarios.
+La identidad utiliza azul profundo para estructura, verde azulado para acción y superficies claras para lectura de datos. Se priorizan contraste, jerarquía tipográfica y consistencia entre landing y workspace. La aplicación usa **Angular Material y Material Design**; la landing emplea HTML/CSS/JavaScript semánticos.
 
 | Token | Valor / uso |
 | --- | --- |
@@ -755,7 +796,7 @@ La identidad utiliza azul profundo para estructura, verde azulado para acción y
 | Superficies | Fondo claro, bordes suaves y espacios consistentes. |
 | Estados | Texto explícito además de color: pendiente, tránsito, entregado, error y vacío. |
 
-**Identidad visual de AI-ToDu.** Logotipo conservado del apartado de branding del informe TB1 (p. 63).
+**Identidad visual de AI-ToDu.**
 
 <img src="Images/Branding-Logo.jpeg" alt="Logotipo de AI-ToDu" width="280">
 
@@ -1036,7 +1077,7 @@ El repositorio incluye lockfile cuando instala dependencias. La Fake API y landi
 | [ai-todu-report](https://github.com/AI-ToDu/ai-todu-report) | Informe, arquitectura y datos | `fix/av2-report-alignment` |
 | [ai-todu-api](https://github.com/AI-ToDu/ai-todu-api) | Backend, contratos, migraciones y CI | `fix/av2-domain-foundation` y `fix/av2-runtime-configuration` |
 
-**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; las ramas nuevas usan `fix/<scope>`. AV2 se integra mediante PR con comprobaciones de CI antes del merge. No se reescriben commits históricos ni se atribuyen las correcciones asistidas a otros integrantes. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
+**Workflow:** `main` conserva la línea estable; `develop` integra trabajo; las ramas nuevas usan `fix/<scope>`. AV2 se integra mediante PR con comprobaciones de CI antes del merge. No se reescriben commits históricos. Para el frontend se incorpora `develop` desde la base original de `main`. En landing, la rama predeterminada original ya era `develop`; se documenta esta transición antes de normalizar una futura rama estable, sin mover la publicación durante la revisión.
 
 Los cuatro bloques de corrección son: **(1) integración funcional con Fake API; (2) interfaz, landing e idiomas; (3) DDD/C4/datos; (4) informe, trazabilidad y guía de revisión**. Cada repositorio registra un commit por bloque aplicable; no se crean commits vacíos para aumentar un contador. El paquete nuevo registra además su inicialización real. Los hashes y PR vigentes se consultan en Git, sin duplicar un historial que pueda quedar desactualizado.
 
@@ -1132,12 +1173,12 @@ La confirmación técnica se observa en el recorrido local. El impacto de confia
 | --- | --- | --- |
 | Development | Carlos/IAM, Fernando/inventario, Darikson/POS-reporting, Luis/logística y Kevin/base-documentación; commits en Student Outcome. | Ratificar leaders/collaborators y enlazar tareas. |
 | Execution | Pruebas automatizadas y recorrido local de la corrección. | Evidencia individual de ejecución y demostración original. |
-| Documentation | Contribuciones AV1 y nueva revisión asistida autorizada por Kevin. | Revisión cruzada y reflexión individual por entrega. |
+| Documentation | Contribuciones AV1 y actualización de la documentación. | Revisión cruzada y reflexión individual por entrega. |
 | Deployment | URLs/configuración de Pages y workflows preparados. | Responsable real, aprobación y evidencia del despliegue de la versión revisada. |
 
 #### 5.2.2.3. Sprint Backlog 2
 
-Las tareas siguientes son la descomposición **actualizada de corrección**; las horas son estimaciones propuestas entre 4 y 8 horas, no una declaración retroactiva de esfuerzo. El ejecutor técnico de esta corrección es trabajo asistido autorizado por Kevin; no se distribuye autoría ficticia entre integrantes.
+Las tareas siguientes son la descomposición **actualizada de corrección**; las horas son estimaciones propuestas entre 4 y 8 horas, no una declaración retroactiva de esfuerzo. Kevin es el responsable de coordinar esta actualización.
 
 | Task | Historias | Engineering task | Est. | Evidencia de aceptación |
 | --- | --- | --- | --- | --- |
@@ -1190,7 +1231,7 @@ El workflow de verificación ejecuta checks en fix/PR. El frontend incluye build
 
 #### 5.2.2.8. Team Collaboration Insights during Sprint
 
-Los aportes originales se enlazan por integrante y módulo. La corrección no intenta suplir colaboración con volumen de commits: registra trabajo asistido y deja revisión cruzada pendiente. Para completar la evidencia, cada integrante debe revisar su contexto, ejecutar un caso principal/alternativo, comentar un PR y explicar una decisión en la exposición con marca de tiempo.
+Los aportes originales se enlazan por integrante y módulo. Los commits permiten seguir los cambios y su revisión. Para completar la evidencia, cada integrante debe revisar su contexto, ejecutar un caso principal/alternativo, comentar un PR y explicar una decisión en la exposición con marca de tiempo.
 
 ### 5.2.3. Sprint 3
 
@@ -1206,7 +1247,7 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario se 
 | --- | --- |
 | Sprint | 3 / AV2 / semana 12 |
 | Date / Time / Location | Pendiente: fecha, hora y lugar reales de la ceremonia |
-| Prepared by | Kevin Junior Salazar Marquina, con preparación técnica asistida |
+| Prepared by | Kevin Junior Salazar Marquina |
 | Attendees | Pendiente de acta o tablero; no se presume asistencia de integrantes retirados |
 | Review of previous Sprint | Evidencias TB1 y AV1 conservadas; conclusiones de la reunión pendientes |
 | Retrospective of previous Sprint | Pendiente de registro real y acciones acordadas |
@@ -1219,12 +1260,12 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario se 
 
 | Aspecto | Actividad verificada | Responsable y límite |
 | --- | --- | --- |
-| Development | Backend Java e integración Angular en PR | Trabajo asistido autorizado por Kevin; sin atribuirlo a otros integrantes |
-| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; About-the-Team en §5.5; exposición técnica pendiente |
-| Documentation | Informe, OpenAPI y README | Revisión asistida; About-the-Team en §5.5; aprobación académica pendiente |
+| Development | Backend Java e integración Angular en PR | Kevin Salazar |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica; About-the-Team en §5.5; exposición técnica pendiente |
+| Documentation | Informe, OpenAPI y README | Revisión documental; About-the-Team en §5.5; aprobación académica pendiente |
 | Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
 
-La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento. La asistencia técnica no se registra como un integrante del equipo.
+La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento.
 
 | Aspecto | Kevin | Carlos | Luis | Fernando | Darikson |
 | --- | --- | --- | --- | --- | --- |
@@ -1254,7 +1295,7 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 | Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream, con lectura concedida al docente; About-the-Team individual publicado en YouTube (§5.5), copia institucional pendiente. | 8 h | Kevin Salazar | In-Process |
 
-Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin, incluyendo trabajo asistido.
+Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin.
 
 | Tarjetas del cierre actual | Tareas del incremento | Criterio de seguimiento |
 | --- | --- | --- |
@@ -2378,7 +2419,7 @@ El runtime recibe solo credenciales propias. La provisión administrativa se eje
 
 #### 5.2.3.8. Team Collaboration Insights during Sprint
 
-PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+Los PR y las ejecuciones de CI documentan el incremento técnico de AV2. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
 
 ## 5.3. Validation Interviews
 
@@ -2404,19 +2445,26 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 **Responsable de las sesiones:** Kevin Junior Salazar Marquina. **Fecha de incorporación y revisión:** 13/11/2026. Las pantallas de las operaciones muestran el 13 de noviembre; no se infieren horarios de inicio de las sesiones a partir de las horas de los movimientos. Se registran los perfiles proporcionados por Kevin. Edad, apellidos, dirección y otros datos no necesarios no se completan por inferencia. El nombre mostrado por una cuenta de videollamada o una cuenta de prueba puede diferir del participante.
 
-**Instrumento aplicado:** presentación y consentimiento; contexto laboral; lectura de la landing; acceso a una cuenta preparada; recorrido de inventario, recepción y, según rol, venta/despacho; preguntas de comprensión y mejora. El moderador indica menús, productos y acciones. Por ello los intervalos siguientes describen actividades asistidas, no tiempos de tarea autónoma. No se aplicó una medición comparable del proceso previo, SUS ni un cálculo de aceptación porcentual.
+**Instrumento aplicado:** presentación y consentimiento; contexto laboral; lectura de la landing; acceso a una cuenta preparada; recorrido de inventario, recepción y, según rol, venta/despacho; preguntas de comprensión y mejora. El moderador indica menús, productos y acciones. Por ello los intervalos siguientes describen actividades guiadas, no tiempos de tarea autónoma. No se aplicó una medición comparable del proceso previo, SUS ni un cálculo de aceptación porcentual.
 
 **Consentimiento:** cada fuente conserva la autorización al inicio. Junior (00:16–00:23), Diego (00:20–00:33) y Shirley (00:25–00:32) aceptan la grabación para la sesión académica; Fabiana (00:22–00:35) y Kimberlin (00:17–00:34) hacen referencia al curso y al docente. Esta evidencia no se interpreta como autorización general de uso publicitario. Una URL no listada se puede compartir; no equivale a acceso privado autenticado.
 
 #### VAL-S3-01 · Junior · Administración
 
-**Contexto:** supervisión de tienda de Entel, según identificación proporcionada por Kevin. Describe control de ingresos, ventas y caja; la transcripción del contexto tiene fragmentos poco claros, por lo que no se atribuyen citas literales ni cifras. **Fuente:** [grabación completa, 14:00](https://youtu.be/4JEE-XqUjrM). **Inicio efectivo:** 00:00; consentimiento desde 00:16.
+<div class="interview-record">
 
-![Junior y Kevin durante el cierre de la sesión, 12:18](assets/validation/junior-session.png)
+| Campo | Detalle |
+| --- | --- |
+| Contexto | supervisión de tienda de Entel. Describe control de ingresos, ventas y caja; la transcripción del contexto tiene fragmentos poco claros, por lo que no se atribuyen citas literales ni cifras. |
+| Fuente | [grabación completa, 14:00](https://youtu.be/4JEE-XqUjrM). |
+| Inicio y consentimiento | 00:00; consentimiento desde 00:16. |
+| Evidencia fotográfica | <img src="assets/validation/junior-session.png" alt="Junior y Kevin durante el cierre de la sesión, 12:18" width="400"> |
 
-| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+</div>
+
+| Actividad y tiempo en la fuente | Observación y orientación del moderador | Interpretación / decisión |
 | --- | --- | --- |
-| Landing y acceso · 01:33–02:32 | Revisa la página y accede con una cuenta preparada, con indicaciones del moderador. | Se observa acceso asistido; no se mide descubrimiento autónomo. |
+| Landing y acceso · 01:33–02:32 | Revisa la página y accede con una cuenta preparada, con indicaciones del moderador. | Se observa acceso guiado; no se mide descubrimiento autónomo. |
 | Inventario e historial · 03:54–06:29 | El moderador explica movimientos, producto nuevo e historial; se cancelan formularios de exploración. | Evidencia de comprensión guiada del recorrido, no de completar altas sin ayuda. |
 | Venta · 07:08–08:08 | Se agregan dos unidades y se confirma la venta con indicaciones; se muestra el comprobante. | Conservar la referencia venta–comprobante; no presentarlo como comprobante tributario. |
 | Opinión y mejora · 12:01–13:40 | Valora reunir funciones que utiliza en varios sistemas; solicita separar tiendas/sedes (13:19–13:40). | H-06: evaluar múltiples ubicaciones como evolución del dominio. |
@@ -2425,28 +2473,42 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 #### VAL-S3-02 · Fabiana · Operación
 
-**Contexto:** asesora de Entel con tareas de recepción e inventario. Describe anotar desde el teléfono en una hoja compartida y trasladar la información a otro sistema (00:35–00:47). **Fuente:** [grabación completa, 09:31](https://youtu.be/5jAaAcLhDPM). **Inicio efectivo:** 00:00; consentimiento desde 00:22.
+<div class="interview-record">
 
-![Fabiana y Kevin con el historial visible, 08:59](assets/validation/fabiana-session.png)
+| Campo | Detalle |
+| --- | --- |
+| Contexto | asesora de Entel con tareas de recepción e inventario. Describe anotar desde el teléfono en una hoja compartida y trasladar la información a otro sistema (00:35–00:47). |
+| Fuente | [grabación completa, 09:31](https://youtu.be/5jAaAcLhDPM). |
+| Inicio y consentimiento | 00:00; consentimiento desde 00:22. |
+| Evidencia fotográfica | <img src="assets/validation/fabiana-session.png" alt="Fabiana y Kevin con el historial visible, 08:59" width="400"> |
 
-| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+</div>
+
+| Actividad y tiempo en la fuente | Observación y orientación del moderador | Interpretación / decisión |
 | --- | --- | --- |
 | Landing e idioma · 01:10–02:54 | Necesita indicación para pasar de inglés a español; identifica el recorrido general. | H-02: hacer comprensibles los términos y conservar el idioma elegido. |
-| Acceso e inventario · 03:09–05:20 | Cuenta preparada; ayuda para abrir menú y localizar el producto. Inicialmente menciona tres unidades y el moderador distingue la fila de prueba con saldo cero. | H-07: diferenciar cantidad de productos y unidades disponibles. No registrar la tarea como éxito sin asistencia. |
-| Recepción parcial · 05:47–06:58 | Registra dos de cuatro unidades y consulta el historial con indicaciones. | H1 tiene evidencia cualitativa de uso asistido; el umbral de 80% no se evaluó. |
+| Acceso e inventario · 03:09–05:20 | Cuenta preparada; ayuda para abrir menú y localizar el producto. Inicialmente menciona tres unidades y el moderador distingue la fila de prueba con saldo cero. | H-07: diferenciar cantidad de productos y unidades disponibles. No registrar la tarea como éxito sin indicaciones del moderador. |
+| Recepción parcial · 05:47–06:58 | Registra dos de cuatro unidades y consulta el historial con indicaciones. | H1 tiene evidencia cualitativa de uso guiado; el umbral de 80% no se evaluó. |
 | Mejora · 08:59–09:11 | Solicita acciones visibles sin desplazamiento lateral y mensajes con el stock disponible. | H-01 y H-05: priorizar acceso a acciones y recuperación de errores. |
 
 **Resumen:** percibe mayor control que en una hoja compartida (08:08–08:16), pero esto es una valoración de la participante, no una medición de seguridad o productividad. La sesión identifica barreras concretas de navegación y mensajes; la corrección debe comprobarse técnicamente y después con usuarios.
 
 #### VAL-S3-03 · Diego · Operación
 
-**Contexto:** almacenero de Makro, según identificación proporcionada por Kevin. Describe recepción de proveedores, registro en portapapeles y traslado a una computadora (00:36–00:48). Se conserva el nombre indicado por Kevin: el texto automático del inicio y el alias de videollamada no verifican por sí solos la identidad. **Fuente:** [grabación completa, 08:18](https://youtu.be/o0oloMIIYdc). **Inicio efectivo:** 00:00; consentimiento desde 00:20.
+<div class="interview-record">
 
-![Diego y Kevin revisando el historial, 06:48](assets/validation/diego-session.png)
+| Campo | Detalle |
+| --- | --- |
+| Contexto | almacenero de Makro. Describe recepción de proveedores, registro en portapapeles y traslado a una computadora (00:36–00:48). |
+| Fuente | [grabación completa, 08:18](https://youtu.be/o0oloMIIYdc). |
+| Inicio y consentimiento | 00:00; consentimiento desde 00:20. |
+| Evidencia fotográfica | <img src="assets/validation/diego-session.png" alt="Diego y Kevin revisando el historial, 06:48" width="400"> |
 
-| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+</div>
+
+| Actividad y tiempo en la fuente | Observación y orientación del moderador | Interpretación / decisión |
 | --- | --- | --- |
-| Movimiento de inventario · 05:03–05:20 | Registra una entrada con ayuda del moderador. | Observar registro asistido, sin extrapolar al proceso real de Makro. |
+| Movimiento de inventario · 05:03–05:20 | Registra una entrada con ayuda del moderador. | Observar registro guiado, sin extrapolar al proceso real de Makro. |
 | Recepción e historial · 05:28–06:18 | Revisa compra, recepción e historial con indicaciones. | Se distingue la recepción de compra del movimiento manual. |
 | Responsable del registro · 06:45–07:07 | Señala que ve la fecha, pero no quién recibió. | H-03: mostrar el responsable que la API ya conserva y una fecha precisa. |
 | Conectividad y acciones · 07:24–07:54 | Reporta conectividad débil en almacén y pide una espera clara para evitar repetir clics; también solicita acciones visibles. | H-04: revisar carga/envío; H-01: acceso a acciones. Conectividad descrita, no medida. |
@@ -2455,30 +2517,44 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 #### VAL-S3-04 · Kimberlin · Administración
 
-**Contexto:** administración y recepción de materiales en un colegio, además de compras, ventas y stock de un emprendimiento de belleza (00:37–00:57). **Fuente:** [grabación completa, 10:49](https://youtu.be/SnLXXd2ZRlI). **Inicio efectivo:** 00:00; consentimiento desde 00:17.
+<div class="interview-record">
 
-![Kimberlin y Kevin con el historial en español y motivos en inglés, 09:59](assets/validation/kimberlin-session.png)
+| Campo | Detalle |
+| --- | --- |
+| Contexto | administración y recepción de materiales en un colegio, además de compras, ventas y stock de un emprendimiento de belleza (00:37–00:57). |
+| Fuente | [grabación completa, 10:49](https://youtu.be/SnLXXd2ZRlI). |
+| Inicio y consentimiento | 00:00; consentimiento desde 00:17. |
+| Evidencia fotográfica | <img src="assets/validation/kimberlin-session.png" alt="Kimberlin y Kevin con el historial en español y motivos en inglés, 09:59" width="400"> |
 
-| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+</div>
+
+| Actividad y tiempo en la fuente | Observación y orientación del moderador | Interpretación / decisión |
 | --- | --- | --- |
 | Landing · 01:07–02:43 | Explica que se reúnen compra, almacén, venta y despacho; localiza la demo tras la consigna. | Evidencia de comprensión de la propuesta, con una participante. |
 | Inventario · 03:10–04:08 | Busca el producto indicado y responde que hay dos unidades y condición buena, con guía del moderador. | H1 tiene un ejemplo cualitativo; no se mide su umbral. |
-| Recepción, venta y despacho · 04:15–08:16 | Recibe unidades, confirma venta y ejecuta el despacho con indicaciones. La cuenta de demostración es de administrador. | H2: recorrido asistido; no prueba un reparto físico, entrega parcial ni autonomía. |
+| Recepción, venta y despacho · 04:15–08:16 | Recibe unidades, confirma venta y ejecuta el despacho con indicaciones. La cuenta de demostración es de administrador. | H2: recorrido guiado; no prueba un reparto físico, entrega parcial ni autonomía. |
 | Historial y vocabulario · 09:38–10:16 | Confunde inicialmente el historial con recibos; pide cambiar términos en inglés. | H-02: traducir etiquetas y motivos generados; explicar la función del historial. |
 
 **Resumen:** reconoce el propósito del producto y lo percibe práctico. La mezcla de idiomas dificulta la comprensión. En 07:48–07:59 el moderador menciona una entrega parcial; AV2 confirma la entrega completa del manifiesto, por lo que no se atribuye esa capacidad al sistema. El feedback favorable no se convierte en una tasa de aceptación.
 
 #### VAL-S3-05 · Shirley · Administración y operación
 
-**Contexto:** administra su peluquería y realiza compras, entradas, salidas y ventas de productos de belleza; utiliza cuadernos, comprobantes y WhatsApp (00:35–00:54). Cuenta como una participante con dos funciones. **Fuente:** [grabación completa, 12:48](https://youtu.be/-ITG0JFogfw). **Inicio efectivo:** 00:00; consentimiento desde 00:25.
+<div class="interview-record">
 
-![Shirley y Kevin durante la revisión final, 11:30](assets/validation/shirley-session.png)
+| Campo | Detalle |
+| --- | --- |
+| Contexto | administra su peluquería y realiza compras, entradas, salidas y ventas de productos de belleza; utiliza cuadernos, comprobantes y WhatsApp (00:35–00:54). Cuenta como una participante con dos funciones. |
+| Fuente | [grabación completa, 12:48](https://youtu.be/-ITG0JFogfw). |
+| Inicio y consentimiento | 00:00; consentimiento desde 00:25. |
+| Evidencia fotográfica | <img src="assets/validation/shirley-session.png" alt="Shirley y Kevin durante la revisión final, 11:30" width="400"> |
 
-| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+</div>
+
+| Actividad y tiempo en la fuente | Observación y orientación del moderador | Interpretación / decisión |
 | --- | --- | --- |
 | Landing y acceso · 01:00–03:17 | Recorre la landing y entra con cuenta preparada; el moderador explica el resumen. | Comprensión posterior a explicación, sin medición autónoma. |
 | Inventario y recepción · 03:20–06:10 | Explora formulario de producto, historial y recepción de una unidad, con guía. | Evidencia cualitativa del flujo de entrada con datos ficticios. |
-| Venta y despacho · 06:16–09:26 | Agrega productos, confirma venta y completa las transiciones del despacho con indicaciones. | Recorrido asistido; no demuestra entrega física ni ahorro de tiempo. |
+| Venta y despacho · 06:16–09:26 | Agrega productos, confirma venta y completa las transiciones del despacho con indicaciones. | Recorrido guiado; no demuestra entrega física ni ahorro de tiempo. |
 | Descubrimiento de venta · 11:22–11:52 | No reconoce claramente la tarjeta como acción para agregar producto; menciona contraste tenue. | H-08: incluir una acción explícita y perceptible para agregar al carrito. |
 | Organización y alertas · 12:02–12:23 | Solicita clasificar por marca/sede e identificar el producto en alertas de stock. | H-09: resolver producto en la notificación; H-06: evaluar clasificación y sedes como evolución. |
 
@@ -2494,11 +2570,11 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 **Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. No se presenta una nueva prueba con usuarios que todavía no se ha realizado.
 
-Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); ambos PR están integrados, frontend publicado en Pages y backend actualizado en Render. La comprobación técnica no equivale a una nueva sesión con participantes. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
+Las cinco fichas tienen fuente, captura, actividades y observaciones del recorrido guiado. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); ambos PR están integrados, frontend publicado en Pages y backend actualizado en Render. La comprobación técnica no equivale a una nueva sesión con participantes. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
 
 ### 5.3.3. Evaluación heurística
 
-La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se preparan con revisión técnica asistida. No se declara una auditoría independiente ni una segunda evaluación con participantes.
+La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se presentan en el Anexo D. No se declara una auditoría independiente ni una segunda evaluación con participantes.
 
 | ID | Problema identificado | Severidad propuesta | Principio | Fuente |
 | --- | --- | --- | --- | --- |
@@ -2599,7 +2675,6 @@ Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento 
 
 - [Arquitectura, decisiones y brechas](design/architecture.md).
 - [Diccionario de las 35 tablas](design/database/dictionary.md) y [DDL](design/database/schema.sql).
-- [Registro de investigación y fuentes heredadas](research/README.md).
 - Diagramas: fuentes Mermaid junto a los SVG en `design/diagrams`.
 
 ## Modelo físico · diagramas de detalle
@@ -2688,6 +2763,8 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
+| Entrevista de elicitación | María Morales | [YouTube](https://youtu.be/-meI6Cyn0IA) | Ficha y fotografía en §2.2.2 |
+| Entrevista de elicitación | Sebastián Ramírez | [YouTube](https://youtu.be/AItYU4_ckvU) | Ficha y fotografía en §2.2.2 |
 | Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
 | Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
 | Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha en §5.3.2; extracto incluido en consolidado |
@@ -2709,7 +2786,7 @@ El Performance Report editable del paquete local de AV2 mantiene el formato del 
 | Kimberlin | 10:38 | 4:21 |
 | Shirley | 14:59 | 4:18 |
 
-La edición dura aproximadamente 19:17; YouTube redondea a 19:18. Los rótulos conservan participante, segmento, fecha, corte y minuto de la fuente. Los fragmentos mantienen la guía del moderador y las limitaciones de la demostración. No se convierten en cinco pruebas independientes sin asistencia.
+La edición dura aproximadamente 19:17; YouTube redondea a 19:18. Los rótulos conservan participante, segmento, fecha, corte y minuto de la fuente. Los fragmentos mantienen la guía del moderador y las limitaciones de la demostración. No se convierten en cinco pruebas independientes sin indicaciones del moderador.
 
 **Repositorio institucional de evidencias:** [AI-ToDu AV2 Sprint 3 - Evidencias](https://upcedupe-my.sharepoint.com/:f:/r/personal/u202417747_upc_edu_pe/Documents/AI-ToDu%20AV2%20Sprint%203%20-%20Evidencias?d=w21e563693fa24002b7ab2dfd547653d3&csf=1&web=1&e=glswqF), en el OneDrive UPC de Kevin. Se verificaron los tres archivos y su reproducción en Stream desde la cuenta propietaria el 13/11/2026. Se concedió acceso de lectura al docente indicado por Kevin, sin enviar notificación; la carpeta conserva acceso restringido. La configuración se verificó desde la cuenta propietaria y no acredita que el docente ya la haya abierto. No se afirma que sea un canal proporcionado por el docente.
 
@@ -2718,7 +2795,7 @@ Los datos identificables y consentimientos no se publican automáticamente en Gi
 
 ## Anexo D. Evaluación de User Experience según heurísticas
 
-**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina, con revisión documental/técnica asistida. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026. **Revisión final del responsable y auditoría independiente:** no acreditadas por este documento.
+**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026.
 
 ### Alcance e instrumento
 

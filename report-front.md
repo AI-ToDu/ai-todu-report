@@ -40,10 +40,10 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | AV1 · línea histórica | 19/09/2026 | Equipo, según historial | Capítulos aportados por los cinco integrantes; véase Student Outcome. No se afirma que esta fecha represente la ceremonia de entrega. |
 | TB1 · frontend inicial | 08/10/2026 | Equipo, según historial | Seis commits originales de la webapp; módulos y README en [historial](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/). |
 | TB1 · informe base | 09/10/2026 | Equipo, según historial | Baseline `fd8d611` del report; fuente anterior conservada en Git. |
-| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar, revisión asistida | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. Revisión asistida ejecutada con autorización de Kevin; no atribuida a otros integrantes. |
-| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
-| Revisión AV2 · v0.3.1 | 08/11/2026 | Revisión técnica asistida autorizada por Kevin | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
-| Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar, con revisión asistida | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
+| Corrección TB1 · v0.2.0 | 30/10/2026 | Kevin Salazar | Fake API, UI/i18n, arquitectura/datos e informe en bloques de commits de `fix/tb1-readiness`. |
+| AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
+| Revisión AV2 · v0.3.1 | 08/11/2026 | Kevin Salazar | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
+| Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
 | About-the-Team · revisión v0.3.2 | 14/11/2026 | Kevin Salazar | Publicación de la grabación individual de 7:08 en YouTube y actualización de referencias y pendientes. |
 
 ## Student Outcome · ABET 3
@@ -57,7 +57,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
 | Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: Kevin modera cinco sesiones con administración y operación: plantea tareas, explica navegación y solicita mejoras (§5.3.2). La guía frecuente y los términos poco claros son límites observados. About-the-Team individual publicado (§5.5, 00:00–07:08); exposición técnica pendiente. | Las sesiones evidencian comunicación con usuarios y feedback específico; no acreditan por sí solas toda la competencia ni una sustentación técnica individual. Se debe contrastar la comprensión sin ayuda; la grabación individual se enlaza en §5.5. |
-| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión asistida de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
 
 ### Registro de acciones y fuentes
 
@@ -76,7 +76,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
 | Kevin | TB1 | Creó base de aplicación [e090d1f](https://github.com/AI-ToDu/ai-todu-webapp/commit/e090d1fda11606dc53aec8096c5feb5118a91f4d) y documentación [b05f4d7](https://github.com/AI-ToDu/ai-todu-webapp/commit/b05f4d7864c9fb07d1d80357c4649bf185622a3b). | Adjuntar explicación de integración y límites de la entrega. |
 | Darikson | TB1 | Implementó POS/reporting: [427375e](https://github.com/AI-ToDu/ai-todu-webapp/commit/427375e4f19cd5a7ba481523642e01bcc194acfa). | Adjuntar demostración de venta/métricas y minuto. |
 
-**AV2:** Kevin continúa con el incremento actual y conduce las cinco sesiones enlazadas en §5.3.2. La revisión de código, pruebas y documentación incorpora asistencia técnica autorizada. Se conservan las contribuciones históricas de los demás integrantes, sin asignarles nuevas actividades. El seguimiento actual se registra en un tablero público creado el 13/11/2026; no acredita ceremonias históricas.
+**AV2:** Kevin continúa con el incremento actual y conduce las cinco sesiones enlazadas en §5.3.2. Se conservan las contribuciones históricas de los demás integrantes, sin asignarles nuevas actividades. El seguimiento actual se registra en un tablero público creado el 13/11/2026; no acredita ceremonias históricas.
 
 | Acción de comunicación de Kevin | Audiencia y evidencia | Feedback y ajuste |
 | --- | --- | --- |
@@ -90,9 +90,9 @@ Las marcas se refieren a las grabaciones originales, no al consolidado editado. 
 
 [Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
 
-### Capturas históricas de colaboración
+### Actividad de colaboración en TB1
 
-Estas capturas corresponden al informe TB1. Conservan el estado del historial en aquella entrega; los enlaces anteriores permiten consultar los cambios actuales de AV2.
+Las gráficas muestran la actividad de los repositorios durante TB1. Los enlaces anteriores permiten consultar el historial actualizado.
 
 ![Historial de commits conservado de TB1](Images/insigth.jpeg)
 

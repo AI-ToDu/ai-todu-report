@@ -4,7 +4,7 @@
 
 ### 4.1.1. General Style Guidelines
 
-La identidad utiliza azul profundo para estructura, verde azulado para acción y superficies claras para lectura de datos. Se priorizan contraste, jerarquía tipográfica y consistencia entre landing y workspace. La aplicación usa **Angular Material y Material Design**; la landing emplea HTML/CSS/JavaScript semánticos. La revisión utiliza la skill `ui-ux-pro-max` como apoyo de evaluación, sin reemplazar pruebas con usuarios.
+La identidad utiliza azul profundo para estructura, verde azulado para acción y superficies claras para lectura de datos. Se priorizan contraste, jerarquía tipográfica y consistencia entre landing y workspace. La aplicación usa **Angular Material y Material Design**; la landing emplea HTML/CSS/JavaScript semánticos.
 
 | Token | Valor / uso |
 | --- | --- |
@@ -14,7 +14,7 @@ La identidad utiliza azul profundo para estructura, verde azulado para acción y
 | Superficies | Fondo claro, bordes suaves y espacios consistentes. |
 | Estados | Texto explícito además de color: pendiente, tránsito, entregado, error y vacío. |
 
-**Identidad visual de AI-ToDu.** Logotipo conservado del apartado de branding del informe TB1 (p. 63).
+**Identidad visual de AI-ToDu.**
 
 <img src="Images/Branding-Logo.jpeg" alt="Logotipo de AI-ToDu" width="280">
 

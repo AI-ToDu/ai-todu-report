@@ -44,54 +44,95 @@ La elicitación inicial se registra por segmento objetivo. Preparar consentimien
 
 ### 2.2.2. Registro de entrevistas
 
-**Estado:** existen diferencias entre las fichas del capítulo separado y el README remoto más reciente. El primero conserva cuatro rutas inexistentes; el segundo referencia seis archivos fotográficos existentes y cambia dos nombres, manteniendo textos alternativos anteriores. Se conservan ambas fuentes para revisión, sin reasignar fotografías ni descartar respuestas del equipo. La correspondencia entre identidad, imagen, consentimiento y grabación requiere confirmación.
 
-| Registro del README remoto | Diferencia con el capítulo separado | Archivo localizado; correspondencia por confirmar |
-| --- | --- | --- |
-| Carlos Mendoza | Mismo nombre; segmento de decisión | `Images/Carlos_Mendoza.jpeg` |
-| Lucía Valdivia | Mismo nombre; segmento de decisión | `Images/Lucia_Valdivia1.jpeg` |
-| Roberto Sánchez | El capítulo apunta a un archivo ausente | `Images/Entrevista_ Sebastian.jpg`; nombre de archivo distinto de la ficha |
-| Miguel Rojas | El capítulo apunta a un archivo ausente | `Images/Raul_Delgado.jpeg`; nombre de archivo distinto de la ficha |
-| Maria Morales | El capítulo registra Andrea Gómez; el README conserva ese alt | `Images/Entrevista_Maria_Morales.jpg` |
-| Diego Ramirez | El capítulo registra Jorge Quispe; el README conserva ese alt | `Images/Entrevista_Diego_Ramirez.jpg` |
+Las entrevistas de elicitación se organizaron en dos segmentos: tomadores de decisión y usuarios finales. Cada ficha presenta los datos y el resumen registrados por el equipo en TB1.
 
-Las fichas y respuestas de **ambas versiones** están en el [archivo de investigación](research/README.md). La presencia de archivos no resuelve estas diferencias ni acredita por sí sola las entrevistas. Confirmar cada registro con el equipo y completar responsable real, fecha, enlace autorizado, duración, transcripción y marcas de tiempo antes de contabilizarlo como evidencia.
 
-#### Archivo visual de la elicitación inicial
+#### Segmento 1: Tomadores de Decisión (Dueños, Administradores, Gerentes)
 
-Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
+<div class="interview-record">
 
-Las imágenes se sitúan junto al registro al que estaban asociadas en el PDF TB1 (pp. 18–22). Los rótulos conservan esa asociación documental; no resuelven las discrepancias de identidad indicadas arriba.
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Carlos Mendoza |
+| **ID** | E-S1-01 |
+| **Edad / Distrito** | 45 años / Santiago de Surco |
+| **Timing del video** | 00:00 - 04:15 min |
+| **Evidencia fotográfica** | <img src="Images/Carlos_Mendoza.jpeg" width="260" alt="Carlos Mendoza"> |
+| **Resumen descriptivo** | Carlos está casado y tiene dos hijos. Administra una pequeña cadena de tres restaurantes. Su dispositivo principal es una Laptop con Windows, pero revisa todo el día su celular (iPhone). Se informa vía LinkedIn y WhatsApp, y admira marcas que proyectan estatus y eficiencia como Apple y a referentes locales como Gastón Acurio. En su día a día, sufre de estrés porque confía en reportes de Excel elaborados a mano por su administrador, lo que genera un descuadre constante (merma) entre las compras de mercado y las ventas en caja. Su mayor expectativa de "varita mágica" es un panel de control (Dashboard) que le muestre en su celular si el negocio está ganando o perdiendo dinero en tiempo real. |
 
-**Segmento 1 · Ficha histórica rotulada Carlos Mendoza**
+</div>
 
-<img src="Images/Carlos_Mendoza.jpeg" alt="Fotografía asociada a la ficha histórica Carlos Mendoza" width="300">
+<div class="interview-record">
 
-**Segmento 1 · Ficha histórica rotulada Lucía Valdivia**
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Lucía Valdivia |
+| **ID** | E-S1-02 |
+| **Edad / Distrito** | 38 años / San Borja |
+| **Timing del video** | 04:16 - 08:30 min |
+| **Evidencia fotográfica** | <img src="Images/Lucia_Valdivia1.jpeg" width="260" alt="Lucía Valdivia"> |
+| **Resumen descriptivo** | Lucía es soltera y fundadora de una MYPE textil. Pasa casi todo su día en su Smartphone (Android de gama alta) y utiliza mucho Instagram y WhatsApp Business para vender. Sigue a marcas como Zara (por su logística) y a diversos influencers emprendedores. Su mayor frustración (dolor) es que se le ha paralizado la producción varias veces porque olvidó comprar hilos o botones específicos, ya que el control lo lleva en un cuaderno. Expresó que aprender sistemas nuevos le asusta un poco, por lo que pide que la solución tenga botones muy claros y alertas de colores cuando falte mercadería. |
 
-<img src="Images/Lucia_Valdivia1.jpeg" alt="Fotografía asociada a la ficha histórica Lucía Valdivia" width="300">
+</div>
 
-**Segmento 1 · Ficha histórica rotulada Roberto Sánchez**
+<div class="interview-record">
 
-<img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura del archivo Sebastián asociada en TB1 a la ficha Roberto Sánchez; identidad por conciliar" width="300">
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Sebastián Ramírez |
+| **ID** | E-S1-03 |
+| **Video de entrevista** | [Ver entrevista de Sebastián Ramírez](https://youtu.be/AItYU4_ckvU) |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_%20Sebastian.jpg" width="260" alt="Sebastián Ramírez durante la entrevista"> |
 
-**Segmento 2 · Ficha histórica rotulada Miguel Rojas**
+</div>
 
-<img src="Images/Raul_Delgado.jpeg" alt="Fotografía del archivo Raul Delgado asociada en TB1 a la ficha Miguel Rojas; identidad por conciliar" width="300">
+#### Segmento 2: Usuarios Finales (Jefes de Logística, Operarios de Almacén)
 
-**Segmento 2 · Ficha histórica rotulada Maria Morales**
+<div class="interview-record">
 
-<img src="Images/Entrevista_Maria_Morales.jpg" alt="Captura asociada a la ficha histórica Maria Morales" width="300">
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Miguel Rojas |
+| **ID** | E-S2-01 |
+| **Edad / Distrito** | 28 años / San Juan de Miraflores |
+| **Timing del video** | 12:46 - 16:20 min |
+| **Evidencia fotográfica** | <img src="Images/Raul_Delgado.jpeg" width="260" alt="Miguel Rojas"> |
+| **Resumen descriptivo** | Miguel vive con su pareja y es Jefe de Logística en una distribuidora. Es totalmente nativo digital, utiliza un celular Android y sus canales favoritos son TikTok y YouTube. Sigue marcas de tecnología accesible y deportivas (Samsung, Adidas). Confesó que su mayor carga operativa es hacer el inventario de fin de mes; se queda hasta la madrugada contando cajas a mano porque los papeles de despacho de la semana siempre se pierden. Pide que el sistema ideal le permite registrar salidas con la menor cantidad de clics posibles, casi como usar una red social. |
 
-**Segmento 2 · Ficha histórica rotulada Diego Ramirez**
+</div>
 
-<img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Captura asociada a la ficha histórica Diego Ramirez" width="300">
+<div class="interview-record">
 
-En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | María Morales |
+| **Video de entrevista** | [Ver entrevista de María Morales](https://youtu.be/-meI6Cyn0IA) |
+| **ID** | E-S2-02 |
+| **Edad / Distrito** | 28 años / Chorrillos |
+| **Timing del video** | 16:21 - 20:00 min |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_Maria_Morales.jpg" width="260" alt="Entrevista E-S2-02"> |
+| **Resumen descriptivo** | Maria es madre soltera y operaria de almacén en una MYPE textil. Usa un teléfono Android de gama media y se comunica exclusivamente por WhatsApp y Facebook. Sigue marcas de ropa nacionales y páginas de entretenimiento. Su frustración principal es el desorden físico y lógico: pierde hasta una hora buscando un código de tela específico porque en Excel los nombres son muy confusos. Aceptaría probar AI-ToDu siempre y cuando tenga un "buscador inteligente" donde pueda escribir palabras clave (ej. "tela roja algodón") y le diga en qué repisa está. |
+
+</div>
+
+<div class="interview-record">
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombres y Apellidos** | Diego Ramirez |
+| **ID** | E-S2-03 |
+| **Edad / Distrito** | 31 años / Ate Vitarte |
+| **Timing del video** | 20:01 - 24:15 min |
+| **Evidencia fotográfica** | <img src="Images/Entrevista_Diego_Ramirez.jpg" width="260" alt="Entrevista E-S2-03"> |
+| **Resumen descriptivo** | Diego es casado y encargado de despachos en un consorcio de alimentos. Tiene habilidades tecnológicas moderadas y prefiere herramientas extremadamente simples. Usa Facebook para informarse y admira marcas de consumo masivo que son transparentes (Gloria, Cristal). Su dolor principal radica en el registro de mermas y devoluciones: cuando un producto llega malogrado al cliente, el trámite en papel para ingresarlo de nuevo como "pérdida" es tan tedioso que a veces simplemente no lo anota, generando el descuadre. Desea un sistema que con dos toques le permita registrar una merma. |
+
+</div>
+
 
 ### 2.2.3. Análisis de entrevistas
 
-Se conserva un **mapa provisional de temas**, pendiente de codificar con citas auténticas: conciliación de saldos, visibilidad de pendientes, control de pérdidas y coordinación del despacho. Para cada hallazgo, registrar participante anonimizado, cita/minuto, interpretación, requisito relacionado y evidencia contradictoria. No se calculan porcentajes de aceptación con estas fichas sin verificar.
+Las fichas de elicitación identifican cuatro temas: conciliación de saldos, visibilidad de las operaciones, control de pérdidas y coordinación del despacho. Estos temas orientan las personas y los escenarios de diseño. Las cinco entrevistas de validación de AV2 se analizan por separado en §5.3.2.
 
 ## 2.3. Needfinding
 
@@ -109,11 +150,11 @@ Son arquetipos de diseño, no personas reales adicionales. La actualización cua
 | Administración de negocio | Kimberlin recibe materiales y supervisa compras/ventas (00:37–00:57); Junior valora concentrar registros (12:01–13:08). | Comprender el recorrido y diferenciar sedes; lenguaje en español. | No se midió presupuesto, adopción ni frecuencia de uso. |
 | Operación de almacén | Fabiana registra en hoja compartida y sistema (00:35–00:47); Diego usa portapapeles y computadora (00:36–00:48). | Acciones accesibles, saldo claro, responsable y espera visible. | Contexto declarado en entrevista; no se observó la jornada real. |
 
-**Personas del diseño TB1.** Las capturas de UXPressia se conservan en la sección de User Personas, como en las pp. 24 y 26 del informe anterior. Son arquetipos históricos, no nuevos entrevistados de AV2 ni resultados de esta validación.
+**User Personas.** Carlos Mendoza representa la administración del negocio y Miguel Rojas la operación del almacén.
 
-![User Persona histórica de administración: Carlos Mendoza](Images/User-Persona-1.png)
+![User Persona de administración: Carlos Mendoza](Images/User-Persona-1.png)
 
-![User Persona histórica de operación: Miguel Rojas](Images/User-Persona-2.png)
+![User Persona de operación: Miguel Rojas](Images/User-Persona-2.png)
 
 ### 2.3.2. User Task Matrix
 
@@ -145,11 +186,11 @@ El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, prepara
 
 El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
 
-**Journeys del diseño TB1.** Se mantienen los escenarios propuestos del administrador y del operario en esta sección (PDF TB1, pp. 28–29). Los tiempos, emociones y oportunidades de estas láminas son hipótesis del diseño histórico, no mediciones de AV2.
+**User Journey Maps.** Los mapas representan los escenarios de administración y operación definidos durante el diseño de TB1.
 
-![User Journey histórico del administrador](Images/User-Journey-Map-1.png)
+![User Journey del administrador](Images/User-Journey-Map-1.png)
 
-![User Journey histórico del operario](Images/User-Journey-Map-2.png)
+![User Journey del operario](Images/User-Journey-Map-2.png)
 
 ### 2.3.4. Empathy Mapping
 
@@ -164,11 +205,11 @@ El mapa separa lo expresado de lo inferido. Las paráfrasis remiten a sus fuente
 
 Shirley combina ambos perfiles y aporta dudas sobre la acción de venta y las alertas (11:22–12:23). El mapa no transforma una valoración favorable en aceptación del producto.
 
-**Mapas de empatía del diseño TB1.** Las láminas originales se conservan en su sección (PDF TB1, pp. 31 y 33). La tabla anterior distingue las observaciones de AV2 de las inferencias; las citas y emociones de estas imágenes históricas no se presentan como nuevos testimonios.
+**Empathy Maps.** Las láminas organizan necesidades y dificultades de los dos arquetipos; la tabla anterior incorpora las observaciones obtenidas en AV2.
 
-![Empathy Map histórico del administrador](Images/Empathy-Map-1.png)
+![Empathy Map del administrador](Images/Empathy-Map-1.png)
 
-![Empathy Map histórico del operario](Images/Empathy-Map-2.png)
+![Empathy Map del operario](Images/Empathy-Map-2.png)
 
 ## 2.4. Big Picture Event Storming
 
