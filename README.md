@@ -121,6 +121,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [2.2. Entrevistas](#22-entrevistas)
     - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
     - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+      - [Archivo visual de la elicitación inicial](#archivo-visual-de-la-elicitación-inicial)
     - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
   - [2.3. Needfinding](#23-needfinding)
     - [2.3.1. User Personas](#231-user-personas)
@@ -202,6 +203,13 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [5.3. Validation Interviews](#53-validation-interviews)
     - [5.3.1. Diseño de entrevistas](#531-diseño-de-entrevistas)
     - [5.3.2. Registro de entrevistas](#532-registro-de-entrevistas)
+      - [Protocolo y límites de observación](#protocolo-y-límites-de-observación)
+      - [VAL-S3-01 · Junior · Administración](#val-s3-01--junior--administración)
+      - [VAL-S3-02 · Fabiana · Operación](#val-s3-02--fabiana--operación)
+      - [VAL-S3-03 · Diego · Operación](#val-s3-03--diego--operación)
+      - [VAL-S3-04 · Kimberlin · Administración](#val-s3-04--kimberlin--administración)
+      - [VAL-S3-05 · Shirley · Administración y operación](#val-s3-05--shirley--administración-y-operación)
+      - [Síntesis de hallazgos y contraste de hipótesis](#síntesis-de-hallazgos-y-contraste-de-hipótesis)
     - [5.3.3. Evaluación heurística](#533-evaluación-heurística)
   - [5.4. Video About-the-Product](#54-video-about-the-product)
   - [5.5. Video About-the-Team](#55-video-about-the-team)
@@ -221,6 +229,17 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [Anexo A. Student Outcome](#anexo-a-student-outcome)
   - [Anexo B. Participación individual](#anexo-b-participación-individual)
   - [Anexo C. Testimonios y videos](#anexo-c-testimonios-y-videos)
+  - [Anexo D. Evaluación de User Experience según heurísticas](#anexo-d-evaluación-de-user-experience-según-heurísticas)
+    - [Alcance e instrumento](#alcance-e-instrumento)
+    - [H-01 · Acciones de fila fuera de la vista inicial](#h-01--acciones-de-fila-fuera-de-la-vista-inicial)
+    - [H-02 · Mezcla de idiomas en motivos del historial](#h-02--mezcla-de-idiomas-en-motivos-del-historial)
+    - [H-03 · Falta de responsable visible en el historial](#h-03--falta-de-responsable-visible-en-el-historial)
+    - [H-04 · Espera y repetición de acciones](#h-04--espera-y-repetición-de-acciones)
+    - [H-05 · Error de stock sin contexto cuantitativo](#h-05--error-de-stock-sin-contexto-cuantitativo)
+    - [H-07 · Productos frente a unidades disponibles](#h-07--productos-frente-a-unidades-disponibles)
+    - [H-08 · Descubrimiento de agregar un producto a la venta](#h-08--descubrimiento-de-agregar-un-producto-a-la-venta)
+    - [H-09 · Alerta sin producto identificado](#h-09--alerta-sin-producto-identificado)
+    - [Seguimiento de correcciones](#seguimiento-de-correcciones)
 
 ---
 
@@ -238,15 +257,17 @@ TB1 demuestra esta cadena con datos ficticios y una Fake REST API. El nombre del
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-Perfiles académicos declarados en el informe base, conservados como presentación del equipo. Las acciones verificadas por entrega se registran por separado en Student Outcome.
+Perfiles académicos y fotografías del informe base. Se conserva la presentación histórica del equipo; la preparación y el seguimiento actuales de AV2 están a cargo de **Kevin Junior Salazar Marquina**. Los aportes se atribuyen por entrega con sus fuentes en Student Outcome.
 
-| Integrante | Perfil académico declarado |
-| --- | --- |
-| Bernal Torres, Carlos Alberto | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). |
-| Chui Kcomt, Luis Carlos | Estudiante responsable con conocimientos en Python, C++, HTML. Aporta calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. |
-| Condezo Pacheco, Fernando André | Estudiante con conocimientos en C++ y Python. Aporta colaboración con el equipo y buen ambiente. |
-| Salazar Marquina, Kevin Junior | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
-| Salazar Quiche, Darikson Bill | [Pendiente de redacción] |
+| Fotografía original | Integrante y código | Perfil académico declarado |
+| --- | --- | --- |
+| <img src="Images/Foto-Carlitos.jpg" alt="Carlos Alberto Bernal Torres" width="84"> | Bernal Torres, Carlos Alberto · U202420071 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en la implementación de arquitecturas orientadas a dominio (DDD). |
+| <img src="Images/Foto-Carlos.jpg" alt="Luis Carlos Chui Kcomt" width="84"> | Chui Kcomt, Luis Carlos · U20241i327 | Estudiante responsable con conocimientos en Python, C++, HTML. Aporta calidad y buen rendimiento en trabajos en equipo así como buen ambiente y compromiso. |
+| Fotografía original no disponible | Condezo Pacheco, Fernando André · U202411324 | Estudiante con conocimientos en C++ y Python. Aporta colaboración con el equipo y buen ambiente. |
+| <img src="Images/Foto-Kevin.jpg" alt="Kevin Junior Salazar Marquina" width="84"> | Salazar Marquina, Kevin Junior · U202417747 | Estudiante con sólidos conocimientos en el desarrollo frontend y backend. Aporta al equipo habilidades en el uso de frameworks como Angular y Spring Boot, enfocado en asegurar la escalabilidad del sistema B2B. |
+| <img src="Images/Foto-Darikson.jpg" alt="Darikson Bill Salazar Quiche" width="84"> | Salazar Quiche, Darikson Bill · U202422620 | Estudiante proactivo, enfocado en el desarrollo de interfaces amigables (UI/UX) y en el análisis de las necesidades operativas de los negocios MYPE. |
+
+Las cuatro imágenes y los perfiles se recuperan del informe TB1. La referencia histórica a `Foto-Nando.jpg` no tiene un archivo correspondiente en el historial revisado; no se sustituye por una fotografía de otra persona.
 
 ## 1.2. Solution Profile
 
@@ -351,6 +372,21 @@ La elicitación inicial se registra por segmento objetivo. Preparar consentimien
 | Diego Ramirez | El capítulo registra Jorge Quispe; el README conserva ese alt | `Images/Entrevista_Diego_Ramirez.jpg` |
 
 Las fichas y respuestas de **ambas versiones** están en el [archivo de investigación](research/README.md). La presencia de archivos no resuelve estas diferencias ni acredita por sí sola las entrevistas. Confirmar cada registro con el equipo y completar responsable real, fecha, enlace autorizado, duración, transcripción y marcas de tiempo antes de contabilizarlo como evidencia.
+
+#### Archivo visual de la elicitación inicial
+
+Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
+
+| Archivo conservado | Evidencia visual original |
+| --- | --- |
+| `Carlos_Mendoza.jpeg` | <img src="Images/Carlos_Mendoza.jpeg" alt="Registro visual histórico: archivo Carlos_Mendoza" width="260"> |
+| `Lucia_Valdivia1.jpeg` | <img src="Images/Lucia_Valdivia1.jpeg" alt="Registro visual histórico: archivo Lucia_Valdivia1" width="260"> |
+| `Entrevista_ Sebastian.jpg` | <img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura histórica con el nombre Sebastián en pantalla; ficha por conciliar" width="260"> |
+| `Raul_Delgado.jpeg` | <img src="Images/Raul_Delgado.jpeg" alt="Registro visual histórico: archivo Raul_Delgado; ficha por conciliar" width="260"> |
+| `Entrevista_Maria_Morales.jpg` | <img src="Images/Entrevista_Maria_Morales.jpg" alt="Registro visual histórico: archivo Entrevista_Maria_Morales; ficha por conciliar" width="260"> |
+| `Entrevista_Diego_Ramirez.jpg` | <img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Registro visual histórico: archivo Entrevista_Diego_Ramirez; ficha por conciliar" width="260"> |
+
+En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -2200,32 +2236,130 @@ El plan de validación del Sprint 3 contempla **cinco entrevistas en total**, co
 
 ### 5.3.2. Registro de entrevistas
 
-Se recibieron tres grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La publicación permite localizar cada fuente; la síntesis de tareas, observaciones y hallazgos se completará después de revisar el contenido.
+Se recibieron cinco grabaciones originales y se publicaron como **no listadas** en el canal de Kevin Salazar Marquina el **13/11/2026**. Los perfiles de la tabla corresponden a la identificación proporcionada por Kevin. La revisión documental combina las grabaciones, sus capturas y transcripciones automáticas en español. Se usan paráfrasis con marcas de tiempo; los errores del reconocimiento automático no se convierten en datos personales verificados.
 
 | ID | Participante | Perfil indicado | Inicio del archivo | Duración del reproductor | Fuente |
 | --- | --- | --- | --- | --- | --- |
 | VAL-S3-01 | Junior | Administrador; supervisor de Entel | 00:00 | 14:00 | [Entrevista de Junior](https://youtu.be/4JEE-XqUjrM) |
 | VAL-S3-02 | Fabiana | Operaria; asesora de Entel | 00:00 | 09:31 | [Entrevista de Fabiana](https://youtu.be/5jAaAcLhDPM) |
 | VAL-S3-03 | Diego | Operario; almacenero de Makro | 00:00 | 08:18 | [Entrevista de Diego](https://youtu.be/o0oloMIIYdc) |
+| VAL-S3-04 | Kimberlin | Administradora; colegio y productos de belleza | 00:00 | 10:49 | [Entrevista de Kimberlin](https://youtu.be/SnLXXd2ZRlI) |
+| VAL-S3-05 | Shirley | Administradora y operaria; peluquería y productos de belleza | 00:00 | 12:48 | [Entrevista de Shirley](https://youtu.be/-ITG0JFogfw) |
 
-**Estado de incorporación: 3 de 5 entrevistas.** Se recibieron y publicaron una grabación del perfil administrador y dos del perfil operario. Quedan dos entrevistas por incorporar. Se registrará la distribución final entre ambos segmentos junto con sus resultados.
+**Estado de incorporación: 5 de 5 grabaciones recibidas y publicadas.** Dos participantes fueron identificados con el perfil administrador, dos con el perfil operario y Shirley con funciones de administración y operación. Shirley cuenta como una participante. La recepción del material está completa; las fichas y la evaluación de las sesiones se registran por separado.
 
-**Ficha y evaluación por completar:** fecha de la sesión, datos del formato académico autorizados, alcance del consentimiento, captura representativa, inicio efectivo de la entrevista, tareas realizadas, resultados, asistencia y comentarios con sus minutos. También quedan pendientes las fuentes en Microsoft Stream y la edición consolidada del Anexo C. Los enlaces anteriores corresponden a las grabaciones originales.
+#### Protocolo y límites de observación
 
-Los registros heredados de Carlos Mendoza y Miguel Rojas no se cuentan sin fuente. Un registro no se cuenta automáticamente como elicitación y validación; publicar una grabación no acredita por sí solo el cumplimiento de sus tareas o hipótesis.
+**Responsable de las sesiones:** Kevin Junior Salazar Marquina. **Fecha de incorporación y revisión:** 13/11/2026. Las pantallas de las operaciones muestran el 13 de noviembre; no se infieren horarios de inicio de las sesiones a partir de las horas de los movimientos. Se registran los perfiles proporcionados por Kevin. Edad, apellidos, dirección y otros datos no necesarios no se completan por inferencia. El nombre mostrado por una cuenta de videollamada o una cuenta de prueba puede diferir del participante.
+
+**Instrumento aplicado:** presentación y consentimiento; contexto laboral; lectura de la landing; acceso a una cuenta preparada; recorrido de inventario, recepción y, según rol, venta/despacho; preguntas de comprensión y mejora. El moderador indica menús, productos y acciones. Por ello los intervalos siguientes describen actividades asistidas, no tiempos de tarea autónoma. No se aplicó una medición comparable del proceso previo, SUS ni un cálculo de aceptación porcentual.
+
+**Consentimiento:** cada fuente conserva la autorización al inicio. Junior (00:16–00:23), Diego (00:20–00:33) y Shirley (00:25–00:32) aceptan la grabación para la sesión académica; Fabiana (00:22–00:35) y Kimberlin (00:17–00:34) hacen referencia al curso y al docente. Esta evidencia no se interpreta como autorización general de uso publicitario. Una URL no listada se puede compartir; no equivale a acceso privado autenticado.
+
+#### VAL-S3-01 · Junior · Administración
+
+**Contexto:** supervisión de tienda de Entel, según identificación proporcionada por Kevin. Describe control de ingresos, ventas y caja; la transcripción del contexto tiene fragmentos poco claros, por lo que no se atribuyen citas literales ni cifras. **Fuente:** [grabación completa, 14:00](https://youtu.be/4JEE-XqUjrM). **Inicio efectivo:** 00:00; consentimiento desde 00:16.
+
+![Junior y Kevin durante el cierre de la sesión, 12:18](assets/validation/junior-session.png)
+
+| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+| --- | --- | --- |
+| Landing y acceso · 01:33–02:32 | Revisa la página y accede con una cuenta preparada, con indicaciones del moderador. | Se observa acceso asistido; no se mide descubrimiento autónomo. |
+| Inventario e historial · 03:54–06:29 | El moderador explica movimientos, producto nuevo e historial; se cancelan formularios de exploración. | Evidencia de comprensión guiada del recorrido, no de completar altas sin ayuda. |
+| Venta · 07:08–08:08 | Se agregan dos unidades y se confirma la venta con indicaciones; se muestra el comprobante. | Conservar la referencia venta–comprobante; no presentarlo como comprobante tributario. |
+| Opinión y mejora · 12:01–13:40 | Valora reunir funciones que utiliza en varios sistemas; solicita separar tiendas/sedes (13:19–13:40). | H-06: evaluar múltiples ubicaciones como evolución del dominio. |
+
+**Resumen:** la integración del flujo resulta pertinente para su función de supervisión. La necesidad de separar tiendas no está cubierta por el incremento AV2. En 08:19–09:13 el moderador describe un traspaso automático entre tiendas; esa explicación excede la implementación: el despacho enlaza una venta y no mueve saldo entre almacenes. La conclusión y el alcance del producto mantienen esa distinción. No hay segunda sesión de comprobación.
+
+#### VAL-S3-02 · Fabiana · Operación
+
+**Contexto:** asesora de Entel con tareas de recepción e inventario. Describe anotar desde el teléfono en una hoja compartida y trasladar la información a otro sistema (00:35–00:47). **Fuente:** [grabación completa, 09:31](https://youtu.be/5jAaAcLhDPM). **Inicio efectivo:** 00:00; consentimiento desde 00:22.
+
+![Fabiana y Kevin con el historial visible, 08:59](assets/validation/fabiana-session.png)
+
+| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+| --- | --- | --- |
+| Landing e idioma · 01:10–02:54 | Necesita indicación para pasar de inglés a español; identifica el recorrido general. | H-02: hacer comprensibles los términos y conservar el idioma elegido. |
+| Acceso e inventario · 03:09–05:20 | Cuenta preparada; ayuda para abrir menú y localizar el producto. Inicialmente menciona tres unidades y el moderador distingue la fila de prueba con saldo cero. | H-07: diferenciar cantidad de productos y unidades disponibles. No registrar la tarea como éxito sin asistencia. |
+| Recepción parcial · 05:47–06:58 | Registra dos de cuatro unidades y consulta el historial con indicaciones. | H1 tiene evidencia cualitativa de uso asistido; el umbral de 80% no se evaluó. |
+| Mejora · 08:59–09:11 | Solicita acciones visibles sin desplazamiento lateral y mensajes con el stock disponible. | H-01 y H-05: priorizar acceso a acciones y recuperación de errores. |
+
+**Resumen:** percibe mayor control que en una hoja compartida (08:08–08:16), pero esto es una valoración de la participante, no una medición de seguridad o productividad. La sesión identifica barreras concretas de navegación y mensajes; la corrección debe comprobarse técnicamente y después con usuarios.
+
+#### VAL-S3-03 · Diego · Operación
+
+**Contexto:** almacenero de Makro, según identificación proporcionada por Kevin. Describe recepción de proveedores, registro en portapapeles y traslado a una computadora (00:36–00:48). Se conserva el nombre indicado por Kevin: el texto automático del inicio y el alias de videollamada no verifican por sí solos la identidad. **Fuente:** [grabación completa, 08:18](https://youtu.be/o0oloMIIYdc). **Inicio efectivo:** 00:00; consentimiento desde 00:20.
+
+![Diego y Kevin revisando el historial, 06:48](assets/validation/diego-session.png)
+
+| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+| --- | --- | --- |
+| Movimiento de inventario · 05:03–05:20 | Registra una entrada con ayuda del moderador. | Observar registro asistido, sin extrapolar al proceso real de Makro. |
+| Recepción e historial · 05:28–06:18 | Revisa compra, recepción e historial con indicaciones. | Se distingue la recepción de compra del movimiento manual. |
+| Responsable del registro · 06:45–07:07 | Señala que ve la fecha, pero no quién recibió. | H-03: mostrar el responsable que la API ya conserva y una fecha precisa. |
+| Conectividad y acciones · 07:24–07:54 | Reporta conectividad débil en almacén y pide una espera clara para evitar repetir clics; también solicita acciones visibles. | H-04: revisar carga/envío; H-01: acceso a acciones. Conectividad descrita, no medida. |
+
+**Resumen:** para operar y conciliar por turnos necesita identificar quién ejecutó la acción y cuándo. El problema observado corresponde a la presentación del historial; la API de movimientos incluye `actorId`. No se requiere inventar un nuevo dato del dominio para corregir la vista. No hay una prueba posterior en su almacén.
+
+#### VAL-S3-04 · Kimberlin · Administración
+
+**Contexto:** administración y recepción de materiales en un colegio, además de compras, ventas y stock de un emprendimiento de belleza (00:37–00:57). **Fuente:** [grabación completa, 10:49](https://youtu.be/SnLXXd2ZRlI). **Inicio efectivo:** 00:00; consentimiento desde 00:17.
+
+![Kimberlin y Kevin con el historial en español y motivos en inglés, 09:59](assets/validation/kimberlin-session.png)
+
+| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+| --- | --- | --- |
+| Landing · 01:07–02:43 | Explica que se reúnen compra, almacén, venta y despacho; localiza la demo tras la consigna. | Evidencia de comprensión de la propuesta, con una participante. |
+| Inventario · 03:10–04:08 | Busca el producto indicado y responde que hay dos unidades y condición buena, con guía del moderador. | H1 tiene un ejemplo cualitativo; no se mide su umbral. |
+| Recepción, venta y despacho · 04:15–08:16 | Recibe unidades, confirma venta y ejecuta el despacho con indicaciones. La cuenta de demostración es de administrador. | H2: recorrido asistido; no prueba un reparto físico, entrega parcial ni autonomía. |
+| Historial y vocabulario · 09:38–10:16 | Confunde inicialmente el historial con recibos; pide cambiar términos en inglés. | H-02: traducir etiquetas y motivos generados; explicar la función del historial. |
+
+**Resumen:** reconoce el propósito del producto y lo percibe práctico. La mezcla de idiomas dificulta la comprensión. En 07:48–07:59 el moderador menciona una entrega parcial; AV2 confirma la entrega completa del manifiesto, por lo que no se atribuye esa capacidad al sistema. El feedback favorable no se convierte en una tasa de aceptación.
+
+#### VAL-S3-05 · Shirley · Administración y operación
+
+**Contexto:** administra su peluquería y realiza compras, entradas, salidas y ventas de productos de belleza; utiliza cuadernos, comprobantes y WhatsApp (00:35–00:54). Cuenta como una participante con dos funciones. **Fuente:** [grabación completa, 12:48](https://youtu.be/-ITG0JFogfw). **Inicio efectivo:** 00:00; consentimiento desde 00:25.
+
+![Shirley y Kevin durante la revisión final, 11:30](assets/validation/shirley-session.png)
+
+| Actividad y tiempo en la fuente | Observación y asistencia | Interpretación / decisión |
+| --- | --- | --- |
+| Landing y acceso · 01:00–03:17 | Recorre la landing y entra con cuenta preparada; el moderador explica el resumen. | Comprensión posterior a explicación, sin medición autónoma. |
+| Inventario y recepción · 03:20–06:10 | Explora formulario de producto, historial y recepción de una unidad, con guía. | Evidencia cualitativa del flujo de entrada con datos ficticios. |
+| Venta y despacho · 06:16–09:26 | Agrega productos, confirma venta y completa las transiciones del despacho con indicaciones. | Recorrido asistido; no demuestra entrega física ni ahorro de tiempo. |
+| Descubrimiento de venta · 11:22–11:52 | No reconoce claramente la tarjeta como acción para agregar producto; menciona contraste tenue. | H-08: incluir una acción explícita y perceptible para agregar al carrito. |
+| Organización y alertas · 12:02–12:23 | Solicita clasificar por marca/sede e identificar el producto en alertas de stock. | H-09: resolver producto en la notificación; H-06: evaluar clasificación y sedes como evolución. |
+
+**Resumen:** la sesión aporta necesidades de una persona que combina compra, venta y administración. Las marcas/sedes son una necesidad propuesta, no una función validada de AV2. El producto debe ayudar a descubrir acciones sin explicación del moderador y relacionar las alertas con artículos concretos.
+
+#### Síntesis de hallazgos y contraste de hipótesis
+
+| Hipótesis | Evidencia disponible | Resultado del contraste |
+| --- | --- | --- |
+| H1 · Comprender saldo e historial | Fabiana 05:47–06:58; Diego 05:28–07:07; Kimberlin 03:10–04:08 | Apoyo cualitativo parcial en un recorrido guiado. Persisten confusión de cantidades y ausencia visible del responsable. No se midió 80% sin ayuda. |
+| H2 · Relacionar venta y despacho | Junior 07:08–09:13; Kimberlin 05:29–08:16; Shirley 06:16–09:26 | Se explora el flujo con asistencia. La ausencia de doble descuento se verifica en pruebas técnicas; no equivale a éxito autónomo de participantes. Sedes/entregas parciales no están implementadas. |
+| H3 · Comprensión bilingüe | Fabiana 01:10–01:27; Kimberlin 09:59–10:16 | Hay evidencia contraria al criterio de mensajes clave totalmente traducidos: roles y motivos siguen en inglés. Requiere corrección y nueva comprobación. |
+
+**Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. No se presenta una nueva prueba con usuarios que todavía no se ha realizado.
+
+Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. La edición consolidada de 3–5 minutos por participante y las fuentes en Microsoft Stream se registran en el Anexo C cuando estén disponibles. Los registros heredados no se cuentan como nuevas validaciones.
 
 ### 5.3.3. Evaluación heurística
 
-| Principio | Criterio de revisión | Evidencia técnica | Pendiente |
-| --- | --- | --- | --- |
-| Visibilidad | Espera, error y resultado claros | Formularios bloquean doble envío y usan códigos | Comprensión y espera con usuarios |
-| Correspondencia | Referencias entre recepción, venta y entrega | Flujo transaccional verificado | Vocabulario con ambos segmentos |
-| Prevención | Cantidad, stock y estados válidos | Invariantes y rollback probados | Errores de uso no previstos |
-| Control | Anulación y devolución con restricciones | Restitución una vez y retorno acotado | Comprensión y recuperación |
-| Consistencia | Material, idioma y PEN | Traducciones y build | Evaluador externo |
-| Accesibilidad | Teclado, foco, etiquetas y contraste | Implementación semántica y revisión navegador | Auditoría completa y usuarios |
+La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se preparan con revisión técnica asistida. No se declara una auditoría independiente ni una segunda evaluación con participantes.
 
-La inspección técnica no sustituye una evaluación heurística independiente. Evaluador, fecha, severidad y hallazgos requieren registro real.
+| ID | Problema identificado | Severidad propuesta | Principio | Fuente |
+| --- | --- | --- | --- | --- |
+| H-01 | Acciones de fila dependientes del desplazamiento horizontal | 3 | Usability · flexibilidad y eficiencia | Fabiana 08:59–09:11; Diego 07:44–07:54 |
+| H-02 | Motivos generados en inglés en una vista en español | 2 | Usability · consistencia; Inclusive Design · comprensión | Kimberlin 09:59–10:16; captura del historial |
+| H-03 | Historial sin responsable visible ni segundos/zona horaria | 3 | Information Architecture · información comprensible y útil | Diego 06:45–07:07 y 07:44–07:54 |
+| H-04 | Riesgo de repetir acciones durante una espera poco clara | 3 | Usability · visibilidad del estado y prevención de errores | Diego 07:24–07:35; conectividad reportada |
+| H-05 | Rechazo de stock sin cantidad disponible para corregirlo | 2 | Usability · reconocer y recuperarse de errores | Fabiana 08:59–09:11 |
+| H-07 | Contador de productos que puede confundirse con unidades | 2 | Information Architecture · etiquetas claras | Fabiana 04:56–05:20 |
+| H-08 | Tarjeta de producto sin acción explícita para agregar a venta | 3 | Usability · reconocimiento; Inclusive Design · percepción | Shirley 11:22–11:52 |
+| H-09 | Alerta de stock sin identificar el artículo | 2 | Information Architecture · contexto y referencia | Shirley 12:02–12:23 |
+
+La necesidad H-06 de marcas/sedes es una solicitud de capacidad adicional, no un error heurístico de una función prometida. Se mantiene como trabajo futuro. El [Anexo D](#anexo-d-evaluación-de-user-experience-según-heurísticas) desarrolla los ocho problemas y sus criterios de comprobación.
 
 ## 5.4. Video About-the-Product
 
@@ -2393,11 +2527,80 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 
 | Evidencia | Segmento / participante | Fuente, consentimiento y minuto | Estado |
 | --- | --- | --- | --- |
-| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Grabación publicada; ficha y evaluación pendientes |
-| Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Grabación publicada; ficha y evaluación pendientes |
+| Entrevista de validación VAL-S3-01 | Junior; perfil administrador indicado por Kevin | [YouTube no listado](https://youtu.be/4JEE-XqUjrM), archivo 00:00–14:00 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-02 | Fabiana; perfil operaria indicado por Kevin | [YouTube no listado](https://youtu.be/5jAaAcLhDPM), archivo 00:00–09:31 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-03 | Diego; perfil operario indicado por Kevin | [YouTube no listado](https://youtu.be/o0oloMIIYdc), archivo 00:00–08:18 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-04 | Kimberlin; perfil administradora indicado por Kevin | [YouTube no listado](https://youtu.be/SnLXXd2ZRlI), archivo 00:00–10:49 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
+| Entrevista de validación VAL-S3-05 | Shirley; administración y operación de peluquería, según Kevin | [YouTube no listado](https://youtu.be/-ITG0JFogfw), archivo 00:00–12:48 | Fuente, captura y ficha con observaciones en §5.3.2; consolidado/Stream pendientes |
 | About-the-Product | Producto y ambos segmentos | [Clip promocional en YouTube](https://youtu.be/NXNWTw8_6GY), 00:10; Stream y versión de 1 a 3 minutos pendientes | Clip disponible; versión AV2 por completar |
 | About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
 
 Los datos identificables y consentimientos no se publican automáticamente en Git. Solo se adjunta material autorizado para la evaluación.
+
+
+## Anexo D. Evaluación de User Experience según heurísticas
+
+**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina, con revisión documental/técnica asistida. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026. **Revisión final del responsable y auditoría independiente:** no acreditadas por este documento.
+
+### Alcance e instrumento
+
+Se revisan comprensión de la landing, navegación, consulta de existencias, recepción, historial, venta, despacho y notificaciones. Se contrastan Usability, Inclusive Design e Information Architecture. Se excluyen facturación tributaria, pagos, transferencias entre sedes, entregas parciales, trabajo sin conexión y una auditoría integral de accesibilidad. Las tareas fueron guiadas, con cuentas preparadas y datos ficticios. La opinión favorable no elimina una dificultad observada.
+
+La severidad usa la escala del curso: **1**, superficial; **2**, menor; **3**, mayor y de prioridad alta; **4**, impide continuar y exige corrección previa al lanzamiento. Los valores son una priorización propuesta a partir de las sesiones; no se calcula frecuencia poblacional a partir de cinco participantes. La tabla resumen se encuentra en §5.3.3.
+
+### H-01 · Acciones de fila fuera de la vista inicial
+
+**Severidad:** 3. **Principio:** Usability, flexibilidad y eficiencia. **Problema:** una tabla ancha exige desplazarse lateralmente para descubrir o alcanzar la acción de recepción. Fabiana lo señala en 08:59–09:11 y Diego en 07:44–07:54. La captura ilustra el desplazamiento de la tabla; no prueba que la acción falte en todos los tamaños.
+
+![Tabla de abastecimiento de Fabiana con desplazamiento horizontal, 05:58](assets/validation/fabiana-receipt-actions.png)
+
+**Recomendación:** mantener la columna de acciones visible durante el desplazamiento y conservar nombre/producto y cantidades accesibles. **Comprobación requerida:** a 390 px y en escritorio, alcanzar «Recibir mercadería» sin desplazar primero hasta el borde derecho; abrir/cancelar el diálogo con teclado; evitar que la columna tape todas las columnas informativas. Una prueba técnica no sustituye la comprobación con participantes.
+
+### H-02 · Mezcla de idiomas en motivos del historial
+
+**Severidad:** 2. **Principio:** Usability, consistencia y estándares; Inclusive Design, comprensión. **Problema:** la pantalla está en español, pero se ven motivos automáticos como confirmación de venta y recepción en inglés. Kimberlin pide traducirlos en 09:59–10:16. [Captura de la sesión](assets/validation/kimberlin-session.png).
+
+**Recomendación:** traducir los motivos generados por el sistema y conservar intacto el texto libre escrito por la persona. No sustituir códigos ni datos persistidos para resolver una etiqueta de interfaz. **Comprobación requerida:** cambiar idioma, mostrar motivo traducido y referencia de compra; un motivo libre debe permanecer idéntico.
+
+### H-03 · Falta de responsable visible en el historial
+
+**Severidad:** 3. **Principio:** Information Architecture, información comprensible y útil. **Problema:** Diego busca quién recibió y en qué momento del turno (06:45–07:07; 07:44–07:54); la vista solo presenta fecha, producto, tipo, cantidad y motivo. [Captura del historial, 06:48](assets/validation/diego-session.png).
+
+**Recomendación:** mostrar el responsable que ya viene en `actorId`, con nombre cuando exista una fuente autorizada y referencia cuando no; incluir segundos y zona horaria al revisar movimientos. No adjudicar automáticamente registros históricos a Kevin ni consultar una lista de empleados sin permiso del rol. **Comprobación requerida:** administrador y operario, registros propios/ajenos y registros antiguos sin responsable; distinguir una referencia de usuario de un nombre verificado.
+
+### H-04 · Espera y repetición de acciones
+
+**Severidad:** 3. **Principio:** Usability, visibilidad y prevención de errores. **Problema reportado:** Diego describe mala conectividad y solicita saber si la acción sigue procesándose para no repetirla (07:24–07:35). La sesión no aporta una medición controlada de latencia ni demuestra duplicación causada por el servidor. [Contexto de la sesión](assets/validation/diego-session.png).
+
+**Recomendación:** indicar carga y envío, deshabilitar temporalmente el control que ejecuta la operación y conservar feedback de error. Mantener las invariantes y garantías transaccionales del backend. **Comprobación requerida:** red con espera, dos clics consecutivos y error: una solicitud mientras esté en curso; controles recuperables al terminar. Esto no declara operación sin conexión.
+
+### H-05 · Error de stock sin contexto cuantitativo
+
+**Severidad:** 2. **Principio:** Usability, recuperación de errores. **Problema reportado:** Fabiana solicita que el mensaje indique cuántas unidades quedan (08:59–09:11). [Captura representativa de la sesión](assets/validation/fabiana-session.png); ilustra el contexto, no una reproducción del error.
+
+**Recomendación:** mostrar el saldo consultado del artículo al registrar una salida y actualizarlo tras un rechazo por stock. El servidor debe seguir validando concurrencia. **Comprobación requerida:** intentar retirar más unidades que las disponibles, mantener el formulario y el mensaje, volver a consultar el saldo y corregir la cantidad; ninguna unidad debe descontarse en el intento rechazado.
+
+### H-07 · Productos frente a unidades disponibles
+
+**Severidad:** 2. **Principio:** Information Architecture, etiquetas comprensibles. **Problema:** Fabiana inicialmente da una cantidad que el moderador corrige al precisar el producto (04:56–05:20). No se atribuye causalidad definitiva al contador, pero su etiqueta sin unidad aumenta la ambigüedad. [Contexto de la sesión](assets/validation/fabiana-session.png).
+
+**Recomendación:** rotular el contador como cantidad de productos y la columna como unidades disponibles. **Comprobación requerida:** al filtrar, el contador cuenta artículos y la columna mantiene el saldo del artículo; no sumar ambos conceptos ni convertirlos en una única métrica.
+
+### H-08 · Descubrimiento de agregar un producto a la venta
+
+**Severidad:** 3. **Principio:** Usability, reconocimiento; Inclusive Design, percepción. **Problema:** Shirley duda cómo vender porque la tarjeta no presenta una acción explícita y su contraste le resulta tenue (11:22–11:52). No se afirma un incumplimiento WCAG medido solo por esta opinión.
+
+![Tarjetas de venta de la sesión de Shirley sin texto de acción, 06:30](assets/validation/shirley-sales-cards.png)
+
+**Recomendación:** incluir «Agregar a la venta», foco visible, contraste perceptible y explicación para producto sin stock o bloqueado por conservación. Conservar una sola acción semántica por tarjeta. **Comprobación requerida:** agregar con ratón y teclado, incrementar una unidad, no permitir exceder saldo ni agregar un artículo no vendible, y conservar cantidades durante el envío.
+
+### H-09 · Alerta sin producto identificado
+
+**Severidad:** 2. **Principio:** Information Architecture, contexto y referencia. **Problema reportado:** Shirley necesita identificar a qué producto corresponde la alerta de stock (12:02–12:23). [Captura representativa de la sesión](assets/validation/shirley-session.png). La interfaz y el recurso de notificación original solo muestran tipo, fecha y lectura; la captura no presenta el instante de la alerta.
+
+**Recomendación:** transportar una referencia de producto desde el evento de integración, persistirla en la notificación y resolver nombre/SKU dentro de la empresa autorizada. Conservar compatibilidad con notificaciones antiguas sin referencia. **Comprobación requerida:** generar una alerta real por umbral, identificar el artículo correcto, aislar empresas y permitir leer registros históricos; no inferir el producto a partir de la fecha.
+
+### Seguimiento de correcciones
+
+Cada corrección debe vincular commit, comprobación técnica, resultado y condición pendiente. El cierre con participantes solo puede registrarse tras otra sesión real; no se deduce de una compilación o un cambio de código. Las necesidades de marcas/sedes (H-06) requieren un nuevo alcance de dominio y permanecen en el backlog de evolución.
