@@ -8,6 +8,12 @@ IA-INNOVATION desarrolla **AI-ToDu**, una propuesta de software para pequeños n
 
 TB1 demuestra esta cadena con datos ficticios y una Fake REST API. El nombre del producto no acredita modelos de inteligencia artificial implementados. Predicción de demanda, optimización automática de rutas y decisiones basadas en IA permanecen fuera de la versión actual.
 
+#### Misión, visión y valores propuestos
+
+**Misión:** ayudar a pequeños negocios a comprender y registrar el recorrido de su mercadería, desde la recepción hasta la venta y la entrega, mediante información compartida y trazable. **Visión:** evolucionar hacia una herramienta comprensible para quienes administran y operan un negocio. Ambas declaraciones expresan una intención del producto; no son resultados empresariales medidos.
+
+Los valores de diseño son trazabilidad (explicar cada cambio), claridad (lenguaje y acciones comprensibles), responsabilidad (identificar quién registra) y mejora basada en evidencia (corregir a partir de observaciones verificables).
+
 ### 1.1.2. Perfiles de integrantes del equipo
 
 Perfiles académicos y fotografías del informe base. Se conserva la presentación histórica del equipo; la preparación y el seguimiento actuales de AV2 están a cargo de **Kevin Junior Salazar Marquina**. Los aportes se atribuyen por entrega con sus fuentes en Student Outcome.
@@ -34,6 +40,20 @@ La hipótesis de problema es que el registro fragmentado entre cuadernos, hojas 
 | Venta sin comprobación del saldo/conservación | Sobreventa o artículo bloqueado | Validación completa y descuento atómico. |
 | Despacho separado de la venta | Doble registro y pérdida de referencia | Manifiesto enlazado con líneas de venta reales. |
 | Uso de números manuales como indicadores | Decisiones con información desactualizada | Métricas derivadas del registro, con límites contables explícitos. |
+
+#### Análisis de la problemática · 5W2H
+
+| Pregunta | Delimitación y evidencia |
+| --- | --- |
+| What · ¿Qué ocurre? | Se usan registros separados para controlar mercadería. Fabiana describe hoja compartida y sistema (00:35–00:47); Diego, portapapeles y computadora (00:36–00:48); Shirley, cuadernos/comprobantes/WhatsApp (00:35–00:54). |
+| Why · ¿Por qué atenderlo? | El producto busca facilitar la consulta y explicación del saldo. La falta de responsable visible señalada por Diego (06:45–07:07) muestra una necesidad de trazabilidad; no demuestra una pérdida monetaria medida. |
+| Who · ¿Quiénes intervienen? | Administración decide y supervisa; operación recibe y registra. Una persona puede cubrir ambas funciones, como Shirley. Las cinco sesiones no representan estadísticamente a todas las MYPE. |
+| Where · ¿Dónde? | Contextos descritos: tienda, almacén, colegio y peluquería/emprendimiento de belleza. La validación se realizó sobre la aplicación con datos ficticios; no es observación de sus sistemas productivos. |
+| When · ¿Cuándo? | En recepción, movimiento, venta, preparación y entrega. Frecuencia y duración de conciliación no se midieron; se conservan como variables de investigación. |
+| How · ¿Cómo se aborda? | Un SKU y saldo compartido, movimientos con motivo/responsable, recepción parcial y despacho enlazado con una venta. Las acciones y mensajes se revisan con hallazgos H-01–H-09. |
+| How much · ¿Cuánto cuesta o mejora? | No se midieron pérdida, disposición de pago, ahorro ni retorno de inversión. Los tiempos de los videos son intervalos de una sesión guiada, no ahorro de tiempo del negocio. |
+
+Fuentes: grabaciones y fichas de §5.3.2. Esta actualización aprovecha el contexto recogido en la validación sin volver a contabilizar esas sesiones como nuevas entrevistas de elicitación.
 
 ### 1.2.2. Lean UX Process
 
