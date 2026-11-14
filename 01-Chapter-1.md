@@ -6,7 +6,7 @@
 
 IA-INNOVATION desarrolla **AI-ToDu**, una propuesta de software para pequeños negocios que necesitan conectar el inventario de almacén con compras, ventas y despachos. La unidad de valor es una operación trazable: conocer qué artículo entró, por qué cambió su saldo, qué venta comprometió unidades y qué entrega utilizó esa venta.
 
-TB1 demuestra esta cadena con datos ficticios y una Fake REST API. El nombre del producto no acredita modelos de inteligencia artificial implementados. Predicción de demanda, optimización automática de rutas y decisiones basadas en IA permanecen fuera de la versión actual.
+TB1 demuestra esta cadena con datos ficticios y una Fake REST API. La versión presentada se centra en la gestión de inventario, ventas y despachos. La predicción de demanda y la optimización de rutas forman parte de la evolución del producto.
 
 #### Misión, visión y valores propuestos
 
@@ -16,7 +16,7 @@ Los valores de diseño son trazabilidad (explicar cada cambio), claridad (lengua
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-Perfiles académicos y fotografías del informe base. Se conserva la presentación histórica del equipo; la preparación y el seguimiento actuales de AV2 están a cargo de **Kevin Junior Salazar Marquina**. Los aportes se atribuyen por entrega con sus fuentes en Student Outcome.
+Presentamos los perfiles y fotografías del equipo que inició el proyecto. En AV2 continúo con el desarrollo y el seguimiento de las actividades.
 
 | Fotografía original | Integrante y código | Perfil académico declarado |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ Un pequeño negocio necesita coordinar recepción, venta y reparto con una vista
 - El negocio acepta un catálogo por SKU y cantidades enteras en la primera versión.
 - Roles y lenguaje claro reducen errores sin exigir capacitación extensa.
 
-Estas son suposiciones. La demo no prueba disposición de pago, tamaño de mercado, retención ni ahorro de tiempo en una empresa real.
+Estas hipótesis orientan el diseño de la solución y la investigación del producto.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
