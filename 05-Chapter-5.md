@@ -13,7 +13,7 @@
 | Informe | Markdown, Mermaid/SVG y generadores versionados | README completo, fuentes únicas, comprobación y exportación. |
 | Backend AV2 | Java 21 / Spring Boot 4.1.2 / JPA / PostgreSQL 17 / Flyway | API con dominio agnóstico, JWT, roles, transacciones y Outbox. |
 
-El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El equipo debe confirmar su tablero de gestión; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
+El repositorio incluye lockfile cuando instala dependencias. La Fake API y landing no requieren paquetes de ejecución. Se usan datos ficticios y archivos de estado excluidos de Git. El tablero de cierre AV2 está enlazado en §5.2.3.3; se retiraron referencias a nombres de repositorios inexistentes, enlaces de ejemplo y herramientas declaradas sin evidencia de uso.
 
 ### 5.1.2. Source Code Management
 
@@ -189,13 +189,13 @@ Los aportes originales se enlazan por integrante y módulo. La corrección no in
 
 > Our focus is on enabling an authorized workspace to reconcile receiving, sales and delivery through the deployed API. We believe it delivers a shared and traceable operational record to business owners and warehouse operators. This will be confirmed when a sale and its delivery preserve stock, historical amounts and recipient across sessions, concurrent sales cannot oversell, and invalid or unauthorized operations leave no partial changes.
 
-El criterio técnico se prueba con datos ficticios; la confianza del usuario sigue como hipótesis. Product Owner y Scrum Master: pendientes de confirmar. Se conserva la atribución histórica sin asignar aportes nuevos no verificados.
+El criterio técnico se prueba con datos ficticios; la confianza del usuario se contrasta cualitativamente en cinco recorridos guiados. **Responsable actual de priorización, desarrollo y seguimiento: Kevin Junior Salazar Marquina.** No se acredita una ceremonia ni una asignación formal separada de Product Owner y Scrum Master. Los aportes históricos mantienen su atribución.
 
 | Sprint Planning Background | Registro |
 | --- | --- |
 | Sprint | 3 / AV2 / semana 12 |
 | Date / Time / Location | Pendiente: fecha, hora y lugar reales de la ceremonia |
-| Prepared by | Preparación técnica asistida solicitada por Kevin; validación del responsable pendiente |
+| Prepared by | Kevin Junior Salazar Marquina, con preparación técnica asistida |
 | Attendees | Pendiente de acta o tablero; no se presume asistencia de integrantes retirados |
 | Review of previous Sprint | Evidencias TB1 y AV1 conservadas; conclusiones de la reunión pendientes |
 | Retrospective of previous Sprint | Pendiente de registro real y acciones acordadas |
@@ -213,7 +213,16 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario sig
 | Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
 | Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
 
-Matriz LACX formal y aprobación: pendientes. Los aportes históricos de los integrantes se mantienen con sus fuentes.
+La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento. La asistencia técnica no se registra como un integrante del equipo.
+
+| Aspecto | Kevin | Carlos | Luis | Fernando | Darikson |
+| --- | --- | --- | --- | --- | --- |
+| Development | L | — | — | — | — |
+| Execution | L | — | — | — | — |
+| Documentation | L | — | — | — | — |
+| Deployment | L | — | — | — | — |
+
+La matriz no es una calificación, acta de reunión ni registro de horas. Los aportes de AV1/TB1 se conservan con sus fuentes.
 
 #### 5.2.3.3. Sprint Backlog 3
 
@@ -221,20 +230,29 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 
 | Story Id | Story Title | Task Id | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| US09 | Registro de artículo | S3-T01 | Implementar InventoryItem, VOs, movimientos y persistencia separada | Implementar InventoryItem, VOs, movimientos y persistencia separada. Evidencia: Reglas, migraciones y rollback. Cobertura asociada: US10–US14. | 8 h | Pendiente de confirmar | To-Review |
-| US15 | Creación de venta | S3-T02 | Confirmar/anular ventas atómicas con concurrencia e idempotencia | Confirmar/anular ventas atómicas con concurrencia e idempotencia. Evidencia: Solo una de seis ventas de la última unidad se acepta. Cobertura asociada: US16–US18, TS35. | 8 h | Pendiente de confirmar | To-Review |
-| US19 | Manifiesto de despacho | S3-T03 | Preparar/iniciar/entregar manifiesto con recursos existentes | Preparar/iniciar/entregar manifiesto con recursos existentes. Evidencia: Receptor y saldo sin doble descuento. Cobertura asociada: US20–US22, US37. | 8 h | Pendiente de confirmar | To-Review |
-| US35 | Abastecimiento y recepción parcial | S3-T04 | Implementar compra y recepción parcial acotada | Implementar compra y recepción parcial acotada. Evidencia: Exceso y líneas repetidas rechazados. Cobertura asociada: TS28–TS30. | 8 h | Pendiente de confirmar | To-Review |
-| US36 | Devolución trazable | S3-T05 | Conciliar devoluciones e indicadores | Conciliar devoluciones e indicadores. Evidencia: Restock/loss y límite de devolución. Cobertura asociada: US23. | 4 h | Pendiente de confirmar | To-Review |
-| US26 | Alerta de stock mínimo | S3-T06 | Traducir eventos internos a PL v1 con Outbox e inbox | Traducir eventos internos a PL v1 con Outbox e inbox. Evidencia: Fallo/reintento y reentrega sin duplicación. Cobertura asociada: TS34. | 8 h | Pendiente de confirmar | To-Review |
-| TS33 | Clima regional | S3-T07 | Integrar Open-Meteo mediante gateway y caché | Integrar Open-Meteo mediante gateway y caché. Evidencia: Traducción/caché/fallo probados y llamada real. Cobertura asociada: Integración externa de Logistics. | 4 h | Pendiente de confirmar | To-Review |
-| US01 | Registro de cuenta | S3-T08 | Implementar JWT revocables, BCrypt, roles y aislamiento | Implementar JWT revocables, BCrypt, roles y aislamiento. Evidencia: Sesión y denegaciones verificadas. Cobertura asociada: US02–US03, US28–US29. | 8 h | Pendiente de confirmar | To-Review |
-| US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Pendiente de confirmar | To-Review |
-| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Pendiente de evidencia humana real. | 8 h | Pendiente de confirmar | To-do |
+| US09 | Registro de artículo | S3-T01 | Implementar InventoryItem, VOs, movimientos y persistencia separada | Implementar InventoryItem, VOs, movimientos y persistencia separada. Evidencia: Reglas, migraciones y rollback. Cobertura asociada: US10–US14. | 8 h | Kevin Salazar | To-Review |
+| US15 | Creación de venta | S3-T02 | Confirmar/anular ventas atómicas con concurrencia e idempotencia | Confirmar/anular ventas atómicas con concurrencia e idempotencia. Evidencia: Solo una de seis ventas de la última unidad se acepta. Cobertura asociada: US16–US18, TS35. | 8 h | Kevin Salazar | To-Review |
+| US19 | Manifiesto de despacho | S3-T03 | Preparar/iniciar/entregar manifiesto con recursos existentes | Preparar/iniciar/entregar manifiesto con recursos existentes. Evidencia: Receptor y saldo sin doble descuento. Cobertura asociada: US20–US22, US37. | 8 h | Kevin Salazar | To-Review |
+| US35 | Abastecimiento y recepción parcial | S3-T04 | Implementar compra y recepción parcial acotada | Implementar compra y recepción parcial acotada. Evidencia: Exceso y líneas repetidas rechazados. Cobertura asociada: TS28–TS30. | 8 h | Kevin Salazar | To-Review |
+| US36 | Devolución trazable | S3-T05 | Conciliar devoluciones e indicadores | Conciliar devoluciones e indicadores. Evidencia: Restock/loss y límite de devolución. Cobertura asociada: US23. | 4 h | Kevin Salazar | To-Review |
+| US26 | Alerta de stock mínimo | S3-T06 | Traducir eventos internos a PL v1 con Outbox e inbox | Traducir eventos internos a PL v1 con Outbox e inbox. Evidencia: Fallo/reintento y reentrega sin duplicación. Cobertura asociada: TS34. | 8 h | Kevin Salazar | To-Review |
+| TS33 | Clima regional | S3-T07 | Integrar Open-Meteo mediante gateway y caché | Integrar Open-Meteo mediante gateway y caché. Evidencia: Traducción/caché/fallo probados y llamada real. Cobertura asociada: Integración externa de Logistics. | 4 h | Kevin Salazar | To-Review |
+| US01 | Registro de cuenta | S3-T08 | Implementar JWT revocables, BCrypt, roles y aislamiento | Implementar JWT revocables, BCrypt, roles y aislamiento. Evidencia: Sesión y denegaciones verificadas. Cobertura asociada: US02–US03, US28–US29. | 8 h | Kevin Salazar | To-Review |
+| US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
+| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream; lectura concedida al docente; reflexión pendiente. | 8 h | Kevin Salazar | In-Process |
 
-Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El tablero externo y sus responsables siguen pendientes de recibir. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To sigue pendiente de confirmación.
+Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin, incluyendo trabajo asistido.
+
+| Tarjetas del cierre actual | Tareas del incremento | Criterio de seguimiento |
+| --- | --- | --- |
+| S3-C01, S3-C03, S3-C07–C10, S3-C12 | S3-T12 · validación y comunicación | Cinco originales publicados; fichas/hallazgos y edición disponibles; publicación institucional y reflexión se cierran con fuente real. |
+| S3-C02, S3-C05, S3-C11 | S3-T11 · documentación | Fotografías recuperadas, fuentes consistentes y exportación verificada; revisión de archivos de entrega. |
+| S3-C04 | S3-T09 · frontend | Acciones, vocabulario, historial, esperas y alertas; PR #7 con comprobación técnica. |
+| S3-C06 | S3-T01–T08 y S3-T10 | Revisión de reglas, API, Outbox, CI y versión desplegada. |
+
+Una tarjeta puede terminar una parte acotada: S3-C12 registra recibir/publicar cinco originales; no afirma cerrar toda la validación. Las tarjetas de revisión y sus fuentes no equivalen a aceptación académica.
 
 #### 5.2.3.4. Development Evidence for Sprint Review
 
@@ -258,6 +276,8 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 | Verificación | Resultado y evidencia | Límite |
 | --- | --- | --- |
 | Backend local | 15 pruebas aprobadas; 34 operaciones y rechazos HTTP contrastados | H2 de desarrollo; clima fixture en el recorrido de contratos; gateway probado por separado |
+| Backend revisión 13/11 | 17 pruebas locales y CI PostgreSQL 17 / Java 21; referencia de producto en alertas | [PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [CI 43550024736](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736); V5 en rama de revisión, integración/despliegue pendientes |
+| Frontend revisión 13/11 | 21 pruebas y build; venta por teclado, error de stock, responsable y navegación alerta → SKU; acciones dentro de 390 px | [PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); navegador con HTTP demo local, no una segunda sesión con participantes |
 | Backend CI | 15 pruebas aprobadas con PostgreSQL 17 / Java 21, commit 067abc7 | [Run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771); datos aislados, no mide carga empresarial |
 | Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
 | HTTP público | Entrada 5 → venta 2 / PEN 21 → entrega → saldo 3 | Datos ficticios; no equivale a aceptación de usuarios |
@@ -269,6 +289,21 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 ![Inventario AV2 publicado después de escribir y recargar](assets/inventario-av2-publicado.png)
 
 Evidencia del 8/11/2026: desde Angular se crea el producto ficticio BROWSER-20261108, se reciben dos unidades y se vende una por PEN 12,50. La recarga y el nuevo inicio de sesión conservan una unidad. El otro artículo corresponde al recorrido HTTP anterior. Los datos son sintéticos y no representan resultados comerciales.
+
+##### Product Navigation del incremento AV2
+
+[Recorrido completo en YouTube, 7:59](https://youtu.be/yJ4Z1_eoIPs) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-Product-Navigation-AV2-revision.mp4). El montaje incluye **3:02 de landing** y **4:51 de aplicación**, más cinco segundos de cierre. El archivo dura aproximadamente 7:58; YouTube lo muestra como 7:59. Se identifican las sesiones guiadas y los datos ficticios. El último tramo incluye la confirmación de entrega, sin afirmar transferencia entre sedes ni entregas parciales.
+
+| Inicio | Recorrido | Fuente original |
+| --- | --- | --- |
+| 00:00 | Landing: presentación, contenido y acceso | Kimberlin 00:59–02:43; Shirley 01:00–02:13; portada inicial de 5 s |
+| 03:02 | Aplicación: inventario e historial | Shirley 03:20–04:53; portada de 5 s |
+| 04:40 | Recepción de mercadería | Shirley 05:02–05:45 |
+| 05:23 | Venta y comprobante demo | Shirley 06:16–06:48 |
+| 05:55 | Despacho y confirmación de entrega | Shirley 07:28–09:26 |
+| 07:53 | Cierre académico | Portada final de 5 s |
+
+![Confirmación de entrega en el recorrido de navegación, 07:41](assets/validation/navigation-av2.png)
 
 #### 5.2.3.6. Services Documentation Evidence for Sprint Review
 
@@ -1324,7 +1359,7 @@ El runtime recibe solo credenciales propias. La provisión administrativa se eje
 
 #### 5.2.3.8. Team Collaboration Insights during Sprint
 
-PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se espera el tablero y los videos existentes. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
+PR y CI muestran el incremento técnico asistido autorizado por Kevin. No prueban reuniones, revisión cruzada o participación reciente de todos. Se conservan aportes AV1/TB1 y se enlaza el tablero público actual y se conservan las cinco validaciones recibidas. La entrega distingue autoría histórica, trabajo actual, reflexión individual y comunicación.
 
 ## 5.3. Validation Interviews
 
@@ -1440,7 +1475,7 @@ Se recibieron cinco grabaciones originales y se publicaron como **no listadas** 
 
 **Decisión:** priorizar acciones visibles, términos comprensibles, identificación del responsable, estados de espera y detalle del producto en alertas. Se conserva la solicitud de múltiples sedes y clasificación como trabajo futuro con reglas por definir. No se presenta una nueva prueba con usuarios que todavía no se ha realizado.
 
-Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. La edición consolidada de 3–5 minutos por participante y las fuentes en Microsoft Stream se registran en el Anexo C cuando estén disponibles. Los registros heredados no se cuentan como nuevas validaciones.
+Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones. Las correcciones de código se detallan en el seguimiento del Anexo D y se encuentran en [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4) y [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); su publicación en ramas no acredita que ya estén integradas y desplegadas. La edición consolidada de 3–5 minutos por participante está publicada en YouTube y Stream y se detalla en el Anexo C; se concedió lectura al docente en Microsoft 365, sin notificación. Los registros heredados no se cuentan como nuevas validaciones.
 
 ### 5.3.3. Evaluación heurística
 
@@ -1461,9 +1496,24 @@ La necesidad H-06 de marcas/sedes es una solicitud de capacidad adicional, no un
 
 ## 5.4. Video About-the-Product
 
-La versión promocional disponible se titula **PROMO: Ai ToDu**, fue publicada por **Kevin Salazar Marquina** y tiene una duración verificada de **00:10**. El enlace estaba conservado en el registro histórico y fue confirmado nuevamente el 13/11/2026. [Ver video en YouTube](https://youtu.be/NXNWTw8_6GY).
+La versión AV2 **AI-ToDu | AV2 Sprint 3 | About-the-Product** reúne escenas reales de recepción, venta y despacho y opiniones de administración (Kimberlin) y operación (Fabiana). Usa extractos de las sesiones guiadas del 13/11/2026, datos ficticios y las autorizaciones de publicación correspondientes. No presenta las opiniones como resultados empresariales ni como pruebas autónomas.
 
-Para completar la versión requerida en AV2, queda ampliar el video a **1–3 minutos**, incluir escenas de uso del producto y al menos una opinión autorizada de cada segmento objetivo, conforme al Anexo C. También quedan por incorporar el enlace de Microsoft Stream, una captura representativa, los tiempos de las secciones y el video embebido en la landing. El registro de esta versión permite seguir la evolución del material promocional.
+[Ver en YouTube, 2:21](https://youtu.be/nvsYXk91k4c) · [Reproducir en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-About-the-Product-AV2-revision.mp4) · [Video embebido en la landing pública](https://ai-todu.github.io/ai-todu-platform/#product-video). El archivo tiene aproximadamente 2:20; YouTube redondea a 2:21. La reproducción institucional se verificó desde la cuenta propietaria; se concedió acceso de lectura al docente, sin notificación. No se comprobó su inicio de sesión.
+
+![Escena de venta del About-the-Product AV2, 00:42](assets/validation/about-product-av2.png)
+
+| Inicio | Sección | Fuente |
+| --- | --- | --- |
+| 00:00 | Propuesta de valor y contexto académico | Portada de edición |
+| 00:05 | Recepción de mercadería | Shirley, 05:02–05:33 |
+| 00:36 | Venta y comprobante demo | Shirley, 06:16–06:48 |
+| 01:08 | Despacho | Kimberlin, 07:11–07:39 |
+| 01:36 | Opinión de administración | Kimberlin, 09:59–10:16 |
+| 01:53 | Opinión de operación | Fabiana, 08:08–08:18 |
+| 02:03 | Mejora sugerida por operación | Fabiana, 08:59–09:11 |
+| 02:15 | Cierre | Portada final |
+
+Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.be/NXNWTw8_6GY), de aproximadamente 10 segundos. La edición AV2 amplía esa evidencia sin sustituir su procedencia histórica.
 
 ## 5.5. Video About-the-Team
 
