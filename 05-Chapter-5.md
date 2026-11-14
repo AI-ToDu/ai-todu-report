@@ -1444,16 +1444,20 @@ Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones
 
 ### 5.3.3. Evaluación heurística
 
-| Principio | Criterio de revisión | Evidencia técnica | Pendiente |
-| --- | --- | --- | --- |
-| Visibilidad | Espera, error y resultado claros | Formularios bloquean doble envío y usan códigos | Comprensión y espera con usuarios |
-| Correspondencia | Referencias entre recepción, venta y entrega | Flujo transaccional verificado | Vocabulario con ambos segmentos |
-| Prevención | Cantidad, stock y estados válidos | Invariantes y rollback probados | Errores de uso no previstos |
-| Control | Anulación y devolución con restricciones | Restitución una vez y retorno acotado | Comprensión y recuperación |
-| Consistencia | Material, idioma y PEN | Traducciones y build | Evaluador externo |
-| Accesibilidad | Teclado, foco, etiquetas y contraste | Implementación semántica y revisión navegador | Auditoría completa y usuarios |
+La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se preparan con revisión técnica asistida. No se declara una auditoría independiente ni una segunda evaluación con participantes.
 
-La inspección técnica no sustituye una evaluación heurística independiente. Evaluador, fecha, severidad y hallazgos requieren registro real.
+| ID | Problema identificado | Severidad propuesta | Principio | Fuente |
+| --- | --- | --- | --- | --- |
+| H-01 | Acciones de fila dependientes del desplazamiento horizontal | 3 | Usability · flexibilidad y eficiencia | Fabiana 08:59–09:11; Diego 07:44–07:54 |
+| H-02 | Motivos generados en inglés en una vista en español | 2 | Usability · consistencia; Inclusive Design · comprensión | Kimberlin 09:59–10:16; captura del historial |
+| H-03 | Historial sin responsable visible ni segundos/zona horaria | 3 | Information Architecture · información comprensible y útil | Diego 06:45–07:07 y 07:44–07:54 |
+| H-04 | Riesgo de repetir acciones durante una espera poco clara | 3 | Usability · visibilidad del estado y prevención de errores | Diego 07:24–07:35; conectividad reportada |
+| H-05 | Rechazo de stock sin cantidad disponible para corregirlo | 2 | Usability · reconocer y recuperarse de errores | Fabiana 08:59–09:11 |
+| H-07 | Contador de productos que puede confundirse con unidades | 2 | Information Architecture · etiquetas claras | Fabiana 04:56–05:20 |
+| H-08 | Tarjeta de producto sin acción explícita para agregar a venta | 3 | Usability · reconocimiento; Inclusive Design · percepción | Shirley 11:22–11:52 |
+| H-09 | Alerta de stock sin identificar el artículo | 2 | Information Architecture · contexto y referencia | Shirley 12:02–12:23 |
+
+La necesidad H-06 de marcas/sedes es una solicitud de capacidad adicional, no un error heurístico de una función prometida. Se mantiene como trabajo futuro. El [Anexo D](#anexo-d-evaluación-de-user-experience-según-heurísticas) desarrolla los ocho problemas y sus criterios de comprobación.
 
 ## 5.4. Video About-the-Product
 

@@ -229,6 +229,17 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
   - [Anexo A. Student Outcome](#anexo-a-student-outcome)
   - [Anexo B. Participación individual](#anexo-b-participación-individual)
   - [Anexo C. Testimonios y videos](#anexo-c-testimonios-y-videos)
+  - [Anexo D. Evaluación de User Experience según heurísticas](#anexo-d-evaluación-de-user-experience-según-heurísticas)
+    - [Alcance e instrumento](#alcance-e-instrumento)
+    - [H-01 · Acciones de fila fuera de la vista inicial](#h-01--acciones-de-fila-fuera-de-la-vista-inicial)
+    - [H-02 · Mezcla de idiomas en motivos del historial](#h-02--mezcla-de-idiomas-en-motivos-del-historial)
+    - [H-03 · Falta de responsable visible en el historial](#h-03--falta-de-responsable-visible-en-el-historial)
+    - [H-04 · Espera y repetición de acciones](#h-04--espera-y-repetición-de-acciones)
+    - [H-05 · Error de stock sin contexto cuantitativo](#h-05--error-de-stock-sin-contexto-cuantitativo)
+    - [H-07 · Productos frente a unidades disponibles](#h-07--productos-frente-a-unidades-disponibles)
+    - [H-08 · Descubrimiento de agregar un producto a la venta](#h-08--descubrimiento-de-agregar-un-producto-a-la-venta)
+    - [H-09 · Alerta sin producto identificado](#h-09--alerta-sin-producto-identificado)
+    - [Seguimiento de correcciones](#seguimiento-de-correcciones)
 
 ---
 
@@ -2335,16 +2346,20 @@ Las cinco fichas tienen fuente, captura, actividades, asistencia y observaciones
 
 ### 5.3.3. Evaluación heurística
 
-| Principio | Criterio de revisión | Evidencia técnica | Pendiente |
-| --- | --- | --- | --- |
-| Visibilidad | Espera, error y resultado claros | Formularios bloquean doble envío y usan códigos | Comprensión y espera con usuarios |
-| Correspondencia | Referencias entre recepción, venta y entrega | Flujo transaccional verificado | Vocabulario con ambos segmentos |
-| Prevención | Cantidad, stock y estados válidos | Invariantes y rollback probados | Errores de uso no previstos |
-| Control | Anulación y devolución con restricciones | Restitución una vez y retorno acotado | Comprensión y recuperación |
-| Consistencia | Material, idioma y PEN | Traducciones y build | Evaluador externo |
-| Accesibilidad | Teclado, foco, etiquetas y contraste | Implementación semántica y revisión navegador | Auditoría completa y usuarios |
+La evaluación documental sigue la estructura del **Anexo D** del enunciado: alcance, escala, tabla resumen, problema, evidencia y recomendación. Los hallazgos proceden de las cinco sesiones; la clasificación y las recomendaciones se preparan con revisión técnica asistida. No se declara una auditoría independiente ni una segunda evaluación con participantes.
 
-La inspección técnica no sustituye una evaluación heurística independiente. Evaluador, fecha, severidad y hallazgos requieren registro real.
+| ID | Problema identificado | Severidad propuesta | Principio | Fuente |
+| --- | --- | --- | --- | --- |
+| H-01 | Acciones de fila dependientes del desplazamiento horizontal | 3 | Usability · flexibilidad y eficiencia | Fabiana 08:59–09:11; Diego 07:44–07:54 |
+| H-02 | Motivos generados en inglés en una vista en español | 2 | Usability · consistencia; Inclusive Design · comprensión | Kimberlin 09:59–10:16; captura del historial |
+| H-03 | Historial sin responsable visible ni segundos/zona horaria | 3 | Information Architecture · información comprensible y útil | Diego 06:45–07:07 y 07:44–07:54 |
+| H-04 | Riesgo de repetir acciones durante una espera poco clara | 3 | Usability · visibilidad del estado y prevención de errores | Diego 07:24–07:35; conectividad reportada |
+| H-05 | Rechazo de stock sin cantidad disponible para corregirlo | 2 | Usability · reconocer y recuperarse de errores | Fabiana 08:59–09:11 |
+| H-07 | Contador de productos que puede confundirse con unidades | 2 | Information Architecture · etiquetas claras | Fabiana 04:56–05:20 |
+| H-08 | Tarjeta de producto sin acción explícita para agregar a venta | 3 | Usability · reconocimiento; Inclusive Design · percepción | Shirley 11:22–11:52 |
+| H-09 | Alerta de stock sin identificar el artículo | 2 | Information Architecture · contexto y referencia | Shirley 12:02–12:23 |
+
+La necesidad H-06 de marcas/sedes es una solicitud de capacidad adicional, no un error heurístico de una función prometida. Se mantiene como trabajo futuro. El [Anexo D](#anexo-d-evaluación-de-user-experience-según-heurísticas) desarrolla los ocho problemas y sus criterios de comprobación.
 
 ## 5.4. Video About-the-Product
 
@@ -2522,3 +2537,70 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 | Tablero Scrum | Trabajo real del equipo | URL, responsables y transiciones pendientes | Sin reconstrucción histórica |
 
 Los datos identificables y consentimientos no se publican automáticamente en Git. Solo se adjunta material autorizado para la evaluación.
+
+
+## Anexo D. Evaluación de User Experience según heurísticas
+
+**Carrera:** Ingeniería de Software. **Curso:** Desarrollo de Aplicaciones Open Source, 1ASI0729. **Sección:** NRC 7750. **Docente:** Efraín Ricardo Bautista Ubillús. **Producto:** AI-ToDu, landing y aplicación web AV2. **Preparación:** Kevin Junior Salazar Marquina, con revisión documental/técnica asistida. **Fuentes:** sesiones VAL-S3-01 a VAL-S3-05; nombres de referencia en §5.3.2. **Fecha de revisión:** 13/11/2026. **Revisión final del responsable y auditoría independiente:** no acreditadas por este documento.
+
+### Alcance e instrumento
+
+Se revisan comprensión de la landing, navegación, consulta de existencias, recepción, historial, venta, despacho y notificaciones. Se contrastan Usability, Inclusive Design e Information Architecture. Se excluyen facturación tributaria, pagos, transferencias entre sedes, entregas parciales, trabajo sin conexión y una auditoría integral de accesibilidad. Las tareas fueron guiadas, con cuentas preparadas y datos ficticios. La opinión favorable no elimina una dificultad observada.
+
+La severidad usa la escala del curso: **1**, superficial; **2**, menor; **3**, mayor y de prioridad alta; **4**, impide continuar y exige corrección previa al lanzamiento. Los valores son una priorización propuesta a partir de las sesiones; no se calcula frecuencia poblacional a partir de cinco participantes. La tabla resumen se encuentra en §5.3.3.
+
+### H-01 · Acciones de fila fuera de la vista inicial
+
+**Severidad:** 3. **Principio:** Usability, flexibilidad y eficiencia. **Problema:** una tabla ancha exige desplazarse lateralmente para descubrir o alcanzar la acción de recepción. Fabiana lo señala en 08:59–09:11 y Diego en 07:44–07:54. La captura ilustra el desplazamiento de la tabla; no prueba que la acción falte en todos los tamaños.
+
+![Tabla de abastecimiento de Fabiana con desplazamiento horizontal, 05:58](assets/validation/fabiana-receipt-actions.png)
+
+**Recomendación:** mantener la columna de acciones visible durante el desplazamiento y conservar nombre/producto y cantidades accesibles. **Comprobación requerida:** a 390 px y en escritorio, alcanzar «Recibir mercadería» sin desplazar primero hasta el borde derecho; abrir/cancelar el diálogo con teclado; evitar que la columna tape todas las columnas informativas. Una prueba técnica no sustituye la comprobación con participantes.
+
+### H-02 · Mezcla de idiomas en motivos del historial
+
+**Severidad:** 2. **Principio:** Usability, consistencia y estándares; Inclusive Design, comprensión. **Problema:** la pantalla está en español, pero se ven motivos automáticos como confirmación de venta y recepción en inglés. Kimberlin pide traducirlos en 09:59–10:16. [Captura de la sesión](assets/validation/kimberlin-session.png).
+
+**Recomendación:** traducir los motivos generados por el sistema y conservar intacto el texto libre escrito por la persona. No sustituir códigos ni datos persistidos para resolver una etiqueta de interfaz. **Comprobación requerida:** cambiar idioma, mostrar motivo traducido y referencia de compra; un motivo libre debe permanecer idéntico.
+
+### H-03 · Falta de responsable visible en el historial
+
+**Severidad:** 3. **Principio:** Information Architecture, información comprensible y útil. **Problema:** Diego busca quién recibió y en qué momento del turno (06:45–07:07; 07:44–07:54); la vista solo presenta fecha, producto, tipo, cantidad y motivo. [Captura del historial, 06:48](assets/validation/diego-session.png).
+
+**Recomendación:** mostrar el responsable que ya viene en `actorId`, con nombre cuando exista una fuente autorizada y referencia cuando no; incluir segundos y zona horaria al revisar movimientos. No adjudicar automáticamente registros históricos a Kevin ni consultar una lista de empleados sin permiso del rol. **Comprobación requerida:** administrador y operario, registros propios/ajenos y registros antiguos sin responsable; distinguir una referencia de usuario de un nombre verificado.
+
+### H-04 · Espera y repetición de acciones
+
+**Severidad:** 3. **Principio:** Usability, visibilidad y prevención de errores. **Problema reportado:** Diego describe mala conectividad y solicita saber si la acción sigue procesándose para no repetirla (07:24–07:35). La sesión no aporta una medición controlada de latencia ni demuestra duplicación causada por el servidor. [Contexto de la sesión](assets/validation/diego-session.png).
+
+**Recomendación:** indicar carga y envío, deshabilitar temporalmente el control que ejecuta la operación y conservar feedback de error. Mantener las invariantes y garantías transaccionales del backend. **Comprobación requerida:** red con espera, dos clics consecutivos y error: una solicitud mientras esté en curso; controles recuperables al terminar. Esto no declara operación sin conexión.
+
+### H-05 · Error de stock sin contexto cuantitativo
+
+**Severidad:** 2. **Principio:** Usability, recuperación de errores. **Problema reportado:** Fabiana solicita que el mensaje indique cuántas unidades quedan (08:59–09:11). [Captura representativa de la sesión](assets/validation/fabiana-session.png); ilustra el contexto, no una reproducción del error.
+
+**Recomendación:** mostrar el saldo consultado del artículo al registrar una salida y actualizarlo tras un rechazo por stock. El servidor debe seguir validando concurrencia. **Comprobación requerida:** intentar retirar más unidades que las disponibles, mantener el formulario y el mensaje, volver a consultar el saldo y corregir la cantidad; ninguna unidad debe descontarse en el intento rechazado.
+
+### H-07 · Productos frente a unidades disponibles
+
+**Severidad:** 2. **Principio:** Information Architecture, etiquetas comprensibles. **Problema:** Fabiana inicialmente da una cantidad que el moderador corrige al precisar el producto (04:56–05:20). No se atribuye causalidad definitiva al contador, pero su etiqueta sin unidad aumenta la ambigüedad. [Contexto de la sesión](assets/validation/fabiana-session.png).
+
+**Recomendación:** rotular el contador como cantidad de productos y la columna como unidades disponibles. **Comprobación requerida:** al filtrar, el contador cuenta artículos y la columna mantiene el saldo del artículo; no sumar ambos conceptos ni convertirlos en una única métrica.
+
+### H-08 · Descubrimiento de agregar un producto a la venta
+
+**Severidad:** 3. **Principio:** Usability, reconocimiento; Inclusive Design, percepción. **Problema:** Shirley duda cómo vender porque la tarjeta no presenta una acción explícita y su contraste le resulta tenue (11:22–11:52). No se afirma un incumplimiento WCAG medido solo por esta opinión.
+
+![Tarjetas de venta de la sesión de Shirley sin texto de acción, 06:30](assets/validation/shirley-sales-cards.png)
+
+**Recomendación:** incluir «Agregar a la venta», foco visible, contraste perceptible y explicación para producto sin stock o bloqueado por conservación. Conservar una sola acción semántica por tarjeta. **Comprobación requerida:** agregar con ratón y teclado, incrementar una unidad, no permitir exceder saldo ni agregar un artículo no vendible, y conservar cantidades durante el envío.
+
+### H-09 · Alerta sin producto identificado
+
+**Severidad:** 2. **Principio:** Information Architecture, contexto y referencia. **Problema reportado:** Shirley necesita identificar a qué producto corresponde la alerta de stock (12:02–12:23). [Captura representativa de la sesión](assets/validation/shirley-session.png). La interfaz y el recurso de notificación original solo muestran tipo, fecha y lectura; la captura no presenta el instante de la alerta.
+
+**Recomendación:** transportar una referencia de producto desde el evento de integración, persistirla en la notificación y resolver nombre/SKU dentro de la empresa autorizada. Conservar compatibilidad con notificaciones antiguas sin referencia. **Comprobación requerida:** generar una alerta real por umbral, identificar el artículo correcto, aislar empresas y permitir leer registros históricos; no inferir el producto a partir de la fecha.
+
+### Seguimiento de correcciones
+
+Cada corrección debe vincular commit, comprobación técnica, resultado y condición pendiente. El cierre con participantes solo puede registrarse tras otra sesión real; no se deduce de una compilación o un cambio de código. Las necesidades de marcas/sedes (H-06) requieren un nuevo alcance de dominio y permanecen en el backlog de evolución.
