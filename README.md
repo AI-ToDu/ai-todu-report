@@ -27,21 +27,11 @@ Lima, Perú · Noviembre de 2026
 
 </div>
 
-[Producto](#capítulo-i-introducción) · [Investigación](#capítulo-ii-requirements-elicitation--analysis) · [Requisitos](#capítulo-iii-requirements-specification) · [Diseño](#capítulo-iv-product-design) · [Implementación](#capítulo-v-product-implementation-validation--deployment) · [Pendientes](#pendientes-de-evidencia-y-próxima-entrega)
+[Producto](#capítulo-i-introducción) · [Investigación](#capítulo-ii-requirements-elicitation--analysis) · [Requisitos](#capítulo-iii-requirements-specification) · [Diseño](#capítulo-iv-product-design) · [Implementación](#capítulo-v-product-implementation-validation--deployment)
 
 </div>
 
 > **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. About-the-Team de Kevin está publicado en YouTube (7:08, §5.5); su copia institucional, la exposición técnica y la comprobación posterior con usuarios siguen pendientes.
-
-## Cómo leer y mantener este informe
-
-Este README es el informe completo **generado** desde `report-front.md`, los cinco capítulos y `report-closing.md`. Se edita cada fuente una sola vez y se ejecuta `npm run report`; `npm run check` detecta divergencias e imágenes locales rotas. Los diagramas se entregan en SVG y Mermaid editable. La exportación HTML/PDF comparte el mismo contenido.
-
-| Estado documental | Significado |
-| --- | --- |
-| Implementado y verificado | Comportamiento observado en prueba automatizada o recorrido local, con alcance indicado. |
-| Diseñado | Modelo, contrato o decisión revisada cuya implementación productiva aún falta. |
-| Evidencia pendiente | Dato que el equipo debe sustentar con una fuente real. |
 
 ## Registro de versiones
 
@@ -102,14 +92,26 @@ Las marcas se refieren a las grabaciones originales, no al consolidado editado. 
 
 [Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
 
+### Capturas históricas de colaboración
+
+Estas capturas corresponden al informe TB1. Conservan el estado del historial en aquella entrega; los enlaces anteriores permiten consultar los cambios actuales de AV2.
+
+![Historial de commits conservado de TB1](Images/insigth.jpeg)
+
+![Contribuciones por autor conservadas de TB1](Images/Insight-Collab.jpeg)
+
+![Historial del informe en la entrega TB1](Images/commits.jpeg)
+
+![Autores del informe en la entrega TB1](Images/commiters.jpeg)
+
 ## Tabla de contenidos
 
 - [Informe del Trabajo Final · AI-ToDu](#informe-del-trabajo-final--ai-todu)
-  - [Cómo leer y mantener este informe](#cómo-leer-y-mantener-este-informe)
   - [Registro de versiones](#registro-de-versiones)
   - [Student Outcome · ABET 3](#student-outcome--abet-3)
     - [Registro de acciones y fuentes](#registro-de-acciones-y-fuentes)
   - [Collaboration Insights](#collaboration-insights)
+    - [Capturas históricas de colaboración](#capturas-históricas-de-colaboración)
 - [Capítulo I: Introducción](#capítulo-i-introducción)
   - [1.1. Startup Profile](#11-startup-profile)
     - [1.1.1. Descripción de la startup](#111-descripción-de-la-startup)
@@ -228,7 +230,6 @@ Las marcas se refieren a las grabaciones originales, no al consolidado editado. 
   - [5.5. Video About-the-Team](#55-video-about-the-team)
 - [Conclusiones](#conclusiones)
   - [Mejora continua y autocrítica](#mejora-continua-y-autocrítica)
-  - [Pendientes de evidencia y próxima entrega](#pendientes-de-evidencia-y-próxima-entrega)
 - [Bibliografía y fuentes](#bibliografía-y-fuentes)
 - [Anexos](#anexos)
   - [Modelo físico · diagramas de detalle](#modelo-físico--diagramas-de-detalle)
@@ -347,6 +348,10 @@ Los porcentajes son umbrales de decisión del experimento, no resultados del pro
 
 ![Lean UX Canvas específico de AI-ToDu](assets/lean-ux-canvas.svg)
 
+**Canvas de la entrega TB1.** Se conserva la imagen original como antecedente del proceso; el canvas anterior presenta la síntesis revisada para AI-ToDu.
+
+![Lean UX Canvas histórico de TB1](Images/Lean_UX_Canvas.jpeg)
+
 El canvas representa hipótesis actuales. Reemplaza la imagen heredada de otro producto y se actualiza con hallazgos trazables, no con conclusiones anticipadas.
 
 ## 1.3. Segmentos objetivo
@@ -424,14 +429,31 @@ Las fichas y respuestas de **ambas versiones** están en el [archivo de investig
 
 Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
 
-| Archivo conservado | Evidencia visual original |
-| --- | --- |
-| `Carlos_Mendoza.jpeg` | <img src="Images/Carlos_Mendoza.jpeg" alt="Registro visual histórico: archivo Carlos_Mendoza" width="260"> |
-| `Lucia_Valdivia1.jpeg` | <img src="Images/Lucia_Valdivia1.jpeg" alt="Registro visual histórico: archivo Lucia_Valdivia1" width="260"> |
-| `Entrevista_ Sebastian.jpg` | <img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura histórica con el nombre Sebastián en pantalla; ficha por conciliar" width="260"> |
-| `Raul_Delgado.jpeg` | <img src="Images/Raul_Delgado.jpeg" alt="Registro visual histórico: archivo Raul_Delgado; ficha por conciliar" width="260"> |
-| `Entrevista_Maria_Morales.jpg` | <img src="Images/Entrevista_Maria_Morales.jpg" alt="Registro visual histórico: archivo Entrevista_Maria_Morales; ficha por conciliar" width="260"> |
-| `Entrevista_Diego_Ramirez.jpg` | <img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Registro visual histórico: archivo Entrevista_Diego_Ramirez; ficha por conciliar" width="260"> |
+Las imágenes se sitúan junto al registro al que estaban asociadas en el PDF TB1 (pp. 18–22). Los rótulos conservan esa asociación documental; no resuelven las discrepancias de identidad indicadas arriba.
+
+**Segmento 1 · Ficha histórica rotulada Carlos Mendoza**
+
+<img src="Images/Carlos_Mendoza.jpeg" alt="Fotografía asociada a la ficha histórica Carlos Mendoza" width="300">
+
+**Segmento 1 · Ficha histórica rotulada Lucía Valdivia**
+
+<img src="Images/Lucia_Valdivia1.jpeg" alt="Fotografía asociada a la ficha histórica Lucía Valdivia" width="300">
+
+**Segmento 1 · Ficha histórica rotulada Roberto Sánchez**
+
+<img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura del archivo Sebastián asociada en TB1 a la ficha Roberto Sánchez; identidad por conciliar" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Miguel Rojas**
+
+<img src="Images/Raul_Delgado.jpeg" alt="Fotografía del archivo Raul Delgado asociada en TB1 a la ficha Miguel Rojas; identidad por conciliar" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Maria Morales**
+
+<img src="Images/Entrevista_Maria_Morales.jpg" alt="Captura asociada a la ficha histórica Maria Morales" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Diego Ramirez**
+
+<img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Captura asociada a la ficha histórica Diego Ramirez" width="300">
 
 En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
 
@@ -455,6 +477,12 @@ Son arquetipos de diseño, no personas reales adicionales. La actualización cua
 | Administración de negocio | Kimberlin recibe materiales y supervisa compras/ventas (00:37–00:57); Junior valora concentrar registros (12:01–13:08). | Comprender el recorrido y diferenciar sedes; lenguaje en español. | No se midió presupuesto, adopción ni frecuencia de uso. |
 | Operación de almacén | Fabiana registra en hoja compartida y sistema (00:35–00:47); Diego usa portapapeles y computadora (00:36–00:48). | Acciones accesibles, saldo claro, responsable y espera visible. | Contexto declarado en entrevista; no se observó la jornada real. |
 
+**Personas del diseño TB1.** Las capturas de UXPressia se conservan en la sección de User Personas, como en las pp. 24 y 26 del informe anterior. Son arquetipos históricos, no nuevos entrevistados de AV2 ni resultados de esta validación.
+
+![User Persona histórica de administración: Carlos Mendoza](Images/User-Persona-1.png)
+
+![User Persona histórica de operación: Miguel Rojas](Images/User-Persona-2.png)
+
 ### 2.3.2. User Task Matrix
 
 Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. **Frecuencias e importancias son hipótesis**, todavía no mediciones de entrevistas verificadas; se sustituirán por los resultados reales.
@@ -472,7 +500,7 @@ La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferen
 
 ### 2.3.3. User Journey Mapping
 
-El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Los mapas por persona y capturas en UXPressia quedan pendientes.
+El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Las capturas históricas de UXPressia se conservan a continuación; su contraste con las fuentes de investigación sigue siendo una actividad de análisis.
 
 | Persona | Etapa actual sin AI-ToDu | Acción del negocio por validar | Fricción hipotética | Fuente |
 | --- | --- | --- | --- | --- |
@@ -484,6 +512,12 @@ El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, prepara
 | Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Entrevista pendiente |
 
 El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
+
+**Journeys del diseño TB1.** Se mantienen los escenarios propuestos del administrador y del operario en esta sección (PDF TB1, pp. 28–29). Los tiempos, emociones y oportunidades de estas láminas son hipótesis del diseño histórico, no mediciones de AV2.
+
+![User Journey histórico del administrador](Images/User-Journey-Map-1.png)
+
+![User Journey histórico del operario](Images/User-Journey-Map-2.png)
 
 ### 2.3.4. Empathy Mapping
 
@@ -497,6 +531,12 @@ El mapa separa lo expresado de lo inferido. Las paráfrasis remiten a sus fuente
 | Siente | No se aplicó un instrumento para medir confianza, satisfacción o frustración. | La conectividad es una preocupación descrita; no se midió estrés ni frecuencia del problema. | No se asignan emociones o puntuaciones sin evidencia. |
 
 Shirley combina ambos perfiles y aporta dudas sobre la acción de venta y las alertas (11:22–12:23). El mapa no transforma una valoración favorable en aceptación del producto.
+
+**Mapas de empatía del diseño TB1.** Las láminas originales se conservan en su sección (PDF TB1, pp. 31 y 33). La tabla anterior distingue las observaciones de AV2 de las inferencias; las citas y emociones de estas imágenes históricas no se presentan como nuevos testimonios.
+
+![Empathy Map histórico del administrador](Images/Empathy-Map-1.png)
+
+![Empathy Map histórico del operario](Images/Empathy-Map-2.png)
 
 ## 2.4. Big Picture Event Storming
 
@@ -637,7 +677,11 @@ Los siguientes Business Goals son **metas SMART propuestas**, pendientes de rati
 | BG02: en las cuatro primeras semanas del piloto, al menos 3 de 4 administradores relacionan una venta con su despacho, estado y receptor en hasta cuatro minutos sin ayuda del facilitador. | Administrador del negocio | Consulta evidencia vinculada para responder por una entrega. | Venta vinculada al manifiesto y confirmación con receptor. | US19: Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. |
 | BG03: al terminar la sexta semana del piloto, al menos 3 de 4 administradores concilian el saldo y el importe de un caso con recepción, venta y devolución sin diferencias respecto del registro de referencia. | Administrador del negocio | Comprueba importes e inventario a partir de sus operaciones. | Historial e indicadores con definición y datos de prueba trazables. | US23: Como Administrador, deseo consultar indicadores para comprender las operaciones registradas. |
 
-Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las fichas de User Persona y el Impact Map en UXPressia siguen pendientes de acceso y sustento de investigación; esta tabla prepara su contenido sin presentar una captura inexistente.
+Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las capturas históricas de User Persona se conservan en §2.3.1 y la del Impact Map se muestra a continuación. Su presencia documenta el diseño TB1; no demuestra el cumplimiento de los objetivos de negocio.
+
+**Impact Mapping del diseño TB1.** Captura original situada bajo Impact Mapping en el informe anterior (p. 58). Se conserva como antecedente de los objetivos y relaciones propuestos, junto con el análisis revisado anterior.
+
+![Impact Mapping histórico de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
 
 ## 3.3. Product Backlog
 
@@ -710,6 +754,10 @@ La identidad utiliza azul profundo para estructura, verde azulado para acción y
 | Tipografía | Familia de sistema sans serif; sin dependencia de fuentes remotas. |
 | Superficies | Fondo claro, bordes suaves y espacios consistentes. |
 | Estados | Texto explícito además de color: pendiente, tránsito, entregado, error y vacío. |
+
+**Identidad visual de AI-ToDu.** Logotipo conservado del apartado de branding del informe TB1 (p. 63).
+
+<img src="Images/Branding-Logo.jpeg" alt="Logotipo de AI-ToDu" width="280">
 
 ### 4.1.2. Web Style Guidelines
 
@@ -2529,22 +2577,6 @@ Esta evidencia corresponde a Kevin en AV2. Los aportes de los demás integrantes
 | Goal sin formato | Outcome/impact/customer/confirmation con estructura del enunciado. | Acuerdo del equipo y validación del impacto con usuarios. |
 | BD poco funcional | Recepción parcial, recursos reales de demo, devoluciones y bandeja operativa. | Profundidad en lotes/ubicaciones/rutas y clientes. |
 
-## Pendientes de evidencia y próxima entrega
-
-**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública. El About-the-Team individual de Kevin está publicado en [YouTube, 7:08](https://youtu.be/0dV36qhdQjE), desde el 14/11/2026.
-
-**Pendiente de evidencia real o acción externa:** grabar la exposición técnica; incorporar About-the-Team a Stream institucional; volver a comprobar con participantes las correcciones publicadas. El Performance Report de AV2 está preparado en el paquete local con la única fila de Kevin y la evaluación confirmada por él; no se añade una firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
-
-**Trabajo posterior, en orden del dominio:**
-
-1. Inventory: almacenes, ubicaciones, lotes, variantes y vencimiento, con reglas y casos completos.
-2. Logistics: múltiples paradas, intentos fallidos, reprogramación, capacidad y rutas.
-3. Procurement/Sales/Returns: clientes, aprobaciones, política de valorización, cambios y reexpedición. Pagos/SUNAT requieren alcance y proveedor.
-4. IAM: invitaciones, recuperación/cambio de contraseña y auditoría ampliada.
-5. Operación: continuidad/exportación de PostgreSQL antes de su caducidad, observabilidad y pruebas de carga acordes al uso real.
-
-El seguimiento actual identifica a Kevin como responsable y usa las fechas reales de creación/avance. Las estimaciones de referencia no se presentan como horas medidas ni compromisos históricos.
-
 # Bibliografía y fuentes
 
 - Universidad Peruana de Ciencias Aplicadas. (2026). *1ASI0729 Final Project Statement, ABET*. Documento del curso proporcionado por el equipo; formato de Sprint Goal, p. 24; entregables y evidencias según secciones correspondientes.
@@ -2568,10 +2600,7 @@ Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento 
 - [Arquitectura, decisiones y brechas](design/architecture.md).
 - [Diccionario de las 35 tablas](design/database/dictionary.md) y [DDL](design/database/schema.sql).
 - [Registro de investigación y fuentes heredadas](research/README.md).
-- Las notas de revisión y avances se conservan localmente, fuera del repositorio.
 - Diagramas: fuentes Mermaid junto a los SVG en `design/diagrams`.
-
-El README completo se genera desde las fuentes indicadas en la introducción. `npm run check` valida sincronía, assets locales y límites de estimaciones; la exportación PDF mantiene el mismo texto. Ningún generador completa evidencias humanas pendientes automáticamente.
 
 ## Modelo físico · diagramas de detalle
 

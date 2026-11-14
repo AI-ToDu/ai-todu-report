@@ -226,7 +226,7 @@ th strong {
   p:has(+ pre) {
     break-after: avoid;
   }
-  p:has(+ p > img) {
+  p:not(:has(img)):has(+ p > img) {
     break-after: avoid;
   }
   p {

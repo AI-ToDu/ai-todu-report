@@ -24,22 +24,6 @@
 | Goal sin formato | Outcome/impact/customer/confirmation con estructura del enunciado. | Acuerdo del equipo y validación del impacto con usuarios. |
 | BD poco funcional | Recepción parcial, recursos reales de demo, devoluciones y bandeja operativa. | Profundidad en lotes/ubicaciones/rutas y clientes. |
 
-## Pendientes de evidencia y próxima entrega
-
-**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública. El About-the-Team individual de Kevin está publicado en [YouTube, 7:08](https://youtu.be/0dV36qhdQjE), desde el 14/11/2026.
-
-**Pendiente de evidencia real o acción externa:** grabar la exposición técnica; incorporar About-the-Team a Stream institucional; volver a comprobar con participantes las correcciones publicadas. El Performance Report de AV2 está preparado en el paquete local con la única fila de Kevin y la evaluación confirmada por él; no se añade una firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
-
-**Trabajo posterior, en orden del dominio:**
-
-1. Inventory: almacenes, ubicaciones, lotes, variantes y vencimiento, con reglas y casos completos.
-2. Logistics: múltiples paradas, intentos fallidos, reprogramación, capacidad y rutas.
-3. Procurement/Sales/Returns: clientes, aprobaciones, política de valorización, cambios y reexpedición. Pagos/SUNAT requieren alcance y proveedor.
-4. IAM: invitaciones, recuperación/cambio de contraseña y auditoría ampliada.
-5. Operación: continuidad/exportación de PostgreSQL antes de su caducidad, observabilidad y pruebas de carga acordes al uso real.
-
-El seguimiento actual identifica a Kevin como responsable y usa las fechas reales de creación/avance. Las estimaciones de referencia no se presentan como horas medidas ni compromisos históricos.
-
 # Bibliografía y fuentes
 
 - Universidad Peruana de Ciencias Aplicadas. (2026). *1ASI0729 Final Project Statement, ABET*. Documento del curso proporcionado por el equipo; formato de Sprint Goal, p. 24; entregables y evidencias según secciones correspondientes.
@@ -63,10 +47,7 @@ Las fuentes de mercado heredadas sin trazabilidad entre afirmación y documento 
 - [Arquitectura, decisiones y brechas](design/architecture.md).
 - [Diccionario de las 35 tablas](design/database/dictionary.md) y [DDL](design/database/schema.sql).
 - [Registro de investigación y fuentes heredadas](research/README.md).
-- Las notas de revisión y avances se conservan localmente, fuera del repositorio.
 - Diagramas: fuentes Mermaid junto a los SVG en `design/diagrams`.
-
-El README completo se genera desde las fuentes indicadas en la introducción. `npm run check` valida sincronía, assets locales y límites de estimaciones; la exportación PDF mantiene el mismo texto. Ningún generador completa evidencias humanas pendientes automáticamente.
 
 ## Modelo físico · diagramas de detalle
 

@@ -25,21 +25,11 @@ Lima, Perú · Noviembre de 2026
 
 </div>
 
-[Producto](#capítulo-i-introducción) · [Investigación](#capítulo-ii-requirements-elicitation--analysis) · [Requisitos](#capítulo-iii-requirements-specification) · [Diseño](#capítulo-iv-product-design) · [Implementación](#capítulo-v-product-implementation-validation--deployment) · [Pendientes](#pendientes-de-evidencia-y-próxima-entrega)
+[Producto](#capítulo-i-introducción) · [Investigación](#capítulo-ii-requirements-elicitation--analysis) · [Requisitos](#capítulo-iii-requirements-specification) · [Diseño](#capítulo-iv-product-design) · [Implementación](#capítulo-v-product-implementation-validation--deployment)
 
 </div>
 
 > **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. About-the-Team de Kevin está publicado en YouTube (7:08, §5.5); su copia institucional, la exposición técnica y la comprobación posterior con usuarios siguen pendientes.
-
-## Cómo leer y mantener este informe
-
-Este README es el informe completo **generado** desde `report-front.md`, los cinco capítulos y `report-closing.md`. Se edita cada fuente una sola vez y se ejecuta `npm run report`; `npm run check` detecta divergencias e imágenes locales rotas. Los diagramas se entregan en SVG y Mermaid editable. La exportación HTML/PDF comparte el mismo contenido.
-
-| Estado documental | Significado |
-| --- | --- |
-| Implementado y verificado | Comportamiento observado en prueba automatizada o recorrido local, con alcance indicado. |
-| Diseñado | Modelo, contrato o decisión revisada cuya implementación productiva aún falta. |
-| Evidencia pendiente | Dato que el equipo debe sustentar con una fuente real. |
 
 ## Registro de versiones
 
@@ -99,6 +89,18 @@ Las marcas se refieren a las grabaciones originales, no al consolidado editado. 
 ## Collaboration Insights
 
 [Backend](https://github.com/AI-ToDu/ai-todu-api/commits/main/) · [Frontend](https://github.com/AI-ToDu/ai-todu-webapp/commits/main/) · [Landing](https://github.com/AI-ToDu/ai-todu-platform/commits/develop/) · [Informe](https://github.com/AI-ToDu/ai-todu-report/commits/main/). Los PR muestran cambios y comprobaciones; no equivalen a colaboración de todo el equipo. Las cinco fuentes audiovisuales están en §5.3.2 y la relación entre el tablero actual y las tareas en §5.2.3.3.
+
+### Capturas históricas de colaboración
+
+Estas capturas corresponden al informe TB1. Conservan el estado del historial en aquella entrega; los enlaces anteriores permiten consultar los cambios actuales de AV2.
+
+![Historial de commits conservado de TB1](Images/insigth.jpeg)
+
+![Contribuciones por autor conservadas de TB1](Images/Insight-Collab.jpeg)
+
+![Historial del informe en la entrega TB1](Images/commits.jpeg)
+
+![Autores del informe en la entrega TB1](Images/commiters.jpeg)
 
 ## Tabla de contenidos
 

@@ -61,14 +61,31 @@ Las fichas y respuestas de **ambas versiones** están en el [archivo de investig
 
 Estas imágenes ya formaban parte de TB1. Se recuperan como archivo histórico, con el nombre del archivo como referencia y sin asignar una identidad cuando la ficha y la imagen difieren. No son participantes adicionales de la validación del Sprint 3.
 
-| Archivo conservado | Evidencia visual original |
-| --- | --- |
-| `Carlos_Mendoza.jpeg` | <img src="Images/Carlos_Mendoza.jpeg" alt="Registro visual histórico: archivo Carlos_Mendoza" width="260"> |
-| `Lucia_Valdivia1.jpeg` | <img src="Images/Lucia_Valdivia1.jpeg" alt="Registro visual histórico: archivo Lucia_Valdivia1" width="260"> |
-| `Entrevista_ Sebastian.jpg` | <img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura histórica con el nombre Sebastián en pantalla; ficha por conciliar" width="260"> |
-| `Raul_Delgado.jpeg` | <img src="Images/Raul_Delgado.jpeg" alt="Registro visual histórico: archivo Raul_Delgado; ficha por conciliar" width="260"> |
-| `Entrevista_Maria_Morales.jpg` | <img src="Images/Entrevista_Maria_Morales.jpg" alt="Registro visual histórico: archivo Entrevista_Maria_Morales; ficha por conciliar" width="260"> |
-| `Entrevista_Diego_Ramirez.jpg` | <img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Registro visual histórico: archivo Entrevista_Diego_Ramirez; ficha por conciliar" width="260"> |
+Las imágenes se sitúan junto al registro al que estaban asociadas en el PDF TB1 (pp. 18–22). Los rótulos conservan esa asociación documental; no resuelven las discrepancias de identidad indicadas arriba.
+
+**Segmento 1 · Ficha histórica rotulada Carlos Mendoza**
+
+<img src="Images/Carlos_Mendoza.jpeg" alt="Fotografía asociada a la ficha histórica Carlos Mendoza" width="300">
+
+**Segmento 1 · Ficha histórica rotulada Lucía Valdivia**
+
+<img src="Images/Lucia_Valdivia1.jpeg" alt="Fotografía asociada a la ficha histórica Lucía Valdivia" width="300">
+
+**Segmento 1 · Ficha histórica rotulada Roberto Sánchez**
+
+<img src="Images/Entrevista_%20Sebastian.jpg" alt="Captura del archivo Sebastián asociada en TB1 a la ficha Roberto Sánchez; identidad por conciliar" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Miguel Rojas**
+
+<img src="Images/Raul_Delgado.jpeg" alt="Fotografía del archivo Raul Delgado asociada en TB1 a la ficha Miguel Rojas; identidad por conciliar" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Maria Morales**
+
+<img src="Images/Entrevista_Maria_Morales.jpg" alt="Captura asociada a la ficha histórica Maria Morales" width="300">
+
+**Segmento 2 · Ficha histórica rotulada Diego Ramirez**
+
+<img src="Images/Entrevista_Diego_Ramirez.jpg" alt="Captura asociada a la ficha histórica Diego Ramirez" width="300">
 
 En las versiones del informe revisadas no se localizó una URL reproducible de las entrevistas iniciales: el enlace de Stream era un marcador de ejemplo. Se conserva el material visual disponible; los videos de esa etapa requieren su fuente auténtica.
 
@@ -92,6 +109,12 @@ Son arquetipos de diseño, no personas reales adicionales. La actualización cua
 | Administración de negocio | Kimberlin recibe materiales y supervisa compras/ventas (00:37–00:57); Junior valora concentrar registros (12:01–13:08). | Comprender el recorrido y diferenciar sedes; lenguaje en español. | No se midió presupuesto, adopción ni frecuencia de uso. |
 | Operación de almacén | Fabiana registra en hoja compartida y sistema (00:35–00:47); Diego usa portapapeles y computadora (00:36–00:48). | Acciones accesibles, saldo claro, responsable y espera visible. | Contexto declarado en entrevista; no se observó la jornada real. |
 
+**Personas del diseño TB1.** Las capturas de UXPressia se conservan en la sección de User Personas, como en las pp. 24 y 26 del informe anterior. Son arquetipos históricos, no nuevos entrevistados de AV2 ni resultados de esta validación.
+
+![User Persona histórica de administración: Carlos Mendoza](Images/User-Persona-1.png)
+
+![User Persona histórica de operación: Miguel Rojas](Images/User-Persona-2.png)
+
 ### 2.3.2. User Task Matrix
 
 Consideramos dos segmentos: administrador del negocio y operario de almacén. Las tareas existen independientemente de AI-ToDu. **Frecuencias e importancias son hipótesis**, todavía no mediciones de entrevistas verificadas; se sustituirán por los resultados reales.
@@ -109,7 +132,7 @@ La coincidencia propuesta es conciliar saldo y registrar movimientos. La diferen
 
 ### 2.3.3. User Journey Mapping
 
-El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Los mapas por persona y capturas en UXPressia quedan pendientes.
+El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, preparación de entrega y conciliación. Los escenarios son hipótesis; no observaciones verificadas. Las capturas históricas de UXPressia se conservan a continuación; su contraste con las fuentes de investigación sigue siendo una actividad de análisis.
 
 | Persona | Etapa actual sin AI-ToDu | Acción del negocio por validar | Fricción hipotética | Fuente |
 | --- | --- | --- | --- | --- |
@@ -121,6 +144,12 @@ El recorrido **As-Is**, anterior a nuestra solución, abarca recepción, prepara
 | Operario | Informa diferencias | Comunica pérdida o faltante y busca la causa | Motivo y responsable sin vincular | Entrevista pendiente |
 
 El recorrido recepción → venta → despacho del prototipo corresponde a la solución **To-Be**; se documenta en diseño e implementación y no sustituye el Journey As-Is.
+
+**Journeys del diseño TB1.** Se mantienen los escenarios propuestos del administrador y del operario en esta sección (PDF TB1, pp. 28–29). Los tiempos, emociones y oportunidades de estas láminas son hipótesis del diseño histórico, no mediciones de AV2.
+
+![User Journey histórico del administrador](Images/User-Journey-Map-1.png)
+
+![User Journey histórico del operario](Images/User-Journey-Map-2.png)
 
 ### 2.3.4. Empathy Mapping
 
@@ -134,6 +163,12 @@ El mapa separa lo expresado de lo inferido. Las paráfrasis remiten a sus fuente
 | Siente | No se aplicó un instrumento para medir confianza, satisfacción o frustración. | La conectividad es una preocupación descrita; no se midió estrés ni frecuencia del problema. | No se asignan emociones o puntuaciones sin evidencia. |
 
 Shirley combina ambos perfiles y aporta dudas sobre la acción de venta y las alertas (11:22–12:23). El mapa no transforma una valoración favorable en aceptación del producto.
+
+**Mapas de empatía del diseño TB1.** Las láminas originales se conservan en su sección (PDF TB1, pp. 31 y 33). La tabla anterior distingue las observaciones de AV2 de las inferencias; las citas y emociones de estas imágenes históricas no se presentan como nuevos testimonios.
+
+![Empathy Map histórico del administrador](Images/Empathy-Map-1.png)
+
+![Empathy Map histórico del operario](Images/Empathy-Map-2.png)
 
 ## 2.4. Big Picture Event Storming
 
