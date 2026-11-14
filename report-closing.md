@@ -28,7 +28,7 @@
 
 **Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública.
 
-**Pendiente de evidencia real o acción externa:** grabar About-the-Team y la reflexión personal de Kevin; volver a comprobar con participantes las correcciones publicadas. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
+**Pendiente de evidencia real o acción externa:** grabar la exposición técnica, About-the-Team y la reflexión personal de Kevin; volver a comprobar con participantes las correcciones publicadas. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -258,3 +258,11 @@ Cada corrección debe vincular commit, comprobación técnica, resultado y condi
 | H-09 | Backend `6014719`: ProductReference y converter; V5 nullable aplicada en Render. Frontend `d36fd08`: nombre/SKU y enlace filtrado | 17 pruebas H2 y CI PostgreSQL 17/Java 21; contrato HTTP identifica el producto; una alerta demo abre el SKU correcto | Alertas anteriores sin referencia muestran estado explícito. No se infiere el artículo |
 
 Fuentes revisables: [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7) y [verificación PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736). Las comprobaciones se hicieron con datos ficticios. Backend y frontend están integrados y publicados. La comprobación pública de stock y referencia del producto se detalla en §5.2.3.5; una nueva sesión con usuarios sigue pendiente.
+
+## Anexo E. Videos de Exposiciones
+
+| Entrega | Contenido y archivo esperado | Estado verificable |
+| --- | --- | --- |
+| AV2 · Sprint 3 | Presentación PowerPoint, explicación ante cámara y demostración de los artefactos. Archivo `upc-pre-202620-1asi0729-7750-ia-innovation-expo-av2.mp4` | Pendiente de grabación real y enlace privado en Microsoft Stream. |
+
+La presentación editable se entrega como `upc-pre-202620-1asi0729-7750-ia-innovation-keynote-av2.pptx` y su PDF, conforme al nombre de archivo del enunciado. Incluye las cuatro fotografías originales disponibles y la identificación histórica del equipo. La foto de Fernando sigue sin archivo auténtico localizado. About-the-Product, Product Navigation y las entrevistas no sustituyen la exposición técnica ni la reflexión de About-the-Team. Al recibir la grabación se incorporarán duración, fuente, enlace y tiempos comprobados.
