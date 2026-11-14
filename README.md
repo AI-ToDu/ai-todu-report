@@ -12,7 +12,7 @@ Startup **IA-INNOVATION** · Período **2026-2**
 # Informe del Trabajo Final · AI-ToDu
 
 **AV2 · Sprint 3 · Semana 12**<br>
-Versión **0.3.2 · 13 de noviembre de 2026**<br>
+Versión **0.3.2 · revisión del 14 de noviembre de 2026**<br>
 Lima, Perú · Noviembre de 2026
 
 <div class="cover-team">
@@ -31,7 +31,7 @@ Lima, Perú · Noviembre de 2026
 
 </div>
 
-> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. La grabación About-the-Team y la comprobación posterior con usuarios siguen pendientes.
+> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. About-the-Team de Kevin está publicado en YouTube (7:08, §5.5); su copia institucional, la exposición técnica y la comprobación posterior con usuarios siguen pendientes.
 
 ## Cómo leer y mantener este informe
 
@@ -56,6 +56,7 @@ Las fechas se apoyan en commits existentes; no se reconstruyen reuniones ni apro
 | AV2 · v0.3.0 | 08/11/2026 | Kevin Salazar, con implementación asistida autorizada | API Java, pruebas PostgreSQL, integración, despliegue e informe. [Revisiones del backend](https://github.com/AI-ToDu/ai-todu-api/pulls?q=is%3Apr+is%3Aclosed). |
 | Revisión AV2 · v0.3.1 | 08/11/2026 | Revisión técnica asistida autorizada por Kevin | Contratos CQRS/REST y errores, documentación de 34 operaciones, diagramas AV2/Transactional Outbox, formatos Scrum y criterios específicos. |
 | Evidencias AV2 · v0.3.2 | 13/11/2026 | Kevin Salazar, con revisión asistida | Cinco fichas de validación con capturas y tiempos; recuperación de fotos históricas; ocho hallazgos heurísticos, seguimiento actual y correcciones técnicas en PR. |
+| About-the-Team · revisión v0.3.2 | 14/11/2026 | Kevin Salazar | Publicación de la grabación individual de 7:08 en YouTube y actualización de referencias y pendientes. |
 
 ## Student Outcome · ABET 3
 
@@ -67,7 +68,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
-| Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: Kevin modera cinco sesiones con administración y operación: plantea tareas, explica navegación y solicita mejoras (§5.3.2). La guía frecuente y los términos poco claros son límites observados. Exposición técnica y reflexión individual grabada pendientes. | Las sesiones evidencian comunicación con usuarios y feedback específico; no acreditan por sí solas toda la competencia ni una sustentación técnica individual. Se debe contrastar la comprensión sin ayuda y grabar la reflexión. |
+| Comunica oralmente con efectividad a diferentes rangos de audiencia. | AV1/TB1: intervenciones y minutos individuales pendientes de verificar. AV2: Kevin modera cinco sesiones con administración y operación: plantea tareas, explica navegación y solicita mejoras (§5.3.2). La guía frecuente y los términos poco claros son límites observados. About-the-Team individual publicado (§5.5, 00:00–07:08); exposición técnica pendiente. | Las sesiones evidencian comunicación con usuarios y feedback específico; no acreditan por sí solas toda la competencia ni una sustentación técnica individual. Se debe contrastar la comprensión sin ayuda; la grabación individual se enlaza en §5.5. |
 | Comunica por escrito con efectividad a diferentes rangos de audiencia. | AV1: aportes de los cinco integrantes a los capítulos enlazados abajo. TB1: frontend por contexto y documentación. AV2: Kevin coordina la revisión asistida de API, contratos, límites y ejecución para docentes/desarrolladores. Nuevos aportes de otros integrantes requieren evidencia. | Los artefactos permiten examinar decisiones y límites. La comprensión individual y la claridad requieren feedback y reflexión; no se declara alcanzado todo el resultado. |
 
 ### Registro de acciones y fuentes
@@ -95,7 +96,7 @@ Cada fila distingue una contribución respaldada por Git de la evidencia oral pe
 | Explica el recorrido comercial y solicita mejoras | Administración: Kimberlin 01:07–02:43, 09:59–10:16 | La propuesta se comprende, pero persisten términos en inglés; H-02. |
 | Contrasta compra, venta y alertas con funciones combinadas | Shirley 11:22–12:23 | Falta descubrir la acción de venta y reconocer el artículo de la alerta; H-08/H-09. |
 
-Las marcas se refieren a las grabaciones originales, no al consolidado editado. Las reflexiones en un guion son propuestas para preparar la grabación; no se presentan como testimonios ya pronunciados.
+Las marcas se refieren a las grabaciones originales, no al consolidado editado. El About-the-Team individual se encuentra en §5.5 (00:00–07:08). Los guiones de preparación no sustituyen la grabación ni acreditan una exposición técnica.
 
 ## Collaboration Insights
 
@@ -1171,8 +1172,8 @@ El criterio técnico se prueba con datos ficticios; la confianza del usuario se 
 | Aspecto | Actividad verificada | Responsable y límite |
 | --- | --- | --- |
 | Development | Backend Java e integración Angular en PR | Trabajo asistido autorizado por Kevin; sin atribuirlo a otros integrantes |
-| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; demostración/reflexión individual pendientes |
-| Documentation | Informe, OpenAPI y README | Revisión asistida; aprobación académica y reflexiones pendientes |
+| Execution | Pruebas locales, CI PostgreSQL y recorrido HTTP público | Ejecución técnica asistida; About-the-Team en §5.5; exposición técnica pendiente |
+| Documentation | Informe, OpenAPI y README | Revisión asistida; About-the-Team en §5.5; aprobación académica pendiente |
 | Deployment | Pages y API gratuita con PostgreSQL aislado | Autorización de Kevin; evidencias técnicas enlazadas |
 
 La siguiente matriz registra la **responsabilidad actual de AV2**, sin reconstruir colaboración histórica. **L:** responsable del aspecto; **—:** sin nueva participación acreditada en este incremento. La asistencia técnica no se registra como un integrante del equipo.
@@ -1203,7 +1204,7 @@ Estimaciones de referencia, no horas registradas ni capacidad medida. La priorid
 | US33 | Idioma de aplicación | S3-T09 | Integrar Angular con API y separar sesiones demo/servidor | Integrar Angular con API y separar sesiones demo/servidor. Evidencia: 21 pruebas y build Pages aprobados. Cobertura asociada: Integración del transporte AV2. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Despliegue | S3-T10 | Desplegar API/DB/webapp y comprobar recorrido | Desplegar API/DB/webapp y comprobar recorrido. Evidencia: Render live, health UP y Pages. | 8 h | Kevin Salazar | To-Review |
 | Enabler AV2 | Documentación | S3-T11 | Alinear informe, diagramas y servicios | Alinear informe, diagramas y servicios. Evidencia: Fuentes y exportación de esta versión. | 8 h | Kevin Salazar | To-Review |
-| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream; lectura concedida al docente; reflexión pendiente. | 8 h | Kevin Salazar | In-Process |
+| Enabler AV2 | Validación y comunicación | S3-T12 | Incorporar entrevistas, tablero, videos y reflexión | Incorporar entrevistas, tablero, videos y reflexión. Evidencia: Cinco fichas y ocho hallazgos; tres ediciones publicadas en YouTube y Stream, con lectura concedida al docente; About-the-Team individual publicado en YouTube (§5.5), copia institucional pendiente. | 8 h | Kevin Salazar | In-Process |
 
 Las filas identifican una historia principal por tarea; las historias asociadas se indican en Task Description. Los enablers transversales corresponden a publicación, documentación y evaluación. El [tablero de cierre AV2 / Sprint 3](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3) fue creado el 13/11/2026 y es público: el docente puede consultar tareas y estados sin invitación. Contiene doce tarjetas y cuatro estados para el trabajo actual; no se reconstruyen las transiciones de los sprints 1 y 2. Status utiliza To-do / In-Process / To-Review / Done. To-Review indica artefacto técnico disponible para revisión; no acredita transición histórica del tablero, aceptación del equipo ni tiempo trabajado. Assigned To identifica la responsabilidad actual de Kevin, incluyendo trabajo asistido.
 
@@ -2487,7 +2488,18 @@ Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.
 
 ## 5.5. Video About-the-Team
 
-**Pendiente de evidencia real.** Mostrar trabajo, aportes y reflexión de cada participante que corresponda. Las grabaciones históricas se atribuyen con contexto verificable. No se simulan reuniones, integrantes activos ni contribuciones recientes. Enlace, duración, participantes y minutos se completarán al recibir videos.
+**Publicado el 14/11/2026.** [Ver About-the-Team · AV2 · Sprint 3 en YouTube](https://youtu.be/0dV36qhdQjE).
+
+| Dato de la evidencia | Registro |
+| --- | --- |
+| Participante de AV2 | Kevin Junior Salazar Marquina |
+| Alcance | Presentación y reflexión individual sobre el desarrollo de AI-ToDu, identificada por Kevin como About-the-Team. |
+| Fuente | Grabación de Kevin, exportada desde su proyecto de Clipchamp en 1080p; video H.264 y audio AAC. |
+| Duración y referencia | Archivo: 7:07,9; reproductor de YouTube: **7:08**, intervalo completo **00:00–07:08**. |
+| Publicación | Canal de Kevin Salazar Marquina; **No listado**. Cualquier persona con el enlace puede verlo. |
+| Destino institucional | Esta grabación todavía no se ha incorporado a la carpeta de Stream; las otras tres ediciones conservan sus enlaces institucionales. |
+
+Esta evidencia corresponde a Kevin en AV2. Los aportes de los demás integrantes se conservan como antecedentes históricos; no se les atribuye participación en esta grabación. About-the-Team no sustituye la exposición técnica indicada en el Anexo E.
 
 ---
 
@@ -2502,7 +2514,7 @@ Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.
 
 | Observación del docente | Corrección aplicada | Evidencia / condición pendiente |
 | --- | --- | --- |
-| Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | Evidencia oral y reflexión individual pendientes. |
+| Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | About-the-Team individual publicado (§5.5); exposición técnica pendiente. |
 | Repositorios faltantes | Repositorios reales enlazados; Fake API independiente y copia trazable. | Backend Java publicado y CI PostgreSQL aprobado. |
 | Versiones incorrectas | Registro apoyado en fechas/commits; corrección fechada 30/10/2026. | Ratificar fecha formal de las ceremonias. |
 | Imágenes rotas | Referencias ausentes sustituidas por estado explícito; fuentes históricas conservadas. | Adjuntar material real; no intercambiar identidades. |
@@ -2519,9 +2531,9 @@ Se conserva como antecedente el [clip promocional PROMO: Ai ToDu](https://youtu.
 
 ## Pendientes de evidencia y próxima entrega
 
-**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública.
+**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública. El About-the-Team individual de Kevin está publicado en [YouTube, 7:08](https://youtu.be/0dV36qhdQjE), desde el 14/11/2026.
 
-**Pendiente de evidencia real o acción externa:** grabar la exposición técnica, About-the-Team y la reflexión personal de Kevin; volver a comprobar con participantes las correcciones publicadas. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
+**Pendiente de evidencia real o acción externa:** grabar la exposición técnica; incorporar About-the-Team a Stream institucional; volver a comprobar con participantes las correcciones publicadas. El Performance Report de AV2 está preparado en el paquete local con la única fila de Kevin y la evaluación confirmada por él; no se añade una firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -2637,11 +2649,11 @@ Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se cons
 
 ## Anexo A. Student Outcome
 
-La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. La evidencia oral y reflexión individual pendiente se incorporará con audiencia, enlace y minuto verificables.
+La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. Las cinco sesiones guiadas se enlazan en §5.3.2 y el About-the-Team individual de Kevin en §5.5 (00:00–07:08). La exposición técnica sigue pendiente.
 
 ## Anexo B. Participación individual
 
-El Performance Report editable del paquete de entrega mantiene la escala del enunciado (20, 16, 13, 07 o 00), sin asignar una nota automática. El coordinador debe verificar autoría, contribuciones, justificación y firma antes de emitirlo. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
+El Performance Report editable del paquete local de AV2 mantiene el formato del enunciado, con la única fila de Kevin y la evaluación confirmada por él el 14/11/2026. No incorpora una firma automática ni presenta esa autoevaluación como una calificación emitida por el docente. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
 
 ## Anexo C. Testimonios y videos
 
@@ -2655,7 +2667,7 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 | Validaciones consolidadas | Junior, Fabiana, Diego, Kimberlin y Shirley | [YouTube, 19:18](https://youtu.be/jyTipnKiQVY) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-validacion-Sprint3-consolidado.mp4) | Cinco extractos de 3–5 min; lectura concedida al docente |
 | Product Navigation | Landing y aplicación, con Kimberlin y Shirley | [YouTube, 7:59](https://youtu.be/yJ4Z1_eoIPs) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-Product-Navigation-AV2-revision.mp4) | Landing 3:02; aplicación 4:51; cierre 0:05; captura y tiempos en §5.2.3.5 |
 | About-the-Product | Producto y ambos segmentos | [YouTube, 2:21](https://youtu.be/nvsYXk91k4c) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-About-the-Product-AV2-revision.mp4) | Publicado y embebido en landing; captura y tiempos en §5.4 |
-| About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
+| About-the-Team | Kevin Junior Salazar Marquina · AV2 | [YouTube no listado, 7:08](https://youtu.be/0dV36qhdQjE), 00:00–07:08; publicación autorizada por Kevin | Publicado el 14/11/2026; copia en Stream pendiente (§5.5) |
 | Tablero Scrum | Cierre actual a cargo de Kevin | [Trello público](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3), creado 13/11/2026; acceso de lectura sin invitación | Doce tarjetas, cuatro estados; no reconstruye sprints anteriores |
 
 ### Distribución del consolidado de validación

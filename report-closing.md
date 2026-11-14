@@ -9,7 +9,7 @@
 
 | Observación del docente | Corrección aplicada | Evidencia / condición pendiente |
 | --- | --- | --- |
-| Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | Evidencia oral y reflexión individual pendientes. |
+| Student Outcome sin acciones por persona/entrega | Matriz AV1/TB1 con commits reales y acción escrita específica. | About-the-Team individual publicado (§5.5); exposición técnica pendiente. |
 | Repositorios faltantes | Repositorios reales enlazados; Fake API independiente y copia trazable. | Backend Java publicado y CI PostgreSQL aprobado. |
 | Versiones incorrectas | Registro apoyado en fechas/commits; corrección fechada 30/10/2026. | Ratificar fecha formal de las ceremonias. |
 | Imágenes rotas | Referencias ausentes sustituidas por estado explícito; fuentes históricas conservadas. | Adjuntar material real; no intercambiar identidades. |
@@ -26,9 +26,9 @@
 
 ## Pendientes de evidencia y próxima entrega
 
-**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública.
+**Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública. El About-the-Team individual de Kevin está publicado en [YouTube, 7:08](https://youtu.be/0dV36qhdQjE), desde el 14/11/2026.
 
-**Pendiente de evidencia real o acción externa:** grabar la exposición técnica, About-the-Team y la reflexión personal de Kevin; volver a comprobar con participantes las correcciones publicadas. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
+**Pendiente de evidencia real o acción externa:** grabar la exposición técnica; incorporar About-the-Team a Stream institucional; volver a comprobar con participantes las correcciones publicadas. El Performance Report de AV2 está preparado en el paquete local con la única fila de Kevin y la evaluación confirmada por él; no se añade una firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -144,11 +144,11 @@ Los diagramas siguientes incluyen claves y columnas. Las FK entre áreas se cons
 
 ## Anexo A. Student Outcome
 
-La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. La evidencia oral y reflexión individual pendiente se incorporará con audiencia, enlace y minuto verificables.
+La introducción, criterios, acciones por entrega, fuentes y conclusiones se encuentran en la sección inicial Student Outcome. Las cinco sesiones guiadas se enlazan en §5.3.2 y el About-the-Team individual de Kevin en §5.5 (00:00–07:08). La exposición técnica sigue pendiente.
 
 ## Anexo B. Participación individual
 
-El Performance Report editable del paquete de entrega mantiene la escala del enunciado (20, 16, 13, 07 o 00), sin asignar una nota automática. El coordinador debe verificar autoría, contribuciones, justificación y firma antes de emitirlo. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
+El Performance Report editable del paquete local de AV2 mantiene el formato del enunciado, con la única fila de Kevin y la evaluación confirmada por él el 14/11/2026. No incorpora una firma automática ni presenta esa autoevaluación como una calificación emitida por el docente. Los commits históricos no prueban por sí solos tiempo dedicado ni aprendizaje individual.
 
 ## Anexo C. Testimonios y videos
 
@@ -162,7 +162,7 @@ El Performance Report editable del paquete de entrega mantiene la escala del enu
 | Validaciones consolidadas | Junior, Fabiana, Diego, Kimberlin y Shirley | [YouTube, 19:18](https://youtu.be/jyTipnKiQVY) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-validacion-Sprint3-consolidado.mp4) | Cinco extractos de 3–5 min; lectura concedida al docente |
 | Product Navigation | Landing y aplicación, con Kimberlin y Shirley | [YouTube, 7:59](https://youtu.be/yJ4Z1_eoIPs) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-Product-Navigation-AV2-revision.mp4) | Landing 3:02; aplicación 4:51; cierre 0:05; captura y tiempos en §5.2.3.5 |
 | About-the-Product | Producto y ambos segmentos | [YouTube, 2:21](https://youtu.be/nvsYXk91k4c) · [Stream](https://upcedupe-my.sharepoint.com/personal/u202417747_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202417747_upc_edu_pe%2FDocuments%2FAI-ToDu+AV2+Sprint+3+-+Evidencias%2FAI-ToDu-About-the-Product-AV2-revision.mp4) | Publicado y embebido en landing; captura y tiempos en §5.4 |
-| About-the-Team | Participantes de la entrega | Enlaces y reflexiones individuales pendientes | Sin evidencia completa |
+| About-the-Team | Kevin Junior Salazar Marquina · AV2 | [YouTube no listado, 7:08](https://youtu.be/0dV36qhdQjE), 00:00–07:08; publicación autorizada por Kevin | Publicado el 14/11/2026; copia en Stream pendiente (§5.5) |
 | Tablero Scrum | Cierre actual a cargo de Kevin | [Trello público](https://trello.com/b/82JkmgZH/ai-todu-av2-sprint-3), creado 13/11/2026; acceso de lectura sin invitación | Doce tarjetas, cuatro estados; no reconstruye sprints anteriores |
 
 ### Distribución del consolidado de validación
