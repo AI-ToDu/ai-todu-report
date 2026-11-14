@@ -275,8 +275,8 @@ El dominio no importa Spring/JPA. Las entidades de persistencia son separadas; c
 
 | Verificación | Resultado y evidencia | Límite |
 | --- | --- | --- |
-| Backend local | 15 pruebas aprobadas; 34 operaciones y rechazos HTTP contrastados | H2 de desarrollo; clima fixture en el recorrido de contratos; gateway probado por separado |
-| Backend revisión 13/11 | 17 pruebas locales y CI PostgreSQL 17 / Java 21; referencia de producto en alertas | [PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [CI 43550024736](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736); V5 en rama de revisión, integración/despliegue pendientes |
+| Backend local 8/11 | 15 pruebas aprobadas; 34 operaciones y rechazos HTTP contrastados | H2 de desarrollo; clima fixture en el recorrido de contratos; gateway probado por separado |
+| Backend publicado 13/11 | 17 pruebas locales y CI PostgreSQL 17 / Java 21; referencia de producto en alertas | [PR #4 integrado](https://github.com/AI-ToDu/ai-todu-api/pull/4), [CI 43550024736](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736); V5 aplicada en Render y referencia comprobada por HTTP público |
 | Frontend revisión 13/11 | 21 pruebas y build; venta por teclado, error de stock, responsable y navegación alerta → SKU; acciones dentro de 390 px | [PR #7 integrado](https://github.com/AI-ToDu/ai-todu-webapp/pull/7); Pages publicado con CI aprobado; navegador demo local, no una segunda sesión con participantes |
 | Backend CI | 15 pruebas aprobadas con PostgreSQL 17 / Java 21, commit 067abc7 | [Run 42511549771](https://github.com/AI-ToDu/ai-todu-api/actions/runs/42511549771); datos aislados, no mide carga empresarial |
 | Webapp | 21 pruebas y bundle inicial 443.85 kB | Incluye regresión demo y selección de transporte |
