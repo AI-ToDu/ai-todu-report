@@ -3,7 +3,7 @@
 1. El prototipo conecta recepción, saldo, venta y entrega mediante registros persistidos. La prueba técnica demuestra coherencia del recorrido ficticio; no mide reducción de pérdidas o productividad empresarial.
 2. La corrección separa dominio de transporte, incorpora value objects y contrasta arquitectura TB1 con diseño AV2. El monolito modular está implementado en Java y desplegado; no se declaran microservicios inexistentes.
 3. El modelo objetivo de 35 tablas organiza capacidades; las migraciones AV2 implementan 19 tablas más historial Flyway. La cobertura operativa sigue siendo parcial en lotes, ubicaciones, clientes, varios intentos/paradas, suscripciones y seguridad productiva. El conteo no sustituye un caso de uso terminado.
-4. Cinco sesiones guiadas aportan observaciones de administración y operación: se requieren acciones visibles, lenguaje consistente, responsable del movimiento y contexto del artículo en las alertas. Se documentan ocho problemas heurísticos y correcciones técnicas en ramas de revisión. La eficacia sin ayuda, el impacto empresarial y la reflexión individual todavía no están demostrados.
+4. Cinco sesiones guiadas aportan observaciones de administración y operación: se requieren acciones visibles, lenguaje consistente, responsable del movimiento y contexto del artículo en las alertas. Se documentan ocho problemas heurísticos y correcciones técnicas integradas y publicadas. La eficacia sin ayuda, el impacto empresarial y la reflexión individual todavía no están demostrados.
 
 ## Mejora continua y autocrítica
 
@@ -19,7 +19,7 @@
 | Orden del dominio | Épicas, historias y diagramas core → soporte → genérico; canal público al final. | Revalidar clasificación si cambia el negocio. |
 | C4 débil | C1, C2 actual/futuro y C3 con responsabilidades, límites y tecnología. | C2/C3 AV2 y Design-Level Event Storming contrastados con el servidor. |
 | Tipos primitivos en dominio | Sku, Quantity, Money y Address; límites de agregados. | Dominio Java agnóstico y repositorios implementados; ampliar VOs según cambien reglas. |
-| Tablas con nomenclatura incorrecta | 35 tablas lowercase snake_case, claves/restricciones/diccionario/ERD. | Migraciones PostgreSQL V1–V4 y pruebas reales en CI; modelo objetivo aún parcial. |
+| Tablas con nomenclatura incorrecta | 35 tablas lowercase snake_case, claves/restricciones/diccionario/ERD. | Migraciones PostgreSQL V1–V5 y pruebas reales en CI; modelo objetivo aún parcial. |
 | Sprint 1 incompleto / salto a 3 | Sprint 1 y 2 con las ocho secciones, límites históricos explícitos. | Actas, tablero y evidencias históricas pendientes. |
 | Goal sin formato | Outcome/impact/customer/confirmation con estructura del enunciado. | Acuerdo del equipo y validación del impacto con usuarios. |
 | BD poco funcional | Recepción parcial, recursos reales de demo, devoluciones y bandeja operativa. | Profundidad en lotes/ubicaciones/rutas y clientes. |
@@ -28,7 +28,7 @@
 
 **Estado del cierre actual:** cinco originales publicados, fichas con capturas/tiempos y ocho problemas heurísticos documentados; cuatro retratos originales y seis imágenes de investigación recuperados. El tablero de seguimiento es público. El consolidado de validaciones (19:18 en YouTube), Product Navigation (7:59) y About-the-Product (2:21) están publicados en YouTube y en la carpeta institucional propia de UPC. About-the-Product también está embebido en la landing pública.
 
-**Pendiente de evidencia real o acción externa:** grabar About-the-Team y la reflexión personal de Kevin; revisar e integrar las ramas técnicas, desplegar y volver a comprobar con participantes. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
+**Pendiente de evidencia real o acción externa:** grabar About-the-Team y la reflexión personal de Kevin; volver a comprobar con participantes las correcciones publicadas. El Performance Report conserva la escala sin asignar una calificación, justificación personal ni firma automática. Las ceremonias históricas y los videos iniciales sin URL auténtica no se reconstruyen.
 
 **Trabajo posterior, en orden del dominio:**
 
@@ -253,8 +253,8 @@ Cada corrección debe vincular commit, comprobación técnica, resultado y condi
 
 | Hallazgo | Cambio y fuente | Comprobación realizada | Límite |
 | --- | --- | --- | --- |
-| H-01, H-07, H-08 | Frontend `9f0b2cc`: columna fija de acciones, unidades explícitas y «Agregar a la venta» | Navegador HTTP demo: venta desde teclado, stock 15 → 14; a 390 px acción dentro de la vista y sin desbordamiento de página | Rama de revisión; falta comprobar con participantes |
+| H-01, H-07, H-08 | Frontend `9f0b2cc`: columna fija de acciones, unidades explícitas y «Agregar a la venta» | Navegador HTTP demo: venta desde teclado, stock 15 → 14; a 390 px acción dentro de la vista y sin desbordamiento de página | Integrado y publicado; falta comprobar con participantes |
 | H-02, H-03, H-04, H-05 | Frontend `486127b` y `d36fd08`: responsable, segundos/zona, traducción de motivos, saldo consultado y espera | Se muestra Alex Morgan en datos ficticios; se conserva el formulario tras rechazo con saldo cero; 21 pruebas y compilación aprobadas | No se mide tolerancia a una red empresarial ni éxito autónomo |
-| H-09 | Backend `6014719`: ProductReference y converter; V5 nullable. Frontend `d36fd08`: nombre/SKU y enlace filtrado | 17 pruebas H2 y CI PostgreSQL 17/Java 21; contrato HTTP identifica el producto; una alerta demo abre el SKU correcto | Alertas anteriores sin referencia muestran estado explícito. No se infiere el artículo |
+| H-09 | Backend `6014719`: ProductReference y converter; V5 nullable aplicada en Render. Frontend `d36fd08`: nombre/SKU y enlace filtrado | 17 pruebas H2 y CI PostgreSQL 17/Java 21; contrato HTTP identifica el producto; una alerta demo abre el SKU correcto | Alertas anteriores sin referencia muestran estado explícito. No se infiere el artículo |
 
-Fuentes revisables: [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7) y [verificación PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736). Las comprobaciones se hicieron con datos ficticios. Integración, despliegue de estas ramas y nueva sesión con usuarios no se dan por concluidos.
+Fuentes revisables: [backend PR #4](https://github.com/AI-ToDu/ai-todu-api/pull/4), [frontend PR #7](https://github.com/AI-ToDu/ai-todu-webapp/pull/7) y [verificación PostgreSQL](https://github.com/AI-ToDu/ai-todu-api/actions/runs/43550024736). Las comprobaciones se hicieron con datos ficticios. Backend y frontend están integrados y publicados. La comprobación pública de stock y referencia del producto se detalla en §5.2.3.5; una nueva sesión con usuarios sigue pendiente.

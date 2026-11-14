@@ -39,6 +39,7 @@ erDiagram
     string type
     timestamp created_at
     boolean is_read
+    uuid product_id "nullable, V5"
   }
   users ||--o{ sessions : "FK"
   workspaces ||--o{ integration_outbox : "FK"

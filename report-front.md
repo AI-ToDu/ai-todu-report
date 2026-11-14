@@ -29,7 +29,7 @@ Lima, Perú · Noviembre de 2026
 
 </div>
 
-> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones del 13/11 están en ramas de revisión; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. La grabación About-the-Team y la comprobación posterior con usuarios siguen pendientes.
+> **Alcance AV2.** Presentamos el incremento técnico del Sprint 3: backend Java/Spring Boot con PostgreSQL, dominio independiente de frameworks, recursos REST, roles, transacciones, Outbox e integración Open-Meteo. La Fake API conserva el alcance histórico de TB1. Se incorporan cinco sesiones de validación guiada, sus fichas, capturas y hallazgos. Las correcciones de backend y frontend del 13/11 están integradas y publicadas, con comprobación técnica enlazada; los tres videos editados están en YouTube y Stream, con lectura concedida al docente. La grabación About-the-Team y la comprobación posterior con usuarios siguen pendientes.
 
 ## Cómo leer y mantener este informe
 

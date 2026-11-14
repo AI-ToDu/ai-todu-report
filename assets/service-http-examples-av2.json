@@ -1,271 +1,283 @@
 [ {
-  "request" : "{\"name\":\"Contract review\",\"company\":\"Synthetic company\",\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"password\":\"[REDACTED]\"}",
   "method" : "POST",
-  "response" : "{\"id\":\"97ff2372-db30-4ee4-a376-382cadc6f234\",\"tenantId\":\"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6\",\"name\":\"Contract review\",\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"role\":\"ADMIN\"}",
+  "request" : "{\"name\":\"Contract review\",\"company\":\"Synthetic company\",\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"password\":\"[REDACTED]\"}",
+  "status" : 201,
   "path" : "/api/v1/auth/register",
-  "status" : 201
+  "response" : "{\"id\":\"7f87254a-c54f-4a82-a01b-f016951d697c\",\"tenantId\":\"097ff020-2910-4ed6-93da-e8b259e38f22\",\"name\":\"Contract review\",\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"role\":\"ADMIN\"}"
 }, {
-  "request" : "{\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"password\":\"[REDACTED]\"}",
   "method" : "POST",
-  "response" : "{\"token\":\"[REDACTED]\",\"user\":{\"id\":\"97ff2372-db30-4ee4-a376-382cadc6f234\",\"tenantId\":\"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6\",\"name\":\"Contract review\",\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"role\":\"ADMIN\"}}",
+  "request" : "{\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"password\":\"[REDACTED]\"}",
+  "status" : 200,
   "path" : "/api/v1/auth/login",
-  "status" : 200
+  "response" : "{\"token\":\"[REDACTED]\",\"user\":{\"id\":\"7f87254a-c54f-4a82-a01b-f016951d697c\",\"tenantId\":\"097ff020-2910-4ed6-93da-e8b259e38f22\",\"name\":\"Contract review\",\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"role\":\"ADMIN\"}}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"id\":\"97ff2372-db30-4ee4-a376-382cadc6f234\",\"tenantId\":\"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6\",\"name\":\"Contract review\",\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"role\":\"ADMIN\"}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/auth/me",
-  "status" : 200
+  "response" : "{\"id\":\"7f87254a-c54f-4a82-a01b-f016951d697c\",\"tenantId\":\"097ff020-2910-4ed6-93da-e8b259e38f22\",\"name\":\"Contract review\",\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"role\":\"ADMIN\"}"
 }, {
-  "request" : "{\"name\":\"Operator\",\"email\":\"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test\",\"role\":\"WAREHOUSE\",\"password\":\"[REDACTED]\"}",
   "method" : "POST",
-  "response" : "{\"id\":\"689715f7-8d90-40ca-800d-4c26784e1186\",\"name\":\"Operator\",\"email\":\"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test\",\"role\":\"WAREHOUSE\",\"active\":true}",
+  "request" : "{\"name\":\"Operator\",\"email\":\"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test\",\"role\":\"WAREHOUSE\",\"password\":\"[REDACTED]\"}",
+  "status" : 201,
   "path" : "/api/v1/employees",
-  "status" : 201
+  "response" : "{\"id\":\"525db239-6865-4dd9-8c9d-0b6ccd721c7e\",\"name\":\"Operator\",\"email\":\"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test\",\"role\":\"WAREHOUSE\",\"active\":true}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"97ff2372-db30-4ee4-a376-382cadc6f234\",\"name\":\"Contract review\",\"email\":\"contracts-5efd17ae-8420-4d3f-8ac4-b796fe5dbad3@example.test\",\"role\":\"ADMIN\",\"active\":true},{\"id\":\"689715f7-8d90-40ca-800d-4c26784e1186\",\"name\":\"Operator\",\"email\":\"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test\",\"role\":\"WAREHOUSE\",\"active\":true}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/employees",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"7f87254a-c54f-4a82-a01b-f016951d697c\",\"name\":\"Contract review\",\"email\":\"contracts-78e3132e-6d31-46ee-9001-afd9fd435084@example.test\",\"role\":\"ADMIN\",\"active\":true},{\"id\":\"525db239-6865-4dd9-8c9d-0b6ccd721c7e\",\"name\":\"Operator\",\"email\":\"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test\",\"role\":\"WAREHOUSE\",\"active\":true}]}"
 }, {
+  "method" : "POST",
   "request" : "{\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"price\":12.50,\"cost\":7,\"minimum\":1}",
-  "method" : "POST",
-  "response" : "{\"id\":\"71633291-7316-43de-a084-7473e47bc466\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}",
+  "status" : 201,
   "path" : "/api/v1/products",
-  "status" : 201
+  "response" : "{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"71633291-7316-43de-a084-7473e47bc466\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/products",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}]}"
 }, {
-  "request" : "{\"conservation\":\"GOOD\"}",
   "method" : "PATCH",
-  "response" : "{\"id\":\"71633291-7316-43de-a084-7473e47bc466\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}",
-  "path" : "/api/v1/products/71633291-7316-43de-a084-7473e47bc466",
-  "status" : 200
+  "request" : "{\"conservation\":\"GOOD\"}",
+  "status" : 200,
+  "path" : "/api/v1/products/305ced5a-9473-442c-9b19-1137ff3304ce",
+  "response" : "{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}"
 }, {
-  "request" : "{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":5,\"type\":\"RECEIPT\",\"reason\":\"Initial receipt\"}",
   "method" : "POST",
-  "response" : "{\"id\":\"71633291-7316-43de-a084-7473e47bc466\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":5,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}",
+  "request" : "{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":5,\"type\":\"RECEIPT\",\"reason\":\"Initial receipt\"}",
+  "status" : 201,
   "path" : "/api/v1/movements",
-  "status" : 201
+  "response" : "{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":5,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"55e61117-905e-4f6f-bab4-453d55b55f62\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"delta\":5,\"type\":\"RECEIPT\",\"reason\":\"Initial receipt\",\"actorId\":\"97ff2372-db30-4ee4-a376-382cadc6f234\",\"createdAt\":\"2026-11-08T18:43:19.085409Z\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/movements",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"da0276c3-1112-41cd-a6bc-c4db962cd799\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"delta\":5,\"type\":\"RECEIPT\",\"reason\":\"Initial receipt\",\"actorId\":\"7f87254a-c54f-4a82-a01b-f016951d697c\",\"createdAt\":\"2026-11-14T03:04:20.793988Z\"}]}"
 }, {
+  "method" : "POST",
   "request" : "{\"name\":\"Example supplier\",\"contact\":\"supplier@example.test\"}",
-  "method" : "POST",
-  "response" : "{\"id\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"name\":\"Example supplier\",\"contact\":\"supplier@example.test\"}",
+  "status" : 201,
   "path" : "/api/v1/suppliers",
-  "status" : 201
+  "response" : "{\"id\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"name\":\"Example supplier\",\"contact\":\"supplier@example.test\"}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"name\":\"Example supplier\",\"contact\":\"supplier@example.test\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/suppliers",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"name\":\"Example supplier\",\"contact\":\"supplier@example.test\"}]}"
 }, {
-  "request" : "{\"supplierId\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"lines\":[{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":3}]}",
   "method" : "POST",
-  "response" : "{\"id\":\"2bcf4876-2b0e-4421-9000-6963f4a965bd\",\"number\":\"PO-2bcf4876\",\"supplierId\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"status\":\"OPEN\",\"createdAt\":\"2026-11-08T18:43:19.161628400Z\",\"lines\":[{\"id\":\"1e7d4586-e255-408f-a763-e102fa4c57b0\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":3,\"received\":0}]}",
+  "request" : "{\"supplierId\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"lines\":[{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":3}]}",
+  "status" : 201,
   "path" : "/api/v1/purchases",
-  "status" : 201
+  "response" : "{\"id\":\"5dbfad60-0379-4422-9b34-1fe9946bcbd7\",\"number\":\"PO-5dbfad60\",\"supplierId\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"status\":\"OPEN\",\"createdAt\":\"2026-11-14T03:04:20.886127500Z\",\"lines\":[{\"id\":\"8084851c-1d58-48d5-b37f-6bcbf2fd0edb\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":3,\"received\":0}]}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"2bcf4876-2b0e-4421-9000-6963f4a965bd\",\"number\":\"PO-2bcf4876\",\"supplierId\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"status\":\"OPEN\",\"createdAt\":\"2026-11-08T18:43:19.161628Z\",\"lines\":[{\"id\":\"1e7d4586-e255-408f-a763-e102fa4c57b0\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":3,\"received\":0}]}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/purchases",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"5dbfad60-0379-4422-9b34-1fe9946bcbd7\",\"number\":\"PO-5dbfad60\",\"supplierId\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"status\":\"OPEN\",\"createdAt\":\"2026-11-14T03:04:20.886128Z\",\"lines\":[{\"id\":\"8084851c-1d58-48d5-b37f-6bcbf2fd0edb\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":3,\"received\":0}]}]}"
 }, {
-  "request" : "{\"lines\":[{\"lineId\":\"1e7d4586-e255-408f-a763-e102fa4c57b0\",\"quantity\":2}]}",
   "method" : "POST",
-  "response" : "{\"id\":\"2bcf4876-2b0e-4421-9000-6963f4a965bd\",\"number\":\"PO-2bcf4876\",\"supplierId\":\"ea689c0b-798f-4295-a250-bc5b3cea91aa\",\"status\":\"PARTIAL\",\"createdAt\":\"2026-11-08T18:43:19.161628Z\",\"lines\":[{\"id\":\"1e7d4586-e255-408f-a763-e102fa4c57b0\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":3,\"received\":2}]}",
-  "path" : "/api/v1/purchases/2bcf4876-2b0e-4421-9000-6963f4a965bd/receipts",
-  "status" : 201
+  "request" : "{\"lines\":[{\"lineId\":\"8084851c-1d58-48d5-b37f-6bcbf2fd0edb\",\"quantity\":2}]}",
+  "status" : 201,
+  "path" : "/api/v1/purchases/5dbfad60-0379-4422-9b34-1fe9946bcbd7/receipts",
+  "response" : "{\"id\":\"5dbfad60-0379-4422-9b34-1fe9946bcbd7\",\"number\":\"PO-5dbfad60\",\"supplierId\":\"4986775d-e1c8-456e-9144-19e7981b91c1\",\"status\":\"PARTIAL\",\"createdAt\":\"2026-11-14T03:04:20.886128Z\",\"lines\":[{\"id\":\"8084851c-1d58-48d5-b37f-6bcbf2fd0edb\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":3,\"received\":2}]}"
 }, {
-  "request" : "{\"lines\":[{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":2}]}",
   "method" : "POST",
-  "response" : "{\"id\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"number\":\"SAL-b55c8a8c\",\"status\":\"CONFIRMED\",\"total\":25.00,\"createdAt\":\"2026-11-08T18:43:19.238105100Z\",\"lines\":[{\"id\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":2,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-b55c8a8c\"}}",
+  "request" : "{\"lines\":[{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":2}]}",
+  "status" : 201,
   "path" : "/api/v1/sales",
-  "status" : 201
+  "response" : "{\"id\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"number\":\"SAL-98771c96\",\"status\":\"CONFIRMED\",\"total\":25.00,\"createdAt\":\"2026-11-14T03:04:20.982748600Z\",\"lines\":[{\"id\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":2,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-98771c96\"}}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"number\":\"SAL-b55c8a8c\",\"status\":\"CONFIRMED\",\"total\":25.00,\"createdAt\":\"2026-11-08T18:43:19.238105Z\",\"lines\":[{\"id\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":2,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-b55c8a8c\"}}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/sales",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"number\":\"SAL-98771c96\",\"status\":\"CONFIRMED\",\"total\":25.00,\"createdAt\":\"2026-11-14T03:04:20.982749Z\",\"lines\":[{\"id\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":2,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-98771c96\"}}]}"
 }, {
+  "method" : "POST",
   "request" : "{\"name\":\"Example driver\",\"license\":\"LIC-CONTRACT\"}",
-  "method" : "POST",
-  "response" : "{\"id\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"name\":\"Example driver\",\"license\":\"LIC-CONTRACT\"}",
+  "status" : 201,
   "path" : "/api/v1/drivers",
-  "status" : 201
+  "response" : "{\"id\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"name\":\"Example driver\",\"license\":\"LIC-CONTRACT\"}"
 }, {
+  "method" : "POST",
   "request" : "{\"name\":\"Example van\",\"plate\":\"CON-001\"}",
-  "method" : "POST",
-  "response" : "{\"id\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"name\":\"Example van\",\"plate\":\"CON-001\"}",
+  "status" : 201,
   "path" : "/api/v1/vehicles",
-  "status" : 201
+  "response" : "{\"id\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"name\":\"Example van\",\"plate\":\"CON-001\"}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"name\":\"Example driver\",\"license\":\"LIC-CONTRACT\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/drivers",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"name\":\"Example driver\",\"license\":\"LIC-CONTRACT\"}]}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"name\":\"Example van\",\"plate\":\"CON-001\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/vehicles",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"name\":\"Example van\",\"plate\":\"CON-001\"}]}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"number\":\"SAL-b55c8a8c\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/dispatch-candidates",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"number\":\"SAL-98771c96\"}]}"
 }, {
-  "request" : "{\"saleIds\":[\"b55c8a8c-73d7-4210-8555-f8481861c01a\"],\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\"}",
   "method" : "POST",
-  "response" : "{\"id\":\"86410196-6937-4ccc-b971-efcf11d06ce4\",\"number\":\"DSP-86410196\",\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-08T18:43:19.364757100Z\",\"lines\":[{\"id\":\"bf8817fa-a350-4432-aa8c-67e23446b700\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[],\"recipient\":null}",
+  "request" : "{\"saleIds\":[\"98771c96-002f-4faa-971c-4fdfe9f60d3c\"],\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\"}",
+  "status" : 201,
   "path" : "/api/v1/dispatches",
-  "status" : 201
+  "response" : "{\"id\":\"1e25dd22-28c0-46d3-b99e-0f53aef41889\",\"number\":\"DSP-1e25dd22\",\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-14T03:04:21.115278300Z\",\"lines\":[{\"id\":\"e67e0ff7-df81-4325-8165-335fe57679b9\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[],\"recipient\":null}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"86410196-6937-4ccc-b971-efcf11d06ce4\",\"number\":\"DSP-86410196\",\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-08T18:43:19.364757Z\",\"lines\":[{\"id\":\"bf8817fa-a350-4432-aa8c-67e23446b700\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[],\"recipient\":null}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/dispatches",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"1e25dd22-28c0-46d3-b99e-0f53aef41889\",\"number\":\"DSP-1e25dd22\",\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-14T03:04:21.115278Z\",\"lines\":[{\"id\":\"e67e0ff7-df81-4325-8165-335fe57679b9\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[],\"recipient\":null}]}"
 }, {
+  "method" : "POST",
   "request" : "{\"description\":\"Recipient contacted before delivery\"}",
-  "method" : "POST",
-  "response" : "{\"id\":\"86410196-6937-4ccc-b971-efcf11d06ce4\",\"number\":\"DSP-86410196\",\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-08T18:43:19.364757Z\",\"lines\":[{\"id\":\"bf8817fa-a350-4432-aa8c-67e23446b700\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"3feefe20-adad-4a6c-92ca-499d18f8dabc\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-08T18:43:19.411361500Z\"}],\"recipient\":null}",
-  "path" : "/api/v1/dispatches/86410196-6937-4ccc-b971-efcf11d06ce4/incidents",
-  "status" : 201
+  "status" : 201,
+  "path" : "/api/v1/dispatches/1e25dd22-28c0-46d3-b99e-0f53aef41889/incidents",
+  "response" : "{\"id\":\"1e25dd22-28c0-46d3-b99e-0f53aef41889\",\"number\":\"DSP-1e25dd22\",\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\",\"status\":\"PENDING\",\"createdAt\":\"2026-11-14T03:04:21.115278Z\",\"lines\":[{\"id\":\"e67e0ff7-df81-4325-8165-335fe57679b9\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"77bfa107-40ab-44c9-8336-b2fab11d0f10\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-14T03:04:21.159399500Z\"}],\"recipient\":null}"
 }, {
+  "method" : "PATCH",
   "request" : "{\"status\":\"IN_TRANSIT\"}",
-  "method" : "PATCH",
-  "response" : "{\"id\":\"86410196-6937-4ccc-b971-efcf11d06ce4\",\"number\":\"DSP-86410196\",\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\",\"status\":\"IN_TRANSIT\",\"createdAt\":\"2026-11-08T18:43:19.364757Z\",\"lines\":[{\"id\":\"bf8817fa-a350-4432-aa8c-67e23446b700\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"3feefe20-adad-4a6c-92ca-499d18f8dabc\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-08T18:43:19.411362Z\"}],\"recipient\":null}",
-  "path" : "/api/v1/dispatches/86410196-6937-4ccc-b971-efcf11d06ce4",
-  "status" : 200
+  "status" : 200,
+  "path" : "/api/v1/dispatches/1e25dd22-28c0-46d3-b99e-0f53aef41889",
+  "response" : "{\"id\":\"1e25dd22-28c0-46d3-b99e-0f53aef41889\",\"number\":\"DSP-1e25dd22\",\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\",\"status\":\"IN_TRANSIT\",\"createdAt\":\"2026-11-14T03:04:21.115278Z\",\"lines\":[{\"id\":\"e67e0ff7-df81-4325-8165-335fe57679b9\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"77bfa107-40ab-44c9-8336-b2fab11d0f10\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-14T03:04:21.159400Z\"}],\"recipient\":null}"
 }, {
+  "method" : "PATCH",
   "request" : "{\"status\":\"DELIVERED\",\"recipient\":\"Example recipient\"}",
-  "method" : "PATCH",
-  "response" : "{\"id\":\"86410196-6937-4ccc-b971-efcf11d06ce4\",\"number\":\"DSP-86410196\",\"driverId\":\"06449429-0047-481d-9f1c-b1d1e37cc7a1\",\"vehicleId\":\"569f1cb0-cb5b-4482-98ae-d941d425508c\",\"destination\":\"Example Lima warehouse\",\"status\":\"DELIVERED\",\"createdAt\":\"2026-11-08T18:43:19.364757Z\",\"lines\":[{\"id\":\"bf8817fa-a350-4432-aa8c-67e23446b700\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"3feefe20-adad-4a6c-92ca-499d18f8dabc\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-08T18:43:19.411362Z\"}],\"recipient\":\"Example recipient\"}",
-  "path" : "/api/v1/dispatches/86410196-6937-4ccc-b971-efcf11d06ce4",
-  "status" : 200
+  "status" : 200,
+  "path" : "/api/v1/dispatches/1e25dd22-28c0-46d3-b99e-0f53aef41889",
+  "response" : "{\"id\":\"1e25dd22-28c0-46d3-b99e-0f53aef41889\",\"number\":\"DSP-1e25dd22\",\"driverId\":\"fa947858-2d51-43dd-afff-d206e524cd21\",\"vehicleId\":\"9aeea7f9-ad25-45ba-ad6a-b4213b712912\",\"destination\":\"Example Lima warehouse\",\"status\":\"DELIVERED\",\"createdAt\":\"2026-11-14T03:04:21.115278Z\",\"lines\":[{\"id\":\"e67e0ff7-df81-4325-8165-335fe57679b9\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"quantity\":2}],\"incidents\":[{\"id\":\"77bfa107-40ab-44c9-8336-b2fab11d0f10\",\"description\":\"Recipient contacted before delivery\",\"createdAt\":\"2026-11-14T03:04:21.159400Z\"}],\"recipient\":\"Example recipient\"}"
 }, {
-  "request" : "{\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\"}",
   "method" : "POST",
-  "response" : "{\"id\":\"ec84466b-9ff4-432f-b042-986b6d0b4bb3\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\",\"createdAt\":\"2026-11-08T18:43:19.480300200Z\"}",
+  "request" : "{\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\"}",
+  "status" : 201,
   "path" : "/api/v1/returns",
-  "status" : 201
+  "response" : "{\"id\":\"722fec71-ee69-4498-9390-c0e72ea8508f\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\",\"createdAt\":\"2026-11-14T03:04:21.296884400Z\"}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"ec84466b-9ff4-432f-b042-986b6d0b4bb3\",\"saleId\":\"b55c8a8c-73d7-4210-8555-f8481861c01a\",\"saleLineId\":\"d92e2b7f-4acb-4b83-bca2-4c5ef287e8c8\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\",\"createdAt\":\"2026-11-08T18:43:19.480300Z\"}]}",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/returns",
-  "status" : 200
+  "response" : "{\"items\":[{\"id\":\"722fec71-ee69-4498-9390-c0e72ea8508f\",\"saleId\":\"98771c96-002f-4faa-971c-4fdfe9f60d3c\",\"saleLineId\":\"8ab855cb-5863-4d27-9160-d3163732c4cf\",\"quantity\":1,\"disposition\":\"RESTOCK\",\"reason\":\"Example return\",\"createdAt\":\"2026-11-14T03:04:21.296884Z\"}]}"
 }, {
-  "request" : "{\"lines\":[{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":1}]}",
   "method" : "POST",
-  "response" : "{\"id\":\"2cfe9035-b68f-4ad4-8612-032cb36272bf\",\"number\":\"SAL-2cfe9035\",\"status\":\"CONFIRMED\",\"total\":12.50,\"createdAt\":\"2026-11-08T18:43:19.516651100Z\",\"lines\":[{\"id\":\"4ce64e5e-a745-44f4-b655-64d36fc9c645\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":1,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-2cfe9035\"}}",
+  "request" : "{\"lines\":[{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":1}]}",
+  "status" : 201,
   "path" : "/api/v1/sales",
-  "status" : 201
+  "response" : "{\"id\":\"ce6169e7-93f5-4441-9b90-29e901354860\",\"number\":\"SAL-ce6169e7\",\"status\":\"CONFIRMED\",\"total\":12.50,\"createdAt\":\"2026-11-14T03:04:21.339908500Z\",\"lines\":[{\"id\":\"91c1942c-1ae0-4a0c-9ab9-7c8f9026365d\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":1,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-ce6169e7\"}}"
 }, {
+  "method" : "POST",
   "request" : "{\"reason\":\"Example cancellation\"}",
-  "method" : "POST",
-  "response" : "{\"id\":\"2cfe9035-b68f-4ad4-8612-032cb36272bf\",\"number\":\"SAL-2cfe9035\",\"status\":\"CANCELLED\",\"total\":12.50,\"createdAt\":\"2026-11-08T18:43:19.516651Z\",\"lines\":[{\"id\":\"4ce64e5e-a745-44f4-b655-64d36fc9c645\",\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":1,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-2cfe9035\"}}",
-  "path" : "/api/v1/sales/2cfe9035-b68f-4ad4-8612-032cb36272bf/cancel",
-  "status" : 200
+  "status" : 200,
+  "path" : "/api/v1/sales/ce6169e7-93f5-4441-9b90-29e901354860/cancel",
+  "response" : "{\"id\":\"ce6169e7-93f5-4441-9b90-29e901354860\",\"number\":\"SAL-ce6169e7\",\"status\":\"CANCELLED\",\"total\":12.50,\"createdAt\":\"2026-11-14T03:04:21.339909Z\",\"lines\":[{\"id\":\"91c1942c-1ae0-4a0c-9ab9-7c8f9026365d\",\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"name\":\"Example item\",\"sku\":\"CONTRACT-001\",\"quantity\":1,\"price\":12.50,\"cost\":7.00,\"returned\":0}],\"receipt\":{\"number\":\"REC-SAL-ce6169e7\"}}"
 }, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"items\":[{\"id\":\"5c21a07f-de0d-4091-b492-ce1dacd8126c\",\"type\":\"SALE_CONFIRMED\",\"createdAt\":\"2026-11-08T18:43:19.516651Z\",\"read\":false},{\"id\":\"ba5a8ad2-adc8-4f9c-ad76-40b6d9f749e5\",\"type\":\"DELIVERY_CONFIRMED\",\"createdAt\":\"2026-11-08T18:43:19.452569Z\",\"read\":false},{\"id\":\"6ed61054-e5e0-429a-b064-2ce2fd2058f0\",\"type\":\"SALE_CONFIRMED\",\"createdAt\":\"2026-11-08T18:43:19.238105Z\",\"read\":false}]}",
-  "path" : "/api/v1/notifications",
-  "status" : 200
-}, {
   "request" : "",
-  "method" : "PATCH",
-  "response" : "{\"id\":\"5c21a07f-de0d-4091-b492-ce1dacd8126c\",\"type\":\"SALE_CONFIRMED\",\"createdAt\":\"2026-11-08T18:43:19.516651Z\",\"read\":true}",
-  "path" : "/api/v1/notifications/5c21a07f-de0d-4091-b492-ce1dacd8126c",
-  "status" : 200
-}, {
-  "request" : "",
-  "method" : "GET",
-  "response" : "{\"revenue\":12.50,\"grossMargin\":5.50,\"inventoryValue\":42.00,\"lowStock\":0,\"dispatches\":0,\"sales\":1}",
-  "path" : "/api/v1/metrics",
-  "status" : 200
-}, {
-  "request" : "",
-  "method" : "GET",
-  "response" : "{\"location\":\"Lima fixture\",\"temperatureC\":21.0,\"precipitationMm\":0.0,\"windKmh\":8.0,\"observedAt\":\"2026-11-08T12:00:00Z\",\"fetchedAt\":\"2026-11-08T12:00:00Z\",\"source\":\"Open-Meteo\",\"attributionUrl\":\"https://open-meteo.com/\"}",
-  "path" : "/api/v1/logistics/weather",
-  "status" : 200
-}, {
-  "request" : "{}",
-  "method" : "POST",
-  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}",
+  "status" : 200,
   "path" : "/api/v1/products",
-  "status" : 400
+  "response" : "{\"items\":[{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":6,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}]}"
 }, {
-  "request" : "{",
   "method" : "POST",
-  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}",
-  "path" : "/api/v1/products",
-  "status" : 400
-}, {
-  "request" : "{\"lines\":[null]}",
-  "method" : "POST",
-  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/sales\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}",
-  "path" : "/api/v1/sales",
-  "status" : 400
-}, {
-  "request" : "{\"conservation\":\"GOOD\"}",
-  "method" : "PATCH",
-  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products/not-a-uuid\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}",
-  "path" : "/api/v1/products/not-a-uuid",
-  "status" : 400
-}, {
-  "request" : "{\"lines\":[{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":999}]}",
-  "method" : "POST",
-  "response" : "{\"detail\":\"La cantidad supera el stock disponible. Revisa el carrito.\",\"instance\":\"/api/v1/sales\",\"status\":409,\"title\":\"Conflict\",\"type\":\"about:blank\",\"code\":\"INSUFFICIENT_STOCK\"}",
-  "path" : "/api/v1/sales",
-  "status" : 409
-}, {
-  "request" : "{\"productId\":\"71633291-7316-43de-a084-7473e47bc466\",\"quantity\":1.5,\"type\":\"RECEIPT\",\"reason\":\"Fractional units\"}",
-  "method" : "POST",
-  "response" : "{\"detail\":\"Ingresa una cantidad entera positiva.\",\"instance\":\"/api/v1/movements\",\"status\":422,\"title\":\"Unprocessable Content\",\"type\":\"about:blank\",\"code\":\"INVALID_QUANTITY\"}",
+  "request" : "{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":6,\"type\":\"ISSUE\",\"reason\":\"Alert reference review\"}",
+  "status" : 201,
   "path" : "/api/v1/movements",
-  "status" : 422
+  "response" : "{\"id\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"sku\":\"CONTRACT-001\",\"name\":\"Example item\",\"quantity\":0,\"price\":12.50,\"cost\":7.00,\"minimum\":1,\"conservation\":\"GOOD\"}"
 }, {
-  "request" : "{\"email\":\"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test\",\"password\":\"[REDACTED]\"}",
-  "method" : "POST",
-  "response" : "{\"token\":\"[REDACTED]\",\"user\":{\"id\":\"689715f7-8d90-40ca-800d-4c26784e1186\",\"tenantId\":\"d60e39fe-f1d0-4d1e-8a40-b8540ed537c6\",\"name\":\"Operator\",\"email\":\"employee-c2a127d9-0c5e-43e2-938d-eb5cbfdf9f4f@example.test\",\"role\":\"WAREHOUSE\"}}",
-  "path" : "/api/v1/auth/login",
-  "status" : 200
-}, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"detail\":\"Tu rol no tiene acceso a esta operación.\",\"instance\":\"/api/v1/metrics\",\"status\":403,\"title\":\"Forbidden\",\"type\":\"about:blank\",\"code\":\"FORBIDDEN\"}",
+  "request" : "",
+  "status" : 200,
+  "path" : "/api/v1/notifications",
+  "response" : "{\"items\":[{\"id\":\"c0616be7-9eab-405f-8515-bf58915dc778\",\"type\":\"LOW_STOCK\",\"createdAt\":\"2026-11-14T03:04:21.383444Z\",\"read\":false,\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\"},{\"id\":\"dd31670a-e58e-40c8-bdc7-426513445a02\",\"type\":\"SALE_CONFIRMED\",\"createdAt\":\"2026-11-14T03:04:21.339909Z\",\"read\":false,\"productId\":null},{\"id\":\"b6367a7e-15a2-4998-bd55-5566975c7619\",\"type\":\"DELIVERY_CONFIRMED\",\"createdAt\":\"2026-11-14T03:04:21.261877Z\",\"read\":false,\"productId\":null},{\"id\":\"47b14a9b-16a7-48b9-861f-696a748a36da\",\"type\":\"SALE_CONFIRMED\",\"createdAt\":\"2026-11-14T03:04:20.982749Z\",\"read\":false,\"productId\":null}]}"
+}, {
+  "method" : "PATCH",
+  "request" : "",
+  "status" : 200,
+  "path" : "/api/v1/notifications/c0616be7-9eab-405f-8515-bf58915dc778",
+  "response" : "{\"id\":\"c0616be7-9eab-405f-8515-bf58915dc778\",\"type\":\"LOW_STOCK\",\"createdAt\":\"2026-11-14T03:04:21.383444Z\",\"read\":true,\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\"}"
+}, {
+  "method" : "GET",
+  "request" : "",
+  "status" : 200,
   "path" : "/api/v1/metrics",
-  "status" : 403
+  "response" : "{\"revenue\":12.50,\"grossMargin\":5.50,\"inventoryValue\":0.00,\"lowStock\":1,\"dispatches\":0,\"sales\":1}"
 }, {
-  "request" : "{}",
-  "method" : "POST",
-  "response" : "",
-  "path" : "/api/v1/auth/logout",
-  "status" : 204
-}, {
-  "request" : "",
   "method" : "GET",
-  "response" : "{\"detail\":\"Vuelve a iniciar sesión para continuar.\",\"code\":\"UNAUTHENTICATED\",\"title\":\"Unauthorized\",\"type\":\"about:blank\",\"status\":401}",
+  "request" : "",
+  "status" : 200,
+  "path" : "/api/v1/logistics/weather",
+  "response" : "{\"location\":\"Lima fixture\",\"temperatureC\":21.0,\"precipitationMm\":0.0,\"windKmh\":8.0,\"observedAt\":\"2026-11-08T12:00:00Z\",\"fetchedAt\":\"2026-11-08T12:00:00Z\",\"source\":\"Open-Meteo\",\"attributionUrl\":\"https://open-meteo.com/\"}"
+}, {
+  "method" : "POST",
+  "request" : "{}",
+  "status" : 400,
   "path" : "/api/v1/products",
-  "status" : 401
+  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}"
+}, {
+  "method" : "POST",
+  "request" : "{",
+  "status" : 400,
+  "path" : "/api/v1/products",
+  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}"
+}, {
+  "method" : "POST",
+  "request" : "{\"lines\":[null]}",
+  "status" : 400,
+  "path" : "/api/v1/sales",
+  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/sales\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}"
+}, {
+  "method" : "PATCH",
+  "request" : "{\"conservation\":\"GOOD\"}",
+  "status" : 400,
+  "path" : "/api/v1/products/not-a-uuid",
+  "response" : "{\"detail\":\"Revisa la longitud del texto y los campos obligatorios.\",\"instance\":\"/api/v1/products/not-a-uuid\",\"status\":400,\"title\":\"Bad Request\",\"type\":\"about:blank\",\"code\":\"INVALID_TEXT\"}"
+}, {
+  "method" : "POST",
+  "request" : "{\"lines\":[{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":999}]}",
+  "status" : 409,
+  "path" : "/api/v1/sales",
+  "response" : "{\"detail\":\"La cantidad supera el stock disponible. Revisa el carrito.\",\"instance\":\"/api/v1/sales\",\"status\":409,\"title\":\"Conflict\",\"type\":\"about:blank\",\"code\":\"INSUFFICIENT_STOCK\"}"
+}, {
+  "method" : "POST",
+  "request" : "{\"productId\":\"305ced5a-9473-442c-9b19-1137ff3304ce\",\"quantity\":1.5,\"type\":\"RECEIPT\",\"reason\":\"Fractional units\"}",
+  "status" : 422,
+  "path" : "/api/v1/movements",
+  "response" : "{\"detail\":\"Ingresa una cantidad entera positiva.\",\"instance\":\"/api/v1/movements\",\"status\":422,\"title\":\"Unprocessable Content\",\"type\":\"about:blank\",\"code\":\"INVALID_QUANTITY\"}"
+}, {
+  "method" : "POST",
+  "request" : "{\"email\":\"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test\",\"password\":\"[REDACTED]\"}",
+  "status" : 200,
+  "path" : "/api/v1/auth/login",
+  "response" : "{\"token\":\"[REDACTED]\",\"user\":{\"id\":\"525db239-6865-4dd9-8c9d-0b6ccd721c7e\",\"tenantId\":\"097ff020-2910-4ed6-93da-e8b259e38f22\",\"name\":\"Operator\",\"email\":\"employee-b6694a6d-5e34-43b7-93f7-6a42f90f4f2b@example.test\",\"role\":\"WAREHOUSE\"}}"
+}, {
+  "method" : "GET",
+  "request" : "",
+  "status" : 403,
+  "path" : "/api/v1/metrics",
+  "response" : "{\"detail\":\"Tu rol no tiene acceso a esta operación.\",\"instance\":\"/api/v1/metrics\",\"status\":403,\"title\":\"Forbidden\",\"type\":\"about:blank\",\"code\":\"FORBIDDEN\"}"
+}, {
+  "method" : "POST",
+  "request" : "{}",
+  "status" : 204,
+  "path" : "/api/v1/auth/logout",
+  "response" : ""
+}, {
+  "method" : "GET",
+  "request" : "",
+  "status" : 401,
+  "path" : "/api/v1/products",
+  "response" : "{\"title\":\"Unauthorized\",\"code\":\"UNAUTHENTICATED\",\"detail\":\"Vuelve a iniciar sesión para continuar.\",\"status\":401,\"type\":\"about:blank\"}"
 } ]
