@@ -84,6 +84,10 @@ Los porcentajes son umbrales de decisión del experimento, no resultados del pro
 
 ![Lean UX Canvas específico de AI-ToDu](assets/lean-ux-canvas.svg)
 
+**Canvas de la entrega TB1.** Se conserva la imagen original como antecedente del proceso; el canvas anterior presenta la síntesis revisada para AI-ToDu.
+
+![Lean UX Canvas histórico de TB1](Images/Lean_UX_Canvas.jpeg)
+
 El canvas representa hipótesis actuales. Reemplaza la imagen heredada de otro producto y se actualiza con hallazgos trazables, no con conclusiones anticipadas.
 
 ## 1.3. Segmentos objetivo

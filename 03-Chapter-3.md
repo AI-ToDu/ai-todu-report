@@ -110,7 +110,11 @@ Los siguientes Business Goals son **metas SMART propuestas**, pendientes de rati
 | BG02: en las cuatro primeras semanas del piloto, al menos 3 de 4 administradores relacionan una venta con su despacho, estado y receptor en hasta cuatro minutos sin ayuda del facilitador. | Administrador del negocio | Consulta evidencia vinculada para responder por una entrega. | Venta vinculada al manifiesto y confirmación con receptor. | US19: Como Logístico, deseo crear un manifiesto desde ventas para preparar una entrega trazable. |
 | BG03: al terminar la sexta semana del piloto, al menos 3 de 4 administradores concilian el saldo y el importe de un caso con recepción, venta y devolución sin diferencias respecto del registro de referencia. | Administrador del negocio | Comprueba importes e inventario a partir de sus operaciones. | Historial e indicadores con definición y datos de prueba trazables. | US23: Como Administrador, deseo consultar indicadores para comprender las operaciones registradas. |
 
-Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las fichas de User Persona y el Impact Map en UXPressia siguen pendientes de acceso y sustento de investigación; esta tabla prepara su contenido sin presentar una captura inexistente.
+Medición pendiente: consentimiento, inicio/fin por tarea, resultado sin ayuda, errores y explicación del participante. Se cuentan personas, no intentos repetidos de una misma persona. Las capturas históricas de User Persona se conservan en §2.3.1 y la del Impact Map se muestra a continuación. Su presencia documenta el diseño TB1; no demuestra el cumplimiento de los objetivos de negocio.
+
+**Impact Mapping del diseño TB1.** Captura original situada bajo Impact Mapping en el informe anterior (p. 58). Se conserva como antecedente de los objetivos y relaciones propuestos, junto con el análisis revisado anterior.
+
+![Impact Mapping histórico de AI-ToDu en UXPressia](Images/Impact-Mapping-1.png)
 
 ## 3.3. Product Backlog
 
